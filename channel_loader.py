@@ -2,6 +2,7 @@ import pandas as pd
 import re
 from typing import Optional, Literal
 
+# --- No changes to _load_from_csv ---
 def _load_from_csv(file_path: str) -> Optional[pd.DataFrame]:
     """
     Internal function to load seed channels from a local CSV file.
@@ -29,6 +30,7 @@ def _load_from_csv(file_path: str) -> Optional[pd.DataFrame]:
         print(f"Error loading CSV from '{file_path}': {e}")
         return None
 
+# --- THIS FUNCTION IS UPDATED ---
 def _load_from_google_sheet(sheet_url: str) -> Optional[pd.DataFrame]:
     """
     Internal function to load seed channels from a PUBLIC Google Sheet URL.
@@ -43,30 +45,37 @@ def _load_from_google_sheet(sheet_url: str) -> Optional[pd.DataFrame]:
         A DataFrame with 'Channel_Name' and 'Channel_URL', or None if loading fails.
     """
     try:
-        # Check if it's a direct CSV export link
-        if 'export?format=csv' in sheet_url:
+        # Check if it's a direct CSV export link (from "publish" or "export")
+        if 'output=csv' in sheet_url or 'export?format=csv' in sheet_url:
             csv_export_url = sheet_url
+            print(f"Using direct CSV URL: {csv_export_url}")
         else:
-            # Try to construct the export link from a standard sheet URL
-            # Standard URL: https://docs.google.com/spreadsheets/d/{SHEET_ID}/edit?gid={GID}
+            # Try to construct the export link from a standard /edit URL
             match = re.search(r'/spreadsheets/d/([a-zA-Z0-9_-]+)', sheet_url)
             if not match:
-                print("Error: Invalid Google Sheet URL. Must be a standard sheet link or a 'export?format=csv' link.")
+                print("Error: Invalid Google Sheet URL. Must be a standard /edit link or a public 'output=csv' link.")
                 return None
             
             sheet_id = match.group(1)
-            # Default to first sheet (gid=0) if not specified
             gid_match = re.search(r'gid=([0-9]+)', sheet_url)
             gid = gid_match.group(1) if gid_match else '0'
             
             csv_export_url = f"https://docs.google.com/spreadsheets/d/{sheet_id}/export?format=csv&gid={gid}"
             print(f"Constructed CSV export URL: {csv_export_url}")
 
-        df = pd.read_csv(csv_export_url)
+        # --- FIX 1: Add encoding='utf-8-sig' ---
+        df = pd.read_csv(csv_export_url, encoding='utf-8-sig')
+        
+        # --- NEW: Debugging line ---
+        print(f"[Debug] Columns found by pandas: {list(df.columns)}")
+        
+        # --- FIX 2: Sanitize column names ---
+        df.columns = df.columns.str.strip()
         
         # Validate required columns
         if 'Channel_Name' not in df.columns or 'Channel_URL' not in df.columns:
-            print(f"Error: Google Sheet must contain 'Channel_Name' and 'Channel_URL' columns.")
+            print("Error: Google Sheet must contain 'Channel_Name' and 'Channel_URL' columns.")
+            print(f"[Debug] Sanitized columns: {list(df.columns)}") # More debug
             return None
             
         print(f"Successfully loaded {len(df)} channels from Google Sheet.")
@@ -77,6 +86,7 @@ def _load_from_google_sheet(sheet_url: str) -> Optional[pd.DataFrame]:
         print("Please ensure the URL is correct and the sheet is 'Published to the web' as a CSV.")
         return None
 
+# --- No changes to load_seed_channels ---
 def load_seed_channels(
     source: str, 
     source_type: Literal['csv', 'google_sheet'] = 'csv'
