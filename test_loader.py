@@ -22,9 +22,9 @@ def run_tests():
     # 4. Select the correct sheet, and choose "Comma-separated values (.csv)"
     # 5. Click "Publish" and copy the generated link.
     
+    
     # This is a real, public test link with the same structure
-    dummy_sheet_url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRxtDkBsHlY2j-t0-j8s-yW-QyGoSm2cn-EWnUP-B3wUn-GZFDf60-o-q-Kyj5s-6e-E-8N6o_o-7Xn/pub?output=csv"
-
+    dummy_sheet_url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSr6AmKcMa9bIEnxerj5KgPvPQ1-K3aGk3Qkqk1BCuvhK0Blj62s0giGjxjjP7hqUhVLPcMNat2fJCf/pub?gid=0&single=true&output=csv"
     gsheet_df = load_seed_channels(source=dummy_sheet_url, source_type='google_sheet')
     
     if gsheet_df is not None:
