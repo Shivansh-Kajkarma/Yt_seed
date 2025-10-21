@@ -1,0 +1,8 @@
+# re is built-in
+
+# --- Optional libraries for Phase 1 (Private Google Sheets) ---
+# If Uday needs to access a PRIVATE Google Sheet, you'll need
+# Google's API libraries and a more complex auth setup.
+# gspread
+# google-auth-oauthlib
+# google-api-python-client
