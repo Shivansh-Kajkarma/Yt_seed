@@ -13,7 +13,7 @@ API_KEY = os.getenv("YOUTUBE_API_KEY")
 # Utility: Extract Channel ID
 # -----------------------------
 def extract_channel_id(channel_url: str) -> str:
-    # ... (This function is perfect, no changes) ...
+    
     match = re.search(r"channel/([A-Za-z0-9_-]+)", channel_url)
     if match:
         return match.group(1)
@@ -31,7 +31,7 @@ def extract_channel_id(channel_url: str) -> str:
 
 
 # -----------------------------
-# Fetch recent videos per channel (MODIFIED)
+# Fetch recent videos per channel
 # -----------------------------
 def fetch_recent_videos(channel_id: str, max_results: int = 5):
     """
@@ -63,7 +63,7 @@ def fetch_recent_videos(channel_id: str, max_results: int = 5):
             video_id = item["id"]["videoId"]
             video_ids.append(video_id)
             
-            # We'll store the basic info for now
+            # store the basic info for now
             video_details[video_id] = {
                 "video_id": video_id,
                 "title": html.unescape(item["snippet"]["title"]),
@@ -90,7 +90,7 @@ def fetch_recent_videos(channel_id: str, max_results: int = 5):
 
     data_videos = resp_videos.json()
 
-    # Enrich our video_details with full descriptions
+    # video_details with full descriptions
     for item in data_videos.get("items", []):
         video_id = item["id"]
         if video_id in video_details:
@@ -101,7 +101,7 @@ def fetch_recent_videos(channel_id: str, max_results: int = 5):
             
             video_details[video_id]["description"] = clean_desc
             
-            # 3. Format timestamp (we do it here since we're looping)
+            # 3. Format timestamp 
             raw_time = item["snippet"]["publishedAt"]
             dt_obj = datetime.fromisoformat(raw_time.replace('Z', '+00:00'))
             video_details[video_id]["published_at"] = dt_obj.strftime("%Y-%m-%d %H:%M:%S")
@@ -113,7 +113,6 @@ def fetch_recent_videos(channel_id: str, max_results: int = 5):
 # Fetch for all seed channels
 # -----------------------------
 def fetch_for_seed_channels(seed_df: pd.DataFrame, limit_per_channel: int = 5) -> pd.DataFrame:
-    # ... (This function is perfect, no changes) ...
     all_records = []
     for _, row in seed_df.iterrows():  
         channel_url = row["Channel_URL"]

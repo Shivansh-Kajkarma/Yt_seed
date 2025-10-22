@@ -2,7 +2,6 @@ import pandas as pd
 import re
 from typing import Optional, Literal
 
-# --- No changes to _load_from_csv ---
 def _load_from_csv(file_path: str) -> Optional[pd.DataFrame]:
     """
     Internal function to load seed channels from a local CSV file.
@@ -30,7 +29,6 @@ def _load_from_csv(file_path: str) -> Optional[pd.DataFrame]:
         print(f"Error loading CSV from '{file_path}': {e}")
         return None
 
-# --- THIS FUNCTION IS UPDATED ---
 def _load_from_google_sheet(sheet_url: str) -> Optional[pd.DataFrame]:
     """
     Internal function to load seed channels from a PUBLIC Google Sheet URL.
@@ -63,16 +61,12 @@ def _load_from_google_sheet(sheet_url: str) -> Optional[pd.DataFrame]:
             csv_export_url = f"https://docs.google.com/spreadsheets/d/{sheet_id}/export?format=csv&gid={gid}"
             print(f"Constructed CSV export URL: {csv_export_url}")
 
-        # --- FIX 1: Add encoding='utf-8-sig' ---
         df = pd.read_csv(csv_export_url, encoding='utf-8-sig')
         
-        # --- NEW: Debugging line ---
-        print(f"[Debug] Columns found by pandas: {list(df.columns)}")
+        # print(f"[Debug] Columns found by pandas: {list(df.columns)}")
         
-        # --- FIX 2: Sanitize column names ---
         df.columns = df.columns.str.strip()
-        
-        # Validate required columns
+
         if 'Channel_Name' not in df.columns or 'Channel_URL' not in df.columns:
             print("Error: Google Sheet must contain 'Channel_Name' and 'Channel_URL' columns.")
             print(f"[Debug] Sanitized columns: {list(df.columns)}") # More debug
@@ -86,7 +80,6 @@ def _load_from_google_sheet(sheet_url: str) -> Optional[pd.DataFrame]:
         print("Please ensure the URL is correct and the sheet is 'Published to the web' as a CSV.")
         return None
 
-# --- No changes to load_seed_channels ---
 def load_seed_channels(
     source: str, 
     source_type: Literal['csv', 'google_sheet'] = 'csv'

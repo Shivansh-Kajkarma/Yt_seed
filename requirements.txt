@@ -9,3 +9,5 @@
 pandas
 python-dotenv
 google-api-python-client
+nltk 
+scikit-learn
