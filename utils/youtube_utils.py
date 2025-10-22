@@ -1,12 +1,10 @@
-# /utils/youtube_utils.py
-
 import os
 import requests
 import pandas as pd
 from dotenv import load_dotenv
 import re
-import html  # <-- ADD THIS IMPORT
-from datetime import datetime  # <-- ADD THIS IMPORT
+import html
+from datetime import datetime
 
 load_dotenv()
 API_KEY = os.getenv("YOUTUBE_API_KEY")
@@ -15,24 +13,16 @@ API_KEY = os.getenv("YOUTUBE_API_KEY")
 # Utility: Extract Channel ID
 # -----------------------------
 def extract_channel_id(channel_url: str) -> str:
-    """
-    Convert YouTube channel URL or handle to channel ID using the YouTube API.
-    Supports '@handle', '/channel/ID', and '/c/customName' formats.
-    """
-    # ... (This function is already perfect, no changes)
+    # ... (This function is perfect, no changes) ...
     match = re.search(r"channel/([A-Za-z0-9_-]+)", channel_url)
     if match:
         return match.group(1)
-
-    # 2️⃣ Handle or custom name → use search API to resolve
     handle = channel_url.split("/")[-1]
     if handle.startswith("@"):
         handle = handle[1:]
-
     url = f"https://www.googleapis.com/youtube/v3/search?part=snippet&type=channel&q={handle}&key={API_KEY}"
     resp = requests.get(url)
     data = resp.json()
-
     if "items" in data and data["items"]:
         return data["items"][0]["snippet"]["channelId"]
     else:
@@ -41,76 +31,97 @@ def extract_channel_id(channel_url: str) -> str:
 
 
 # -----------------------------
-# Fetch recent videos per channel
+# Fetch recent videos per channel (MODIFIED)
 # -----------------------------
 def fetch_recent_videos(channel_id: str, max_results: int = 5):
     """
     Fetch recent videos for a channel by channel_id.
     Returns a list of dicts with {video_id, title, description, published_at}.
+    
+    This now uses a 2-step process:
+    1. Search API to find recent video_ids.
+    2. Videos API to get full descriptions for those IDs.
     """
-    url = (
+    
+    # --- STEP 1: Use Search API to find recent video IDs ---
+    search_url = (
         f"https://www.googleapis.com/youtube/v3/search?"
         f"key={API_KEY}&channelId={channel_id}&part=snippet,id&order=date&maxResults={max_results}"
     )
 
-    resp = requests.get(url)
-    if resp.status_code != 200:
-        print(f"⚠️ Failed to fetch for {channel_id}: {resp.text}")
+    resp_search = requests.get(search_url)
+    if resp_search.status_code != 200:
+        print(f"⚠️ Failed (Search) for {channel_id}: {resp_search.text}")
         return []
 
-    data = resp.json()
-    results = []
+    data_search = resp_search.json()
+    video_details = {}  # Use a dict for easy lookup
+    video_ids = []
 
-    for item in data.get("items", []):
+    for item in data_search.get("items", []):
         if item["id"]["kind"] == "youtube#video":
-            snippet = item["snippet"]
+            video_id = item["id"]["videoId"]
+            video_ids.append(video_id)
             
-            # --- START: FIXES ---
+            # We'll store the basic info for now
+            video_details[video_id] = {
+                "video_id": video_id,
+                "title": html.unescape(item["snippet"]["title"]),
+                "published_at": item["snippet"]["publishedAt"], # Will format this later
+                "description": "" # Will be filled by Step 2
+            }
             
-            # 1. Clean title: "What&#39;s" -> "What's"
-            clean_title = html.unescape(snippet["title"])
-            
-            # 2. Clean description: Unescape and remove newlines that break CSVs
-            raw_desc = snippet.get("description", "")
+    if not video_ids:
+        print(f"No recent videos found for {channel_id}")
+        return []
+
+    # --- STEP 2: Use Videos API to get full descriptions ---
+    video_ids_str = ",".join(video_ids)
+    videos_url = (
+        f"https://www.googleapis.com/youtube/v3/videos?"
+        f"key={API_KEY}&part=snippet&id={video_ids_str}"
+    )
+    
+    resp_videos = requests.get(videos_url)
+    if resp_videos.status_code != 200:
+        print(f"⚠️ Failed (Videos) for {channel_id}: {resp_videos.text}")
+        # We can still return the basic info from Step 1
+        return list(video_details.values()) 
+
+    data_videos = resp_videos.json()
+
+    # Enrich our video_details with full descriptions
+    for item in data_videos.get("items", []):
+        video_id = item["id"]
+        if video_id in video_details:
+            # 1. Get full description
+            raw_desc = item["snippet"].get("description", "")
+            # 2. Clean it (unescape HTML and remove CSV-breaking newlines)
             clean_desc = html.unescape(raw_desc).replace("\n", " ").replace("\r", " ")
             
-            # 3. Format timestamp: "2025-10-21T17:02:11Z" -> "2025-10-21 17:02:11"
-            raw_time = snippet["publishedAt"]
-            # Parse the ISO format string (replace 'Z' for compatibility)
+            video_details[video_id]["description"] = clean_desc
+            
+            # 3. Format timestamp (we do it here since we're looping)
+            raw_time = item["snippet"]["publishedAt"]
             dt_obj = datetime.fromisoformat(raw_time.replace('Z', '+00:00'))
-            # Format it into a simple, readable string
-            friendly_time = dt_obj.strftime("%Y-%m-%d %H:%M:%S")
+            video_details[video_id]["published_at"] = dt_obj.strftime("%Y-%m-%d %H:%M:%S")
 
-            # --- END: FIXES ---
-
-            results.append({
-                "video_id": item["id"]["videoId"],
-                "title": clean_title,       # <-- Use cleaned title
-                "description": clean_desc,    # <-- Use cleaned description
-                "published_at": friendly_time # <-- Use formatted time
-            })
-    return results
+    return list(video_details.values())
 
 
 # -----------------------------
 # Fetch for all seed channels
 # -----------------------------
 def fetch_for_seed_channels(seed_df: pd.DataFrame, limit_per_channel: int = 5) -> pd.DataFrame:
-    """
-    Given a seed channel DataFrame (Channel_Name + Channel_URL), fetch recent videos for each.
-    """
-    # ... (This function is also perfect, no changes)
+    # ... (This function is perfect, no changes) ...
     all_records = []
-
-    for _, row in seed_df.iterrows(): 
+    for _, row in seed_df.iterrows():  
         channel_url = row["Channel_URL"]
         channel_name = row["Channel_Name"]
-
         print(f"🎯 Fetching recent videos for: {channel_name}")
         channel_id = extract_channel_id(channel_url)
         if not channel_id:
             continue
-
         videos = fetch_recent_videos(channel_id, limit_per_channel)
         for v in videos:
             all_records.append({
@@ -118,7 +129,6 @@ def fetch_for_seed_channels(seed_df: pd.DataFrame, limit_per_channel: int = 5) -
                 "Channel_ID": channel_id,
                 **v
             })
-
     df_videos = pd.DataFrame(all_records)
     print(f"✅ Fetched {len(df_videos)} total videos")
     return df_videos
