@@ -12,18 +12,14 @@ except LookupError:
     nltk.download('stopwords')
 
 # Create a custom stop words list
-# to remove junk
+# This is now MUCH smaller because min_df, max_df, 
+# and token_pattern do most of the work.
 # =================================================================
 stop_words_list = list(nltk.corpus.stopwords.words('english'))
 custom_junk = [
     'http', 'https', 'com', 'www', 'youtu', 'be', 'ly', 'goo', 'gl', # URLs
-    'subscribe', 'channel', 'video', 'videos', 'watch', 'check',     # YouTube actions
-    'rmb', 'usd', 'price',                                           # Common video junk
-    'one', 'also', 'first', 'make', 'take', 'back', 'get', 'try',    # Common english junk
-    'go', 'come', 'day', 'night', 'street', 'tour'                   # Too generic
 ]
 stop_words_list.extend(custom_junk)
-# Convert to a set for faster lookups
 CUSTOM_STOP_WORDS = set(stop_words_list)
 # =================================================================
 
@@ -35,26 +31,28 @@ def preprocess_text(text: str) -> str:
     text = text.lower()  # Lowercase
     text = re.sub(r'\S+@\S+', ' ', text)  # Remove emails
     text = re.sub(r'http\S+', ' ', text)  # Remove URLs
-    text = re.sub(r'[^a-z\s]', ' ', text)  # Remove punctuation/numbers
+    
+    # --- ADDED FROM FRIEND'S SUGGESTION 2 ---
+    text = re.sub(r'([a-z])([A-Z])', r'\1 \2', text)   # Split camelCase (e.g., VisionPro)
+    text = re.sub(r'([a-z])(\d)', r'\1 \2', text)      # Split words with numbers (e.g., M5)
+    
+    text = re.sub(r'[^a-z\s]', ' ', text)  # Remove punctuation
     text = re.sub(r'\s+', ' ', text)  # Remove extra whitespace
+
     return text.strip()
 
 def create_fingerprint(video_df: pd.DataFrame, top_n: int = 15) -> list[str]:
     """
     Generates a "fingerprint" (top TF-IDF keywords) for a channel.
-    
-    This NEW version treats EACH video as a separate document,
-    then averages the TF-IDF scores to find the true channel fingerprint.
+    This version is fully robust with min/max df and token patterns.
     """
     if video_df.empty:
         return []
 
-    # Create a "corpus" (list of documents), one for each video.
-    # =================================================================
     corpus = []
     for _, row in video_df.iterrows():
-        # Give title more weight
-        title = str(row.get('title', '')) * 2
+        # --- ADDED FROM FRIEND'S SUGGESTION 3 ---
+        title = str(row.get('title', '')) * 3 # Triple title weight
         description = str(row.get('description', ''))
         
         doc_text = title + ' ' + description
@@ -63,37 +61,41 @@ def create_fingerprint(video_df: pd.DataFrame, top_n: int = 15) -> list[str]:
         if clean_doc:
             corpus.append(clean_doc)
 
-    if not corpus:
-        print("No text left after preprocessing. Skipping fingerprint.")
+    # We need at least 2 documents for min_df=2 to work
+    if len(corpus) < 2:
+        print(f"Warning: Only found {len(corpus)} videos. min_df=2 will filter everything.")
+        # We can either return [] or rerun with min_df=1
+        # For now, let's just return empty.
         return []
-    # =================================================================
 
-    # 3. Use TF-IDF to find top keywords
-    # pass our new custom stop words list
-    vectorizer = TfidfVectorizer(stop_words=list(CUSTOM_STOP_WORDS), max_features=1000)
+    vectorizer = TfidfVectorizer(
+            stop_words=list(CUSTOM_STOP_WORDS),
+            max_features=1000,
+            
+            # --- ADDED FROM FRIEND'S SUGGESTION 1 ---
+            min_df=2,   # Ignore words that appear in < 2 videos (kills one-hit wonders)
+            max_df=0.8, # Ignore words in > 80% of videos (kills boilerplate)
+            
+            # --- ADDED FROM FRIEND'S SUGGESTION 2 ---
+            token_pattern=r'\b[a-z]{3,}\b' # Only accept words 3+ letters long
+        )
     
     try:
         tfidf_matrix = vectorizer.fit_transform(corpus)
     except ValueError:
+        # This will now happen *a lot* on your 5-video test
+        # because min_df=2 will filter almost everything. This is OK.
+        print("No features found. This is common with min_df=2 on small samples.")
         return []
 
-    # Average the scores across all documents (videos)
-    # =================================================================
-    # tfidf_matrix is (num_videos, num_keywords)
-    # want the average score for each keyword
     average_scores = np.array(tfidf_matrix.mean(axis=0)).flatten()
-    # =================================================================
-
-    # Get feature names (the keywords)
     feature_names = vectorizer.get_feature_names_out()
     
-    # Create a DataFrame of keywords and their *average* scores
     df_scores = pd.DataFrame({'keyword': feature_names, 'score': average_scores})
     
-    # 4. Get the top N keywords
     top_keywords = df_scores.sort_values(by='score', ascending=False).head(top_n)
     
-    print("\n--- Top keywords and scores (post-averaging) ---")
-    print(top_keywords.to_string()) # Print the top keywords and their scores
+    print("\n--- Top keywords and scores (robust) ---")
+    print(top_keywords.to_string())
     
     return list(top_keywords['keyword'])
