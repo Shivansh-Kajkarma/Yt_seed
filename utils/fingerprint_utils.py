@@ -49,9 +49,10 @@ def create_fingerprint(video_df: pd.DataFrame, top_n: int = 15) -> list[str]:
     if video_df.empty:
         return []
 
+    #With titles and descriptions 
     corpus = []
     for _, row in video_df.iterrows():
-        # --- ADDED FROM FRIEND'S SUGGESTION 3 ---
+        
         title = str(row.get('title', '')) * 3 # Triple title weight
         description = str(row.get('description', ''))
         
@@ -60,6 +61,18 @@ def create_fingerprint(video_df: pd.DataFrame, top_n: int = 15) -> list[str]:
         
         if clean_doc:
             corpus.append(clean_doc)
+
+    # Only title testing
+    # corpus = []
+    # for _, row in video_df.iterrows():
+    #     # ONLY use the title
+    #     title = str(row.get('title', ''))
+    #     doc_text = title 
+
+    #     clean_doc = preprocess_text(doc_text)
+
+    #     if clean_doc:
+    #         corpus.append(clean_doc)
 
     # We need at least 2 documents for min_df=2 to work
     if len(corpus) < 2:
@@ -72,18 +85,15 @@ def create_fingerprint(video_df: pd.DataFrame, top_n: int = 15) -> list[str]:
             stop_words=list(CUSTOM_STOP_WORDS),
             max_features=1000,
             
-            # --- ADDED FROM FRIEND'S SUGGESTION 1 ---
             min_df=2,   # Ignore words that appear in < 2 videos (kills one-hit wonders)
             max_df=0.8, # Ignore words in > 80% of videos (kills boilerplate)
             
-            # --- ADDED FROM FRIEND'S SUGGESTION 2 ---
             token_pattern=r'\b[a-z]{3,}\b' # Only accept words 3+ letters long
         )
     
     try:
         tfidf_matrix = vectorizer.fit_transform(corpus)
     except ValueError:
-        # This will now happen *a lot* on your 5-video test
         # because min_df=2 will filter almost everything. This is OK.
         print("No features found. This is common with min_df=2 on small samples.")
         return []
