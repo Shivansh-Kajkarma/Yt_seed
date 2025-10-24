@@ -210,9 +210,7 @@ __marimo__/
 
 
 working.txt
-seed_channels.csv
-seed_channels (1).csv
 Documentation.txt
-sample_videos.csv
-sample_videos_30.csv
+seed_channels*.csv
+sample_videos*.csv
 sub_test.py
