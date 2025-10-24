@@ -6,8 +6,8 @@ from utils.youtube_utils import fetch_for_seed_channels
 BASE = Path(__file__).resolve().parent
 
 def main():
-    seed_csv = BASE / "seed_channels (1).csv"
-    out_csv = BASE / "sample_videos_10.csv"
+    seed_csv = BASE / "seed_channels.csv"
+    out_csv = BASE / "sample_videos_new.csv"
 
     if not seed_csv.exists():
         print(f"ERROR: {seed_csv} not found. Place seed_channels.csv in project root.")
@@ -21,7 +21,7 @@ def main():
 
     # optionally limit to first N channels for quota safety (configurable)
     # For live run you can remove .head(2)
-    seed_to_process = seed_df.head(5)  # e.g., process first 9 seeds; change as needed
+    seed_to_process = seed_df  # e.g., process first 9 seeds; change as needed
 
     print("Loading seed channels and fetching videos (API mode)...")
     df_videos = fetch_for_seed_channels(seed_to_process, limit_per_channel=10, filter_shorts=True)
