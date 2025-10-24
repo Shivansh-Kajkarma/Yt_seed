@@ -274,3 +274,51 @@ def fetch_for_seed_channels(seed_df, limit_per_channel: int = 30, filter_shorts:
     df_videos = pd.DataFrame(all_records)
     print(f"\n✅ Fetched {len(df_videos)} total videos across {len(seed_df)} seed channels.")
     return df_videos
+
+
+# Phase3 searching channels
+def search_videos_by_keywords(keywords: list[str], max_videos_per_query: int = 15) -> set[str]:
+    """
+    Searches YouTube for videos matching keywords and returns unique channel IDs.
+    """
+    if not youtube_service:
+        print("  ERROR: YouTube service not initialized, cannot perform search.")
+        return set()
+    if not keywords:
+        print("  WARNING: No keywords provided for search.")
+        return set()
+
+    # Take top 5-7 keywords for the query
+    top_keywords = keywords[:7]
+    # Construct a search query using OR logic
+    search_query = " OR ".join([f'"{kw}"' for kw in top_keywords]) # Put quotes for multi-word keywords
+    print(f"  Performing YouTube search for: {search_query}")
+
+    candidate_channel_ids = set()
+
+    try:
+        request = youtube_service.search().list(
+            part="snippet",
+            q=search_query,
+            type="video",
+            relevanceLanguage="en", # Optional: prioritize English results
+            maxResults=max_videos_per_query
+        )
+        response = request.execute()
+
+        found_videos = response.get("items", [])
+        print(f"  Found {len(found_videos)} videos related to keywords.")
+
+        for item in found_videos:
+            channel_id = item["snippet"]["channelId"]
+            candidate_channel_ids.add(channel_id)
+
+    except HttpError as e:
+        # Handle potential quota errors or other API issues
+        print(f"  ERROR during YouTube search API call: {e}")
+        # Consider adding retry logic here if needed, similar to transcript fetching
+    except Exception as e:
+        print(f"  Unexpected error during YouTube search: {e}")
+
+    print(f"  Extracted {len(candidate_channel_ids)} unique candidate channel IDs.")
+    return candidate_channel_ids
