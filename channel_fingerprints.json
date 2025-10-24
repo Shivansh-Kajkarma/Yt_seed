@@ -1,0 +1,232 @@
+{
+  "timestamp": "2025-10-24T17:24:35.391712",
+  "total_channels": 14,
+  "total_videos_processed": 98,
+  "model": "gemini-2.0-flash-exp",
+  "channels": {
+    "TechnicalGuruji": {
+      "keywords": [
+        "apple macbook pro",
+        "apple ipad pro",
+        "m5 chip",
+        "galaxy ai",
+        "samsung galaxy",
+        "s25 ultra",
+        "z fold 7",
+        "android tablet",
+        "galaxy tab",
+        "meta ray-ban"
+      ],
+      "video_count": 7,
+      "status": "success"
+    },
+    "MKBHD": {
+      "keywords": [
+        "apple vision pro",
+        "xr headset",
+        "smart glasses",
+        "solar powered ev",
+        "aptera ev",
+        "xiaomi 17 pro max",
+        "iphone",
+        "android",
+        "pixel fold",
+        "foldable"
+      ],
+      "video_count": 8,
+      "status": "success"
+    },
+    "MrBeast": {
+      "keywords": [
+        "strongest man",
+        "feastables",
+        "variety bag",
+        "costco",
+        "halloween",
+        "plane pull",
+        "engines idle",
+        "braking system",
+        "pilots",
+        "lava"
+      ],
+      "video_count": 4,
+      "status": "success"
+    },
+    "Fukra Insaan": {
+      "keywords": [
+        "ghost",
+        "video-proof",
+        "game of glory",
+        "food eating challenge",
+        "galaxy z fold7",
+        "blank cheque",
+        "street food",
+        "mystery wheel dares",
+        "new car",
+        "luxurious uber driver"
+      ],
+      "video_count": 10,
+      "status": "success"
+    },
+    "Nadir On The Go": {
+      "keywords": [
+        "kuala lumpur",
+        "malaysia",
+        "budget travel",
+        "luxury travel",
+        "india",
+        "agra",
+        "mughal emperor",
+        "historic temples",
+        "southeast asia",
+        "$100 challenge"
+      ],
+      "video_count": 6,
+      "status": "success"
+    },
+    "Think Bangla": {
+      "keywords": [
+        "galaxy age",
+        "cryptocurrency",
+        "history of money",
+        "black hole",
+        "bengali calendar",
+        "mineral resources",
+        "alien existence",
+        "jakarta sinking",
+        "human embryo",
+        "russia ukraine war"
+      ],
+      "video_count": 10,
+      "status": "success"
+    },
+    "Business Inspection BD": {
+      "keywords": [
+        "ai automation",
+        "fourth industrial revolution",
+        "job automation",
+        "bangladesh e-commerce",
+        "bank loans",
+        "business expansion",
+        "non-performing loans",
+        "equity financing",
+        "dps savings",
+        "hazrat shahjalal international airport"
+      ],
+      "video_count": 6,
+      "status": "success"
+    },
+    "T-Series": {
+      "keywords": [
+        "video song",
+        "full audio",
+        "official video",
+        "behind the scenes",
+        "8k full video",
+        "music label",
+        "lyricist",
+        "music director",
+        "production house",
+        "film credits"
+      ],
+      "video_count": 7,
+      "status": "success"
+    },
+    "Lofi Girl": {
+      "keywords": [
+        "bedtime lofi",
+        "relaxing beats",
+        "sleep mix",
+        "deep sleep",
+        "spotify",
+        "apple music",
+        "tracklist",
+        "art",
+        "animation",
+        "compositing"
+      ],
+      "video_count": 1,
+      "status": "success"
+    },
+    "MagnatesMedia": {
+      "keywords": [
+        "youtube history",
+        "openai story",
+        "thomas edison",
+        "opioid epidemic",
+        "zero-day exploit",
+        "onecoin scam",
+        "diamond monopoly",
+        "wework cult",
+        "business documentaries",
+        "business stories"
+      ],
+      "video_count": 9,
+      "status": "success"
+    },
+    "Kurzgesagt": {
+      "keywords": [
+        "human era calendar",
+        "ai slop",
+        "renewable energy",
+        "heat death",
+        "molten salt",
+        "ammonia fuel",
+        "radioactive decay",
+        "earth turned gold",
+        "midas touch",
+        "pregnancy"
+      ],
+      "video_count": 8,
+      "status": "success"
+    },
+    "Linus Tech Tips": {
+      "keywords": [
+        "xbox game pass",
+        "environmental test chamber",
+        "supercomputer",
+        "liquid cooling",
+        "data center",
+        "gaming pc",
+        "pc scam",
+        "wifi 7 6ghz",
+        "windows handheld",
+        "pixel phones"
+      ],
+      "video_count": 8,
+      "status": "success"
+    },
+    "The Food Ranger": {
+      "keywords": [
+        "muslim chinese street food",
+        "xi'an china",
+        "street food tour",
+        "hui muslim chinese",
+        "hand pulled noodles",
+        "cumin",
+        "flatbread",
+        "jianbing crepe",
+        "big plate chicken",
+        "yangrou paomo"
+      ],
+      "video_count": 4,
+      "status": "success"
+    },
+    "Veritasium": {
+      "keywords": [
+        "atoms",
+        "physics debate",
+        "six degrees separation",
+        "molecular modelling",
+        "nitroglycerin",
+        "dynamite",
+        "maze algorithm",
+        "football spin",
+        "escalator science",
+        "replant seeds"
+      ],
+      "video_count": 10,
+      "status": "success"
+    }
+  }
+}
