@@ -135,7 +135,8 @@ def main():
             # Call LLM fingerprint function
             fingerprint = create_channel_fingerprint_llm(
                 channel_video_df, 
-                channel_name=channel_name
+                channel_name=channel_name,
+                model_type="gpt"
             )
 
             print(f"✅ Fingerprint for {channel_name}:")
@@ -163,7 +164,7 @@ def main():
             }
 
     # === SAVE TO JSON ===
-    output_json_path = base_dir / "channel_fingerprints.json"
+    output_json_path = base_dir / "channel_fingerprints_gpt.json"
     
     try:
         with open(output_json_path, 'w', encoding='utf-8') as f:
@@ -172,7 +173,7 @@ def main():
         print(f"\n✅ Results saved to: {output_json_path}")
         
         # Also save simplified version (just channel: keywords)
-        simple_json_path = base_dir / "channel_keywords_simple.json"
+        simple_json_path = base_dir / "channel_keywords_simple_gpt.json"
         with open(simple_json_path, 'w', encoding='utf-8') as f:
             json.dump(channel_fingerprints, f, indent=2, ensure_ascii=False)
         
