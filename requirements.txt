@@ -17,3 +17,4 @@ requests
 openai # Added
 google-api-python-client # Add if not already present for comments/tags
 google-auth-oauthlib # Add if not already present
+sentence-transformers

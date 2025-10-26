@@ -1,0 +1,232 @@
+{
+  "timestamp": "2025-10-25T17:13:38.144523",
+  "total_channels": 14,
+  "total_videos_processed": 98,
+  "model": "gemini-2.0-flash-exp",
+  "channels": {
+    "TechnicalGuruji": {
+      "keywords": [
+        "device unboxing",
+        "ai technology",
+        "smartphone features",
+        "tablet review",
+        "gadget firstlook",
+        "tech questions",
+        "weekly updates",
+        "android tablet",
+        "smartglasses",
+        "tech focus"
+      ],
+      "video_count": 7,
+      "status": "success"
+    },
+    "MKBHD": {
+      "keywords": [
+        "tech comparison",
+        "smartphone review",
+        "consumer tech",
+        "electric vehicle",
+        "gadget analysis",
+        "product evaluation",
+        "mobile devices",
+        "foldable phones",
+        "headset comparison",
+        "future tech"
+      ],
+      "video_count": 8,
+      "status": "success"
+    },
+    "MrBeast": {
+      "keywords": [
+        "challenge video",
+        "competition",
+        "philanthropy",
+        "product promotion",
+        "stunt",
+        "time capsule",
+        "risk taking",
+        "physical challenge",
+        "contest",
+        "giveaway"
+      ],
+      "video_count": 4,
+      "status": "success"
+    },
+    "Fukra Insaan": {
+      "keywords": [
+        "challenge videos",
+        "food challenge",
+        "family pranks",
+        "gifting content",
+        "social experiment",
+        "luxury lifestyle",
+        "dare challenge",
+        "street food",
+        "ghost hunting",
+        "stunt videos"
+      ],
+      "video_count": 10,
+      "status": "success"
+    },
+    "Nadir On The Go": {
+      "keywords": [
+        "budget travel",
+        "city exploration",
+        "cultural sites",
+        "travel guide",
+        "southeast asia",
+        "historical travel",
+        "travel challenge",
+        "monument exploration",
+        "travel destinations",
+        "luxury travel"
+      ],
+      "video_count": 6,
+      "status": "success"
+    },
+    "Think Bangla": {
+      "keywords": [
+        "astronomy",
+        "cryptocurrency",
+        "history of money",
+        "black holes",
+        "calendar history",
+        "mineral resources",
+        "extraterrestrial life",
+        "urban sinking",
+        "human development",
+        "geopolitical conflict"
+      ],
+      "video_count": 10,
+      "status": "success"
+    },
+    "Business Inspection BD": {
+      "keywords": [
+        "ai automation",
+        "industrial revolution",
+        "airport incident",
+        "e-commerce market",
+        "bank loan",
+        "business expansion",
+        "banking crisis",
+        "financial services",
+        "corporate interview",
+        "economic analysis"
+      ],
+      "video_count": 6,
+      "status": "success"
+    },
+    "T-Series": {
+      "keywords": [
+        "music video",
+        "song audio",
+        "film soundtrack",
+        "behind scenes",
+        "hindi music",
+        "album song",
+        "full song",
+        "audio song",
+        "video song",
+        "film song"
+      ],
+      "video_count": 7,
+      "status": "success"
+    },
+    "Lofi Girl": {
+      "keywords": [
+        "relaxing beats",
+        "sleep music",
+        "ambient music",
+        "study music",
+        "background music",
+        "chillhop",
+        "instrumental music",
+        "lofi hip hop",
+        "music mix",
+        "atmospheric music"
+      ],
+      "video_count": 1,
+      "status": "success"
+    },
+    "MagnatesMedia": {
+      "keywords": [
+        "business stories",
+        "corporate analysis",
+        "historical figures",
+        "criminal enterprise",
+        "economic commentary",
+        "media analysis",
+        "entrepreneurialism",
+        "scandal exposé",
+        "company history",
+        "documentary style"
+      ],
+      "video_count": 9,
+      "status": "success"
+    },
+    "Kurzgesagt": {
+      "keywords": [
+        "scientific speculation",
+        "energy solutions",
+        "existential scenarios",
+        "future technology",
+        "human condition",
+        "planetary science",
+        "space exploration",
+        "educational animation",
+        "philosophical questions",
+        "resource management"
+      ],
+      "video_count": 8,
+      "status": "success"
+    },
+    "Linus Tech Tips": {
+      "keywords": [
+        "tech hardware",
+        "computer teardown",
+        "scam exposure",
+        "internet repair",
+        "auction finds",
+        "personal finance",
+        "podcast discussion",
+        "pc perspective",
+        "handheld console",
+        "rig building"
+      ],
+      "video_count": 8,
+      "status": "success"
+    },
+    "The Food Ranger": {
+      "keywords": [
+        "street food",
+        "food tour",
+        "chinese food",
+        "kenyan cuisine",
+        "travel cuisine",
+        "ethnic food",
+        "cooking methods",
+        "regional food",
+        "food experience",
+        "culinary travel"
+      ],
+      "video_count": 4,
+      "status": "success"
+    },
+    "Veritasium": {
+      "keywords": [
+        "physics explanation",
+        "science education",
+        "historical context",
+        "experiment simulation",
+        "algorithm demonstration",
+        "material science",
+        "engineering analysis",
+        "controversial history",
+        "natural phenomena",
+        "scientific debate"
+      ],
+      "video_count": 10,
+      "status": "success"
+    }
+  }
+}

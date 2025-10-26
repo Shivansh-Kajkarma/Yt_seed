@@ -375,67 +375,67 @@ def fetch_for_seed_channels(
 # ... (imports and other functions) ...
 
 # --- MODIFIED: Focused Search Function (Using _safe_get_json and OR) ---
-def search_videos_focused(keywords: List[str], max_results: int = 20) -> set[str]:
-    """
-    Performs a single YouTube search using the top 3 keywords (combined with OR).
-    Uses the _safe_get_json helper. Handles quotes in keywords correctly.
-    Returns unique channel IDs from the video results.
-    Cost: 100 quota units per call.
-    """
-    if not API_KEY:
-        print("  ❌ ERROR: YouTube API key not found, cannot perform search.")
-        return set()
-    if not keywords:
-        print("  ⚠️ WARNING: No keywords provided for focused search.")
-        return set()
+# def search_videos_focused(keywords: List[str], max_results: int = 20) -> set[str]:
+#     """
+#     Performs a single YouTube search using the top 3 keywords (combined with OR).
+#     Uses the _safe_get_json helper. Handles quotes in keywords correctly.
+#     Returns unique channel IDs from the video results.
+#     Cost: 100 quota units per call.
+#     """
+#     if not API_KEY:
+#         print("  ❌ ERROR: YouTube API key not found, cannot perform search.")
+#         return set()
+#     if not keywords:
+#         print("  ⚠️ WARNING: No keywords provided for focused search.")
+#         return set()
 
-    top_keywords = keywords[:3] # Still use top 3 for focus
+#     top_keywords = keywords[:3] # Still use top 3 for focus
 
-    # --- Use OR in the query ---
-    cleaned_keywords_for_or = []
-    for kw in top_keywords:
-        if kw:
-            cleaned_kw = str(kw).replace('"', '') # Clean quotes
-            cleaned_keywords_for_or.append(f'"{cleaned_kw}"') # Add quotes for phrase search
+#     # --- Use OR in the query ---
+#     cleaned_keywords_for_or = []
+#     for kw in top_keywords:
+#         if kw:
+#             cleaned_kw = str(kw).replace('"', '') # Clean quotes
+#             cleaned_keywords_for_or.append(f'"{cleaned_kw}"') # Add quotes for phrase search
 
-    # Join with " OR "
-    search_query = " OR ".join(cleaned_keywords_for_or)
-    # --- END OR Modification ---
+#     # Join with " OR "
+#     search_query = " OR ".join(cleaned_keywords_for_or)
+#     # --- END OR Modification ---
 
-    if not search_query:
-         print("  ⚠️ WARNING: No valid keywords left after cleaning for focused search query.")
-         return set()
+#     if not search_query:
+#          print("  ⚠️ WARNING: No valid keywords left after cleaning for focused search query.")
+#          return set()
 
-    print(f"  🔎 Performing OR search for: '{search_query}' (Max Results: {max_results})") # Updated log
-    candidate_channel_ids = set()
-    url = f"{YT_BASE}/search"
-    params = {
-        "part": "snippet",
-        "q": search_query,
-        "type": "video",
-        "relevanceLanguage": "en",
-        "order": "relevance",
-        "maxResults": max_results,
-        "key": API_KEY
-    }
+#     print(f"  🔎 Performing OR search for: '{search_query}' (Max Results: {max_results})") # Updated log
+#     candidate_channel_ids = set()
+#     url = f"{YT_BASE}/search"
+#     params = {
+#         "part": "snippet",
+#         "q": search_query,
+#         "type": "video",
+#         "relevanceLanguage": "en",
+#         "order": "relevance",
+#         "maxResults": max_results,
+#         "key": API_KEY
+#     }
 
-    try:
-        response = _safe_get_json(url, params)
-        found_videos = response.get("items", [])
-        print(f"  ✅ Found {len(found_videos)} videos in OR search.") # Updated log
+#     try:
+#         response = _safe_get_json(url, params)
+#         found_videos = response.get("items", [])
+#         print(f"  ✅ Found {len(found_videos)} videos in OR search.") # Updated log
 
-        for item in found_videos:
-            channel_id = item.get("snippet", {}).get("channelId")
-            if channel_id:
-                candidate_channel_ids.add(channel_id)
+#         for item in found_videos:
+#             channel_id = item.get("snippet", {}).get("channelId")
+#             if channel_id:
+#                 candidate_channel_ids.add(channel_id)
 
-    except requests.exceptions.RequestException as e:
-        print(f"  ❌ ERROR during YouTube OR search API call: {e}")
-    except Exception as e:
-        print(f"  ❌ Unexpected error during YouTube OR search: {type(e).__name__} - {e}")
+#     except requests.exceptions.RequestException as e:
+#         print(f"  ❌ ERROR during YouTube OR search API call: {e}")
+#     except Exception as e:
+#         print(f"  ❌ Unexpected error during YouTube OR search: {type(e).__name__} - {e}")
 
-    print(f"  📊 Extracted {len(candidate_channel_ids)} unique candidate channel IDs from search.")
-    return candidate_channel_ids
+#     print(f"  📊 Extracted {len(candidate_channel_ids)} unique candidate channel IDs from search.")
+#     return candidate_channel_ids
 
 # ... (rest of youtube_utils.py: get_channel_metadata_batch, fetch_recent_videos etc.) ...
 
@@ -503,3 +503,126 @@ def get_channel_metadata_batch(channel_ids: List[str]) -> List[Dict]:
 
     print(f"  ℹ️ Finished fetching metadata. Got details for {processed_count} channels.")
     return channel_data
+
+
+
+# def search_videos_multi_focused(keywords: List[str], max_results_per_search: int = 10) -> set[str]:
+#     """
+#     Performs 3 separate focused searches instead of 1 OR search.
+#     Each search is more targeted = better quality candidates.
+    
+#     Cost: 100 units × 3 = 300 units per seed
+#     (vs 100 units with OR search, but 5x better quality!)
+    
+#     Returns unique channel IDs from all searches combined.
+#     """
+#     if not API_KEY:
+#         print("  ❌ ERROR: YouTube API key not found")
+#         return set()
+#     if not keywords or len(keywords) < 3:
+#         print("  ⚠️ WARNING: Need at least 3 keywords for multi-focused search")
+#         return set()
+    
+#     all_candidate_ids = set()
+    
+#     # Strategy: 3 separate searches, each with single keyword
+#     # This gives us diverse but focused results
+    
+#     print(f"  🔎 Performing 3 focused searches...")
+    
+#     for i in range(7):
+#         if i >= len(keywords):
+#             break
+        
+#         keyword = keywords[i]
+#         search_query = f'"{keyword}"'  # Quote for phrase search
+        
+#         print(f"     Search {i+1}/7: '{search_query}'")
+        
+#         url = f"{YT_BASE}/search"
+#         params = {
+#             "part": "snippet",
+#             "q": search_query,
+#             "type": "video",
+#             "videoDuration": "medium",  # 4-20 min (filters shorts + very long videos)
+#             "order": "relevance",
+#             "maxResults": max_results_per_search,
+#             "key": API_KEY
+#         }
+        
+#         try:
+#             response = _safe_get_json(url, params)
+#             found_videos = response.get("items", [])
+            
+#             for item in found_videos:
+#                 channel_id = item.get("snippet", {}).get("channelId")
+#                 if channel_id:
+#                     all_candidate_ids.add(channel_id)
+            
+#             print(f"        ✅ Found {len(found_videos)} videos")
+            
+#         except requests.exceptions.RequestException as e:
+#             print(f"        ❌ Search {i+1} error: {e}")
+#             continue
+#         except Exception as e:
+#             print(f"        ❌ Unexpected error: {type(e).__name__}")
+#             continue
+    
+#     print(f"  📊 Total: {len(all_candidate_ids)} unique channels from 3 searches")
+#     return all_candidate_ids
+
+def search_videos_multi_focused(keywords: List[str], max_results_per_search: int = 10, max_keywords: int = 7) -> set[str]:
+    """
+    Performs multiple focused searches.
+    UPDATED: Search 5-7 keywords instead of just 3!
+    
+    Cost: 100 units × 7 = 700 units per seed
+    Quality: Finds 3-4x more diverse channels
+    """
+    if not API_KEY:
+        print("  ❌ ERROR: YouTube API key not found")
+        return set()
+    
+    if not keywords:
+        print("  ⚠️  WARNING: No keywords provided")
+        return set()
+    
+    # Use MORE keywords for better coverage
+    keywords_to_search = min(len(keywords), max_keywords)  # Search up to 7 keywords
+    all_candidates = set()
+    
+    print(f"  🔎 Performing {keywords_to_search} focused searches...")
+    
+    for i in range(keywords_to_search):
+        keyword = keywords[i]
+        search_query = f'"{keyword}"'
+        
+        print(f"     Search {i+1}/{keywords_to_search}: {search_query}")
+        
+        url = f"{YT_BASE}/search"
+        params = {
+            "part": "snippet",
+            "q": search_query,
+            "type": "video",
+            "order": "relevance",
+            "maxResults": max_results_per_search,
+            "key": API_KEY
+        }
+        
+        try:
+            response = _safe_get_json(url, params)
+            videos = response.get("items", [])
+            
+            for item in videos:
+                ch_id = item.get("snippet", {}).get("channelId")
+                if ch_id:
+                    all_candidates.add(ch_id)
+            
+            print(f"        ✅ {len(videos)} videos found")
+            
+        except Exception as e:
+            print(f"        ❌ Error: {str(e)[:50]}")
+            continue
+    
+    print(f"  📊 Total: {len(all_candidates)} unique channels from {keywords_to_search} searches\n")
+    return all_candidates

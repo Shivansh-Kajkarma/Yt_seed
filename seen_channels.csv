@@ -1,9 +1,449 @@
-﻿Channel_ID,Channel_Name,Date_Added,Processing_Status,Last_Score
-UCE4Gn00XZbpWvGUfIslT-tA,MagnatesMedia,2025-10-25T15:42:11.851640,seed,
-UCnwY6fAhE3ePu0F2nMP-DLg,Lucasfilm,2025-10-25T15:42:12.716433,scored,0.053
-UCUMZ7gohGI9HcU9VNsr2FJQ,Bloomberg Originals,2025-10-25T15:42:12.716433,scored,0.0
-UCuE6iwZKgGz8s6kznBRI9LQ,Developers Digest,2025-10-25T15:42:12.716433,discovered,
-UCzIsviqoJc-VcWqF5Pp8iLw,Brendan Jowett,2025-10-25T15:42:12.716433,discovered,
-UCXZCJLdBC09xxGZ6gcdrc6A,OpenAI,2025-10-25T15:42:12.716433,scored,0.0
-UCKXjkaYg4odQWPnwbDjaqYQ,AI Upload,2025-10-25T15:42:12.716433,scored,0.0
-UCsBjURrPoezykLs9EqgamOA,Fireship,2025-10-25T15:42:12.716433,scored,0.0
+﻿Channel_ID,Channel_Name,Date_Added,Processing_Status,Embedding_Score,LLM_Score
+UCE4Gn00XZbpWvGUfIslT-tA,MagnatesMedia,2025-10-25T21:06:33.062075,seed,,
+UCOhHO2ICt0ti9KAh-QHvttQ,TechnicalGuruji,2025-10-25T21:06:33.062075,seed,,
+UC0UqslUS-xo3i5K67MT40cw,Business Inspection BD,2025-10-25T21:06:33.062075,seed,,
+UCHnyfMqiRRG1u-2MsSQLbXA,Veritasium,2025-10-25T21:06:33.062075,seed,,
+UCcqRPDhUjXuIMHns9wP-jKw,Jeremy Inscho,2025-10-25T21:06:33.063997,filtered_subs,,
+UCecDk4tEhtjDCV3pvNPk_6Q,Sydney Shaw,2025-10-25T21:06:33.063997,filtered_subs,,
+UCPPB8xe5f6kI0KduBcjlq8A,DJGENESISDETROIT!,2025-10-25T21:06:33.063997,scored,0.636,0.3
+UCaWd5_7JhbQBe4dknZhsHJg,WatchMojo.com,2025-10-25T21:06:33.063997,scored,0.608,0.2
+UCoYTsCSB8VqYAoL9h3BthcQ,HoodieDineroJay,2025-10-25T21:06:33.063997,filtered_subs,,
+UCaZL4eLD7a30Fa8QI-sRi_g,Hey Delphi,2025-10-25T21:06:33.063997,scored,0.359,0.1
+UCN3-BVMnr44LIUheSuppw1A,Quick Support,2025-10-25T21:06:33.063997,scored,0.601,0.4
+UC-OKkVxTcgGo34pWUC9CIIw,Useful Idiots,2025-10-25T21:06:33.063997,scored,0.801,0.5
+UC6X0-dNIk9_t8gFnavqN12g,PlayStation France,2025-10-25T21:06:33.063997,scored,0.452,0.0
+UC88ppp-IXlJG8SKKUowBiYA,Brian Emmanuel Grey,2025-10-25T21:06:33.063997,filtered_subs,,
+UCE_Lv_Uqj_Knj2xqEYFf-1w,Impel Wealth Management,2025-10-25T21:06:33.063997,filtered_subs,,
+UCnLNPBxusaH1cL8IWhTsZtA,A Rabbits Hole ,2025-10-25T21:06:33.063997,filtered_subs,,
+UCWqJpFqlX59OML324QIByZA,List 25,2025-10-25T21:06:33.063997,scored,0.751,0.4
+UCLA9olWrMwFMQc28JTyGjHQ,Marina,2025-10-25T21:06:33.063997,filtered_subs,,
+UCGqVn5P1tjwxgLNJ32BAugg,GLOBOFACTS,2025-10-25T21:06:33.063997,filtered_subs,,
+UCKWaEZ-_VweaEx1j62do_vQ,IBM Technology,2025-10-25T21:06:33.063997,scored,0.445,0.3
+UCNkXU4mXgWvYiBwjRxMlcUw,Berserker,2025-10-25T21:06:33.063997,scored,0.486,0.1
+UCsNXIPErfVYKBC6naJdhM9w,MissRichey,2025-10-25T21:06:33.063997,filtered_subs,,
+UCkXopQ3ubd-rnXnStZqCl2w,Zee Business,2025-10-25T21:06:33.063997,scored,0.645,0.5
+UCDepXzkz8fxUQsq3W03gqgA,Dominating Motivation,2025-10-25T21:06:33.063997,scored,0.541,0.3
+UCB0Qw7DcRKlFLtjcRiIebcQ,Check Point Charlie,2025-10-25T21:06:33.063997,filtered_subs,,
+UCQmE7_HGyS2_u5mA9CLV8ig,Shermeen Velani,2025-10-25T21:06:33.063997,filtered_subs,,
+UCXI2sj5kaCfMCkYcGk1m44A,Serious History,2025-10-25T21:06:33.063997,scored,0.61,0.4
+UCjACPpmZAXBHgV8SQ-I7xTQ,D1 News,2025-10-25T21:06:33.063997,filtered_subs,,
+UCwVEhEzsjLym_u1he4XWFkg,Finance With Sharan,2025-10-25T21:06:33.063997,scored,0.671,0.5
+UCg9bRk_EGY9kARYA3v5TC3A,Captain Kearn,2025-10-25T21:06:33.063997,scored,0.339,0.1
+UCnA2ZZ_6P7DZbmUVEolAp3g,Voices For Gaza,2025-10-25T21:06:33.063997,scored,0.602,0.2
+UCnj05A7-L71QjMPnGabcLJw,Murrad on Run,2025-10-25T21:06:33.063997,scored,0.41,0.2
+UCfsuI3-92QNO3DVy06PO9wg,Skeptic,2025-10-25T21:06:33.063997,scored,0.793,0.5
+UC7z5sDehddxLYd3PlWpmOyQ,Rolling Arrays - The Trusted HR Transformation Partner,2025-10-25T21:06:33.063997,filtered_subs,,
+UCtxkIdWKrCjdHmc3WE9Vxbw,Brian Wiles | Captain English,2025-10-25T21:06:33.063997,scored,0.33,0.0
+UCUe21HctLxBkaD4OOHC4cRg,BhavyaMoneyTalks,2025-10-25T21:06:33.063997,scored,0.701,0.5
+UCkWnwVAYGshTEVDPZ451kBQ,essie ch.,2025-10-25T21:06:33.063997,filtered_subs,,
+UCQvECB1KyzGF3g6FslFneRw,Bible Study With Myron Golden,2025-10-25T21:06:33.063997,scored,0.52,0.3
+UCasyz2FJZxtaxlYdHRgXKww,The India Opportunity with Shrishti Sahu,2025-10-25T21:06:33.063997,scored,0.7,0.7
+UCatiJsg74rYkEmzc03lWmvg,Info-Secte / Info-Cult,2025-10-25T21:06:33.063997,filtered_subs,,
+UCAmN3C94nBCvgyQzVEO1C5A,Telescope,2025-10-25T21:06:33.063997,scored,0.612,0.2
+UC5MaEdGrolKRJXFdXgD7RAA,जोश Talks,2025-10-25T21:06:33.063997,scored,0.698,0.5
+UCGYlNGlloLLZiAL3zBgbMgQ,Josh Talks,2025-10-25T21:06:33.063997,scored,0.609,0.4
+UChYARX5Yj8CapM-F2Z2vPxA,Adrian Bliss,2025-10-25T21:06:33.063997,scored,0.543,0.1
+UCbeDrrt0gGLMEbv4JV0_e_w,DIGITAL SHAMANISM,2025-10-25T21:06:33.063997,filtered_subs,,
+UCupQd0e1leK4-Mj1wSfnkoQ,al jokes,2025-10-25T21:06:33.063997,scored,0.592,0.1
+UCQFKQXI3EhSSWSwODomZ_aw,IntroBooks Education,2025-10-25T21:06:33.063997,scored,0.702,0.6
+UCGsGg4KKozqIjxySd4Jbz9Q,FinTech,2025-10-25T21:06:33.063997,filtered_subs,,
+UC72PuhDwKtZ5MikpGNhPAtA,TGG,2025-10-25T21:06:33.063997,scored,0.383,0.0
+UCBZP9fXThLV-IN2NvYjGvaw,Loren Feldman,2025-10-25T21:06:33.063997,filtered_subs,,
+UCjRAGiZtCpR6lrkirDtJP0Q,Isar Aerospace,2025-10-25T21:06:33.063997,scored,0.477,0.2
+UCZfTWLrTkaoZoSx5fkrAPJA,hxsain,2025-10-25T21:06:33.063997,scored,0.639,0.4
+UCrddgknB4ytM0ruxRuISLtw,Yuvraj Singh,2025-10-25T21:06:33.063997,filtered_subs,,
+UC_3SFhzUZ7-xZvQr7S3rnrw,Life Lessons By Motiversity,2025-10-25T21:06:33.063997,scored,0.556,0.3
+UC6BQ0ARID0bfzEOP_pccKNg,Dark Riding & Gaming,2025-10-25T21:06:33.063997,filtered_subs,,
+UCQXwgooTlP6tk2a-u6vgyUA,Zerodha Varsity,2025-10-25T21:06:33.063997,scored,0.63,0.5
+UCSNX50LYGXWV_e5UWZGPGbw,Gartner,2025-10-25T21:06:33.063997,scored,0.652,0.4
+UC27SZhCroJktZZO7u242UdA,QJumpers,2025-10-25T21:06:33.063997,filtered_subs,,
+UCOErWFfNOQzXsgE7f5S_ULw,The Rational Reminder Podcast,2025-10-25T21:06:33.063997,scored,0.694,0.5
+UCHLyUlsTHeRueh5aAtOaJ8w,Todd Alan,2025-10-25T21:06:33.063997,filtered_subs,,
+UCqZMgLgGlYAWvSU8lZ9xiVg,Rationality Rules,2025-10-25T21:06:33.063997,scored,0.614,0.3
+UCHs3bWyXIw_6J0ORvg97b2w,Live Hindi,2025-10-25T21:06:33.063997,scored,0.709,0.7
+UCAb9LpA9eTtwdSlo91c03Mg,Jackie Bolen,2025-10-25T21:06:33.063997,scored,0.379,0.1
+UCk8EZaxKvAi1a5AEe4Hobmg,Motilal Oswal Financial Services,2025-10-25T21:06:33.063997,scored,0.656,0.4
+UC7GzBBp6ojehcFJttuLHuEQ,Wealth Rebuilds,2025-10-25T21:06:33.063997,scored,0.691,0.5
+UClKiaK--hYYjAGC9a5r0Tvg,Techies Point,2025-10-25T21:06:33.063997,filtered_subs,,
+UCmwscFRlCr4ZyaX73_UtYLg,Apt Observations,2025-10-25T21:06:33.063997,filtered_subs,,
+UCsA22th_9v5M-4hcswRVWFQ,The Hotcast,2025-10-25T21:06:33.063997,filtered_subs,,
+UCtNmhj7o831VdEeHDJ8ZVIQ,Retail Assist,2025-10-25T21:06:33.063997,filtered_subs,,
+UCF8jQJoJ7gZml1TxfXWzccw,Cosmic Wisdom Communications,2025-10-25T21:06:33.063997,filtered_subs,,
+UCbphDfwSJmxk1Ny_3Oicrng,Storytellers,2025-10-25T21:06:33.063997,scored,0.648,0.4
+UCljz_M6NK7ASp5u0t2ImfiQ,Icycol,2025-10-25T21:06:33.063997,scored,0.657,0.2
+UCnyQy0wD_LCZTlyFHnKIS7Q,Startup Stories,2025-10-25T21:06:33.063997,scored,0.812,0.7
+UC-5XEiXbsJYg_aMCWuwl3mw,Cartoon is best photo ,2025-10-25T21:06:33.063997,filtered_subs,,
+UCtMz_ezksIMS2p4WClx9CqA,Business History,2025-10-25T21:06:33.063997,filtered_subs,,
+UC_v983X_2dl7uNvXk4akdBw,Muthu Murugesan,2025-10-25T21:06:33.063997,filtered_subs,,
+UCWw5ehfE0cEASfVLEx-iudQ,Dazed but Not Confuzed,2025-10-25T21:06:33.063997,scored,0.758,0.6
+UC8uqqZwyoW303ZeWyUiNdMg,David McLachlan,2025-10-25T21:06:33.063997,scored,0.463,0.3
+UCmn62LeaI6po3vuDkXlWrZw,The Wailing Codex,2025-10-25T21:06:33.063997,filtered_subs,,
+UCWBWgCD4oAqT3hUeq40SCUw,Sambucha,2025-10-25T21:06:33.063997,scored,0.626,0.4
+UCEDr9FfkfzsT-hJOQsyKyvg,Jelvix | TECH IN 5 MINUTES,2025-10-25T21:06:33.063997,scored,0.44,0.3
+UCB8UwHp2mg-Puxnyr4iVBvw,Enterprise Ireland Technology Gateways,2025-10-25T21:06:33.063997,filtered_subs,,
+UCUI9vm69ZbAqRK3q3vKLWCQ,Mint,2025-10-25T21:06:33.063997,scored,0.574,0.3
+UCzwCEE_PchiBULMnAJqhGVg,Raj Shamani,2025-10-25T21:06:33.063997,scored,0.524,0.3
+UCdTSGF4VBDHVSxDRz796j7Q,Joe Polish,2025-10-25T21:06:33.063997,scored,0.617,0.5
+UCsD-FQbDbhwEUuX-KeJwrZQ,Startup Analyst,2025-10-25T21:06:33.063997,scored,0.843,0.7
+UCrQ5HaMWl0NFdOKoqRbh70g,MailStoreSoftware,2025-10-25T21:06:33.063997,filtered_subs,,
+UCFteD3yUDcjconZEORXcBKA,Significant Brothers,2025-10-25T21:06:33.063997,filtered_subs,,
+UCjZ4dlUfxr-vwUV0PgvUGvQ,MyMediaShares,2025-10-25T21:06:33.063997,filtered_subs,,
+UCx7l7GusEB1xMDPGM_TYHeQ,Shemmassian Academic Consulting,2025-10-25T21:06:33.063997,scored,0.384,0.1
+UCQ-hpFPF4nOKoKPEAZM_THw,TopTenz,2025-10-25T21:06:33.063997,scored,0.537,0.2
+UCGnzz0HFWCRXPX4Vh036uQw,CapEditz219,2025-10-25T21:06:33.063997,scored,0.653,0.2
+UCoE46mpO1dddEpX88SrpMww,WM PASSION,2025-10-25T21:06:33.063997,scored,0.491,0.1
+UCywtvR0JMHHAeHfK8RBx0dw,HBS Online,2025-10-25T21:06:33.063997,scored,0.629,0.5
+UCJjNZ3IThvD7ujbVWBq9J9w,Skylar Gonzales,2025-10-25T21:06:33.063997,filtered_subs,,
+UCGznz4NfW5iymkvn1l40qyA,Simon Squibb,2025-10-25T21:06:33.063997,scored,0.564,0.4
+UC0GdsZcGcqX-vxHcQRvL6Pg,Flipping The Barrel,2025-10-25T21:06:33.063997,filtered_subs,,
+UCwoo20NhqcZt1heSRPJoSQg,deepuSumandj ,2025-10-25T21:06:33.063997,filtered_subs,,
+UCCf2tfmPM6xrJiBONH8tsrA,Angelo the BA,2025-10-25T21:06:33.063997,scored,0.647,0.5
+UCoxJlQKgtoJhc1hxO-07keg,Kelsey Thompson,2025-10-25T21:06:33.063997,filtered_subs,,
+UCAuUUnT6oDeKwE6v1NGQxug,TED,2025-10-25T21:06:33.063997,scored,0.573,0.3
+UCZiPhIQxeLgGPdqwSPs9_Gw,iDabba Data World ,2025-10-25T21:06:33.063997,scored,0.359,0.1
+UCoILAT_y3bj8Ql5roRnZ1SA,BA Professional,2025-10-25T21:06:33.063997,scored,0.754,0.5
+UCbk_QsfaFZG6PdQeCvaYXJQ,Jay Shetty Podcast,2025-10-25T21:06:33.063997,scored,0.472,0.2
+UCgPeJSMnI75Px4p5sZeIOcg,The Fact,2025-10-25T21:06:33.063997,scored,0.508,0.2
+UCtpU0wWTg_QBEXnp4HujLEg,International Institute of Business Analysis (IIBA),2025-10-25T21:06:33.063997,scored,0.775,0.5
+UCYyqGqI-bpzGpo5DBtUcJQA,Practical Wisdom - Interesting Ideas,2025-10-25T21:06:33.063997,scored,0.684,0.6
+UCiXdw-fLlKZNhjLoasYnGIg,Posit Pixel,2025-10-25T21:06:33.063997,scored,0.615,0.3
+UCiz38yd_qnn6TsCH9GeNbJA,FoundersTalksGlobal,2025-10-25T21:06:33.063997,filtered_subs,,
+UCJL-mdRtpcA4dkr11SMlsYg,Rayn Lim,2025-10-25T21:06:33.063997,filtered_subs,,
+UChamurUK7hzdnBd0LcEHLzw,Cancel Me Later,2025-10-25T21:06:33.063997,filtered_subs,,
+UChgOemFerq_gRELpMsckIvQ,Snap Chat Kween,2025-10-25T21:06:33.063997,filtered_subs,,
+UCbCMRQTcSQ8INJOCLkUTX7g,Circulate Wisdom,2025-10-25T21:06:33.063997,filtered_subs,,
+UClLQQVLp6t5iwAktfqZqm5g,Axiom Zorn,2025-10-25T21:06:33.063997,filtered_subs,,
+UCKqH_9mk1waLgBiL2vT5b9g,VanossGaming,2025-10-25T21:06:33.063997,scored,0.406,0.0
+UCb8hWO8XxtKbT2uhAp7uUYg,Business Analysis with The Brazilian BA,2025-10-25T21:06:33.063997,filtered_subs,,
+UCAPrL0P1_VpLgGpi6d0NBcA,The EduNerds,2025-10-25T21:06:33.063997,filtered_subs,,
+UCkEeNJue8P7moYZm0Ptrn5A,Business Stories,2025-10-25T21:06:33.063997,scored,0.799,0.7
+UCRmlM18OqvDwwjxxnvqRf3A,The Occasional Gamer,2025-10-25T21:06:33.063997,filtered_subs,,
+UCSRQ9pHE6CFqEib7rMmvgNw,Business Motiversity,2025-10-25T21:06:33.063997,scored,0.691,0.5
+UC059kFc5oApruDS2QFmZfeA,Autumn Asphodel,2025-10-25T21:06:33.063997,scored,0.538,0.1
+UC1FNp1vU7MAxAuhEXOtT6pw,Stealth Wealth,2025-10-25T21:06:33.063997,scored,0.656,0.5
+UCAvHCrTxXZLj2YFWg0r0GJA,AcresTV,2025-10-25T21:06:33.063997,filtered_subs,,
+UCAioKG89SH_M4XT72D0sK8w,Learn B4 You convert to Islam,2025-10-25T21:06:33.063997,filtered_subs,,
+UCDXTQ8nWmx_EhZ2v-kp7QxA,Ben Felix,2025-10-25T21:06:33.063997,scored,0.763,0.6
+UCeBQ24VfikOriqSdKtomh0w,The Iced Coffee Hour Clips,2025-10-25T21:06:33.063997,scored,0.689,0.6
+UCDybamfye5An6p-j1t2YMsg,Mo Chen,2025-10-25T21:06:33.063997,scored,0.574,0.4
+UCmEDdYsBjM0LkYWojQ8QN4A,Speech on success,2025-10-25T21:06:33.063997,scored,0.588,0.2
+UC-JkveM9LZUV7qCnm800BsA,Nuke_Boiii_76,2025-10-25T21:06:33.063997,filtered_subs,,
+UCD6M-34IpdJGhainboZq1pw,NextGen Tech Talk,2025-10-25T21:06:33.063997,filtered_subs,,
+UC6oHE_BG5JwYz61bIAnt22w,NYSUT,2025-10-25T21:06:33.063997,filtered_subs,,
+UChhw6DlKKTQ9mYSpTfXUYqA,Starter Story,2025-10-25T21:06:33.063997,scored,0.729,0.5
+UCVKtTPCTmgTyxRreVi_RuPg,Rockstar Games Italia,2025-10-25T21:06:33.063997,scored,0.397,0.1
+UCpg510--LjomT7NPl6D42fA,Vault,2025-10-25T21:06:33.063997,scored,0.545,0.1
+UCgXJZGn5-NgMUY_n-N8owfA,Think Smart Education,2025-10-25T21:06:33.063997,filtered_subs,,
+UC8LQKvQviSRXGuz5wrXdmmw,The Curious Cobra,2025-10-25T21:06:33.063997,scored,0.62,0.3
+UC8f3VkhhpEESxW6d1UUTx7A,Satoshi Finance,2025-10-25T21:06:33.063997,filtered_subs,,
+UCNczTptslBjtdPkp9qkcUeg,Mr. Mustache Explainer,2025-10-25T21:06:33.063997,filtered_subs,,
+UCfsygWgHFeGHsDKYMBUIS0Q,infolivetvenglish,2025-10-25T21:06:33.063997,scored,0.565,0.2
+UCEgACOc7JHJzr9zJ6S-vayg,Homework Market,2025-10-25T21:06:33.063997,filtered_subs,,
+UCKTrRrMOaeYltDtM5FdMBYg,LazorEffect,2025-10-25T21:06:33.063997,scored,0.458,0.1
+UCr7Vm1VrOJ5B_6K1LBAJKdA,ACH,2025-10-25T21:06:33.063997,filtered_subs,,
+UCGd05aopOvjNn_x2wltRbTQ,Lauren Feltner,2025-10-25T21:06:33.063997,filtered_subs,,
+UCDNTs7Rfw_obNJvmPtK-26Q,SHORTSTATE,2025-10-25T21:06:33.063997,filtered_subs,,
+UC4mzWzNZGr5ywCUWdJ_4gtw,Eisenwald Official,2025-10-25T21:06:33.063997,scored,0.37,0.0
+UCPNKv8Wt3DY2R2RmkkQpI7Q,Corporation Watch,2025-10-25T21:06:33.063997,filtered_subs,,
+UC_DgclLC9mCRVsUqi6opwnw,KingAlexHD,2025-10-25T21:06:33.063997,scored,0.306,0.1
+UCblULqMZLXzxBoirPWowTXA,Michigan Law,2025-10-25T21:06:33.063997,scored,0.436,0.2
+UCsvqVGtbbyHaMoevxPAq9Fg,Simplilearn,2025-10-25T21:06:33.063997,scored,0.629,0.4
+UC1Pg8enkyPwUjigOeiAeNvA,Thresefisix,2025-10-25T21:06:33.063997,scored,0.555,0.1
+UCVM7nMS6dxgZIg5_VTPSg8g,Fun Quiz Questions,2025-10-25T21:06:33.063997,scored,0.47,0.1
+UCTyfiiz8lFA7BK3Or2SrroQ,Forbidden info,2025-10-25T21:06:33.063997,filtered_subs,,
+UC6VcWc1rAoWdBCM0JxrRQ3A,Rockstar Games,2025-10-25T21:06:33.063997,scored,0.56,0.2
+UCcWO3AqiaRqL8XoKUuLVO8Q,Business Analytics by SkillArbitrage,2025-10-25T21:06:33.063997,scored,0.767,0.6
+UC0zey6pYOFvm5q5WUR7Wp2A,Gaming Nest,2025-10-25T21:06:33.063997,filtered_subs,,
+UCg-NnC8OrTUpAnFhsYETCFw,Rockstar Games Nederland,2025-10-25T21:06:33.063997,scored,0.588,0.3
+UCtsAARW9dofe_pFiT1C11Gw,Tech-Pulse-7,2025-10-25T21:06:33.063997,filtered_subs,,
+UCYAfhfAbTlpgDHhe-cn9sfg,Asmongold's Reacts Shorts,2025-10-25T21:06:33.063997,filtered_subs,,
+UCvyLh_IuCRRS0bdqQ1hxYjQ,A bhakti Gyan,2025-10-25T21:06:33.063997,filtered_subs,,
+UCObypPaJ2zPUlu3xNo0OMPA,PzYchos,2025-10-25T21:06:33.063997,filtered_subs,,
+UCM7yoOhnMcfrEZ-5i9m-WFA,Sonia Shenoy,2025-10-25T21:06:33.063997,scored,0.654,0.5
+UCsZsDjpf2Ppv_cT2K6_q2cw,Refinery29,2025-10-25T21:06:33.063997,scored,0.631,0.2
+UCnxGkOGNMqQEUMvroOWps6Q,JRE Clips,2025-10-25T21:06:33.063997,scored,0.818,0.6
+UCbaQv8_DS1n8puOnJRzLPzw,Myron Golden,2025-10-25T21:06:33.063997,scored,0.664,0.5
+UCWMLwpkbpuDqxQPz4r_UPZA,Sumra's Talk,2025-10-25T21:06:33.063997,scored,0.648,0.4
+UC5CtNy792RqgX2u9tkMA9Ow,Crimes & Cults Uncovered,2025-10-25T21:06:33.063997,filtered_subs,,
+UCeHhFHZIELAXcSDnlHmsjlw,BITV ,2025-10-25T21:06:33.063997,scored,0.798,0.5
+UCREqLs2Q2EciBdXNOVryi-Q,Bishop Peter Ndungu,2025-10-25T21:06:33.063997,filtered_subs,,
+UCeoRGGD3DPP6rR1fRTxaccQ,Mae's Channel ,2025-10-25T21:06:33.063997,filtered_subs,,
+UCd4JjYfEXrCez-ADXdSeKBA,Clearview School of Media Arts,2025-10-25T21:06:33.063997,filtered_subs,,
+UC6sj7B5VbdFQZ_PYgTNsQ8Q,Programmer's CodeCraft ,2025-10-25T21:06:33.063997,scored,0.454,0.2
+UCRp3A2R6WwhfmQ68IB3mWag,Inspire Yourself,2025-10-25T21:06:33.063997,scored,0.598,0.3
+UCxp8a-1M42zS_RSWfB3_diA,The Agile Business Analyst,2025-10-25T21:06:33.063997,scored,0.629,0.5
+UCJfhjWLZC3MMD42EqJzMF9g,mjbiiigs,2025-10-25T21:06:33.063997,filtered_subs,,
+UCq4xOlJ4xz6Fw7WcbFkrsUQ,Invensis Learning,2025-10-25T21:06:33.063997,scored,0.474,0.3
+UCDHsj-2kb_bGk_Dr3ktSSbg,Techcanvass,2025-10-25T21:06:33.063997,scored,0.617,0.4
+UCQ_EuLEilcEzVCxPIQKX1rA,Alec Schaal,2025-10-25T21:06:33.063997,scored,0.626,0.5
+UC-NEqh8HozTROaX4aHo9lFg,Gadget Project,2025-10-25T21:30:25.361921,filtered_subs,,
+UC77AhT2eQZLS9FxOn315sLw,Movie Express ,2025-10-25T21:30:25.361921,scored,0.506,0.2
+UCq-Fj5jknLsUf-MWSy4_brA,T-Series,2025-10-25T21:30:25.361921,scored,0.358,0.1
+UCXPpB4oh_THnY_YsQNYgVHQ,Love Tiny ASMR,2025-10-25T21:30:25.361921,scored,0.608,0.4
+UCUKCeVTBpqgNn6cTF9UA3fA,Sharp India,2025-10-25T21:30:25.361921,scored,0.517,0.1
+UCPjQLcTCg35skfsdst9sZrw,Kin Kin Unbox,2025-10-25T21:30:25.361921,filtered_subs,,
+UC4-GrpQBx6WCGwmwozP744Q,USENIX,2025-10-25T21:30:25.361921,scored,0.403,0.1
+UCK1iU_oewhBPWJm8xpV36jQ,Sahej sain,2025-10-25T21:30:25.361921,scored,0.824,0.6
+UCS261lQDXjMvc8Jck-2CQEg,Gyan Therapy,2025-10-25T21:30:25.361921,scored,0.804,0.8
+UCCmGokGe5OUFQIPGqG64mjg,Kern Elin,2025-10-25T21:30:25.361921,scored,0.372,0.1
+UCY6N8zZhs2V7gNTUxPuKWoQ,Ishan Sharma,2025-10-25T21:30:25.361921,scored,0.687,0.6
+UC1pL3iYfXAftjEBmR0sz7WA,weird stuff 1708,2025-10-25T21:30:25.361921,filtered_subs,,
+UCpVID-xoGkY2UriWnAa1ArQ,TechAvid,2025-10-25T21:30:25.361921,scored,0.823,0.7
+UC5a0Om_28HYkIn6LBLZXDrw,Digital Yield,2025-10-25T21:30:25.361921,filtered_subs,,
+UCoKWIc3DnbH5oq4ohgWeiHw,GadgetFan,2025-10-25T21:30:25.361921,filtered_subs,,
+UC3JRxEOYaCHzXUY0_aQ3UtA,Bol Social TV 26,2025-10-25T21:30:25.361921,filtered_subs,,
+UCdNUjd9STYi54Wau6F91i0A,Eden partyspeaker,2025-10-25T21:30:25.361921,filtered_subs,,
+UCGYr1wCenjTwDXkMLxoSElA,Thomas Mills,2025-10-25T21:30:25.361921,filtered_subs,,
+UCjJKg01HAP01xCLVhDmnLhw,Red Chillies Entertainment,2025-10-25T21:30:25.361921,scored,0.386,0.1
+UCmqyLXPtSW9u8lXXV3cWFLQ,Heartland,2025-10-25T21:30:25.361921,scored,0.361,0.0
+UC4bISA4ukNGZiYrDRVTidow,AI with Sean B,2025-10-25T21:30:25.361921,filtered_subs,,
+UCr2G_-yMW2wTRfglihRblVQ,Educational Words Touch,2025-10-25T21:30:25.361921,scored,0.425,0.1
+UC8e-z-g23-TdDMuODiL8BKQ,Transparency Market Research,2025-10-25T21:30:25.361921,filtered_subs,,
+UCvYBeqdRdlFSInQhlWFEX_Q,EveryDay Cinema,2025-10-25T21:30:25.361921,scored,0.403,0.1
+UC9MQp8a5uhaIosZPHaoqEXQ,CallMeShazzam TECH,2025-10-25T21:30:25.361921,scored,0.786,0.8
+UChbpF5QVaVr9KUJT40qhKAg,Science Simplified 4 All,2025-10-25T21:30:25.361921,scored,0.555,0.3
+UCxqG_E-68WAE0TWYfIopv6Q,Digifix,2025-10-25T21:30:25.361921,scored,0.802,0.5
+UCuGt_abEtXM4gmP__o4E7HQ,SQUISHY Mystery Toys,2025-10-25T21:30:25.361921,filtered_subs,,
+UCMD-DgpQ4W27Hd7hs3UXH-Q,VoodooDE VR - english version -,2025-10-25T21:30:25.361921,scored,0.431,0.2
+UCw4IHIMsDO5wpIiprOSXiEA,Dhruv Rathee Shorts,2025-10-25T21:30:25.361921,scored,0.482,0.2
+UCLLAKtxpwPMXfaEtNBw0yMg,Mekel Kasanova,2025-10-25T21:30:25.361921,scored,0.599,0.3
+UCUTF61UNExRdjmoK5mXwWfQ,AI Uncovered,2025-10-25T21:30:25.361921,scored,0.751,0.5
+UCC-fok0xoPcZqSqYnZtqqHg,smart tek mobile,2025-10-25T21:30:25.361921,scored,0.855,0.8
+UCodzWHkw39usMBG9lWo_UjA,bespoke_d.designers,2025-10-25T21:30:25.361921,filtered_subs,,
+UC20sXo8ReewkzNKBFgzVCPA,Tamil Tech - MrTT,2025-10-25T21:30:25.361921,scored,0.802,0.8
+UCBDLC4K2ZIUzfuEYno_U6-Q,Viral Khan Sir,2025-10-25T21:30:25.361921,scored,0.374,0.1
+UC0jV49GZ0VbKgnAyY8WRVPg,Digital Commerce 360,2025-10-25T21:30:25.361921,filtered_subs,,
+UCKk9JCBLDy6bOp5cUAQYrUQ,Sillycorns,2025-10-25T21:30:25.361921,scored,0.797,0.7
+UCh8-ERdIP9Rn6M3tWLWiJ2A,iamSunilDubey,2025-10-25T21:30:25.361921,scored,0.354,0.1
+UCPV33YGEVLwtOotz9ZG0XQw,Kickstarter,2025-10-25T21:30:25.361921,scored,0.596,0.2
+UCywJiv21kiHLsJAPh1bR4RQ,Kitab Nama,2025-10-25T21:30:25.361921,scored,0.571,0.2
+UCbdgx77MnbvqEXGRaAk-sPw,The Treasure Hunter Stories,2025-10-25T21:30:25.361921,filtered_subs,,
+UCSWZxpzUTkriCZRe0Nl0UqA,YouFact Tech,2025-10-25T21:30:25.361921,scored,0.725,0.5
+UCpezCSL_alOva5WKM1MXH2Q,National Product Review,2025-10-25T21:30:25.361921,filtered_subs,,
+UCZknyXD-6tETm9aN8GQCi8g,The Cutting Edge School,2025-10-25T21:30:25.361921,scored,0.639,0.4
+UCPl1Gu8jmccFPt-vbvqgLTg,SuperSaf Shorts,2025-10-25T21:30:25.361921,scored,0.883,0.8
+UC_4ZrnpttbQ6z3OUpSe8CXw,VeryMuchTech,2025-10-25T21:30:25.361921,filtered_subs,,
+UC53vQ5UaxOOxdp8wZ48PoUw,Noah Schnacky,2025-10-25T21:30:25.361921,scored,0.34,0.1
+UCDiKw3GnFIwyNJBzhCoRI-Q,Framework,2025-10-25T21:30:25.361921,scored,0.847,0.6
+UCXrj-tvjNHs3NQEkg5tbvvw,Paw Paw Toys ASMR ,2025-10-25T21:30:25.361921,filtered_subs,,
+UCEAMLkMKtq6YhmaZdUT1ywA,This is Tech Today,2025-10-25T21:30:25.361921,scored,0.72,0.6
+UCn7DATpF0Nk-YJmjw4gMwfg,Trakin Tech English,2025-10-25T21:30:25.361921,scored,0.879,0.8
+UCmpFo9yFL9gOdS1PXWc7ong,Elon Musk_AI Robots,2025-10-25T21:30:25.361921,scored,0.735,0.5
+UCASBhU8HbHS65xAQO-nJU5w,ABBAS CREATOR,2025-10-25T21:30:25.361921,scored,0.592,0.3
+UCggKidH56IZIGQ8SppxYn-Q,HappyDownloads,2025-10-25T21:30:25.361921,scored,0.577,0.2
+UCg6QGfzRjTOI0tu4xqFmaZw,TechInsightCentral,2025-10-25T21:30:25.361921,filtered_subs,,
+UCfxNmqdq50Uq55-tJu7W8KA,Corporate Catalyst,2025-10-25T21:30:25.361921,filtered_subs,,
+UC0ZzC0WV8hY9GGo_AVfoofQ,FishBee Productions,2025-10-25T21:30:25.361921,scored,0.741,0.7
+UCBJycsmduvYEL83R_U4JriQ,Marques Brownlee,2025-10-25T21:30:25.361921,scored,0.896,0.8
+UCjhvXK48fobXXAroxni33Dg,CompareWise,2025-10-25T21:30:25.361921,filtered_subs,,
+UCyrU3zgBKLaiJvoNlItU2UA,PhonTech,2025-10-25T21:30:25.361921,filtered_subs,,
+UC6xLPdhg20TufP0A6h8E2kw,I TO R (아이 투 알) ,2025-10-25T21:30:25.361921,scored,0.319,0.1
+UCwedsrNjr9pLZJ0wUk4wCCQ,Nayim,2025-10-25T21:30:25.361921,filtered_subs,,
+UCeaSO-SFlMmf6orGxdJ8Zeg,All Sorts,2025-10-25T21:30:25.361921,filtered_subs,,
+UCCsREoj8rSRkEvxWqxr74rQ,Cybernews,2025-10-25T21:30:25.361921,scored,0.624,0.4
+UCJyjsVxM39aIgYuNpGbvx8w,Pradeep Sivanesan - Topic,2025-10-25T21:30:25.361921,filtered_subs,,
+UCuKVGUBU2JsfcX5nk2d4zVQ,Facts Dastan,2025-10-25T21:30:25.361921,scored,0.402,0.2
+UCQ596gwldwHJX2OSAtWljew,Everyday Show,2025-10-25T21:30:25.361921,scored,0.406,0.1
+UCZSNzBgFub_WWil6TOTYwAg,Netflix India,2025-10-25T21:30:25.361921,scored,0.364,0.1
+UCMiJRAwDNSNzuYeN2uWa0pA,Mrwhosetheboss,2025-10-25T21:30:25.361921,scored,0.89,0.8
+UCEPL07qzVsOcHd3sMUws65g,Trakin Tech,2025-10-25T21:30:25.361921,scored,0.91,0.8
+UCMG6udd0HTCRkRs1lYDOotg,Primerli,2025-10-25T21:30:25.361921,scored,0.558,0.2
+UCMcw3a0iEaW-rYxvSu9JLgA,AI . Robot,2025-10-25T21:30:25.361921,scored,0.59,0.3
+UCuiqufw8v68JjCHrh07-pHA,Techade,2025-10-25T21:30:25.361921,scored,0.879,0.8
+UCDulKGuVhHmRzikYCQ8Aa3Q,gabi toys ASMR,2025-10-25T21:30:25.361921,scored,0.603,0.4
+UC-LyPQ-xS32Sk2lRmM68NzA,The Health Supplement Hub,2025-10-25T21:30:25.361921,filtered_subs,,
+UCvVHWFi2qtoK3b5btKsjwwQ,자주Thường,2025-10-25T21:30:25.361921,scored,0.381,0.1
+UCAmZJx28r4s9ymS-AV-dWlQ,First Look Original,2025-10-25T21:30:25.361921,filtered_subs,,
+UC_I2Ud-EI5olL_oBjBVIb2w,Vocabulary Vault,2025-10-25T21:30:25.361921,filtered_subs,,
+UC-T20vmElzS8j32dsV9fJLw,AI Showdown,2025-10-25T21:30:25.361921,filtered_subs,,
+UC42qyCQM39vQ6bt_6iz-Z8A,TECHOOB,2025-10-25T21:30:25.361921,scored,0.863,0.8
+UCVoO4nSvbxHDIksWtRfpA7A,Anxiety Offline FB,2025-10-25T21:30:25.361921,filtered_subs,,
+UCjCYo_c8Duugf7k3gUL9jXA,Ryan Osmond,2025-10-25T21:30:25.361921,scored,0.677,0.6
+UCcxoh-xtrddH5zkJrqzyDvA,Yash Sethi,2025-10-25T21:30:25.361921,scored,0.847,0.7
+UCgK58CDP0CNz6_N43taoLdQ,Rubi mObiles Tech Updates,2025-10-25T21:30:25.361921,scored,0.829,0.7
+UCwAnu01qlnVg1Ai2AbtTMaA,Jeff Su,2025-10-25T21:30:25.361921,scored,0.667,0.4
+UCWTOKFNECHK4Lxzbaj5ELkg,Milind's Perception,2025-10-25T21:30:25.361921,filtered_subs,,
+UCyw_mtuNzMhpNFBY8huBxIw,rillo,2025-10-25T21:30:25.361921,scored,0.832,0.7
+UCYFlYTTMszcYdxLAKSkfBTA,Abhi Technology 🇮🇳,2025-10-25T21:30:25.361921,filtered_subs,,
+UCcXQd6kHKm0b41x8zMVMmMg,JioStudios,2025-10-25T21:30:25.361921,scored,0.355,0.1
+UCdp6GUwjKscp5ST4M4WgIpw,TechWiser,2025-10-25T21:30:25.361921,scored,0.884,0.8
+UCvpfclapgcuJo0M_x65pfRw,Beebom,2025-10-25T21:30:25.361921,scored,0.906,0.8
+UC7W5LTUy7DJYpx0cpVKJe0g,BoredGamer,2025-10-25T21:30:25.361921,scored,0.575,0.1
+UC6BCiv8TG7E9ilHmTHRZHRg,Filmy Pack Karnataka ,2025-10-25T21:30:25.361921,scored,0.414,0.2
+UC4u_07dmGGMB38YCMorot6w,Maksi Westwood Crypto,2025-10-25T21:30:25.361921,filtered_subs,,
+UCHGdeOUuLwlPOgqIQKJlpag,Mohsin Ali 14,2025-10-25T21:30:25.361921,scored,0.535,0.2
+UCEMZJ8aMm0pbYDm1seDPeEQ,My Mini Toys,2025-10-25T21:30:25.361921,scored,0.689,0.4
+UCaTIlG2lHILX7Gbe6OBi4IQ,James Afante,2025-10-25T21:30:25.361921,scored,0.835,0.6
+UCTl9TxbK3bODr2gG-GyJfSQ,Expert Nederland,2025-10-25T21:30:25.361921,filtered_subs,,
+UC9eryd1JLe6l5oraEAxQ5Bw,Mrunal Panchal Sharma,2025-10-25T21:30:25.361921,scored,0.58,0.2
+UCnC8SAZzQiBGYVSKZ_S3y4Q,Nikhil Kamath,2025-10-25T21:30:25.361921,scored,0.534,0.2
+UCld0AB2j0wJHjbe2ikWC2GA,Zebra Four Wheel Electric Scooter And E-Atv,2025-10-25T21:30:25.361921,filtered_subs,,
+UCZRoNJu1OszFqABP8AuJIuw,Logically Answered,2025-10-25T21:30:25.361921,scored,0.591,0.4
+UCh9nVJoWXmFb7sLApWGcLPQ,codebasics,2025-10-25T21:30:25.361921,scored,0.631,0.4
+UCQ2Kw3sbScaUe_cNw5kq84w,LAWG,2025-10-25T21:30:25.361921,scored,0.662,0.2
+UCABk3uNMbAIA4JZxtlvOUvA,Galaxy wala ,2025-10-25T21:30:25.361921,filtered_subs,,
+UCRlhs6p_X2k70-5rPpGQO9g,Antiquio,2025-10-25T21:30:25.361921,scored,0.677,0.4
+UChDKyKQ59fYz3JO2fl0Z6sg,TODAY,2025-10-25T21:30:25.361921,scored,0.485,0.1
+UCvLEKpxfrM0CjnQvP4ZgUqQ,Kepler 62 Experiment Podcast,2025-10-25T21:30:25.361921,filtered_subs,,
+UCx8iSXAjbLrodBz4Tq-04TA,AI 4idea,2025-10-25T21:30:25.361921,filtered_subs,,
+UCkUDHpSP0xouVm5QNSJy9ew,Future Ai Robots,2025-10-25T21:30:25.361921,scored,0.676,0.4
+UCUwTO0MRm_NuGQ0idOb3EgQ,HY Casting,2025-10-25T21:30:25.361921,filtered_subs,,
+UC8I8QD4c-pYirLJd0BTfc2A,Vyapar Guruji ,2025-10-25T21:30:25.361921,scored,0.63,0.4
+UCzVxFXguTQcnPWwYsF5k6Eg,Tomorrow's Blueprint,2025-10-25T21:30:25.361921,scored,0.393,0.1
+UCwA0m94_JJBTpAc7pb4xsAw,Logic Solutions,2025-10-25T21:30:25.361921,filtered_subs,,
+UCdARRyTPX1Y-IAG2Ojp6HgA,tatsuki,2025-10-25T21:30:25.361921,scored,0.425,0.1
+UC5IfDNT8ARrStua0NL1rQMQ,TECH B 1M,2025-10-25T21:30:25.361921,scored,0.783,0.8
+UCupvZG-5ko_eiXAupbDfxWw,CNN,2025-10-25T21:30:25.361921,scored,0.42,0.1
+UCUrqRgqioezXLHXoDhfdBCw,The Tech Critic,2025-10-25T21:30:25.361921,filtered_subs,,
+UCkc29aQ6T55m4xgObk2C9sg,TECH CRAZY CRANE,2025-10-25T21:30:25.361921,scored,0.369,0.2
+UCEP0Zgg1BuAExe6x6fPSPqQ,Alementary,2025-10-25T21:30:25.361921,scored,0.726,0.4
+UCF-VP3b3oH0XASqsLI5rnLw,Times News,2025-10-25T21:30:25.361921,scored,0.317,0.1
+UCBcqfG4p8hgsMYXyokEoCHw,VRelity,2025-10-25T21:30:25.361921,scored,0.651,0.5
+UCsBjURrPoezykLs9EqgamOA,Fireship,2025-10-25T21:30:25.361921,scored,0.658,0.3
+UCZvzpF4cdRS0NJ9wvhFCmgA,TECH UPDATES TELUGU,2025-10-25T21:30:25.361921,filtered_subs,,
+UCRs9PWoTCllc0dyPEYCrIcQ,Electriquette,2025-10-25T21:30:25.361921,filtered_subs,,
+UCnKhQkCUS1oCEvjuTfU4xIw,Tech Boss,2025-10-25T21:30:25.361921,scored,0.781,0.7
+UCGfluwZUeQNG5HvHuKfSKgw,mobiscrub,2025-10-25T21:30:25.361921,scored,0.749,0.7
+UCHyu2gwfAkOXWroIjvxVUCg,Career247,2025-10-25T21:30:25.361921,scored,0.53,0.1
+UC2htIc3-njRI5BKTJ2QqNfA,Our Future,2025-10-25T21:30:25.361921,scored,0.561,0.3
+UCQXHTFnQYFTqN0MqmNh9EIA,BBC World Service,2025-10-25T21:30:25.361921,scored,0.435,0.2
+UC34a65UCOc0jKGHtOMDIZCQ,Technophile Sharma ,2025-10-25T21:30:25.361921,filtered_subs,,
+UCEeH57P89hPQ1Sp2TavfICA,Parker Burton,2025-10-25T21:30:25.361921,scored,0.943,0.8
+UC8BSZ6Kq4LIN9RZQ7QM-8tQ,Simply AV,2025-10-25T21:30:25.361921,scored,0.509,0.5
+UCnz_QO6orkMnxxjvoEW3E1w,Tech-Eela,2025-10-25T21:30:25.361921,scored,0.548,0.2
+UCExbnOFWJkh-6169EyIvYnA,Mana Telugu Cult,2025-10-25T21:30:25.361921,scored,0.442,0.1
+UCaGyEp2zpp1KBYwskC2rKYw,Quantum 360,2025-10-25T21:30:25.361921,filtered_subs,,
+UC1FhpwNpQlP82ZFrI5ObZgA,Controlled Chaos,2025-10-25T21:30:25.361921,filtered_subs,,
+UC1oJWYYvOoFKxF5npN-OU3A,Tech Plus Gadgets,2025-10-25T21:30:25.361921,scored,0.905,0.8
+UC6fkjcWqPG8uMj-NUHCmBPg,GalcoTV,2025-10-25T21:30:25.361921,scored,0.63,0.4
+UCihWjgUGbK9ONcX6T2dSchQ,RafiAn Tech,2025-10-25T21:30:25.361921,filtered_subs,,
+UCkm0j0CQdElEFtWw7agfOlA,Trakin Shorts,2025-10-25T21:30:25.361921,scored,0.831,0.8
+UCqOLFDSLrYKJUuSS0tQqvcw,Gupta Information Systems,2025-10-25T21:30:25.361921,scored,0.823,0.7
+UClBhUK8aIerWFPxWMAFxwcA,AV Tech,2025-10-25T21:30:25.361921,filtered_subs,,
+UCem2vGhjEjHEDwkfz9Pq0Hg,Bhairava Media,2025-10-25T21:30:25.361921,scored,0.431,0.1
+UCfJT_eYDTmDE-ovKaxVE1ig,Kevin Stratvert,2025-10-25T21:48:23.254271,scored,0.627,0.4
+UCGetiqFX7l-8unkK1LyrG3A,AdviceWithErin,2025-10-25T21:48:23.254271,error_scoring,,
+UCCTiMonx1aTgyDZ2Y6URBFw,SellerApp,2025-10-25T21:48:23.254271,discovered,,
+UCcLAmSbFRiP4g32I6PqNyzg,Artificial Architects,2025-10-25T21:48:23.254271,filtered_subs,,
+UCMNMpSc81hvn5OC26yj-5Jw,Captivating History,2025-10-25T21:48:23.254271,discovered,,
+UCCqqvuhldqUbRrvfek50N9w,Kalkine Media,2025-10-25T21:48:23.254271,discovered,,
+UCmapkf4A5883lT90j86WXFg,marketfeed,2025-10-25T21:48:23.254271,discovered,,
+UC7vVhkEfw4nOGp8TyDk7RcQ,Boston Dynamics,2025-10-25T21:48:23.254271,scored,0.585,0.5
+UCclC42i084P1JKE8XJE3ajg,atdavidlee,2025-10-25T21:48:23.254271,discovered,,
+UCR6JOakZDZGktNrsvfNU1-w,Trendy Celeb & Sports,2025-10-25T21:48:23.254271,filtered_subs,,
+UCw4SlTWA7bpiUK-b6FssPlg,Financial Statement Analysis and Reporting,2025-10-25T21:48:23.254271,discovered,,
+UC3a9MbVigglhdDNTh6B3xgA,Peter Van Louse,2025-10-25T21:48:23.254271,filtered_subs,,
+UCwO-UgquohXwoe7f0e6lMnw,Invicta,2025-10-25T21:48:23.254271,error_scoring,,
+UCIo9xTeDyREgZYTm5AO6DDg,Zoom Vantage,2025-10-25T21:48:23.254271,filtered_subs,,
+UCguPPRS4tcq-Vf3NQBbtrhw,Learn About Economics,2025-10-25T21:48:23.254271,filtered_subs,,
+UCXbQFmkRRipuQ902JBq1ckg,Pursuit of History,2025-10-25T21:48:23.254271,discovered,,
+UCEhQ8MgtnyN9cDS9e4KDWMQ,boardevaluation,2025-10-25T21:48:23.254271,filtered_subs,,
+UCghwm6uwnvbjyQtZ8Az-Ivg,Learn and Earn with Pavan Agrawal,2025-10-25T21:48:23.254271,error_scoring,,
+UCKCsVSA5THlkHbnkZTPm6-g,Learn Bright,2025-10-25T21:48:23.254271,scored,0.431,0.1
+UC3GuyQ9qAZqJDDaHoLGOR3g,Ainfluencer Marketplace,2025-10-25T21:48:23.254271,filtered_subs,,
+UC1KZthNKVq8I8feFK8Z1eIQ,365 Financial Analyst,2025-10-25T21:48:23.254271,discovered,,
+UCg5GzcNQp5C6STqLP9vNAow,Cobb,2025-10-25T21:48:23.254271,discovered,,
+UCz0wbTDqCxY67OziL9Sp2cw,Online Class With Bibek,2025-10-25T21:48:23.254271,discovered,,
+UC2ojq-nuP8ceeHqiroeKhBA,Nate Herk | AI Automation,2025-10-25T21:48:23.254271,discovered,,
+UCQajCe3yje2Xu0bjLEFMmCg,Basic Economics for Everyone,2025-10-25T21:48:23.254271,filtered_subs,,
+UCD1Zwuqkky1K5aIlE0OzXcA,Ecom Logistics,2025-10-25T21:48:23.254271,filtered_subs,,
+UCZSPtylhSQsYQ-_qygbOL2A,DieselHead,2025-10-25T21:48:23.254271,discovered,,
+UCvmofFg-oZc4jvBUIfZbjzg,ClickView,2025-10-25T21:48:23.254271,discovered,,
+UCfI-ysoYd6wZVXRXN0A_KdA,Atul Agarwal,2025-10-25T21:48:23.254271,discovered,,
+UCeTsLA5I-Ek4YVVGJ3pNGqQ,Nora @ AutoXing Robotics,2025-10-25T21:48:23.254271,filtered_subs,,
+UCqUVGY-ak6ZW-m4F1lRgIiQ,mishpan stock consulting ,2025-10-25T21:48:23.254271,filtered_subs,,
+UCjTIqCfm5hR3_3gWo-Pn1lg,LetsfaceIt,2025-10-25T21:48:23.254271,filtered_subs,,
+UCqidlIIwbejxZmRUWBICcjQ,Msquare Automation Solutions,2025-10-25T21:48:23.254271,filtered_subs,,
+UC510QYlOlKNyhy_zdQxnGYw,Simple History,2025-10-25T21:48:23.254271,scored,0.423,0.2
+UCNt10XGfyfzeuVVas-13iXQ,international Business Africa,2025-10-25T21:48:23.254271,filtered_subs,,
+UCSSmQp78WJ4pSd8Nr180cdA,Medical Professor,2025-10-25T21:48:23.254271,discovered,,
+UCdBXOyqr8cDshsp7kcKDAkg,Big A,2025-10-25T21:48:23.254271,discovered,,
+UC4w5MoY1LzPhGpvEaicwPzw,MR Tech Box,2025-10-25T21:48:23.254271,scored,0.579,0.4
+UCIEIBlSMoebkNFsqHph54yg,English with JayTen,2025-10-25T21:48:23.254271,discovered,,
+UCW4jIhqF9SpztmDg81DhCdw,Calidad Consulting,2025-10-25T21:48:23.254271,filtered_subs,,
+UC5D3ML2zZbRd6lqznUZvspQ,Curious Culture Club,2025-10-25T21:48:23.254271,filtered_subs,,
+UCgE-QmssW6C5pzC-SsJoNHA,Saurabh Ghadge Vines,2025-10-25T21:48:23.254271,error_scoring,,
+UCOmcA3f_RrH6b9NmcNa4tdg,CNET,2025-10-25T21:48:23.254271,scored,0.619,0.4
+UCgbl9oHkc_6Ztr_gobhE4Jw,Growing Professional,2025-10-25T21:48:23.254271,discovered,,
+UCCsjslC4LlSEA2HtxutBhuA,Kara Ronin,2025-10-25T21:48:23.254271,discovered,,
+UCSwFNoExpammWQrbHKSORKw,Mysteries of the Universe,2025-10-25T21:48:23.254271,filtered_subs,,
+UCBwmMxybNva6P_5VmxjzwqA,Apna College,2025-10-25T21:48:23.254271,scored,0.621,0.4
+UCU9y2nSPxiu3d8xtqBonfig,Mad Scientist,2025-10-25T21:48:23.254271,filtered_subs,,
+UChlNXSK2tC9SJ2Fhhb2kOUw,WallStreetMojo,2025-10-25T21:48:23.254271,discovered,,
+UCX6b17PVsYBQ0ip5gyeme-Q,CrashCourse,2025-10-25T21:48:23.254271,scored,0.412,0.1
+UCIZNSEwyW6nfPFg0ENhZRbA,E-COMMERCE LEARNING,2025-10-25T21:48:23.254271,filtered_subs,,
+UCLGo5qU14grMVt-dHN4sTBQ,Sahasra - A Trading Community,2025-10-25T21:48:23.254271,discovered,,
+UCJz_hSs8ptXOqn7k7blVnHA,Pop Culture Files,2025-10-25T21:48:23.254271,filtered_subs,,
+UCC69dxCZQB9VURlHQ8wesPA,Inc.,2025-10-25T21:48:23.254271,discovered,,
+UC9awv94A7WzWuTUP2frSuDA,Alibaba Group,2025-10-25T21:48:23.254271,discovered,,
+UCUX5AP1M0mBbgUi_WklPbOQ,Nick Automates,2025-10-25T21:48:23.254271,discovered,,
+UC7mYOxUHB2CMvkBNZz0Ry3g,Aryan Jagushte,2025-10-25T21:48:23.254271,filtered_subs,,
+UCNQsm_PPL5jZhcuoowPZDQA,OER Project,2025-10-25T21:48:23.254271,discovered,,
+UCHOXmmnRZyJ1viSUeVby36A,Oliver J Hughes,2025-10-25T21:48:23.254271,discovered,,
+UC5h4sBstYCODsxQ69Zw1TOA,Sendcloud,2025-10-25T21:48:23.254271,filtered_subs,,
+UC2b2wgxm0vFjQfJJ0iRcFRw,Zubair Trabzada | AI Workshop,2025-10-25T21:48:23.254271,discovered,,
+UCIALMKvObZNtJ6AmdCLP7Lg,Bloomberg Television,2025-10-25T21:48:23.254271,error_scoring,,
+UCn8zNIfYAQNdrFRrr8oibKw,VICE,2025-10-25T21:48:23.254271,scored,0.505,0.2
+UCHhYXsLBEVVnbvsq57n1MTQ,The AI Advantage,2025-10-25T21:48:23.254271,discovered,,
+UCf_XYgupvdx7rA44Ap3uI5w,Full Disclosure,2025-10-25T21:48:23.254271,discovered,,
+UC_Hrtaek8gvyOCAkd7wkoLA,Dan McGrain,2025-10-25T21:48:23.254271,filtered_subs,,
+UCQQJnyU8fALcOqqpyyIN4sg,The Finance Storyteller,2025-10-25T21:48:23.254271,discovered,,
+UCViR1rtScfoE5yIafgtitDg,BKFX Studios,2025-10-25T21:48:23.254271,filtered_subs,,
+UCuI8AL6Cq6incgvYBxFoz6g,eCom Labs :: E-commerce Experts,2025-10-25T21:48:23.254271,filtered_subs,,
+UCI_mwTKUhicNzFrhm33MzBQ,ET NOW,2025-10-25T21:48:23.254271,error_scoring,,
+UCXSElHECIsxIWyc7H2iFKRQ,Predestined Preludes,2025-10-25T21:48:23.254271,filtered_subs,,
+UCxoDMG0tvaYO5Xobvtqw5nw,Smile and Learn - English,2025-10-25T21:48:23.254271,error_scoring,,
+UCjWoiheJcpvpSY4ZVIRSifw,Solomon Jagwe,2025-10-25T21:48:23.254271,discovered,,
+UCo7a6riBFJ3tkeHjvkXPn1g,CNBC International,2025-10-25T21:48:23.254271,error_scoring,,
+UCahjwhiaXb4IwtGWFFR64hA,EcoZora,2025-10-25T21:48:23.254271,filtered_subs,,
+UC6L2OZ77xUfOOIW_Qy9LN6A,VS SEVEN,2025-10-25T21:48:23.254271,discovered,,
+UCpGQisjfG8w-E21cG4ScEOA,Hablu Programmer,2025-10-25T21:48:23.254271,discovered,,
+UCzW4Oq9Euz5KSkYzPqRaY3g,Sahakara madhyama / ಸಹಕಾರ ಮಾಧ್ಯಮ,2025-10-25T21:48:23.254271,filtered_subs,,
+UC0T6MVd3wQDB5ICAe45OxaQ,WsCube Tech,2025-10-25T21:48:23.254271,scored,0.66,0.4
+UCaJCXTiSxJSvBYdP5S2URhA,Learn English Grammar ,2025-10-25T21:48:23.254271,filtered_subs,,
+UCu1L6gIubEm3lAL5mVelo5Q,Finance Hacks TV,2025-10-25T21:48:23.254271,filtered_subs,,
+UCJtUOos_MwJa_Ewii-R3cJA,Leila Gharani,2025-10-25T21:48:23.254271,scored,0.486,0.4
+UCEUt6CcPloZwY9rAmhj-_YQ,Dustin Sheffield,2025-10-25T21:48:23.254271,filtered_subs,,
+UC1k4S7pliX3Ke-051ftTP1g,History Hub,2025-10-25T21:48:23.254271,discovered,,
+UCiGWNa6QK6CiKPvv5-YPv8g,Sabrina Ramonov 🍄,2025-10-25T21:48:23.254271,discovered,,
+UCs60_Z83HU76uygzHRQl0kA,Long Term Mindset,2025-10-25T21:48:23.254271,discovered,,
+UCMFUG8LPaBni8Bby7Dzspjw,Jenny,2025-10-25T21:48:23.254271,filtered_subs,,
+UCdZP_6QvuYiHi4yLufgZUNg,PLACITECH,2025-10-25T21:48:23.254271,discovered,,
+UCCjyq_K1Xwfg8Lndy7lKMpA,TechCrunch,2025-10-25T21:48:23.254271,discovered,,
+UClNJKp4_4mhtkjILKUfwD0Q,Per Svanström,2025-10-25T21:48:23.254271,filtered_subs,,
+UCxcoHIHy1FdJ7t5TAa7JXfw,Diksha Arora - Interview Coach,2025-10-25T21:48:23.254271,error_scoring,,
+UCYqAFhPaRhY9fFe7WAN8CQw,CineLab Ai,2025-10-25T21:48:23.254271,discovered,,
+UC6Cni40gXzUu1HT8hoBYjKQ,MI Capital,2025-10-25T21:48:23.254271,filtered_subs,,
+UCD-zodYZX201IkkJrOzki6Q,The WallStreet School,2025-10-25T21:48:23.254271,discovered,,
+UCvknEk1Bjmep7Ebv6QrJGSg,Broke Brothers,2025-10-25T21:48:23.254271,discovered,,
+UCsq38VCprHHb_0rwBNfWFYw,The AI Dude - Tamil,2025-10-25T21:48:23.254271,discovered,,
+UCFWzmY2E8zK97lV_Hs3BA8w,Kakarobot ID,2025-10-25T21:48:23.254271,discovered,,
+UC8eJxPzmvTb12v7LlZUJcLQ,Happy Learning English,2025-10-25T21:48:23.254271,discovered,,
+UCKU0u3VbuYn0wD3CUr-Yn6A,Adam Erhart,2025-10-25T21:48:23.254271,discovered,,
+UCYWdn8GKtpvhc0DmcTQjG_w,Immortal Technique - Topic,2025-10-25T21:48:23.254271,discovered,,
+UC0yTGUfO1DYFiYnxiFfUo2Q,Smart Money Genius,2025-10-25T21:48:23.254271,filtered_subs,,
+UC6PqwFOx6oCOMFvxAbafj5g,XRP Insights,2025-10-25T21:48:23.254271,filtered_subs,,
+UCcaMA33S4L0h9tkFL4K4E7g,Vistek,2025-10-25T21:48:23.254271,discovered,,
+UCXJUdIMZy7TVYpxSZ8STlgQ,Surendra_Gowda,2025-10-25T21:48:23.254271,filtered_subs,,
+UCMRa34kXMAfyNv143SfKepA,Mehar Sindhu Batra,2025-10-25T21:48:23.254271,discovered,,
+UCYJLdSmyKoXCbnd-pklMn5Q,Accounting Stuff,2025-10-25T21:48:23.254271,error_scoring,,
+UCRhZ3e9XU_6L-cY1N_BWlIA,Freedom With AI,2025-10-25T21:48:23.254271,discovered,,
+UCOFl13mRKkQWO18Tl07NlbA,NextGen Robots,2025-10-25T21:48:23.254271,filtered_subs,,
+UCCdWLIdcHA2PDQR1d9UQRFQ,Digilari Media,2025-10-25T21:48:23.254271,filtered_subs,,
+UCZQDF0x18Xe6RZayvod99zA,Him-eesh Madaan,2025-10-25T21:48:23.254271,scored,0.588,0.5
+UCsbL4d_cdG7H4coftiP2lOQ,Exploding Topics,2025-10-25T21:48:23.254271,filtered_subs,,
+UC0gcihnfz6868zzOAtDDYkQ,World Business Outlook,2025-10-25T21:48:23.254271,discovered,,
+UC98K7HKt5z6NQbf8ptn5AtQ,learn_coding,2025-10-25T21:48:23.254271,filtered_subs,,
+UCPnKLYBjYqsOv-SfU8jaSOw,AZ Steuerberatung Digital,2025-10-25T21:48:23.254271,filtered_subs,,
+UC6G5gz3XzGfyte9e9f-eHwQ,GBA John Yenney,2025-10-25T21:48:23.254271,filtered_subs,,
+UCui4jxDaMb53Gdh-AZUTPAg,Liam Ottley,2025-10-25T21:48:23.254271,discovered,,
+UCGtbVv_ACgV7difdVZ92NMw,Corporate Finance Institute,2025-10-25T21:48:23.254271,discovered,,
+UC5_2We-HeVdEeHcIyfmMHOg,Ed Hill | AI Automation,2025-10-25T21:48:23.254271,discovered,,
+UChF5O40UBqAc82I7-i5ig6A,Bloomberg Podcasts,2025-10-25T21:48:23.254271,discovered,,
+UCrlzgjrKUa3AlrfSZTBG2fg,Plan3,2025-10-25T21:48:23.254271,error_scoring,,
+UCOOOIsHK_LAUlDvYIATA-BQ,NielsenIQ Global,2025-10-25T21:48:23.254271,filtered_subs,,
+UC3LQyasN7uuinL2W3z0HpJw,Tiny Realms ,2025-10-25T21:48:23.254271,filtered_subs,,
+UCiZ2z8F8ilr6SC7lOaxAQ4g,camman18,2025-10-25T21:48:23.254271,scored,0.507,0.0
+UC_bOoi0e3L3SJ1xx5TZWHPw,Heimler's History,2025-10-25T21:48:23.254271,error_scoring,,
+UCeFS8u6x_2HFl6n2Xf05KYw,Europe Through the Ages,2025-10-25T21:48:23.254271,filtered_subs,,
+UCP9ldfuWyr1Fuf_xrD2Fehw,Banc of California,2025-10-25T21:48:23.254271,filtered_subs,,
