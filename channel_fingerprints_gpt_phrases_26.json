@@ -1,0 +1,56 @@
+{
+  "timestamp": "2025-10-26T23:15:23.293941",
+  "total_channels": 3,
+  "total_videos_processed": 22,
+  "model": "gemini-2.0-flash-exp",
+  "channels": {
+    "Lenny's Podcast": {
+      "keywords": [
+        "ai enterprise",
+        "developer productivity",
+        "engineering insights",
+        "technology leadership",
+        "machine learning",
+        "software development",
+        "productivity frameworks",
+        "ai trends",
+        "tech interviews",
+        "industry analysis"
+      ],
+      "video_count": 5,
+      "status": "success"
+    },
+    "The Diary of a CEO": {
+      "keywords": [
+        "mindset shifts",
+        "memory hacks",
+        "mentalism techniques",
+        "productivity insights",
+        "leadership lessons",
+        "personal development",
+        "women's health",
+        "expert interviews",
+        "brain rewiring",
+        "emotional intelligence"
+      ],
+      "video_count": 8,
+      "status": "success"
+    },
+    "Colin and Samir": {
+      "keywords": [
+        "content analysis",
+        "youtube strategies",
+        "creator interviews",
+        "filmmaking techniques",
+        "digital storytelling",
+        "platform evolution",
+        "animation tutorials",
+        "comedic commentary",
+        "viral trends",
+        "industry insights"
+      ],
+      "video_count": 9,
+      "status": "success"
+    }
+  }
+}
