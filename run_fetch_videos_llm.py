@@ -88,7 +88,7 @@ def main():
     Saves results to JSON file.
     """
     print("Loading local video data (API calls for video lists are OFF)...")
-    video_file_path = base_dir / "sample_videos_new.csv"
+    video_file_path = base_dir / "sample_videos_26.csv"
 
     try:
         df = pd.read_csv(video_file_path)
@@ -136,7 +136,7 @@ def main():
             fingerprint = create_channel_fingerprint_llm(
                 channel_video_df, 
                 channel_name=channel_name,
-                model_type="gemini"
+                model_type="gpt"
             )
 
             print(f"✅ Fingerprint for {channel_name}:")
@@ -164,7 +164,7 @@ def main():
             }
 
     # === SAVE TO JSON ===
-    output_json_path = base_dir / "channel_fingerprints_gemini_phrases_26.json"
+    output_json_path = base_dir / "channel_fingerprints_gpt_phrases_26.json"
     
     try:
         with open(output_json_path, 'w', encoding='utf-8') as f:
@@ -173,7 +173,7 @@ def main():
         print(f"\n✅ Results saved to: {output_json_path}")
         
         # Also save simplified version (just channel: keywords)
-        simple_json_path = base_dir / "channel_keywords_simple_gpt_phrases.json"
+        simple_json_path = base_dir / "channel_keywords_simple_gpt_phrases_26.json"
         with open(simple_json_path, 'w', encoding='utf-8') as f:
             json.dump(channel_fingerprints, f, indent=2, ensure_ascii=False)
         

@@ -1184,20 +1184,20 @@ base_dir = Path(__file__).resolve().parent
 
 
 # Input Files
-keywords_file_path = base_dir / "channel_keywords_simple_gpt_phrases.json"
-seed_video_data_path = base_dir / "sample_videos_new.csv"
+keywords_file_path = base_dir / "channel_keywords_simple_gemini_phrases_26.json"
+seed_video_data_path = base_dir / "sample_videos_26.csv"
 seen_channels_path = base_dir / "seen_channels.csv"
 
 
 # Output Files (6 files: 4 for individual + 2 for merged)
-all_results_embeddings_path = base_dir / "all_discovered_embeddings_27.csv"
-high_similarity_embeddings_path = base_dir / "high_similarity_embeddings_27.csv"
-all_results_llm_path = base_dir / "all_discovered_llm_27.csv"
-high_similarity_llm_path = base_dir / "high_similarity_llm_27.csv"
+all_results_embeddings_path = base_dir / "all_discovered_embeddings_28.csv"
+high_similarity_embeddings_path = base_dir / "high_similarity_embeddings_28.csv"
+all_results_llm_path = base_dir / "all_discovered_llm_28.csv"
+high_similarity_llm_path = base_dir / "high_similarity_llm_28.csv"
 
 # NEW: Merged output files
-merged_with_duplicates_path = base_dir / "FINAL_SEED_SUBSCRIBE_MERGED_DUPLICATES.csv"
-merged_final_path = base_dir / "FINAL_SEED_SUBSCRIBE_MERGED.csv"
+merged_with_duplicates_path = base_dir / "FINAL_SEED_SUBSCRIBE_MERGED_DUPLICATES_28.csv"
+merged_final_path = base_dir / "FINAL_SEED_SUBSCRIBE_MERGED_28.csv"
 
 
 # Settings
@@ -1205,10 +1205,9 @@ MODEL_PROVIDER = "gpt"  # "gemini" or "openai"
 
 # Multi-seed configuration
 SEED_CHANNELS = [
-    "MagnatesMedia",
-    "TechnicalGuruji", 
-    "Business Inspection BD",
-    "Veritasium"
+    "Lenny's Podcast",
+    "The Diary of a CEO",
+    "Colin and Samir"
 ]
 
 
@@ -1229,7 +1228,7 @@ FINAL_COLUMN_ORDER = [
 
 
 # Thresholds
-SIMILARITY_THRESHOLD_EMBEDDINGS = 0.7
+SIMILARITY_THRESHOLD_EMBEDDINGS = 0.75
 SIMILARITY_THRESHOLD_LLM = 0.7
 MIN_SUBSCRIBERS = 10000
 MIN_VIDEOS = 10
