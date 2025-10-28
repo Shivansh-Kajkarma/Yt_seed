@@ -1,4 +1,3 @@
-# run_fetch_videos.py
 import pandas as pd
 from pathlib import Path
 from utils.youtube_utils import fetch_for_seed_channels
