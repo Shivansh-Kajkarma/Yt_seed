@@ -25,20 +25,20 @@ base_dir = Path(__file__).resolve().parent
 
 
 # --- MODIFIED: Point to your new JSON file with niches ---
-keywords_file_path = base_dir / "channel_fingerprints_gpt_phrases_26.json"
-seed_video_data_path = base_dir / "sample_videos_26.csv"
+keywords_file_path = base_dir / "channel_fingerprints_gpt.json"
+seed_video_data_path = base_dir / "sample_videos.csv"
 seen_channels_path = base_dir / "seen_channels.csv"
 
 
 # Output Files (6 files: 4 for individual + 2 for merged)
-all_results_embeddings_path = base_dir / "all_discovered_embeddings_29.csv"
-high_similarity_embeddings_path = base_dir / "high_similarity_embeddings_29.csv"
-all_results_llm_path = base_dir / "all_discovered_llm_29.csv"
-high_similarity_llm_path = base_dir / "high_similarity_llm_29.csv"
+all_results_embeddings_path = base_dir / "all_discovered_embeddings.csv"
+high_similarity_embeddings_path = base_dir / "high_similarity_embeddings.csv"
+all_results_llm_path = base_dir / "all_discovered_llm.csv"
+high_similarity_llm_path = base_dir / "high_similarity_llm.csv"
 
 # NEW: Merged output files
-merged_with_duplicates_path = base_dir / "FINAL_SEED_SUBSCRIBE_MERGED_DUPLICATES_29.csv"
-merged_final_path = base_dir / "FINAL_SEED_SUBSCRIBE_MERGED_29.csv"
+merged_with_duplicates_path = base_dir / "FINAL_SEED_SUBSCRIBE_MERGED_DUPLICATES.csv"
+merged_final_path = base_dir / "FINAL_SEED_SUBSCRIBE_MERGED.csv"
 
 
 # Settings

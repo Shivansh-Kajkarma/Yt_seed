@@ -6,7 +6,7 @@ BASE = Path(__file__).resolve().parent
 
 def main():
     seed_csv = BASE / "seed_channels.csv"
-    out_csv = BASE / "sample_videos_26.csv"
+    out_csv = BASE / "sample_videos.csv"
 
     if not seed_csv.exists():
         print(f"ERROR: {seed_csv} not found. Place seed_channels.csv in project root.")

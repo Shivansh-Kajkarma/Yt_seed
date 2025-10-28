@@ -28,7 +28,7 @@ def main():
     """
     print(f"--- Starting LLM Fingerprint Run ({MODEL_NAME}) ---")
     print("Loading local video data (API calls for video lists are OFF)...")
-    video_file_path = base_dir / "sample_videos_26.csv"
+    video_file_path = base_dir / "sample_videos.csv"
 
     try:
         df = pd.read_csv(video_file_path)
@@ -137,7 +137,7 @@ def main():
             }
 
     # === SAVE TO JSON ===
-    output_json_path = base_dir / f"channel_fingerprints_{MODEL_TO_USE}_phrases_26.json"
+    output_json_path = base_dir / f"channel_fingerprints_{MODEL_TO_USE}.json"
     
     try:
         with open(output_json_path, 'w', encoding='utf-8') as f:
@@ -146,7 +146,7 @@ def main():
         print(f"\n✅ Results saved to: {output_json_path}")
         
         # Also save simplified version (just channel: keywords)
-        simple_json_path = base_dir / f"channel_keywords_simple_{MODEL_TO_USE}_phrases_26.json"
+        simple_json_path = base_dir / f"channel_keywords_simple_{MODEL_TO_USE}.json"
         with open(simple_json_path, 'w', encoding='utf-8') as f:
             json.dump(channel_fingerprints, f, indent=2, ensure_ascii=False)
         
