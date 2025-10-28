@@ -1,470 +1,774 @@
-﻿Channel_ID,Channel_Name,Date_Added,Processing_Status,Embedding_Score,LLM_Score
-UC6t1O76G0jYXOAoYCm153dA,Lenny's Podcast,2025-10-26T23:22:51.540240,seed,,
-UCGq-a57w-aPwyi3pW7XLiHw,The Diary of a CEO,2025-10-26T23:22:51.540240,seed,,
-UCamLstJyCa-t5gfZegxsFMw,Colin and Samir,2025-10-26T23:22:51.540240,seed,,
-UCZAzKCkqMyGY9-erf0KIhPA,Leland,2025-10-26T23:22:51.541921,filtered_subs,,
-UChZKqB_5RTTgCbKDpQkyk2w,DWIVEDI GUIDANCE,2025-10-26T23:22:51.541921,scored,0.522,0.2
-UCV_P_VGw8c8NyYTIhUGZmHA,Lewis C. Lin,2025-10-26T23:22:51.541921,filtered_subs,,
-UCK4rE09bgQZc0Ni-JqXbjug,Your Next Tech Startup Podcast,2025-10-26T23:22:51.541921,filtered_subs,,
-UCwNBU45ZUUWuupv_20e2C5g,nmhollandadvisory,2025-10-26T23:22:51.541921,filtered_subs,,
-UCcsMXCO4zraXOLHpoGZk9Vg,Neoskill Learning Solutions,2025-10-26T23:22:51.541921,filtered_subs,,
-UC0Z7M_xaeh97piXDZXn5ZXQ,Carson Heady,2025-10-26T23:22:51.541921,filtered_subs,,
-UCAuUUnT6oDeKwE6v1NGQxug,TED,2025-10-26T23:22:51.541921,scored,0.496,0.2
-UCB-Hc7yB9uKkZcHXjAShGhA,Digital Marketing and Advertising Agency,2025-10-26T23:22:51.541921,filtered_subs,,
-UC4z27EsdzrTv49nwVrd7V2Q,Aditya Goel,2025-10-26T23:22:51.541921,filtered_subs,,
-UCvww2lK6ZIAqHioLzy-pqKA,Dhivenya R,2025-10-26T23:22:51.541921,filtered_subs,,
-UCi8lxA9oiOltpDj-wB89Iaw,MEL MHLP Professional Leadership Master Degrees,2025-10-26T23:22:51.541921,filtered_subs,,
-UCMY6ID8NvJa6Upga3iQpIpA,Gazett_EU,2025-10-26T23:22:51.541921,filtered_subs,,
-UCzhfE9Rx01Av1zrOAv4u-8w,PROTA,2025-10-26T23:22:51.541921,scored,0.669,0.4
-UCGJP2hCSso_tdvo058q3E3A,Project Gamma,2025-10-26T23:22:51.541921,filtered_subs,,
-UCkaj1WIFQ1FO4qNoIZUd0Qw,Anthony Saltarelli,2025-10-26T23:22:51.541921,filtered_subs,,
-UCLlGxVFdpYEhNbhsr13Z-Cg,Shatakshi Sharma (all things career & lifestyle),2025-10-26T23:22:51.541921,scored,0.532,0.3
-UCvcRvllAfq7W3u7MOLOJAmg,Student Notes,2025-10-26T23:22:51.541921,scored,0.27,0.1
-UCeb_xQET3mQoyBa8U6wkwqw,Worktrepreneur Media,2025-10-26T23:22:51.541921,filtered_subs,,
-UCtgK8h52DV1M0DYaadEkkMQ,Brainhub,2025-10-26T23:22:51.541921,filtered_subs,,
-UCWo4IA01TXzBeGJJKWHOG9g,Harvard Business Review,2025-10-26T23:22:51.541921,scored,0.709,0.6
-UCpGzudy5AKhypVYdSlaSrCA,Roman Pichler,2025-10-26T23:22:51.541921,filtered_subs,,
-UC5YRr_gy9oFwsHYGf-lRDpw,Everything Product,2025-10-26T23:22:51.541921,scored,0.701,0.5
-UCY6N8zZhs2V7gNTUxPuKWoQ,Ishan Sharma,2025-10-26T23:22:51.541921,scored,0.696,0.4
-UCdpBxfSfd8J7gxEHKcsSUjA,My Tech Story Africa,2025-10-26T23:22:51.541921,filtered_subs,,
-UCL18KYXdzVdzEwMH8uwLf6g,Twins Talk it Up / Twins Talk Tech Leadership,2025-10-26T23:22:51.541921,filtered_subs,,
-UCdMz6KKEDW_1Qqas-ya7S6w,Beyond Coding,2025-10-26T23:22:51.541921,scored,0.822,0.6
-UCK-JYMQjxA144jMOPu7FJhg,Slight Reliability,2025-10-26T23:22:51.541921,filtered_subs,,
-UCeB_OpLspKJGiKv1CYkWFFw,AJ&Smart,2025-10-26T23:22:51.541921,scored,0.505,0.4
-UCrxXuHCTLVGUy0_zI6E8aNg,rocketblocks,2025-10-26T23:22:51.541921,scored,0.699,0.4
-UCFhtRbLrvqWao7FyoFheQvQ,CEED Slovenia,2025-10-26T23:22:51.541921,filtered_subs,,
-UCbwPfuUmnI5R6YpDzu0z8BQ,Ayush Shukla,2025-10-26T23:22:51.541921,scored,0.67,0.5
-UCoQSwIyLdwmFWDTaIrvvwRQ,LA New Product Development Team,2025-10-26T23:22:51.541921,filtered_subs,,
-UCiOyXFg_CK39wF68q9PwcoA,Fulspire,2025-10-26T23:22:51.541921,filtered_subs,,
-UCRJ_SlvfLC5mZszv_zLHIRw,The Limitless Library,2025-10-26T23:22:51.541921,filtered_subs,,
-UCs_tLP3AiwYKwdUHpltJPuA,GOTO Conferences,2025-10-26T23:22:51.541921,scored,0.652,0.5
-UC0-Y-E0Xa-0Hl7r82wG-zOw,Agilemania,2025-10-26T23:22:51.541921,filtered_subs,,
-UCHJ7ZiZ_N5nTA5h2tPa5nyw,Trunk,2025-10-26T23:22:51.541921,filtered_subs,,
-UCnYIyiBFXXvCFPHWNqaScFA,2 LIT Chicks Podcast (with Fern and Alicia),2025-10-26T23:22:51.541921,filtered_subs,,
-UCADk_KDicmV8vAfOZTSBAPg,IT Voice ,2025-10-26T23:22:51.541921,filtered_subs,,
-UCBa5G_ESCn8Yd4vw5U-gIcg,Stanford Online,2025-10-26T23:22:51.541921,scored,0.508,0.3
-UCBuyU7IJ0OKYA2Bp47Q2RsA,Nolan Perkins,2025-10-26T23:22:51.541921,scored,0.58,0.4
-UC0f6CWFfyfh8CUdCJmuiP9Q,Ceosquare,2025-10-26T23:22:51.541921,filtered_subs,,
-UC16Elh84QmIxvdieuaKn7ug,Sugat Nayak,2025-10-26T23:22:51.541921,scored,0.751,0.7
-UCIJI3d_oQvKMdNbwBi3OFXA,Hacking the Case Interview,2025-10-26T23:22:51.541921,scored,0.667,0.4
-UCmM3eCpmWKLJj2PDW_jdGkg,LeadDev,2025-10-26T23:22:51.541921,scored,0.738,0.5
-UCpT0umhiM9cMq1JyvrHH8TQ,Nabanita Dutta,2025-10-26T23:22:51.541921,filtered_subs,,
-UCJVBbjQ88ASbZu1MHndjOcw,Skaling Ventures,2025-10-26T23:22:51.541921,filtered_subs,,
-UCp6he_bYdcjyaCB4BViqCdg,vandertop2,2025-10-26T23:22:51.541921,filtered_subs,,
-UCFJy5E_3XknWv42cvedoALw,IGotAnOffer: Product management,2025-10-26T23:22:51.541921,scored,0.71,0.7
-UC-Fs4UEaXqSK_yoJSsClfFw,Saad Ahmad,2025-10-26T23:22:51.541921,filtered_subs,,
-UCCktnahuRFYIBtNnKT5IYyg,Intellipaat,2025-10-26T23:22:51.541921,scored,0.644,0.3
-UCszXkm7cOuW6xxqFxXaeSog,Manish Upadhyay,2025-10-26T23:22:51.541921,filtered_subs,,
-UCtb4AVV80PpMl_LzApYYI0A,Zealous System,2025-10-26T23:22:51.541921,filtered_subs,,
-UC_Ep-ke155VFslCj1R4yDCg,The Dollar Diaries,2025-10-26T23:22:51.541921,filtered_subs,,
-UCxsd9YxIFTx5YFjWkC0mpUQ,MIT Professional Education,2025-10-26T23:22:51.541921,filtered_subs,,
-UCmifzReE4ECNjSW3wX4RZdg,Traction - A Community for Innovators,2025-10-26T23:22:51.541921,scored,0.762,0.6
-UCIXoDGCTXR6zc_AdddiQ6Mw,Level-Up Engineering Podcast 🎤,2025-10-26T23:22:51.541921,filtered_subs,,
-UCNMWTxS9lYd-Qog5BMj-6TQ,Internexxus - Find Internships & Interns On The Go,2025-10-26T23:22:51.541921,filtered_subs,,
-UCsKf5HFzqd1aO11RC6srqIA,HelloMeets,2025-10-26T23:22:51.541921,filtered_subs,,
-UCzpDM7pbVBxV1WwjYux0Ixw,PM Diego Granados,2025-10-26T23:22:51.541921,scored,0.819,0.7
-UCzgI3V2ZJr6-_1EjbHOXgdw,Spero Ventures,2025-10-26T23:22:51.541921,filtered_subs,,
-UCwAywyPrQlf5XvqzE8Y6GWg,Dianna Yau,2025-10-26T23:22:51.541921,scored,0.83,0.8
-UCL2IbOrDhH-4b8XLVReuTEQ,Cloudgov.ai_Official,2025-10-26T23:22:51.541921,filtered_subs,,
-UChhw6DlKKTQ9mYSpTfXUYqA,Starter Story,2025-10-26T23:22:51.541921,scored,0.668,0.4
-UC9NdH5eRHrkLI0pBKHfNYCQ,Digi Twins AI News,2025-10-26T23:22:51.541921,filtered_subs,,
-UCjm_qVkCPjOVDz9BWjNqO9A,Exponent,2025-10-26T23:22:51.541921,scored,0.792,0.5
-UCJWcF0ex7_doPdIQGbVpDsQ,Lockheed Martin,2025-10-26T23:22:51.541921,scored,0.449,0.1
-UCQ6jp5NvQBHTHcBi3i77a6A,Rooftop App,2025-10-26T23:22:51.541921,scored,0.249,0.1
-UC5M61SAhpsoLxMY6omj8iJg,Virtual Global Leadership Podcast,2025-10-26T23:22:51.541921,filtered_subs,,
-UCWuxxrukjg_VYSU8ZiFDL4A,Blockshelf,2025-10-26T23:22:51.541921,filtered_videos,,
-UCnC8SAZzQiBGYVSKZ_S3y4Q,Nikhil Kamath,2025-10-26T23:22:51.541921,scored,0.729,0.4
-UCbygDe8SRwTaEiFwHdoQxgg,The Swag Wala PM,2025-10-26T23:22:51.541921,scored,0.7,0.6
-UCL_Pj0l-tqhudEUcn3VjOAw,Tech with Sukant,2025-10-26T23:22:51.541921,scored,0.702,0.6
-UCJUDXrW-KBiH4Y6ti5gALoA,StaffBuffalo,2025-10-26T23:22:51.541921,filtered_subs,,
-UC9pK2dlufryYa-aMsRqLXeQ,Hindu Matrimoney ,2025-10-26T23:22:51.541921,scored,0.403,0.1
-UCFHnDTQrRshnLzLUJ3mvGQQ,Product Pathways,2025-10-26T23:22:51.541921,filtered_subs,,
-UCTQuKo8v0PaPCvk5aRxc_Yg,Charlie Chang,2025-10-26T23:22:51.541921,scored,0.714,0.4
-UCTtPtGbmIQKDi6R53FgECRQ,AnalysisTrends,2025-10-26T23:22:51.541921,filtered_subs,,
-UCyCQgc5FBr9XUcR8RX1OZrw,Suzuki R&D Center India,2025-10-26T23:22:51.541921,filtered_subs,,
-UCsHBhXybRz2CCfpU0hWp7ow,Aakash Gupta,2025-10-26T23:22:51.541921,scored,0.59,0.5
-UCCwjfeJB5S0-O1y9LOCQYdw,Leaders Talk,2025-10-26T23:22:51.541921,scored,0.653,0.4
-UCtMuULsLNZ84Ugu9U9haUVw,High Potential Career Planning,2025-10-26T23:22:51.541921,filtered_subs,,
-UCkUAWj6GPC01or9N_R7V5rw,Nodir Khalilov,2025-10-26T23:22:51.541921,filtered_subs,,
-UCC5zwcadCvNiNm5JCe7hjAQ,Chloe Shih,2025-10-26T23:22:51.541921,scored,0.608,0.2
-UCwUR8nuFbAgsaRSVnaLHYIg,Gillespie Florists,2025-10-26T23:22:51.541921,filtered_subs,,
-UCPykAtN3GPv5B6WFmu2X_Lg,SCET Berkeley,2025-10-26T23:22:51.541921,filtered_subs,,
-UCVqQVoIHvC1nov23HdzBjUA,Aarushi Sharma,2025-10-26T23:22:51.541921,filtered_subs,,
-UCozlv5hcNUusrkmqaXzKExQ,Educationleaves,2025-10-26T23:22:51.541921,scored,0.586,0.5
-UCpV5ggNh19pgaU488rd5eFw,LTS,2025-10-26T23:22:51.541921,filtered_subs,,
-UCrUAUYgV0cPGnQnpPD0L2uQ,Amplitude,2025-10-26T23:22:51.541921,filtered_subs,,
-UCWsaWkXgGKOQGxEPddgbfHA,Harshdeep Kaushal [IITB],2025-10-26T23:22:51.541921,filtered_subs,,
-UCH3f-oxgQ9EqkO2My5VLyrg,Learning Leader Lab,2025-10-26T23:22:51.541921,filtered_subs,,
-UCpZZ4qBdpvqrI0oSGMA5dtw,eskilly,2025-10-26T23:22:51.541921,filtered_subs,,
-UCwpDiIG3GttKdSPDz8Wst8g,Manish Anant ,2025-10-26T23:22:51.541921,filtered_subs,,
-UCbP-B7iFfg1RWlTJsi3l5vQ,Product design and development,2025-10-26T23:22:51.541921,scored,0.481,0.4
-UCYnNkdBz6w5FQOlXKgZBYqw,Pallavi Sehgal,2025-10-26T23:22:51.541921,scored,0.687,0.5
-UCviDBH-sq3s51FlEnKeIzMQ,Tech Teams Today by Revelo,2025-10-26T23:22:51.541921,filtered_subs,,
-UCT99jQWxqMHScCDteRKUfMg,Symbiosis Centre for Distance Learning,2025-10-26T23:22:51.541921,filtered_subs,,
-UCykvtlMgb581UYOyYa5H_Wg,Soma Datta,2025-10-26T23:22:51.541921,scored,0.655,0.4
-UCiwz4_tbGyDYE64TuKe5-0g,Google Developers Space,2025-10-26T23:22:51.541921,filtered_subs,,
-UChx1ibI5TI7bBva0Z21azrw,Dan Olsen,2025-10-26T23:22:51.541921,scored,0.825,0.7
-UCreNTscKory5rfXHFOZNAyg,Nacho Bassino,2025-10-26T23:22:51.541921,filtered_subs,,
-UCIMB32bLAprlbmDHP2rmkzg,Stanton Chase,2025-10-26T23:22:51.541921,filtered_subs,,
-UCyAZtIT2LbUv7Q840iBXI1A,Engineering Management Institute,2025-10-26T23:22:51.541921,scored,0.65,0.4
-UCnvB3xCvPSyrBAMHgBe3dVw,Ben Alistor,2025-10-26T23:22:51.541921,scored,0.698,0.5
-UCaIuVqVWcZwnVGeTNeWK76Q,LaunchBoom,2025-10-26T23:22:51.541921,scored,0.613,0.4
-UCNV87NReC5Mwpyqmp2G36yg,Dotinacademy,2025-10-26T23:22:51.541921,filtered_subs,,
-UCfwPhNXzIhAiMykh34cWP3g,Aakash Mehta,2025-10-26T23:22:51.541921,filtered_subs,,
-UCw4t-Dafc-XlnagELJbCbhg,Renji Bijoy,2025-10-26T23:22:51.541921,filtered_subs,,
-UCePZghwS-KD-8fADUOAr_tg,Product HQ,2025-10-26T23:22:51.541921,scored,0.69,0.6
-UC4RLUkXYV2n8jFYFG2SDNng,shiv ki Mahima• 2.4M views • 6 hours Ago  ...,2025-10-26T23:22:51.541921,filtered_subs,,
-UCMwRAZBy0YAltwmzvUYYVrQ,ETManufacturing,2025-10-26T23:22:51.541921,filtered_subs,,
-UCfJOFoYx_BfEGj1CqRH8E1w,The Tech Trek,2025-10-26T23:22:51.541921,filtered_subs,,
-UCpm8KDblMPiJLEQUIG7pYCw,A World of Difference Podcast,2025-10-26T23:22:51.541921,filtered_subs,,
-UCFUooAkJp0TtvsgnU3m899w,The Priyanka Shinde Podcast,2025-10-26T23:22:51.541921,filtered_subs,,
-UCU0yRM66B9uMwSJik4sP74w,Balaji Rao,2025-10-26T23:22:51.541921,filtered_subs,,
-UCw5bOAzVABn_yGqvYQfWdQw,The Weird Canadian,2025-10-26T23:22:51.541921,filtered_subs,,
-UCBPxh6QZ4VRzDnWeFAvJQ3g,Wide for the Win,2025-10-26T23:22:51.541921,filtered_subs,,
-UCZ37wuLYmh5fHTUbqy2VNGA,Ben Erez,2025-10-26T23:22:51.541921,filtered_subs,,
-UC_oji6l_-xwhmZqCxRGuAXw,First Round Capital,2025-10-26T23:22:51.541921,scored,0.862,0.7
-UCjOeIGWiIhPdKDrDRrVnvRA,PM School by NextLeap,2025-10-26T23:22:51.541921,scored,0.859,0.7
-UCEDr9FfkfzsT-hJOQsyKyvg,Jelvix | TECH IN 5 MINUTES,2025-10-26T23:22:51.541921,scored,0.619,0.4
-UCzwCEE_PchiBULMnAJqhGVg,Raj Shamani,2025-10-26T23:22:51.541921,scored,0.605,0.3
-UCP8hoFTT867uOILbyEiJQBQ,Inside The Product,2025-10-26T23:22:51.541921,filtered_subs,,
-UCfeA42cVeiPnrI8FflCXbnQ,Yash Burman,2025-10-26T23:22:51.541921,scored,0.755,0.5
-UC3J6vFySWqpbOKT2QI8As9g,Becoming an Engineer,2025-10-26T23:22:51.541921,scored,0.727,0.5
-UCinyEr-Fly9Yp1zMFx_D0cQ,Anik Singal,2025-10-26T23:22:51.541921,scored,0.578,0.3
-UCyrxBCde2MK_IAe7lhrNGPQ,Chris Schwenk | Tech Jobber Podcast,2025-10-26T23:22:51.541921,filtered_subs,,
-UC6hlQ0x6kPbAGjYkoz53cvA,Product School,2025-10-26T23:22:51.541921,scored,0.765,0.6
-UCX5EbqeePMT30bKKgePlTUg,DesignWithAjay,2025-10-26T23:22:51.541921,scored,0.504,0.2
-UCApljGTYgjBK5CsaexGJTqg,Feel the Boot,2025-10-26T23:22:51.541921,scored,0.59,0.6
-UC2qMqwfx5YqBvs1dvTwMCAA,OMEGA TROVE CONSULTING ,2025-10-26T23:22:51.541921,filtered_subs,,
-UCjxABpYHKmBoWjTztHWgvug,foreverlovingyou_tau,2025-10-26T23:22:51.541921,filtered_subs,,
-UCoqSG2qr9hXbP0ok_YimS9Q,Accompany Akki Clips,2025-10-26T23:22:51.541921,filtered_subs,,
-UCXZ5pycF2KAT8jxe0Q-49Cg,Manoj,2025-10-26T23:22:51.541921,filtered_subs,,
-UCK2dSIC9Hz_Ncf2pOrl1Nwg,Top Interview Guide ,2025-10-26T23:22:51.541921,filtered_subs,,
-UCDepXzkz8fxUQsq3W03gqgA,Dominating Motivation,2025-10-26T23:22:51.541921,scored,0.568,0.3
-UCOLOjaq0ITzsXapmHokCiVQ,CGS YP Committee,2025-10-26T23:22:51.541921,filtered_subs,,
-UCc707M4Ey0qECi56KPqgJjA,Productized,2025-10-26T23:22:51.541921,scored,0.854,0.7
-UCh-t8Qx7OsCD6WhbElwGqEg,CaseCoach,2025-10-26T23:22:51.541921,scored,0.649,0.4
-UCN-UrWHGxEu4-NpT0mAxAZw,Steward Your Business,2025-10-26T23:22:51.541921,filtered_subs,,
-UCcefcZRL2oaA_uBNeo5UOWg,Y Combinator,2025-10-26T23:22:51.541921,scored,0.731,0.5
-UCizC13oolIOChTMq1zATIRQ,Unreasonable,2025-10-26T23:22:51.541921,filtered_subs,,
-UCIXcpwAsd6uO6PQ7VaMbXpg,Dr. Nancy Li - Director of Product,2025-10-26T23:22:51.541921,scored,0.798,0.8
-UCv2Su_fViMcxMp0g1axbFtA,Ananta Chhajer,2025-10-26T23:22:51.541921,scored,0.567,0.3
-UCxlVmdVFH9JFIvvzJqg0qsw,nobleventure_network,2025-10-26T23:22:51.541921,scored,0.575,0.3
-UCm_WkN0wg49-eG4SymAQ_4g,Harvard Innovation Labs,2025-10-26T23:22:51.541921,scored,0.71,0.5
-UCTldghEzPQdyF8da-mW1Apg,Joyce Tsang Content Marketing,2025-10-26T23:22:51.541921,filtered_subs,,
-UC2htIc3-njRI5BKTJ2QqNfA,Our Future,2025-10-26T23:22:51.541921,scored,0.74,0.6
-UCwFzeQDf9cGm_ZeTXV_t5SA,ZPZ Education,2025-10-26T23:22:51.541921,scored,0.542,0.2
-UCWx7JXxm2xkTabER32I0GZg,The BarberShop with Shantanu,2025-10-26T23:22:51.541921,scored,0.64,0.4
-UCk2U-Oqn7RXf-ydPqfSxG5g,Mel Robbins,2025-10-26T23:34:38.985742,scored,0.625,0.6
-UC6oh54zIYKyW6hgBiZzLLsA,Robin Sharma,2025-10-26T23:34:38.985742,scored,0.884,0.8
-UCUTLYLuN9v5OswFEJ6LYz9Q,all in one,2025-10-26T23:34:38.985742,scored,0.754,0.7
-UC8cH78p4ZaR_F-S7iLSE0PQ,Dr. Haley Perlus on Sport & Performance Psychology,2025-10-26T23:34:38.985742,filtered_subs,,
-UCn-LrHNSs5UefYS1tUbmgWg,Future Ready Leadership With Jacob Morgan,2025-10-26T23:34:38.985742,scored,0.711,0.5
-UCxeOH32jDFcRBV1D2lh7eFQ,Mindset Coaching Academy,2025-10-26T23:34:38.985742,scored,0.881,0.7
-UCHl3aFKS0bY0d8JwqNysaeA,The Mindset Mentor Podcast,2025-10-26T23:34:38.985742,scored,0.714,0.7
-UCViP6KOfK3NZswJB3OgsrPw,Conversations with Sagar Babar,2025-10-26T23:34:38.985742,filtered_subs,,
-UCz1NLacoZW15H1tWou-FnzA,Silent words ,2025-10-26T23:34:38.985742,filtered_subs,,
-UCcT6w3xUyVshyR2_2vrMp1w,WUSA9,2025-10-26T23:34:38.985742,scored,0.472,0.2
-UC2rAZZvmvL8vowu0qQXNG-Q,Motivational Viral TV,2025-10-26T23:34:38.985742,filtered_subs,,
-UCBkFbJjVDyI-JB_6SbQG8EA,Wayne Crowe,2025-10-26T23:34:38.985742,filtered_subs,,
-UCtQZZwTcg7y2fuC5b0UdBfQ,10g Colin,2025-10-26T23:34:38.985742,scored,0.501,0.3
-UCO1Sy87YUCPrZD2uwo8aOWQ,Cricket Mentoring,2025-10-26T23:34:38.985742,scored,0.621,0.3
-UCkFE6GCezYXF1xcqlcaz1tQ,Jasmin Siri,2025-10-26T23:34:38.985742,scored,0.82,0.6
-UCTC7VG5Op60GVg19ZizDfAw,Insights Learning and Development,2025-10-26T23:34:38.985742,filtered_subs,,
-UCLNyswnPaNvY7RmpZsE1nKQ,Startup Istanbul,2025-10-26T23:34:38.985742,scored,0.526,0.5
-UCKfBgVQJRKxDcPYpK0Qamlw,Behind The Dreams Podcast,2025-10-26T23:34:38.985742,filtered_subs,,
-UCOJwf7ipiN8E9oh-ZXUxitA,Disruptive Doctors®,2025-10-26T23:34:38.985742,filtered_subs,,
-UCkNfXIZJofgHw9IPaKhRL8g,JITO JIIF,2025-10-26T23:34:38.985742,filtered_subs,,
-UC9kcWF-Vt2_3_UkHy8zyVeQ,AkzoNobel,2025-10-26T23:34:38.985742,filtered_subs,,
-UCSa1lM6_166f-Wum30nXZ7A,Nadja La Placa ,2025-10-26T23:34:38.985742,filtered_subs,,
-UCbk_QsfaFZG6PdQeCvaYXJQ,Jay Shetty Podcast,2025-10-26T23:34:38.985742,scored,0.783,0.8
-UCUrTYvYjyoc-imek4-BaB0w,Technical Halchal,2025-10-26T23:34:38.985742,filtered_subs,,
-UCm3i_fqq8dqsV-dTAriv2KA,Discovery Science,2025-10-26T23:34:38.985742,scored,0.317,0.1
-UCkrCQJRiS1BX88wIUStteWQ,AGAPE INSIGHTS,2025-10-26T23:34:38.985742,filtered_subs,,
-UC1fA5yoLLyvr_6b4NRMnLYg,Association for Applied Sport Psychology,2025-10-26T23:34:38.985742,filtered_subs,,
-UCtGvqhEH3vokN2BLRROUmLA,The Profit Channel,2025-10-26T23:34:38.985742,scored,0.853,0.7
-UC6n9_bONnLWy168-8vRgC0w,Authors On Mission,2025-10-26T23:34:38.985742,filtered_subs,,
-UCWsslCoN3b_wBaFVWK_ye_A,Hamza,2025-10-26T23:34:38.985742,scored,0.825,0.7
-UC0OM6nE0l05r52VpcIPDaiQ,Greenpasture24,2025-10-26T23:34:38.985742,filtered_subs,,
-UCFk7dqVnBayNPbrMtIwtaSw,MasterClass,2025-10-26T23:34:38.985742,scored,0.757,0.6
-UCRqjvP8KCzc5ayy0W2Gu8QA,Audible,2025-10-26T23:34:38.985742,scored,0.517,0.3
-UC7urt-oXYb5QCES9gMqtilA,Evette Renee,2025-10-26T23:34:38.985742,scored,0.532,0.3
-UC8QZDYMwbYyjW71pWK30gog,Mind Body Soul,2025-10-26T23:34:38.985742,scored,0.485,0.2
-UCP4En-sFgQ1ZWYnUoF337XQ,J Mystic Kaur,2025-10-26T23:34:38.985742,filtered_subs,,
-UCZ03ijYyMtd5IcXI1w9eoog,Monica Villegas,2025-10-26T23:34:38.985742,scored,0.441,0.2
-UCviTEmZBxwmguDb1iz7OVuQ,Mindset Ash,2025-10-26T23:34:38.985742,scored,0.877,0.8
-UCmSQvFLvcig5l057tbKQfRw,Mindvalley Coach,2025-10-26T23:34:38.985742,scored,0.772,0.7
-UCKvBD4rHWwlFpOhQZVXR95g,SantwinderSinghWaraich,2025-10-26T23:34:38.985742,scored,0.668,0.5
-UCotTDvYBsvdkJfDotYhn9BQ,travelroller,2025-10-26T23:34:38.985742,scored,0.499,0.3
-UCqlmwAUmsqCb8VPYTq2Ul3Q,Rise With Pawan,2025-10-26T23:34:38.985742,scored,0.48,0.2
-UCsXfORYekBNUSWcENYDgXkg,TimelessThoughts,2025-10-26T23:34:38.985742,filtered_subs,,
-UCQM428Hwrvxla8DCgjGONSQ,JavaScript Conferences by GitNation,2025-10-26T23:34:38.985742,scored,0.751,0.4
-UCxXMmbPx89oOccY0OZF0ILQ,Sam Martin - Peak Performance,2025-10-26T23:34:38.985742,scored,0.743,0.6
-UCfmC3QhX4_RQUQQvHL7wg0w,Marie Olivie,2025-10-26T23:34:38.985742,filtered_subs,,
-UCgm1eetClQrr9F0YguCfmmA,NSW Institute of Sport,2025-10-26T23:34:38.985742,filtered_subs,,
-UChg_DjKDG8a12gtPuJZvLAg,Mr. P-Fit,2025-10-26T23:34:38.985742,filtered_subs,,
-UCEhxa7_qEjcXup-KF6W5itQ,Oddplus,2025-10-26T23:34:38.985742,filtered_subs,,
-UCk7jHqdlFFDBhC1QIFqi54w,Chris Voss,2025-10-26T23:34:38.985742,scored,0.672,0.7
-UCwMMw5RCT3wz2INAXKQ5YVA,LOLatiao,2025-10-26T23:34:38.985742,filtered_subs,,
-UCj7qpRNf5slYIV89lr5NxNg,Pritika Loonia,2025-10-26T23:34:38.985742,scored,0.703,0.6
-UCd3dxTJ4ZaqaJkWEsmixRAw,Human Garage TV,2025-10-26T23:34:38.985742,scored,0.507,0.3
-UCMV9uC1MAYGKBYFZldfSc3g,Inspire Within,2025-10-26T23:34:38.985742,scored,0.76,0.6
-UCmF7qzCR8jRhTOta93P7y1Q,The Big-League Motivation,2025-10-26T23:34:38.985742,scored,0.796,0.7
-UCekSd2L_DUUDUCvNig0YATw,Osteoporosis Foundation of New Mexico,2025-10-26T23:34:38.985742,filtered_subs,,
-UC8PICQUP0a_HsrA9S4IIgWw,Motivation2Study,2025-10-26T23:34:38.985742,scored,0.854,0.6
-UCRkMGFOLSTqu049VqyMKZCQ,Jumpy talks,2025-10-26T23:34:38.985742,filtered_subs,,
-UCsF6kj6zP_dlV-zxDUpx61Q,Nadine | Mindset Coach,2025-10-26T23:34:38.985742,filtered_subs,,
-UCPmfPl-BsCd3wmE8i45LAoA,Simon Sinek,2025-10-26T23:34:38.985742,scored,0.858,0.8
-UCNI7ssiq7aWCkjE9RliSjvg,Success Mindset ,2025-10-26T23:34:38.985742,scored,0.833,0.7
-UC67Vc0fkLYeUPBp1f02VY9Q,edX,2025-10-26T23:34:38.985742,scored,0.616,0.3
-UC2h6JNHCnyEsdsaRnvwl2XQ,Thrive Networks,2025-10-26T23:34:38.985742,filtered_subs,,
-UCKlDQGSWD8VpwiWtMeEf-xg,Marching Health,2025-10-26T23:34:38.985742,filtered_subs,,
-UC9vLdyHatOhRrCwQXq3HmQQ,Motivation Ark,2025-10-26T23:34:38.985742,scored,0.73,0.6
-UCg7DiVozpH8YkDNclqijE3A,Relab Studios,2025-10-26T23:34:38.985742,scored,0.735,0.4
-UCyGOloOIJWt8NlE4tnejQeA,MedCircle,2025-10-26T23:34:38.985742,scored,0.612,0.4
-UCPP4sx8_Zg-S0Vsp3Ghb2WA,SocialNeuro,2025-10-26T23:34:38.985742,scored,0.676,0.4
-UCI0DGBJPOzGHp-XsFA2S6eQ,ALPHA CONVICTION,2025-10-26T23:34:38.985742,filtered_subs,,
-UCiFpRtZdrPZmcFVt3KYcXBA,Ethan Welby,2025-10-26T23:34:38.985742,filtered_subs,,
-UC_PD5jSD88G2sM_B4RzYtQA,World Class Business Leaders,2025-10-26T23:34:38.985742,filtered_subs,,
-UCOaFjrkfRyKWj4ZjBRXdm8Q,Dr. Michael Moeller,2025-10-26T23:34:38.985742,scored,0.398,0.4
-UCds7ZmULGgdW4ISLlf301Xw,Optimized Muslim,2025-10-26T23:34:38.985742,filtered_subs,,
-UCved8YzDpU27zadCP7tiBDQ,Ghost Writing,2025-10-26T23:34:38.985742,filtered_subs,,
-UCVobORsiSuq-9eW7rZPBxxQ,The Balance Theory Podcast,2025-10-26T23:34:38.985742,scored,0.669,0.6
-UC3Zl_fsZa2CvS1q23Mr1AcA,Fitt Insider,2025-10-26T23:34:38.985742,filtered_subs,,
-UCp8u5P52Us4mbcyBDaftgMg,Ryan Hanley | Finding Peak,2025-10-26T23:34:38.985742,scored,0.867,0.8
-UChpWgrkJY_i7F6wwI_TOnrg,Foundr ,2025-10-26T23:34:38.985742,scored,0.614,0.6
-UCAQfg8CZ0wNE0hPEOQI8gDQ,The Stronger Leader,2025-10-26T23:34:38.985742,filtered_subs,,
-UC9UC4Xbw972rKzwOqK53H2g,Tanner Clinic,2025-10-26T23:34:38.985742,filtered_subs,,
-UCwrzhaGy4oAHu8clPCVol3g,SONU SHARMA,2025-10-26T23:34:38.985742,scored,0.764,0.7
-UCMzRxL-KAkGdQ9J3S3XbKxQ,Vijender Masijeevi,2025-10-26T23:34:38.985742,scored,0.433,0.2
-UCekBJD1qkfDdwnyMt24Zpeg,Money Brain ,2025-10-26T23:34:38.985742,scored,0.672,0.5
-UCtsbjeWYzqO7Ug1NDceKvrA,Univ WesternStates,2025-10-26T23:34:38.985742,filtered_subs,,
-UCbewOdkUckydQCPU-3Pm3NA,Victoria Dorsano,2025-10-26T23:34:38.985742,scored,0.653,0.4
-UCRPKXKBG8n6r6vIXoxsD2pQ,London Business School,2025-10-26T23:34:38.985742,scored,0.67,0.4
-UCueouG14QNrxfW36Y_t4HsQ,Scott Oldford,2025-10-26T23:34:38.985742,scored,0.639,0.7
-UCrtPXCqjm9c7nqgJL-vBSZg,CareerVidz,2025-10-26T23:34:38.985742,scored,0.767,0.4
-UCmsjMxtIAmrGxu0IcQwsFPQ,Digital Great Commission Ministries,2025-10-26T23:34:38.985742,scored,0.424,0.1
-UCHjFfIm7h0ItvnTItmR_2Ow,TLM Corporation ,2025-10-26T23:34:38.985742,filtered_subs,,
-UCwK2H1qt5AaI8Wo2XR8v_mg,Hapbee Technologies,2025-10-26T23:34:38.985742,filtered_subs,,
-UCVZdPBjfsbzK3GVKdht_lFQ,Indeed for Business,2025-10-26T23:34:38.985742,filtered_subs,,
-UC6Em3d46bbhlIF1j4ZZrs9g,레나: 비가 와야 무지개가 뜨는 법,2025-10-26T23:34:38.985742,filtered_subs,,
-UCmtBqvOp6xHlecDO0Un9O4w,School of Hard Knocks,2025-10-26T23:34:38.985742,scored,0.636,0.6
-UCuBTbQUwGIvQ4vTPvq8gMeg,Мудрые цитаты. Истории из жизни ,2025-10-26T23:34:38.985742,filtered_subs,,
-UCkV8s501RvpCnFsnikCkl2w,Rafeek Anthru,2025-10-26T23:34:38.985742,filtered_subs,,
-UCbdBMLJwGUkMSJyR5sXjoEA,AllCountyJobs,2025-10-26T23:34:38.985742,filtered_subs,,
-UCnIP9-YVz693bmhC9tVhBBQ,Adam Lamb,2025-10-26T23:34:38.985742,filtered_subs,,
-UCCV7mxEvSOldZYO5lAJNelw,AI IXX,2025-10-26T23:34:38.985742,scored,0.436,0.2
-UCwcFnpyQxEgx9woI7JGaXow,Scott D. Clary - Success Story Podcast,2025-10-26T23:34:38.985742,scored,0.856,0.8
-UCcqfCULCA8wmkXJP-nMuSgw,Positive Pulse,2025-10-26T23:34:38.985742,filtered_subs,,
-UCsJbtfpVKHM7TRblaE1ucOA,Humans of Bombay,2025-10-26T23:34:38.985742,scored,0.666,0.5
-UCkIkmyyQqdDhh5NEikdWp9w,Dr. Dan Sullivan,2025-10-26T23:34:38.985742,filtered_subs,,
-UCGKtHedQuqaCEohsti2E8Pw,notredamebusiness,2025-10-26T23:34:38.985742,filtered_subs,,
-UCxCcu9pet4dljrBLf8R5nwA,Leila Hormozi,2025-10-26T23:34:38.985742,scored,0.832,0.8
-UCir93b_ftqInEaDpsWYbo_g,Practical Psychology,2025-10-26T23:34:38.985742,scored,0.603,0.4
-UCIHdDJ0tjn_3j-FS7s_X1kQ,Valuetainment,2025-10-26T23:34:38.985742,scored,0.424,0.2
-UCmf6XOv4in6_6eyDYCpWy0Q,Mario Rios,2025-10-26T23:34:38.985742,scored,0.744,0.5
-UCnC9EtbyuWFVYbRTG1fzu7A,ImproveNow,2025-10-26T23:34:38.985742,scored,0.698,0.4
-UCGetiqFX7l-8unkK1LyrG3A,AdviceWithErin,2025-10-26T23:34:38.985742,scored,0.702,0.5
-UCZOXyvJUiTQ8ZTe0Xf4KsxQ,Rala Infotech,2025-10-26T23:34:38.985742,filtered_subs,,
-UC4kj-SbHp8th4iZYgXxnB3w,acib GmbH,2025-10-26T23:34:38.985742,filtered_subs,,
-UC1GAhk8NbgpaTUUSw_QlkZw,Behind the Brand,2025-10-26T23:34:38.985742,scored,0.661,0.6
-UCimu7TORTNIelLT63skZ6Yg,Jazzys World TV,2025-10-26T23:34:38.985742,scored,0.607,0.2
-UCT1UMLpZ_CrQ_8I431K0b-g,"Conquer Aging Or Die Trying! Mike Lustgarten, PhD",2025-10-26T23:34:38.985742,scored,0.412,0.4
-UCMEe1yi-_PcOFL8boIj72Hw,Adam Bennett,2025-10-26T23:34:38.985742,filtered_subs,,
-UCsx-bX-BVBqsDwdxxzpOXMQ,Firm Learning,2025-10-26T23:34:38.985742,scored,0.694,0.5
-UCNlCLbfwsNGySLzPxaL1OxQ,Grand Canyon University,2025-10-26T23:34:38.985742,scored,0.615,0.3
-UC9K9Wnz6t4cLnCdTzAVrXqQ,Vinh Giang,2025-10-26T23:34:38.985742,scored,0.805,0.6
-UC8Av1tO-ha143nNYzxmf1Fg,Pierre Dalati,2025-10-26T23:34:38.985742,scored,0.533,0.4
-UCEXqLyL40UH_5vO2hn00TkQ,Charles Mace,2025-10-26T23:34:38.985742,filtered_subs,,
-UC4xOCh5XJ9JRsXvlYqk0J6g,GPN ICDD Network,2025-10-26T23:34:38.985742,filtered_subs,,
-UCukPAfxPlVp9edldc-Way9A,"Peak Performance Sports, LLC",2025-10-26T23:34:38.985742,scored,0.716,0.5
-UCLhfC75OUkml_c4Mt5jF-3A,Kanodia MD,2025-10-26T23:34:38.985742,filtered_subs,,
-UCeRkfICkvOfY-mI5zlw_rqg,Glowuptipsforyou,2025-10-26T23:34:38.985742,scored,0.74,0.5
-UC9vq5lJngilz6jEW6V_XrbA,Socialpost Health,2025-10-26T23:34:38.985742,scored,0.443,0.3
-UC-dmJ79518WlKMbsu50eMTQ,Clark Kegley,2025-10-26T23:34:38.985742,scored,0.788,0.7
-UC2zN8G-hQBVc2l0Sgo78IpQ,Creating Wealth,2025-10-26T23:34:38.985742,scored,0.837,0.7
-UCgnDz3kgrXj69VYZki7nokA,Eric Casaburi,2025-10-26T23:34:38.985742,filtered_subs,,
-UCfo8s2z8X0GRxF6I94iFRrg,universitaet com,2025-10-26T23:34:38.985742,filtered_subs,,
-UC6sj7B5VbdFQZ_PYgTNsQ8Q,Programmer's CodeCraft ,2025-10-26T23:34:38.985742,scored,0.346,0.1
-UC96QOiKwuV7fqoazF_Ttk7g,Joyce Pring,2025-10-26T23:34:38.985742,scored,0.568,0.4
-UCMT9_PUrM69hmJ37C9-NDGA,ESCP Business School,2025-10-26T23:34:38.985742,scored,0.676,0.4
-UCA-mWX9CvCTVFWRMb9bKc9w,Dan Martell,2025-10-26T23:34:38.985742,scored,0.743,0.8
-UCB80U7xh--pDgORBnZdcefg,Bijan,2025-10-26T23:34:38.985742,filtered_subs,,
-UCTRIPyUEXywZg-21vP6mhDg,Danny Miranda,2025-10-26T23:34:38.985742,scored,0.795,0.7
-UCQjBsscIa_mgEnSvWpm_9vw,Odysseas,2025-10-26T23:34:38.985742,scored,0.797,0.7
-UC0NuyQdFGTGjpTjimG1HS5w,UPSC Amlan,2025-10-26T23:34:38.985742,scored,0.658,0.2
-UC5v407D6BCPNKFocICihYqg,SMT Pathshala ,2025-10-26T23:34:38.985742,filtered_subs,,
-UC5tsF0YyJ3l3isY8Fyj_gDA,Janel Briggs,2025-10-26T23:34:38.985742,filtered_subs,,
-UCfO1yHS6hiishOhICwkXFKg,Saybrook University,2025-10-26T23:34:38.985742,filtered_subs,,
-UCtw7JsIQ_ZqU0zU7ESMtCfw,PlanetK2,2025-10-26T23:34:38.985742,filtered_subs,,
-UCDETFHKteb-C_EaXmRKvP4w,Sisyphus 55,2025-10-26T23:34:38.985742,scored,0.649,0.5
-UCskmHa5m11EY1UMdqoGiesg,Gemma Hanley - Womens Anxiety Coach,2025-10-26T23:34:38.985742,filtered_subs,,
-UCK7zrlX0b3V9Jy4Yegzosww,clfoley1,2025-10-26T23:34:38.985742,filtered_subs,,
-UCtUId5WFnN82GdDy7DgaQ7w,Better Ideas,2025-10-26T23:34:38.985742,scored,0.831,0.7
-UCu80uuwh_occHC3sxe7fl9Q,Matt_Timmons,2025-10-26T23:34:38.985742,filtered_subs,,
-UCftwRNsjfRo08xYE31tkiyw,WIRED,2025-10-26T23:34:38.985742,scored,0.442,0.2
-UCwGE3Avz0UzyRdVpPkyASGQ,Tasneem Smith,2025-10-26T23:34:38.985742,filtered_subs,,
-UCENJxkcPehEZo4mW58FH_aQ,BeYC,2025-10-26T23:34:38.985742,filtered_subs,,
-UCbjpCUvaehoAbLdAZZTNgxw,Audiobook Zone,2025-10-26T23:34:38.985742,scored,0.842,0.7
-UCpM4hH1nEiXZHcn6qkI-aSw,UC Davis Career Center,2025-10-26T23:34:38.985742,filtered_subs,,
-UCtX5JcuCiJxDfDwv5ax4Ukw,DJ Sbu,2025-10-26T23:34:38.985742,scored,0.73,0.7
-UCyM9Re5JhfVBntv_stGd73g,Brief Books,2025-10-26T23:34:38.985742,filtered_subs,,
-UCYEtmpGBd3jEO1A8sJ4OEMg,Rajiv Talreja,2025-10-26T23:34:38.985742,scored,0.75,0.6
-UCUzKn21pMEQG0WRabffu2VQ,AO Spine North America,2025-10-26T23:34:38.985742,filtered_subs,,
-UCsT0YIqwnpJCM-mx7-gSA4Q,TEDx Talks,2025-10-26T23:34:38.985742,scored,0.608,0.4
-UCbZmj05J9w8jHUgCmj1Xdcw,Tom Beckles,2025-10-26T23:34:38.985742,scored,0.379,0.2
-UCE1UbMx1Bcfk3qUn6-s0ylw,The Green Investor,2025-10-26T23:34:38.985742,filtered_subs,,
-UCbYix0POXbK_5TT4E31043A,Good News Only - Goodnoly,2025-10-26T23:34:38.985742,filtered_subs,,
-UC7kVA2eOlyXAfLyEMKKtw7Q,Drew Harden,2025-10-26T23:34:38.985742,filtered_subs,,
-UCZF-s8jsUejc0TpVqnFE1lQ,Longevity & Lifestyle - Claudia von Boeselager,2025-10-26T23:34:38.985742,filtered_subs,,
-UCnYKRFQRndE3Wq1eLRQLfWw,Kuldeep Singhania Shorts,2025-10-26T23:34:38.985742,scored,0.683,0.4
-UCOp1TlnxO7dy0Y20jpTkhGQ,iNNOVATION Insights,2025-10-26T23:50:45.183896,filtered_subs,,
-UCp-HqMi4CAQV6PNuZktUwwA,PRASHU PRASHU ,2025-10-26T23:50:45.183896,filtered_subs,,
-UCl-Zrl0QhF66lu1aGXaTbfw,Neil Patel,2025-10-26T23:50:45.183896,scored,0.857,0.6
-UCf_XYgupvdx7rA44Ap3uI5w,Full Disclosure,2025-10-26T23:50:45.183896,scored,0.563,0.2
-UCmegHb5UQ5McMdHuFCs7Fuw,NETINT Technologies Inc.,2025-10-26T23:50:45.183896,filtered_subs,,
-UC_0xBUVs9v0xVul5IyvxHjg,MyCaptain,2025-10-26T23:50:45.183896,scored,0.652,0.4
-UCJPpbBoSkbfyxDuUgU5AyCg,Mr Error,2025-10-26T23:50:45.183896,filtered_subs,,
-UC8h8NJG9gacZ5lAJJvhD0fQ,NardwuarServiette,2025-10-26T23:50:45.183896,scored,0.618,0.3
-UCzBiJ2obh0v15nKDbdVWCXQ,Nandhuzz Vlog,2025-10-26T23:50:45.183896,filtered_subs,,
-UCcPI9kEPhyUDLBHGOhKqxOw,Breakdown,2025-10-26T23:50:45.183896,scored,0.59,0.2
-UC4rGu1HBb2OG_yM6to3YRwA,ตามกระแส โซเชียล Follow social media trends.,2025-10-26T23:50:45.183896,scored,0.731,0.4
-UC8zeUkWVYuJbItC0dQ4xctQ,Aizel Ahmed,2025-10-26T23:50:45.183896,filtered_subs,,
-UCvqvMt0x5UT58bKtDgY4_2w,INSIDEA,2025-10-26T23:50:45.183896,filtered_subs,,
-UCjS8OCmHuWdl5aWDUuU0M4g,Siddharth Kannan,2025-10-26T23:50:45.183896,scored,0.674,0.3
-UCFJkRZXZvTEbOecm_iJ5L1Q,Omni Talk Retail,2025-10-26T23:50:45.183896,scored,0.6,0.3
-UCl9TFbDShRaSZ6gcLUM2GuQ,The Learning Sphere ,2025-10-26T23:50:45.183896,filtered_subs,,
-UCTFWKO9EiG1lumOBA8bjMsQ,Jasmine Star,2025-10-26T23:50:45.183896,scored,0.634,0.5
-UCYBARVyitZWkFKovnC2jf2g,Washington Post Universe,2025-10-26T23:50:45.183896,scored,0.465,0.2
-UCFkrm6TTxoXVicJVdVvpuTw,Chike Live,2025-10-26T23:50:45.183896,scored,0.318,0.1
-UCGViYIEks0wbG6GwFTFqhxA,accelerated.learnmaxxing,2025-10-26T23:50:45.183896,filtered_subs,,
-UCM9nWkBMO5w8K_jRA2WKTvg,The Web Browser Deep Dive Podcast,2025-10-26T23:50:45.183896,filtered_subs,,
-UC8dTfoE3auBa5YLHcJ0GycA,Hrishikesh Roy,2025-10-26T23:50:45.183896,scored,0.736,0.4
-UC_0XK9nY_0IHN0CoofAo4pg,TOPSTAR Rap,2025-10-26T23:50:45.183896,scored,0.606,0.3
-UCCeXwLzVKZU7VW8qXis_UOQ,Katie Steckly,2025-10-26T23:50:45.183896,scored,0.785,0.6
-UCkry11twpap6dE3BPcbwvRA,Brooks Conkle // Build Income Streams,2025-10-26T23:50:45.183896,filtered_subs,,
-UCnwrdxf7X8WwMuXpyeHSO4A,Gabe Bult - The Process,2025-10-26T23:50:45.183896,scored,0.762,0.7
-UC-mk4Lc5WQwG1jbUnX7i0YA,CA Deepak Bhati,2025-10-26T23:50:45.183896,filtered_subs,,
-UCbTMnZcdskwdnLC8ltmmSMw,Aizaz Engineer Facebook,2025-10-26T23:50:45.183896,scored,0.779,0.6
-UCGSLYBs8MsnA1-ayLb63NHw,Data Girl and Friends,2025-10-26T23:50:45.183896,filtered_subs,,
-UCUB0m2I9-r7oXmd8cyfB8uQ,Rafael Gomes,2025-10-26T23:50:45.183896,filtered_subs,,
-UCQjE37R-Y4DTq7kUWPO83Wg,ServiceNow Documentation,2025-10-26T23:50:45.183896,scored,0.437,0.1
-UCowXYrK3tAhlXDtSxrXew6Q,CreatorsMBA,2025-10-26T23:50:45.183896,filtered_subs,,
-UCilNeTwQIQDCNvFVdTAXNbQ,WallStreetPulse01,2025-10-26T23:50:45.183896,filtered_subs,,
-UCi_LnMW8qbA8IgDnIrptQBA,Chinmoy,2025-10-26T23:50:45.183896,filtered_subs,,
-UCKegeYEy0lJxpkjWRthaRMw,Think Media Podcast,2025-10-26T23:50:45.183896,scored,0.873,0.8
-UCPozuIqeGxLFk0nyp_58-bg,The Wealth Flip,2025-10-26T23:50:45.183896,filtered_subs,,
-UCs52qRDezuFmnu8w9OAvjGA,Sarthak Virmani,2025-10-26T23:50:45.183896,scored,0.48,0.3
-UC45NUVFRcFaLEmbpwLQ17Eg,Rahul smart tech,2025-10-26T23:50:45.183896,scored,0.743,0.5
-UCCj96AyzeEoKtXvcpkszFgg,charlotte mair,2025-10-26T23:50:45.183896,scored,0.706,0.3
-UCS3lFRhXKfCZ8FvRqPjy9NA,Social Media Examiner,2025-10-26T23:50:45.183896,scored,0.725,0.5
-UC9_661h4yEglTdhiyS6Ux6g,seus,2025-10-26T23:50:45.183896,scored,0.586,0.2
-UCoU5VTFyPWZgMVhGKQu3UbQ,Shamim Technical 24,2025-10-26T23:50:45.183896,scored,0.654,0.4
-UCPmbruzn9Q6ZJ9zRlqngOSA,Tech Arun Views,2025-10-26T23:50:45.183896,scored,0.571,0.4
-UCu8_JcixaA7KrPAJLsGj_dA,George Vlasyev,2025-10-26T23:50:45.183896,scored,0.786,0.5
-UCdhp9PX4nwEGBpyBqOT8kbg,Crypto Earning Platform Tips,2025-10-26T23:50:45.183896,filtered_subs,,
-UCo33niDKpTpgwZ_dohqvylg,TubeBuddy,2025-10-26T23:50:45.183896,scored,0.7,0.6
-UCHm-aqTKp8SGaBGATkW1JpA,Social Sunil,2025-10-26T23:50:45.183896,scored,0.674,0.5
-UCeqqvwIEd9q4BsuVfc-wYxg,awanasgh,2025-10-26T23:50:45.183896,scored,0.484,0.2
-UCeu-NZiRs0FauSfFYKvNp9g,Influish | Influencer Marketing,2025-10-26T23:50:45.183896,filtered_subs,,
-UCLMtjmKyB2ORHx2A06crsmQ,Jade Beason,2025-10-26T23:50:45.183896,scored,0.834,0.7
-UCf3dc-Y3k5vBTCVpPCAfG6g,Tube Sensei,2025-10-26T23:50:45.183896,scored,0.72,0.5
-UC9engD4gR4hJRXcT2Cqpnvw,Michael Housman,2025-10-26T23:50:45.183896,filtered_subs,,
-UCMvucW0oQVKE5RSw6cMc_mw,Goraksh Brahmankar || The Doji,2025-10-26T23:50:45.183896,scored,0.471,0.2
-UCGxjDWAN1KwrkXYVi8CXtjQ,Think Media,2025-10-26T23:50:45.183896,scored,0.651,0.5
-UCD1E6X6qGDwIxqkKdYItroQ,KFARR Reacts,2025-10-26T23:50:45.183896,scored,0.549,0.2
-UCpS47QiM6E9anCT6sbHdd2w,E4INTERNET,2025-10-26T23:50:45.183896,filtered_subs,,
-UCrriH9jqNXfYebEZBUZpvhw,Official Sachin Yadav,2025-10-26T23:50:45.183896,scored,0.527,0.4
-UCM_PsKK4kvrOTNrHlsgK6pQ,Marketing Explained,2025-10-26T23:50:45.183896,scored,0.685,0.5
-UCUFq_n3GPou9AXe9tyNpZYA,Seli Zone,2025-10-26T23:50:45.183896,scored,0.707,0.3
-UCU3Q-N5OkkHm90U9UQqQP5A,HeySimply,2025-10-26T23:50:45.183896,filtered_subs,,
-UCOjivNHwtPFbd_1mbsXUQJA,MR EXPOSER,2025-10-26T23:50:45.183896,scored,0.723,0.4
-UCiqcQq3JoD7zLYEugmfoXeg,Influencer Marketing Hub,2025-10-26T23:50:45.183896,scored,0.769,0.6
-UCbC1L-dk5oEVXEV_mcj981g,Yari Soundz Media,2025-10-26T23:50:45.183896,filtered_subs,,
-UCS4VWcCVVI8Bcn8Dteylxzw,Modern Millie,2025-10-26T23:50:45.183896,scored,0.706,0.5
-UC9BSrJLTE_ZHUdlnUwRGpCw,Localization Fireside Chat,2025-10-26T23:50:45.183896,filtered_subs,,
-UCik2f2SHJX9y8yKv-WoO93g,Grow YT,2025-10-26T23:50:45.183896,scored,0.694,0.5
-UCctXZhXmG-kf3tlIXgVZUlw,GaryVee,2025-10-26T23:50:45.183896,scored,0.72,0.5
-UCR5k7bm0qgpP7-QX1uIx7cQ,Marcus Jones,2025-10-26T23:50:45.183896,scored,0.803,0.8
-UCwUWmb2F6DLMHnzy7oNwHcg,Abhishek Side ,2025-10-26T23:50:45.183896,scored,0.49,0.2
-UCI7DM6zR8ZM4GMlSGNuEbFg,Road to Content Creator Success,2025-10-26T23:50:45.183896,filtered_subs,,
-UCRODg1zhbcN8btCqpOe5NiA,Breaking Celebs,2025-10-26T23:50:45.183896,scored,0.645,0.2
-UCXyqlW3MOTbhpQIMapXMOSQ,Content Creators,2025-10-26T23:50:45.183896,scored,0.594,0.4
-UCO4Nw0vUpxgb0zsziJ1SaMg,Justin Brown - Primal Video,2025-10-26T23:50:45.183896,scored,0.449,0.4
-UCdOPzgbosSnbfwd9-iXP2NA,Vanessa Lau,2025-10-26T23:50:45.183896,scored,0.717,0.5
-UCxtC0v2kD3DmbKt6Yf5EhOg,avinashpaulfilms,2025-10-26T23:50:45.183896,scored,0.548,0.2
-UCNSMGpe3o0DmDh4fiITtcbA,Janis Mjartans,2025-10-26T23:50:45.183896,filtered_subs,,
-UCNb8X3fC-BLrEbVxLzwC6-Q,NK TECH90,2025-10-26T23:50:45.183896,filtered_subs,,
-UCC1RmztYmOIuTGiw_G73fLg,YANA CHIRKINA,2025-10-26T23:50:45.183896,scored,0.475,0.2
-UCNWwXQxvH48D4WWCaTyNKpg,Tech Shubh,2025-10-26T23:50:45.183896,scored,0.522,0.5
-UC1rxaEqaapacLTzF670YOmA,Critical Eye Review,2025-10-26T23:50:45.183896,filtered_subs,,
-UCm8RfdgwkLDzUtYW7EX78dA,Info Ninja,2025-10-26T23:50:45.183896,filtered_subs,,
-UC5RwNJQSINkzIazWaM-lM3Q,HOT 97,2025-10-26T23:50:45.183896,scored,0.568,0.2
-UClDcKhHgT3x88I0q7BOT0ow,Jun Yuh,2025-10-26T23:50:45.183896,scored,0.711,0.6
-UCO3pT4ZI8x2RVqYWxxcrZsw,upGrad,2025-10-26T23:50:45.183896,scored,0.511,0.3
-UCiSrZoX1cF_VhWIcd-K5WCw,Ryan McPherson,2025-10-26T23:50:45.183896,filtered_subs,,
-UC8Da6phESsVQiz93XrfvCaw,Loan Team Training,2025-10-26T23:50:45.183896,filtered_subs,,
-UCCmMabsAF7OXoGthZeXx5fA,Shinoeeee,2025-10-26T23:50:45.183896,filtered_subs,,
-UCZLFu8bHbwtnIgWLg5UtINw,vidIQ,2025-10-26T23:50:45.183896,scored,0.836,0.7
-UCyRlbLHHmuZ6QuHKY0yVnMg,Lowkey.Sophie,2025-10-26T23:50:45.183896,scored,0.613,0.2
-UC0zFXTUHemzeVVwpghHqP3w,YT of FB,2025-10-26T23:50:45.183896,filtered_subs,,
-UCjBWuqOEl0jhfhwdv1MGgoA,manav Sharma,2025-10-26T23:50:45.183896,filtered_subs,,
-UCwiBfL8BvJSUaR7-KRJHwbA,g m,2025-10-26T23:50:45.183896,filtered_subs,,
-UCLqyeA29hO0udSqwPaDBEJg,SHOWBIZ NEWS UPDATES ,2025-10-26T23:50:45.183896,scored,0.612,0.2
-UCdtvIAUQTDaCQeVsZCFqn-g,Anamulhasan Tech,2025-10-26T23:50:45.183896,filtered_subs,,
-UChfo46ZNOV-vtehDc25A1Ug,Deep Dive with Ali Abdaal ,2025-10-26T23:50:45.183896,scored,0.588,0.5
-UCRwbmmW-B_Hvk8YPiKthePA,Best Ops Chain AI - BOCA,2025-10-26T23:50:45.183896,filtered_subs,,
-UC9RM-iSvTu1uPJb8X5yp3EQ,Wendover Productions,2025-10-26T23:50:45.183896,scored,0.473,0.3
-UCaYZfktN3ZdEGafv0xosatA,EXITO,2025-10-26T23:50:45.183896,filtered_subs,,
-UCN3-BVMnr44LIUheSuppw1A,Quick Support,2025-10-26T23:50:45.183896,scored,0.595,0.3
-UCXFXTp89NTiVzrN3afYKoJQ,The Content Polymath with Dustin PolyInnovator,2025-10-26T23:50:45.183896,filtered_subs,,
-UCrQTwZKgYsyxwiD0HbMBd_w,Sachin Suri ,2025-10-26T23:50:45.183896,filtered_subs,,
-UCNkU4mln6W-VvwNS_AG8ReA,just_Random,2025-10-26T23:50:45.183896,filtered_subs,,
-UC7UFcUbAd8oyCBWCogVpJ6g,Bloomberg Live,2025-10-26T23:50:45.183896,scored,0.623,0.3
-UCd7Ts5bAA7vConNzJfOKzbA,Digital Commentary,2025-10-26T23:50:45.183896,scored,0.641,0.3
-UC4-79UOlP48-QNGgCko5p2g,MrBeast 2,2025-10-26T23:50:45.183896,scored,0.567,0.2
-UCkFCbviPCdjccdThhlkaR4Q,Julian Eisenkirchner,2025-10-26T23:50:45.183896,scored,0.671,0.4
-UCue_c7N4qpYiEhF2cPqHeZQ,Free USDT ,2025-10-26T23:50:45.183896,filtered_subs,,
-UCwiY2R5CKwidNUgftnM5tYw,GuruTrader Free Education,2025-10-26T23:50:45.183896,scored,0.52,0.2
-UCos23aL5VktLQE80q4HbqMg,ignited spirits,2025-10-26T23:50:45.183896,filtered_subs,,
-UCIVl4K2afJgLJv0b2ToTs_g,GrowthX,2025-10-26T23:50:45.183896,scored,0.625,0.4
-UCVeuau7DLrg7zlAjxxDbdww,HubSpot Marketing,2025-10-26T23:50:45.183896,scored,0.723,0.5
-UCc6PH6WJs69N1dm9Y-40aag,Tech Bhavesh,2025-10-26T23:50:45.183896,scored,0.576,0.3
-UCoUxsWakJucWg46KW5RsvPw,Financial Times,2025-10-26T23:50:45.183896,scored,0.535,0.2
-UCIhC9nt0G4OIw9PwN5WN1JQ,Tech.vision24,2025-10-26T23:50:45.183896,filtered_subs,,
-UC-ZsqoFvQBIuU6JKFlc4KAg,Jiarul Tech,2025-10-26T23:50:45.183896,filtered_subs,,
-UCUr1vmsLxQep_wDXcmKnBng,hkayla09,2025-10-26T23:50:45.183896,filtered_subs,,
-UCbz5vzlJtoKaChd15SO4iMw,NITIN BISHT VLOGS,2025-10-26T23:50:45.183896,filtered_subs,,
-UCKU0u3VbuYn0wD3CUr-Yn6A,Adam Erhart,2025-10-26T23:50:45.183896,scored,0.543,0.4
-UCHs_n4Cu9tdzM8GUv_HOBhg,PreeRan Rocks ,2025-10-26T23:50:45.183896,filtered_subs,,
-UCMiJRAwDNSNzuYeN2uWa0pA,Mrwhosetheboss,2025-10-26T23:50:45.183896,scored,0.55,0.3
-UCHQU99yKRd_BQVSci2MZ08w,Instagram,2025-10-26T23:50:45.183896,scored,0.651,0.2
-UCP34pe-pYqxVdJurvzZJNxA,Technical Habol,2025-10-26T23:50:45.183896,filtered_subs,,
-UCgbXT2QuTj4SYxaWCs3vuAw,Your Rich BFF,2025-10-26T23:50:45.183896,scored,0.478,0.3
-UCM7SESBzXZzq1Dyo3GMYXLw,Dipuji Tech Tips,2025-10-26T23:50:45.183896,scored,0.755,0.6
-UC_TvsGuCWqb_aYBeTBXeXww,Daily Hack Tales,2025-10-26T23:50:45.183896,filtered_subs,,
-UC_ofO7ywsguGeroKe5kxD4g,Godda boyz,2025-10-26T23:50:45.183896,filtered_subs,,
-UCnPUs_TcX8eGtZAjjRkshuQ,Gixxer Jesus,2025-10-26T23:50:45.183896,scored,0.222,0.1
-UCzv_jYVz2-qGVHHde5ZHnjQ,Archit Mehrotra,2025-10-26T23:50:45.183896,scored,0.595,0.3
-UCX7ig5dmw6TC2v7T__r27yA,FE Analytics,2025-10-26T23:50:45.183896,filtered_subs,,
-UC0QkAdm98jOI_ZPsOc92_yg,State of Kait,2025-10-26T23:50:45.183896,scored,0.78,0.4
-UCH_Vl8-_NWIrZ8aq1cTMaWg,The Influencer Marketing Factory,2025-10-26T23:50:45.183896,filtered_subs,,
-UCJqs3DRgGkH0vTyTHnsDgQg,The Anycast with Matt Levine,2025-10-26T23:50:45.183896,filtered_subs,,
-UCbR1u8rTFCxU5DrRY9-zWKw,Shine Kanti Tech,2025-10-26T23:50:45.183896,filtered_subs,,
-UCPgfM-dk3XAb4T3DtT6Nwsw,CA Rahul Malodia,2025-10-26T23:50:45.183896,scored,0.536,0.3
-UCPLiAiia3LKa2EyqwPhglXg, Tech Bangla help Ms ,2025-10-26T23:50:45.183896,scored,0.738,0.5
-UCBGFwRWj3zGq3e2gCfwGiNg,Bitcoin Trading Platform,2025-10-26T23:50:45.183896,filtered_subs,,
-UCVm4xHOmK8VAVifaojilr4A,Content is Profit,2025-10-26T23:50:45.183896,filtered_subs,,
-UCcBtbKZICgEj5MGFrDGLtxQ,Slay & Savor,2025-10-26T23:50:45.183896,filtered_subs,,
-UCsEukrAd64fqA7FjwkmZ_Dw,GQ,2025-10-26T23:50:45.183896,scored,0.638,0.3
-UC5CCmith3RLt2RSBaVg3-Aw,Alex Becker Clips,2025-10-26T23:50:45.183896,filtered_subs,,
-UCF5NyLaCCK7dEZC8hK_Rj7Q,MahiNergy,2025-10-26T23:50:45.183896,scored,0.565,0.3
-UCglNILz3uBqPer5EMJ_pzVg,Bryan Collins,2025-10-26T23:50:45.183896,scored,0.698,0.5
-UCWXYDYv5STLk-zoxMP2I1Lw,Dan Koe,2025-10-26T23:50:45.183896,scored,0.581,0.4
-UCpRD1XLT0q3bbyz2ubMYwhw,Tejas Bhirud,2025-10-26T23:50:45.183896,filtered_subs,,
-UCLID_TmAEq0p0FIRl33XCbQ,Digital Commentary Clips,2025-10-26T23:50:45.183896,scored,0.51,0.2
-UC5A5HOnR8e4HJnkFKQ1kAbg,Jessy C.,2025-10-26T23:50:45.183896,scored,0.654,0.4
-UCz2IgG40ofWYACubshW1L_Q,Ashokvloggger,2025-10-26T23:50:45.183896,filtered_subs,,
-UCsvqVGtbbyHaMoevxPAq9Fg,Simplilearn,2025-10-26T23:50:45.183896,scored,0.509,0.2
-UCb4XiEOeJulWu4WGhwnDqjw,Ed Lawrence,2025-10-26T23:50:45.183896,scored,0.766,0.7
-UC2WViTl81h6sXAQJKtPrnlQ,Artificially Intelligent Marketing,2025-10-26T23:50:45.183896,filtered_subs,,
-UCiXzqiOMZBdsVtPxu3JY90w,LEGEND GAMERZ 08,2025-10-26T23:50:45.183896,scored,0.557,0.1
+﻿Channel_ID,Channel_Name,Date_Added,Processing_Status,Embedding_Score,LLM_Score,niche
+UCoOae5nYA7VqaXzerajD0lg,Ali Abdaal,2025-10-27T13:21:37.394493,seed,,,Productivity strategies and self-improvement
+UCLXo7UDZvByw2ixzpQCufnA,Vox,2025-10-27T13:21:37.394493,seed,,,News analysis and storytelling
+UCmGSJVG3mCRXVOP4yZrU1Dw,Johnny Harris,2025-10-27T13:21:37.394493,seed,,,Global storytelling and analysis
+UCmFeOdJI3IXgTBDzqBLD8qg,Moon,2025-10-27T13:21:37.394493,seed,,,Global events analysis and commentary
+UC5QzQKW9oIfqsUbnJDzyjMQ,Business Activities,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCMbno8bueY_zzj4v2km6rzQ,Motivational Story ,2025-10-27T13:21:37.396599,filtered_subs,,,
+UC1woqafraUWvO9q90lF4FPA,Interview Talks,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCjVYX6Az9urRMs4MKbOYMAg,Self improvement tips ,2025-10-27T13:21:37.396599,filtered_subs,,,
+UC6z2U-RV03PYqSxJXU2_U3w,Simple Life - Self-Improvement & Development,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCf3l86_zErBjoouu8UHo4sg,Motivational Stories by Kate,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCdZ5vtVi3CKAEF6SIJopilw,Budgeting and Productivity,2025-10-27T13:21:37.396599,filtered_subs,,,
+UC6qydOygBsICd13IvDU9F2g,Learn Lift Studio,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCfhbydY40P2Lli9HuBz8cdA,SeeKen,2025-10-27T13:21:37.396599,scored,0.787,0.88,Self-improvement book summaries
+UCfKMOc7x9tc1CSltzRcnBww,IMPROVE YOUR FOCUS,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCtT6IDIsk8esuSpatVnOsVg,Animated Explainer Video,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCe1M-5AdQMjFrGHhzJ-Kwvw,Productivity hacks,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCP6of5QgOlLGT2v4iw5RCow,Travel With Business,2025-10-27T13:21:37.396599,scored,0.767,0.46,Business education and entrepreneurship tips
+UCldGBKyZR8dkNglzUMUneLg,KairosXP - 3D Animated Explainer Videos,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCYwBV9nNKr8Lr8hHe29CO-g,Stoic Personal Development,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCgYgsTlwIdrCBfjkbU8pIaQ,Self-Improvement Boxer,2025-10-27T13:21:37.396599,scored,0.398,0.22,Boxing skills training and techniques
+UCXkGpvo4MU4NMtsU5RCTBlg,Entrepreneurial Mindset,2025-10-27T13:21:37.396599,filtered_subs,,,
+UC0q7_Idt_tw91ig8OZt4-mQ,Self Control Tips,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCEW_Fg9lQ2VaS7DLVma01Cg,Raw Talks With VK,2025-10-27T13:21:37.396599,scored,0.854,0.58,Entrepreneurship insights and advice podcast
+UC8BCnmf-R_y2HJkO1g-gXfg,Interview Talks,2025-10-27T13:21:37.396599,filtered_subs,,,
+UC7RzoubcAdWecZXC-o7HFYw,3D Explainer Videos,2025-10-27T13:21:37.396599,filtered_subs,,,
+UC3vVwFzcj3DZ41ZONTJDdng,   Motivational stories 972 ,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCo1ATYkRDaWagjZeOsplbbw,Self Improvement Methods,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCsidKVg85Xu11hWgNlxjTOg,Artificial Intelligently | AI Explainer Videos,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCpk2qu-UR237OG-hspIVbrw,African Entrepreneurial Mindset,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCBqxr2Hvl_Oux2ciYS5AI5g,Billionaire Flexi,2025-10-27T13:21:37.396599,filtered_subs,,,
+UC68IPKfBDfQYI8tPN6nEdGQ,Eric Fate • Life & Personal Development Coach,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCYaUHluS5QEJ6IymMsSjEBQ,MOTIVATIONAL STORYTELLING,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCr6LdUv17h26EScmiN_tNAA,Sunrise Motivational Stories,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCs-KFXQSXddKbEJ2uToC4HQ,The Motivational Storyteller,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCgnYhT2OPU1AQxUh7qBXF9Q,Self Improvement Secrets,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCgoyBmLOMNWmsiVkj-MezyQ,ExpHub - Prashant Kirad,2025-10-27T13:21:37.396599,scored,0.816,0.76,Motivational guidance for students
+UC23GXpGyn4jCssS1WQA_vww,Entrepreneurial Mindset : Course at IIIT-Delhi,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCwjY4egKjqH853P1ADt9GLw,Productivity Hacks,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCaNi_7W9oT_gq6Q8ao-X_UQ,Interview Talks Hub,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCk4P2TFlf_v47JejDQ7ilAA,Productivity hacks,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCp2MyIcxRaNaA_Wvkyfel2g,Productivity Hacks with Claus Geissendoerfer,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCEhF8l6k1_560t0KKJxNZEQ,Entrepreneurial Mindset,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCGq-a57w-aPwyi3pW7XLiHw,The Diary Of A CEO,2025-10-27T13:21:37.396599,scored,0.866,0.94,Self-improvement and mindset motivation
+UCV7iCqDGNjanwpaKaj40S3A,Transform Daily: Habits for Personal Growth,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCGOGspjnbfrPN2sDBjcvK6Q,Productivity Hacks,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCdymflJbcdyt5VRxJzJLMSQ,Boost Your Productivity,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCwvCjEgRnLtCP6WAlRTQmDA,Calmly Coping,2025-10-27T13:21:37.396599,scored,0.63,0.58,Managing high-functioning anxiety for professionals
+UCFJ0C_sA3njwntI84oz_SOQ,NEXTEN Strategies,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCAqhIiwS-f2wpfFTQ_UgQYQ,Productivity Hacks,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCDmE_ZiEFdn_uwwRRc8mRYw,Motivational Speeches And Self Improvement Tips ,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCH0qLSn7kL02PVNzLT6bqiA,Microsoft Office Tutorials - Quick Tips,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCk8xTpELEPQESwn41qOZ7VA,Self Improvement,2025-10-27T13:21:37.396599,filtered_subs,,,
+UC1bUswUinAEFYaRQFvAKjPA,THE CHANAKYA DIALOGUES HINDI,2025-10-27T13:21:37.396599,scored,0.541,0.13,Geopolitics and national security analysis
+UC8UHUSame5qi5RS5i6CsGMw,The Physical Explainer,2025-10-27T13:21:37.396599,scored,0.547,0.22,Physical education for CBSE students
+UCqdpvuKq4bShO1cJoFX6zpQ,Almost Everything,2025-10-27T13:21:37.396599,scored,0.855,0.76,Self-improvement and financial education
+UCeWoXLXDBGSMC7AkRYMiiLg,TopBiz Guides,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCxcoHIHy1FdJ7t5TAa7JXfw,Diksha Arora - Interview Coach,2025-10-27T13:21:37.396599,scored,0.669,0.46,Job interview preparation and career growth
+UC64S16WTjLTLOrRxsHLRZ9A,Yum Yum Videos | Animated Explainer Videos,2025-10-27T13:21:37.396599,scored,0.513,0.16,Custom animated explainer video production
+UCHBc7G3MwVUyDNu1AuY5v_w,Entrepreneurial Mindset,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCfD2OPTxO5mMJy1Mw2Opifg,"“Badlo Apni Jindagi”
+",2025-10-27T13:21:37.396599,filtered_subs,,,
+UCNuwbeeNgSRKeg5epFa_Hug,Productivity Hacks ,2025-10-27T13:21:37.396599,filtered_subs,,,
+UClXeeFy2CMr7LCLhmVJyyfw,Chit Minn - Motivational Storytelling,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCKv56DlLK8JEQkcjOlxmIgg,Self Growth,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCbziA8fNnUm8s3BXSjk7Eiw,SELF IMPROVEMENT TIPS,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCStIy_Rc8MwqyBBrxDu0OkA,Productivity Hacks,2025-10-27T13:21:37.396599,filtered_subs,,,
+UC3qsSVmFOyxG9vX7bO38Xug,Productivity Hacks for a Thriving Office ,2025-10-27T13:21:37.396599,filtered_subs,,,
+UC9crsJlwuW1WWJ4z5KObBrg,Productivity Hacks,2025-10-27T13:21:37.396599,filtered_subs,,,
+UC7BD7ddu2HPi-HLL9assOrg,Entrepreneurial Mindset,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCpyw46l3uoqdPi7tLm2QAIA,Self Improvement,2025-10-27T13:21:37.396599,scored,0.801,0.88,Entrepreneurial mindset and self-improvement
+UCyD3hnvFLJp9RAKtkfKwuIA,Personal Growth Path,2025-10-27T13:21:37.396599,scored,0.61,0.46,Spiritual self-improvement and motivation
+UC_dIvx4zHFYXY8e8xoyKMfA,Billionaire_Lifestyle,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCfxgcrbqyhRbCCFUTHzNcgQ,Newisionshopperslifestyle,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCQ2yG4pRDap6TtfYDY55ihg,Ai Explainer Videos,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCxa83fqfih1-CIDdLKN3XMA,Motivation & Personal Development,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCwrigXnM5xCynO0VVjzFYlA,Elixir Of Productivity,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCseaD58v0JXXcUoML-jogNA,Elite Business Insights,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCs5UjLaIsgvDIRhVzr1CNNA,Mettas Lifestyle,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCNcSefZ2JKzGr2GrhJijiKg,Motivational Storytelling ,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCFP4jeefVf9zwQDiEoRuHSQ,Entrepreneurial Mindset,2025-10-27T13:21:37.396599,filtered_subs,,,
+UC4EEnMZz851PKh6A7yx295g,The Video Explainer,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCEolWI3OJ-W6qYnzV9rKMwQ,Parenting Whispers,2025-10-27T13:21:37.396599,scored,0.666,0.34,Parenting education and child development
+UCLBcw5PPtyPVahrksYVXU2g,The Entrepreneurial Mindset,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCEL33hPufMO9rgYQWyf0Rug,Entrepreneurial mindset,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCskU_g7t6b5ecsA1CTS3y9Q,TED-Ed Student Talks,2025-10-27T13:21:37.396599,scored,0.763,0.34,Youth idea development and presentation
+UCd-7ijy51DKYeaA2-2FZg_A,Self improvement | Money | Mindset ,2025-10-27T13:21:37.396599,scored,0.901,0.94,Personal growth and mindset motivation
+UC3rTCDrE1Cw3rsoAzNaNnpA,Animated explainer video company - Pixelgenio,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCfbYoqc2BkMfoWLB_s7zDLg,Procrastinator’s Guide to Productivity,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCifNWNvAbqpC9vewJihXomA,Productivity Hacks,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCpmWZhRudmA2cKr79enCY7w,ZHM Motivational Stories ,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCxmBHJO0VuTiqdCsArn4NYg,Graphic Insights,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCcDde8ZkML-vDqdqqODGovw,Learn Lifestyle Insight,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCna2bdEuNJzOX4ikuSAebgg,Entrepreneurial Mindset,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCd3Nn8afahNntgYQ6d3dlyw,Macbook Tips,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCNSj6PL26kytds1-UaBCnqw,self improvement tips & tricks,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCXUFyN9Ys5tiIHgJFQKRJvA,Ethio Forum ኢትዮ ፎረም,2025-10-27T13:21:37.396599,scored,0.566,0.13,Ethiopian political and economic analysis
+UCut_Di901KUPGGTiTxow7LA,Top Personal Growth,2025-10-27T13:21:37.396599,filtered_subs,,,
+UC59jIdxE3eKXH1f_Dq5W_qg,Simple Tech Guide,2025-10-27T13:21:37.396599,filtered_subs,,,
+UClvdIQwkgwMFwyjsDZoi-4g,Collin The Chad,2025-10-27T13:21:37.396599,scored,0.826,0.92,Self-improvement and study motivation
+UCXFjMum9zTTYk1N6asNgVsw,Entrepreneur Mindset ,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCbd5kbpqgvDy6f69QqPvFHQ,Daily Self Improvement Tips,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCGjZ-BAlzHEKn16Als1DK2g,Productivity Hacks,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCtC39AWYmIEZmPLknPnZ8bg,Video Explainer Hub,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCggUSWRPvteKvXERAxNNBMA,Profitable Lifestyle,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCd--lntmTrV6dSkpsXiLMFg,Business Lifestyle,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCpGa_eOXjCxTWBJWyjujCHQ,Strategies for Professional Growth,2025-10-27T13:21:37.396599,filtered_subs,,,
+UC1Qf-G1tSfsDmVLehoSoSog,Aditya Ranjan Talks,2025-10-27T13:21:37.396599,scored,0.75,0.46,Government exam preparation and motivation
+UCRvPnXEZhNzKMHilkVXb3Cw,GMAT Ninja Tutoring,2025-10-27T13:21:37.396599,scored,0.54,0.34,GMAT and GRE test prep strategies
+UCdntizlrUVM616VDyCyU2JQ,Productivity Hacks,2025-10-27T13:21:37.396599,filtered_subs,,,
+UC5vdVJFVZXenrMsa-wIwQsA,Productivity And Progress,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCqAi2NHd4fBfP5j3YcgMnJw,Persinger Productivity,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCXZJ8--rmuxhminLg8Qq6ww,Entrepreneurial mindset,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCY-58b42iqv0_rBh76K3tEQ,Productivity Hacks Shorts,2025-10-27T13:21:37.396599,filtered_subs,,,
+UC7rDcpwHQx_Vf_hG-pE14zQ,Self Improvement Tips,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCsURIZHolfbHClusqKSfXoA,Entrepreneurial mindset,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCWtRqgexXxh94IphD_tPhlg,Personal Growth Academy,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCUFqQdS4mlw-ZidhsdjsAjg,MJ Motivational Story,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCaDFyfj4eh2MlhNIlFqyxig,productivity Hacks,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCTIu5eerLt84Ba8lQsAkTqg,Self Grow,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCSdejMo5JzUfOg4dGQvOcPw,The Productivity Guide,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCsOuXmQWtWyqTgEgNKlX26Q,AI Productivity Hacks,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCc41EjWVkSJ89AlKss4edKw,Interview talks,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCicoRJvNAMh0ZFpwGRaLBog,Motivational Stories By AKS,2025-10-27T13:21:37.396599,filtered_subs,,,
+UC3FfzsW9E08mI-wzDgc0xBQ,Entrepreneur Mindset,2025-10-27T13:21:37.396599,scored,0.554,0.34,Business documentaries and case studies
+UCae9kqdEK2JXMLfhohITPjg,Productivity Hacks,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCsooa4yRKGN_zEE8iknghZA,TED-Ed,2025-10-27T13:21:37.396599,scored,0.574,0.34,Educational animated lessons and resources
+UCULe7bhmLYE3qy04IgCPG-w,How To Do,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCs3rAEv5-JjrtAR02_HQPtA,Motivation & Wisdom,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCuRVso0yU6KgfSfYtL0hAQg,Improve Your Focus,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCokwKhw4wGrdFgPXJLNRDuQ,Entrepreneurial Mindset,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCD-guG6MYkRnC1CCAbDwXOQ,Focus Physical Therapy,2025-10-27T13:21:37.396599,scored,0.439,0.22,Injury recovery and performance coaching
+UCSwxnkpZcggGYZBQtVkkZ7g,Kids World Ai Motivational Story,2025-10-27T13:21:37.396599,filtered_subs,,,
+UC1miDLPxobBHdKCoQgG-j0g,NextRiseMind,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCclyEXSO3X9FAcqgvzRyQ9Q,Chit Minn - Burmese Motivational Storytelling,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCHO8PUhbqD8xLKb_WWU4Lgg,Focus Improve,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCFlUJNxvBZyxgZdgzJNfS9g,Growth Mindset Strategies ,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCaA2in5bcyGbojkfABNeiKA,Personal growth strategies,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCCWSiVlhnvfLnUVj3zER9Cw,BUSINESS LIFESTYLE LEGACY,2025-10-27T13:21:37.396599,filtered_subs,,,
+UC65ahi7IozkaD4KRKP80sBA,House of AI Productivity,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCBgc0ukgf7IIF6Uml80xGsw,Entrepreneurial Mindset,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCbZTfDwLrq_sl77NYfvnvhQ,Ben Talks Talent - Interview Tips,2025-10-27T13:21:37.396599,scored,0.609,0.34,Job interview tips and preparation
+UCeIVTrlZ6teftmPCRjUZxyQ,AI Productivity & Growth Lab by Netkreatives,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCIxm79aJX9JN3jqpj7VkQmQ,Entrepreneurial Mindset,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCpz3gqUJ5UFekAMkxlJBOVg,Explainer Video,2025-10-27T13:21:37.396599,filtered_subs,,,
+UC_Ih_-ApOr5_G80G2tq9jYg,Entrepreneurial Mindset,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCzSo_aR_2hF8NPguYIbVWxQ,Self Improvement Tips,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCYT4-W1CoflSIp7bBz7cBfw,Learn Google Sheets,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCGauEaTrbtomP7JmW8hmQWA,The Art Of Personal Growth,2025-10-27T13:21:37.396599,scored,0.832,0.88,Personal development and self-improvement
+UCxXGT1q4c6AuwMhlL4_vCdg,Lifestyle and business vlogs,2025-10-27T13:21:37.396599,filtered_subs,,,
+UC_z-ddsQOcGupaINaXOh54g,dear peachie,2025-10-27T13:21:37.396599,scored,0.402,0.13,East Asian beauty content curation
+UCIDk2TRaQO4B3QiFgx1564A,Educational Explainer,2025-10-27T13:21:37.396599,filtered_subs,,,
+UC5ddpRqV4GqfAWceDPJluyA,AnimateSimply: Animated Explainer Videos,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCaqMO-qNzZTOrnQvBVMnPnQ,Business Lifestyle,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCQboXF3kbC9Ljfke8UWgdLQ,Productivity Sound Hacks,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCOLMjDHgRYuOWfGQInygytA,Silent Self Growth,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCrvrKZACb0ooCb13xTrSOsg,WellTalk Institute,2025-10-27T13:21:37.396599,scored,0.594,0.46,Public speaking and personality development education
+UCovyxY9D-7n25P_K5Vs484g,Muskan's Motivational Story,2025-10-27T13:21:37.396599,filtered_subs,,,
+UC-SsZxsjuMBChhVDfBGjNpw,Nina's Growth Hub ,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCLTNcaGhTh2rFoGBaRBwd_g,Productivity Hacks,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCMfcudyf4BTGLLwdFpvQKIg,Insights In Automation,2025-10-27T13:21:37.396599,scored,0.536,0.16,Industrial automation education and tutorials
+UCPdDt8W26F1KDt6MjT6oxRQ,Stepwise Guide,2025-10-27T13:21:37.396599,filtered_subs,,,
+UC3JMRiskcZhaHGDbYYCKkaw,Luxury Empire,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCgzvzzgNGiKNMxewe9E1r6A,Alpasbox - Animated Explainer Videos,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCembWBKZGt5OJg5DLeRt17Q,IBA Business Insights,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCIbWdQPKWcE16upYMXPsiog,The Angry Explainer,2025-10-27T13:21:37.396599,scored,0.727,0.58,Academic success and university admissions
+UCCgCpVwZIFZ3Fw9NKSYE4FQ,Self Improvement Tips,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCaOBg1kkPaM-cluL6D2DNoQ,Conversations That Matter,2025-10-27T13:21:37.396599,scored,0.656,0.34,Thought leader interviews and analysis
+UCurYxozQbvKn-oNUxNJh45Q,GREAT IDEAS GREAT LIFE,2025-10-27T13:21:37.396599,scored,0.825,0.76,Self-improvement documentaries and insights
+UCCpaNX5kUQ1b-DlCuYo-hMA,Interview & Group Discussion Tips,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCUuDhtyJX_Kg4KY6BdYKt2g,Ranib business & vlogs,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCQMZuEA6ohAinPB1crsqFog,Productivity Hacks,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCIDyVISK41V-WJWioFHRXjA,Productivity Hacks,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCANdPGymoNjRjiGjxVvYAtA,SophieCreatives | Animated Explainer Videos,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCXf3bWg32LpXvCSKKiUiNlg,Scents and Stories,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCEynVQzBJ4x87i9SW3tFnWA,WAI Academy,2025-10-27T13:21:37.396599,filtered_subs,,,
+UC8D3bZf56LY74f5jBYiXH9g,Entrepreneurial Mindset,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCCaiUfpgquuFMmO3Sf5AsYQ,APPLEBOX By Sabari,2025-10-27T13:21:37.396599,scored,0.536,0.42,Motivational and historical storytelling in Tamil
+UCRutDNQNluuflePgRKtv6QA,Entrepreneurial Mindset,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCY8BeIkX-bgKCqsehk-Vzlg,SilentButDeep-Motivational Stories,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCScJhxIIEdzUSpoystt1AOQ,Equissential Growth Strategies,2025-10-27T13:21:37.396599,filtered_subs,,,
+UC9hV1HPG_8Ar7B_xV8JZ7AA,AI Productivity Tools,2025-10-27T13:21:37.396599,filtered_subs,,,
+UC6fLARvhH0Xh3TZIdZR52SQ,Ashok Motivational Stories ,2025-10-27T13:21:37.396599,filtered_subs,,,
+UC1GzzEfb_MIixzv79hR5qcA,Corporate Interview Talks,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCrtPXCqjm9c7nqgJL-vBSZg,CareerVidz,2025-10-27T13:21:37.396599,scored,0.587,0.34,Job interview preparation tutorials
+UCvvwp9sOWOJBgQjnz6Y2aPA,Self Improvement With DS,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCnD4r_NmRWtok-R33xRp6DA,Self Improvement Tips,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCOtQWL2z-tFbI-mgy_Rpdgg,Unphiltered by Samdish (and a fantastic team),2025-10-27T13:21:37.396599,scored,0.648,0.22,Exploring democracy through interviews and reports
+UCgm8sRn7MMc-ilyITSt2B8A,IAS interview talks ,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCs2_sBSD0YwuDVnXNKdm39g,Self-improvement Tips!,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCYTZq6H78Eu96XQzBalYpbw,What if Explainer,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCJroghZg4kLT1lMAjELpr5g,Christian Motivational Stories,2025-10-27T13:21:37.396599,scored,0.505,0.34,Christian faith and motivational storytelling
+UCzQQSvmGdj8xAeYGrAS_1kw,Productivity Playbook,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCQ4s3ZMuIllm2LFLxraTfeg,Explainers Video by Graphite Work,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCxxzHtexvRWwOvaqb1P-3rw,Hexart - Animated Explainer Videos,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCPJK4FAFckwhZWLKY2GOEeg,Motivational Story by sk,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCcYNiSlzHO0vFSa2cTbGjKA,Self improvement tips ,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCSBjhqUvedymYnQeSVBZfdw,shortcutguide,2025-10-27T13:21:37.396599,filtered_subs,,,
+UC9LEgrzjL48Vqx006dwXhBQ,Focus improve and inspiration ,2025-10-27T13:21:37.396599,filtered_subs,,,
+UC8irM99xvSgIv7fP1HKz2Dw,Jules Vuotto's Photo Focus,2025-10-27T13:21:37.396599,filtered_subs,,,
+UC7sUs-ayT04zzQ_3oohyuFw,Interview Conversations,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCnN1Rj2OtO67OIUimR18KWg,Patrick Mouratoglou,2025-10-27T13:21:37.396599,scored,0.436,0.13,Tennis coaching and skill development
+UC2PZNouzrMGdZsQgIaTxUHQ,Rich Habits TV,2025-10-27T13:21:37.396599,filtered_subs,,,
+UC-QQHiC_oVJ1nLhA8t6n7FQ,Motivational Stories,2025-10-27T13:21:37.396599,filtered_videos,,,
+UCUf5r5nvEpq7O4DdLa8XSrw,Self Improvement Tips,2025-10-27T13:21:37.396599,filtered_subs,,,
+UCaqjmNzo5M7iYgz5kGYeVKQ,Declassified Deep Dive,2025-10-27T13:30:38.441723,filtered_subs,,,
+UCSNa6jMIfYSat5-OAGCdQJQ,Climate Learning Network,2025-10-27T13:30:38.441723,filtered_subs,,,
+UCHK7e80aYjAMRlrj5_9_dQw,Story Vaulted TV,2025-10-27T13:30:38.441723,filtered_subs,,,
+UCQptchvNlCzMKsGPU8s_6UQ,AuSenate: The Senate Public Information Office,2025-10-27T13:30:38.441723,filtered_subs,,,
+UCfObF76LdNol5rJkOpriEkQ,Parvathi Psychologist,2025-10-27T13:30:38.441723,filtered_subs,,,
+UCWS6Khgiq4P622ieL3srkUA,True Story Documentary Channel,2025-10-27T13:30:38.441723,scored,0.778,0.58,True stories and documentaries
+UCx2Rzng9qAOY-FDPfVeMvhw,Seidr Soul Sailing,2025-10-27T13:30:38.441723,filtered_subs,,,
+UCG60SLq9KEX6tyQySUHmvhA,zwny,2025-10-27T13:30:38.441723,filtered_subs,,,
+UCooTDp-fERMGRHIQ4VL4qlg,Channel 4 Documentaries,2025-10-27T13:30:38.441723,scored,0.888,0.58,True crime and investigative documentaries
+UCaddnt6qkyYm9rkkpoV7Y3g,leila alexander,2025-10-27T13:30:38.441723,filtered_subs,,,
+UCXqkGfy_GRnqaJXziZkzKmA,Policy Lens,2025-10-27T13:30:38.441723,filtered_subs,,,
+UCb7BY261XGiowInRrV4xaOg,Israel Policy Forum,2025-10-27T13:30:38.441723,filtered_subs,,,
+UCIkb5IZgrYz0I4YFY0jgC2g,Deep Focus Docs,2025-10-27T13:30:38.441723,filtered_subs,,,
+UCTT5s482r7aUNTC2bjOpb2A,Liverpool Evo Anths,2025-10-27T13:30:38.441723,filtered_subs,,,
+UCdPRKH8tJ1VTsTdDc8c8fGg,Environment and Climate Change Canada,2025-10-27T13:30:38.441723,scored,0.697,0.58,Weather and environmental safety updates
+UCRexnRDBJijAd9hua8vFB7g,Geek News Central / New Media Show,2025-10-27T13:30:38.441723,filtered_subs,,,
+UCK8bnqASv4NQTSjGJh6awZw,Institute for Public Policy Research,2025-10-27T13:30:38.441723,filtered_subs,,,
+UCEYHxInEfah_rIYusE-mEQg,Access Tech Live,2025-10-27T13:30:38.441723,filtered_subs,,,
+UC3JQSF0Clbd_UJgFtOusCGA,Social Documentary Network,2025-10-27T13:30:38.441723,filtered_subs,,,
+UC1V-EnUA8Cly59HyvVKZy5A,Gravitas Documentaries,2025-10-27T13:30:38.441723,scored,0.839,0.56,Documentaries on diverse global topics
+UCl0U3VcsAjMlILmpS3nyetA,Climate Strategies,2025-10-27T13:30:38.441723,filtered_subs,,,
+UCcmLn-SCeQT5h5VCOHv1Zhw,literature people,2025-10-27T13:30:38.441723,filtered_subs,,,
+UCPmgdmxMNR3uMtaLY_CZUPg,Paapu Documentry,2025-10-27T13:30:38.441723,filtered_subs,,,
+UCZorPE3w8dI55edrq1Vq4jg,Kimbyrleigha,2025-10-27T13:30:38.441723,scored,0.704,0.34,True crime storytelling and analysis
+UCzUhiH-7ALYrHJX7VAO_zqQ,GLC Debating and Literary Society,2025-10-27T13:30:38.441723,filtered_subs,,,
+UCrzcFouQSxVEA2jxxqH3wsQ,Western Lives,2025-10-27T13:30:38.441723,filtered_subs,,,
+UChhVINnCVdXRRE1eBZI1wTg,World Climate Research Programme,2025-10-27T13:30:38.441723,filtered_subs,,,
+UC_QyW2uXuXvWFD4Z0AlYF3g,Inspired Analyst,2025-10-27T13:30:38.441723,scored,0.68,0.16,Crypto and forex trading education
+UC0q2OHUZeoYmU28ne_a501g,The Deep Dive,2025-10-27T13:30:38.441723,scored,0.71,0.58,Unexplained mysteries and historical storytelling
+UCgRpNlEsUXsP3DridWLO0_g,Investigative Institute,2025-10-27T13:30:38.441723,filtered_subs,,,
+UCjUilFig6r0_8b--1-9haDw,Silent Through Time,2025-10-27T13:30:38.441723,filtered_subs,,,
+UCRJbAfWsH-UbHn1-uuMJgvw,THE STORY STOPAGE ,2025-10-27T13:30:38.441723,filtered_subs,,,
+UCf7TTg7MQooGpEo2dYfcu4Q,Dr. Jean-Jacques Ponciano,2025-10-27T13:30:38.441723,filtered_subs,,,
+UCb9xJTumsFLuZDpKRdid8sQ,Review Scenes ,2025-10-27T13:30:38.441723,filtered_subs,,,
+UC1YPlTzPzgXhSxePeP-SdIQ,Astral Addiction,2025-10-27T13:30:38.441723,filtered_subs,,,
+UCTpwtboLtG56uegyasFljjA,GPP Debate,2025-10-27T13:30:38.441723,filtered_subs,,,
+UCAvKnVdItmyEYybMaFweOiA,Meme Academy,2025-10-27T13:30:38.441723,filtered_subs,,,
+UCUT91zTJxrfxts-ktVkkn8w,South Central Climate Adaptation Science Center,2025-10-27T13:30:38.441723,filtered_subs,,,
+UCwtekvItI0pjSRp92RzMCAw,Investigative Eye ,2025-10-27T13:30:38.441723,filtered_subs,,,
+UCmLXTW4ZGYp3F3-SkG-Go4g,The Internet Complaint Department,2025-10-27T13:30:38.441723,filtered_subs,,,
+UC9rTHUnpgSY6msDKa1zCnMw,Delhi Policy Group,2025-10-27T13:30:38.441723,filtered_subs,,,
+UC2HXaFmf5YYy-PeIN90Sryg,Joseph Tittel,2025-10-27T13:30:38.441723,scored,0.78,0.22,Spiritual predictions and analysis
+UCDNcorctkmOpBfr4sgu6t3w,HouseRules,2025-10-27T13:30:38.441723,filtered_subs,,,
+UCYY_bBRgmx_Bpe6VB_MeYYg,Depth Chronicles,2025-10-27T13:30:38.441723,filtered_subs,,,
+UC0UFBXPFwG1ClvvhR8eYRdw,Tirath Gill MD Conversations ,2025-10-27T13:30:38.441723,filtered_subs,,,
+UCpsIVj4MPwGA_gX7M-LBGmg,Cinecryl,2025-10-27T13:30:38.441723,filtered_subs,,,
+UCBGDOVTMG0jj7aVr_BzsCxQ,Jane Schaffer Academic Writing Program®,2025-10-27T13:30:38.441723,filtered_subs,,,
+UCj1VAnjOWTvA7b2_1e6qWAQ,Woodwell Climate Research Center,2025-10-27T13:30:38.441723,filtered_subs,,,
+UCJbgllOv7dJuJ1G9vjMIoPQ,Phys Edge,2025-10-27T13:30:38.441723,filtered_subs,,,
+UCMfuSim1PBIXUb6NY7mFk2Q,Environmental Change Institute,2025-10-27T13:30:38.441723,filtered_subs,,,
+UCjCfpgA53NvnCksoUeoceGg,Devine Deep Dive,2025-10-27T13:30:38.441723,filtered_subs,,,
+UCf8r1nCm3kUzS15yUxaxPTA,BibleCraft,2025-10-27T13:30:38.441723,filtered_subs,,,
+UChttQ_atRLhOMKwAMzdDAeg,Campfire Stories,2025-10-27T13:30:38.441723,scored,0.793,0.58,Ecological storytelling and lifestyle analysis
+UChc8eM_ViggNMwJ222dyjlg,Deep Dive: A True Crime Podcast,2025-10-27T13:30:38.441723,filtered_subs,,,
+UCIVOS-urxKePo7RrTMzaU3A,Culture Crack,2025-10-27T13:30:38.441723,scored,0.847,0.64,Media and culture storytelling/analysis
+UCwEvcq4ESWxUIx7iX2HJ9nQ,MyHor ,2025-10-27T13:30:38.441723,filtered_subs,,,
+UC5pWBkkHYxTw4knuxJF7Yig,The Narrative Cut,2025-10-27T13:30:38.441723,filtered_subs,,,
+UCBwEejachtAIbZfYXJEBW-A,True Crime Deep Dive,2025-10-27T13:30:38.441723,filtered_subs,,,
+UC11aHtNnc5bEPLI4jf6mnYg,Predictive History,2025-10-27T13:30:38.441723,scored,0.756,0.56,Historical analysis and future predictions
+UCMwTEoo9p2__bg9hXkbwGvw,Climate Literacy,2025-10-27T13:30:38.441723,filtered_subs,,,
+UCmr6mi0KN3Y6e2rpM6akpKw,HypeScope,2025-10-27T13:30:38.441723,filtered_subs,,,
+UCviRjh7uiYyMHp_3culbVBA,Caltech ESE Seminars,2025-10-27T13:30:38.441723,filtered_subs,,,
+UCGmSFliPsSu9eVClplgatjg,Log Out ,2025-10-27T13:30:38.441723,filtered_subs,,,
+UCNTuVMv2WRVnYcgJx7DjNPQ,Adventures With Purpose,2025-10-27T13:30:38.441723,scored,0.7,0.22,Underwater missing persons investigations
+UCqUhDC5hFOFiJnHGx51-o7w,sir coloniser does politics,2025-10-27T13:30:38.441723,filtered_subs,,,
+UCPgKlzD7oXQBO5aYf7-zGRg,Timeless Mysteries,2025-10-27T13:30:38.441723,filtered_subs,,,
+UCY4xpHkk6y-cBmdjWzwPANg,Eugene DingleBerry,2025-10-27T13:30:38.441723,scored,0.762,0.34,Entertaining storytelling and social experiments
+UClqCjZ0NH86cz1ZEx4tonrQ,Deep Dive Mysteries,2025-10-27T13:30:38.441723,filtered_subs,,,
+UCDelqsZCPq4bbTD8PdUJg-g,Channeled Predictions,2025-10-27T13:30:38.441723,scored,0.797,0.22,Psychic predictions and prophecy analysis
+UCV7AgwmlOAJZs0COwg2uhqg,Documentary Film Academy,2025-10-27T13:30:38.441723,filtered_subs,,,
+UCP_hZt43bbGGf9ah6ATOvEg,ARHCIVED - NASA Climate Change,2025-10-27T13:30:38.441723,scored,0.566,0.58,NASA climate change news and analysis
+UC6NWfeihWKPlajtBiar64Cw,Narrative Angle,2025-10-27T13:30:38.441723,filtered_subs,,,
+UC-m0ZQCOCX4QaNugbUAsTiA,daniel profeta,2025-10-27T13:30:38.441723,scored,0.715,0.46,Exploring internet oddities and reactions
+UC1MOxBxgfyE3fkVgSLaeUvw,The Deep Dive Channel,2025-10-27T13:30:38.441723,filtered_subs,,,
+UCwnMkgwNdGKvIyW35zbiyTA,Digital Addiction ,2025-10-27T13:30:38.441723,filtered_subs,,,
+UCpoNqHin3YGAavszIaKw-KQ,Climate Generation,2025-10-27T13:30:38.441723,filtered_subs,,,
+UC2T2xpxd83v7V5xcQf6aXJw,Digital Soul Balance,2025-10-27T13:30:38.441723,filtered_subs,,,
+UCuBmXg06n0QDl-2abZyuxSg,Micro Docs,2025-10-27T13:30:38.441723,scored,0.762,0.58,Real-life storytelling documentaries
+UCd_Bx4LWMPWz5aQl_1J535w,Statesman Debate Institute,2025-10-27T13:30:38.441723,filtered_subs,,,
+UCfDsAuRJeUsf084abH5Z0fA,Quest for Reality,2025-10-27T13:30:38.441723,filtered_subs,,,
+UC-bEydWHQQt_g0BGXMXdUZg,The Culture Debrief,2025-10-27T13:30:38.441723,filtered_subs,,,
+UCZZB41iCSbiLj60RuN7BZUQ,Spiritual Rebirth,2025-10-27T13:30:38.441723,filtered_subs,,,
+UC48zHGoXzUaRpRL0tLYJmGg,Viral Talk Show,2025-10-27T13:30:38.441723,filtered_subs,,,
+UCCmlypTtRakBPa7A5PEXxNg,Deep Dive Docs,2025-10-27T13:30:38.441723,filtered_subs,,,
+UCLgrLaCjZA3ok7jq9nneU0g,FutureView,2025-10-27T13:30:38.441723,filtered_subs,,,
+UC6QJZHeRMrC0PMAARlXXSBg,Asia Pacific Adaptation Network (APAN),2025-10-27T13:30:38.441723,filtered_subs,,,
+UCixP7v4b5Vt-slwnG_Os61A,Movies Aura ,2025-10-27T13:30:38.441723,scored,0.588,0.22,Hindi mythological and movie storytelling
+UCraiEpJAGy4fwCwhL0vTe0w,PsyFact Nexus,2025-10-27T13:30:38.441723,filtered_subs,,,
+UC5WIyOOPAKptAjvOfwcVH8w,shahanshah ,2025-10-27T13:30:38.441723,filtered_subs,,,
+UCcuO6LPkXr6C1TpXWmdkYyA,Covering Climate Now,2025-10-27T13:30:38.441723,filtered_subs,,,
+UCOAPXANTpu9JBMF8RatHjWg,StoryArc,2025-10-27T13:30:38.441723,filtered_subs,,,
+UCB20X3_DQqKuK2VaHIjPulg,VOP-DEBATE,2025-10-27T13:30:38.441723,filtered_subs,,,
+UCkGjzy2vW3mEbZ4TwoedATA,Santosh Kunwar,2025-10-27T13:30:38.441723,filtered_subs,,,
+UCsjw8FwzX5DWRszVP_4u_TA,Technologically Yours,2025-10-27T13:30:38.441723,scored,0.699,0.46,Innovative technology and science analysis
+UCcD1DJYXeT8R11TM4hrQsbA,UNF Office of Public Policy Events,2025-10-27T13:30:38.441723,filtered_subs,,,
+UC6eDtPoJ1E_48ihN186tk0w,Cold River Mapping,2025-10-27T13:30:38.441723,filtered_subs,,,
+UCEFg6syprdsiIfL_2jKkXAg,Climate Bonds Initiative,2025-10-27T13:30:38.441723,filtered_subs,,,
+UCkl-l_-hE89w2Qn9CmHb-UA,ThoughtFacts,2025-10-27T13:30:38.441723,filtered_subs,,,
+UCENey1G4AX_oXrdVvAQB_Tg,"LLB SIMPLIFIED , law speech , interview, debates..",2025-10-27T13:30:38.441723,filtered_subs,,,
+UCNc-Wa_ZNBAGzFkYbAHw9eg,interviewing.io,2025-10-27T13:30:38.441723,scored,0.75,0.16,Technical interview preparation and mentorship
+UCY6DpwQetygtye7GM1zVHmw,tiffanyferg,2025-10-27T13:30:38.441723,scored,0.783,0.74,Pop culture and internet analysis
+UCMY_zSCGh7Uo5_eMmzdqeBw,PredictingPredictions,2025-10-27T13:30:38.441723,filtered_subs,,,
+UCB04wyXhojkNsXTakZcNETA,Media Culturist,2025-10-27T13:30:38.441723,filtered_subs,,,
+UCTTUsQJAdGSd2mMsGGfvzhQ,Galatta Plus,2025-10-27T13:30:38.441723,scored,0.757,0.34,Indian cinema interviews and analysis
+UCzBE5RBYGoADEJ4k1BMMikg,The Deep Dive,2025-10-27T13:30:38.441723,scored,0.611,0.34,Film analysis and media investigations
+UCyTrAwNz5PrCzW9UMNiI5ww,Factopia,2025-10-27T13:30:38.441723,filtered_subs,,,
+UCSx4SNQ2o6WU90H2Vuf70YQ,4D Capital Time & Price Analysis,2025-10-27T13:30:38.441723,filtered_subs,,,
+UCYxBtaf-0xeOfWuKtBU_Big,INX NAYMORA,2025-10-27T13:30:38.441723,filtered_subs,,,
+UCXhYRYBXI_Wze9DUkKEecWw,Curious Scan,2025-10-27T13:30:38.441723,filtered_subs,,,
+UCkhy9CoTxgSwEz9f9Ls-OLA,Predictive History Explained,2025-10-27T13:30:38.441723,filtered_subs,,,
+UCKA0KNXYAsiyv0rCZZLLPAw,LoreSavePoint,2025-10-27T13:30:38.441723,filtered_subs,,,
+UCtsNADRpxmiYwelYBHqU-0g,MindFacts Express,2025-10-27T13:30:38.441723,filtered_subs,,,
+UC_ooAVCpAaoHOCkeGkd1H4Q,TALKVIBE SHOW,2025-10-27T13:30:38.441723,filtered_subs,,,
+UCzDxOqsmcTS0fwUzMEjPhyQ,AgentOfDoubt,2025-10-27T13:30:38.441723,scored,0.838,0.76,Social issues analysis and commentary
+UCdHQiUZFaxl_mvy7WCR9hIg,Realigned and Unfiltered Podcast,2025-10-27T13:30:38.441723,filtered_subs,,,
+UC8bkK4QfmMv9k3ewAN6zg0A,Universal Quick Facts,2025-10-27T13:30:38.441723,filtered_subs,,,
+UCt508cwcS0ONdV1QtYguOSA,End Times in America,2025-10-27T13:30:38.441723,filtered_subs,,,
+UCnRapLy5P6SjXffXKZaPjVg,MediaLuka,2025-10-27T13:30:38.441723,filtered_subs,,,
+UCogXotq_ABLVql_sp55SU2A,RELIGIOUS STORYTELLING ,2025-10-27T13:30:38.441723,scored,0.624,0.34,Islamic storytelling and moral lessons
+UC3fOzMSxcmCXZLmAM9vy1IQ,War Stories,2025-10-27T13:30:38.441723,scored,0.675,0.52,Military history documentaries and stories
+UCPBpRnrHroPl5ZnMDm8HXhw,Vigelyst,2025-10-27T13:30:38.441723,filtered_subs,,,
+UCmwSc1GCX2grlGnBo-yQnoA,Policy Research Institute of Market Economy,2025-10-27T13:30:38.441723,filtered_subs,,,
+UCQHKXBj31IU0P388FF4BRCw,Quotable Moments,2025-10-27T13:30:38.441723,filtered_subs,,,
+UCmfQuPmeXRhSIr6WLvT6Fog,Archaix ,2025-10-27T13:30:38.441723,scored,0.822,0.34,Ancient mysteries and simulation analysis
+UCbWZP5Fuvq1WzD1u-yTwyIw,Sneaky Sushii,2025-10-27T13:30:38.441723,scored,0.73,0.56,Mysterious phenomena storytelling and analysis
+UCbUwR0r6R7hXCx205DCg2Ww,Lessons in Internet Culture,2025-10-27T13:30:38.441723,scored,0.818,0.58,Educational analysis of internet trends
+UCJjSDX-jUChzOEyok9XYRJQ,Jubilee,2025-10-27T13:30:38.441723,scored,0.853,0.82,Social issues and political debates analysis
+UC7NyghOYe9kPL3iJZ7yHD9Q,Truth Flicks,2025-10-27T13:30:38.441723,filtered_subs,,,
+UCijcd0GR0fkxCAZwkiuWqtQ,Free Documentary,2025-10-27T13:30:38.441723,scored,0.725,0.58,High-quality nature and science documentaries
+UChTzdyua3nHhLal9ttsj2Dw,drpanickersdentalcare,2025-10-27T13:30:38.441723,filtered_subs,,,
+UCW39zufHfsuGgpLviKh297Q,DW Documentary,2025-10-27T13:30:38.441723,scored,0.767,0.86,Global documentaries and current affairs
+UCLcI-YL1XZ9GVS9ho5yxwww,The Indian Journal of Law and Public Policy,2025-10-27T13:30:38.441723,filtered_subs,,,
+UCFJkvD4pxj-6FeYTjT0TT8A,The American Lyceum Debates,2025-10-27T13:30:38.441723,filtered_subs,,,
+UCcefcZRL2oaA_uBNeo5UOWg,Y Combinator,2025-10-27T13:30:38.441723,scored,0.691,0.22,Startup advice and founder stories
+UCQVaKQcp4OxSg1eC6SF3NTw,Feldup,2025-10-27T13:30:38.441723,scored,0.789,0.58,Internet mysteries and analysis
+UCNYIeulcLs85NLINDyxzHQQ,Mormon Civil War,2025-10-27T13:30:38.441723,filtered_subs,,,
+UCoWp66jGaxIyBkez_LBMLuQ,Kahani Nama ,2025-10-27T13:30:38.441723,filtered_subs,,,
+UCCuL_mX2s39ZSn9uK3tIFWw,Debate for Democracy,2025-10-27T13:30:38.441723,scored,0.545,0.64,Social and political debate education
+UCxsH38M64b9nwXe1SEBbdug,F&E middle east,2025-10-27T13:30:38.441723,filtered_subs,,,
+UCp9Jr702iM7NJIOofMXgLSQ,The Internet's Latest,2025-10-27T13:30:38.441723,filtered_subs,,,
+UCflEcewlgmgxHD4dKtE6rsQ,OPRClimateChange,2025-10-27T13:30:38.441723,filtered_subs,,,
+UCMu4g3cX_G1iHym2Fq149gg,Nohita Gupta,2025-10-27T13:30:38.441723,filtered_subs,,,
+UCNAfe-_-5--JzDMDf1xtkwg,Dial-up to AI,2025-10-27T13:30:38.441723,filtered_subs,,,
+UCHQ3S2hSxwS8oioHJBlgYKw,stories w sadia,2025-10-27T13:30:38.441723,scored,0.671,0.34,True crime storytelling and analysis
+UCfn9IgW70PJ3-sdHHlIDrxQ,Anna Seirian | Ambitious Softie,2025-10-27T13:30:38.441723,filtered_subs,,,
+UCDtHhLumhQ6HtHglVQ4N4Fg,News Deep Dive,2025-10-27T13:30:38.441723,filtered_subs,,,
+UCDVcTXq-of1MPBIaaSPCrqg,FilmFundaHindi,2025-10-27T13:30:38.441723,filtered_subs,,,
+UCu4XcDBdnZkV6-5z2f16M0g,Real Stories,2025-10-27T13:30:38.441723,scored,0.723,0.58,Immersive human experience documentaries
+UCrm5Gk6nqAbK3fbnkke8wKw,MindSphre-w60,2025-10-27T13:30:38.441723,filtered_subs,,,
+UCWKjHnWH0BYVqr0PwmUYI-A,GRAND ONE,2025-10-27T13:30:38.441723,scored,0.829,0.76,Indian political news and analysis
+UCrJdCKIddUxHExmbMN6gZ9A,Wartime Stories,2025-10-27T13:30:38.441723,scored,0.808,0.58,War and military storytelling and analysis
+UCMFZg1Xy1_sfK2pl0-5lhWA,Raising Geniuses,2025-10-27T13:30:38.441723,filtered_subs,,,
+UC1AaOE36fGYhZuvt-PIONGw,True Crime Deep Dive,2025-10-27T13:30:38.441723,filtered_subs,,,
+UCK8W5hamBDuJouhHZniFtfw,Unsolved Deep Dives,2025-10-27T13:30:38.441723,filtered_subs,,,
+UC0IC3GyhT2wYyG_36FLbkYA,Apni Padhai,2025-10-27T13:30:38.441723,scored,0.48,0.22,Government job exam preparation
+UCnk7T5NGZViHNAdUq1m8sYA,MEMER'S DIGEST,2025-10-27T13:30:38.441723,filtered_subs,,,
+UCb0F8WzHWqMT6g9l07nFn_Q,Deep Dive True Crime,2025-10-27T13:30:38.441723,scored,0.813,0.28,True crime case investigations and analysis
+UCwGHzcQeDVydKKrDHU9hq_w,Climate Asia,2025-10-27T13:30:38.441723,filtered_subs,,,
+UCYzRGTG-Z-t5slPC8XBaprQ,Climate Change Adaptation Program,2025-10-27T13:30:38.441723,filtered_subs,,,
+UCyRNct58uOiHdgL1e7CXNnw,Deep Dive To Knowledge,2025-10-27T13:30:38.441723,filtered_subs,,,
+UC1WhM2XgfQrpflyMsn4110A,"About Face Media, A Documentary Storytelling Collective",2025-10-27T13:30:38.441723,filtered_subs,,,
+UCCUdrSCLop9r0hsywNne8gA,Digital Detox Delight,2025-10-27T13:30:38.441723,filtered_subs,,,
+UCl81oc5NE8Tz-PXPjbG9QSg,Psychic predictions with Orion Ray ,2025-10-27T13:30:38.441723,filtered_subs,,,
+UC-IW6z6_TsyRgrVjF_4kKaA,Past Brought Alive,2025-10-27T13:30:38.441723,filtered_subs,,,
+UCI5g8maB62ncL8jE9Tz9bDA,Prediction’s From Spirit by Ryan,2025-10-27T13:30:38.441723,filtered_subs,,,
+UCeuFgUcrtY06flPt9n9T4iw,Asian American Documentary Network,2025-10-27T13:30:38.441723,filtered_subs,,,
+UC3BLMPXohw25BXAcA15LrpA,The Deep Dive Hub,2025-10-27T13:30:38.441723,filtered_subs,,,
+UCDvTAcd3t8yEAIiM-Ck49lg,ParlView,2025-10-27T13:30:38.441723,scored,0.594,0.46,Parliamentary proceedings live streaming
+UCs-v-qEjA20o2IqMsvXRUdA,The DoCumentary,2025-10-27T13:30:38.441723,scored,0.703,0.16,Cricket storytelling and analysis
+UCNXvxXpDJXp-mZu3pFMzYHQ,Our Changing Climate,2025-10-27T13:30:38.441723,scored,0.819,0.58,Eco-socialism analysis and advocacy
+UCfM-7xCscMfcObAZ0DGa74g,APH Question Time,2025-10-27T13:30:38.441723,filtered_subs,,,
+UCfVBdk2KXaDg4DRISlGai1A,Technically Creative by KoobrikLabs,2025-10-27T13:30:38.441723,scored,0.826,0.56,AI-driven storytelling and content creation analysis
+UCv2zMC1iYiIC9UMd0MUEUDg,Indonesia Climate Change Center,2025-10-27T13:30:38.441723,filtered_subs,,,
+UCGKunoDVEIW2VVFLGskgdFg,True Crime Deep Dive,2025-10-27T13:30:38.441723,filtered_subs,,,
+UCgJFVw1iKJrsLrA3jBd0-ig,Vigetive,2025-10-27T13:30:38.441723,filtered_subs,,,
+UC70w62BftPiCTWb5nwlhAUg,Climate Action in Financial Institutions Initiative,2025-10-27T13:30:38.441723,filtered_subs,,,
+UCuiKvQG3067yDZGyGwhnUzA,Untold Storytelling,2025-10-27T13:30:38.441723,filtered_subs,,,
+UC9LYA3_zHoiR8a9SrO0NAbw,History and predictions,2025-10-27T13:30:38.441723,filtered_subs,,,
+UCIRUZEeVW4O0u9mnQD36_rA,Muse Storytelling,2025-10-27T13:30:38.441723,scored,0.729,0.58,Storytelling techniques and analysis
+UClhswVYw8oFzkmf-MBA_99g,Talaashi - The Crime Hunt,2025-10-27T13:30:38.441723,filtered_subs,,,
+UC9MAhZQQd9egwWCxrwSIsJQ,HISTORY,2025-10-27T13:30:38.441723,scored,0.794,0.58,Historical documentaries and storytelling
+UCErSSa3CaP_GJxmFpdjG9Jw,Lessons from the Screenplay,2025-10-27T13:30:38.441723,scored,0.681,0.34,Film script analysis and education
+UC5KD40UCDRUbR-od7sp9cuA,Collider Interviews,2025-10-27T13:30:38.441723,scored,0.803,0.34,Entertainment industry news and analysis
+UCrv86q2-WfnJKamv3I240IQ,A Toasters Perspective,2025-10-27T13:30:38.441723,filtered_subs,,,
+UCSQ3jNVu8Zr_toI7NWzDwHw,StarvHarv,2025-10-27T13:30:38.441723,scored,0.567,0.22,Comedic internet entertainment videos
+UCxWunT7i1SW7RlcK5mIzwaQ,Third Ear Conflict Resolution,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCNxAr5jUYHFoLlQXqmw2vcg,Animated Story Factory,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCUj00c2lfbMafoV9glcNGgg,Aje Digital,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCtsa-KA0L8nJcnMqWdLsB9g,Story Bucket,2025-10-27T13:44:22.752482,scored,0.865,0.76,Geopolitical analysis of Bangladesh
+UCY8xUWeaWVE4JY05JUupzYQ,Global Investigative Journalism Network,2025-10-27T13:44:22.752482,scored,0.77,0.58,Investigative journalism training and resources
+UCENm-qnNim7eW8RcubY94rw,Heritage Stories | Meet Islam’s Greatest Minds,2025-10-27T13:44:22.752482,filtered_subs,,,
+UC66HJoqpyVlRBxshQWzMhLg,WW2 Short Tales,2025-10-27T13:44:22.752482,filtered_subs,,,
+UC5BRE4mhJ-6IxZrtq_NmuXw,Medieval Story Kingdom,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCy9Rac2WMeZGGftzbjykl_A,India Newws live,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCjqMLPf7s_4BzSr5U71nNFw,The Investigative Truth: Cold Case Missing,2025-10-27T13:44:22.752482,filtered_subs,,,
+UC97oK0_uxirz2Q7irb5HDQg,Geo Story In 60 Seconds,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCkx8IwI9pNzDA_KEpHyA2vw,The Water Resources Podcast,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCOW37RA6PBg10gwCunmIL-A,Finance Investigations,2025-10-27T13:44:22.752482,filtered_subs,,,
+UC2Mj_CuHHC-_pnzI8wi-aog,ECONOMY İNSİGHTS,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCfU1PfjWOpcIP5aqpyjvBdQ,Video Storytelling Guide,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCg2-wFRVaa2Bcdq7P-QnUGQ,SAMA 6TVNEWS,2025-10-27T13:44:22.752482,scored,0.783,0.76,Local and global news coverage
+UCIg6c85B6OaWHIKcQIBltJg,WWII Chronicles: Echoes of Conflict,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCsdr_XiUc7R4oN-4IUa3EZw,Demotivation with Ryan,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCvy7IpFOywkgu4tm4phm7Yw,Finance History,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCc2sQwMRL8wjZJERKeXrdrg,Documentary Diaries,2025-10-27T13:44:22.752482,scored,0.758,0.22,True crime documentaries and analysis
+UChid-QO2gcMdMxqs90gI_Hg,The Economic Lens,2025-10-27T13:44:22.752482,filtered_subs,,,
+UC4O0DqKtxhCJz8gtSAWk1Tg,Signal Stories,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCypwg9AxBwoLfom6XleOP0g, THE STORY SPHERE,2025-10-27T13:44:22.752482,filtered_subs,,,
+UC2gdQPrjf16BmCyDBo_hyDQ,South African Cultural Observatory,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCZ8Gyq40-4c6kw6XwA0lMPg,manish's documentary,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCmkbI-RYDJ3yIER1xM_x61g,Edges of power,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCtWHlh00gDmz1jgB8w7XLGQ,Centre for Cultural Value,2025-10-27T13:44:22.752482,filtered_subs,,,
+UC-ZaVGAPs9kFibGI-oCNUqA,Warrior Diaries,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCfWrct9xG33J7DVEXvp9LGw,A Paranoid's History of the United States,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCxJ8jKzjccV3zf60OzcUHMg,Documentary-style Learning ,2025-10-27T13:44:22.752482,filtered_subs,,,
+UC1Kh9iv2rXdWu60xdAx62lw,NCECR Resources,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCevMOhov0XCqgYBNM6x6Uog,Military Culture & Geopolitics,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCuuSCzSUzjvtOibnN7pe_Aw,WORLD ECONOMIC NEWS,2025-10-27T13:44:22.752482,filtered_subs,,,
+UC52q9IfiCkhglzrp4ZNC3bg,ChronoSaga,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCRl5P9zUZvjJVt3qnttmKvA,Unfiltered,2025-10-27T13:44:22.752482,filtered_subs,,,
+UC0Vm0LZk7UOWUVqK7pVuctw,Heaviness in Metal Music Production,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCNU36_aiMBmsOc2_XcCtYBA,Epic Conflict Tales,2025-10-27T13:44:22.752482,filtered_subs,,,
+UC-lZ4dzNH9umfXekKBkFykQ,The Finnish Research Impact Foundation,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCO_oW512vCgedOUsp_hz_cg,The Centre for Investigative Journalism,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCKBaL17hXLGJvi2KZKpja5w,Kendall Rae,2025-10-27T13:44:22.752482,scored,0.762,0.22,True-crime storytelling and victim advocacy
+UCIcBuOGmWBV2O234wJCWjTQ,Clause& Conflict- Simplifying Geopolitics ,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCtmVXt9iXQOJpgo0LqfaLMw,Global Economic View ,2025-10-27T13:44:22.752482,filtered_subs,,,
+UC7DReWYVwRBWldKqCSRi_KQ,History in Conflict,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCsV0FcepKaB8HYdSdmN3acg,Frames of Reality and Fantasy,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCSduV0wjOZE7UDqZ-NV8OWQ,Following the Money,2025-10-27T13:44:22.752482,filtered_subs,,,
+UC-hzoAk2bSnoqW0LmECa5WA,Our Stories,2025-10-27T13:44:22.752482,scored,0.788,0.46,Documentaries on everyday professions
+UCsB-VNPwyvAfDW2Z3chis9A,Driven mindset & documentary,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCVXKabRhXSQXh_U0au5JSzQ,EWU Crime Storytime,2025-10-27T13:44:22.752482,scored,0.714,0.28,Police procedures and local news analysis
+UCDyEBHmO0Vk8dWn-frPnZIg,Storytelling Techniques,2025-10-27T13:44:22.752482,filtered_subs,,,
+UC2XNvPIikHBlvYwIcyelR9w,SwiftMotion,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCj5ZBiOaFFBjEHrYyBC1-nQ,Technical Deep Dives,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCt-ybO9Kw9QqG9Ts_YaPJgA,Pavneet Singh,2025-10-27T13:44:22.752482,scored,0.706,0.38,Sikh history and motivational content
+UConRVFYiMa0XUe0hNDGVXaA,NarrativeFramez,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCqnbDFdCpuN8CMEg0VuEBqA,The New York Times,2025-10-27T13:44:22.752482,scored,0.857,0.76,Independent journalism and news analysis
+UCtYQaZPOCMtrijLRYFnAtEw,Decoding Geopolitics Podcast with Dominik Presl,2025-10-27T13:44:22.752482,scored,0.728,0.86,Geopolitical analysis and insights
+UCnXemEAPgWscfRGO0JMlkAQ,RICHARD WOLFF ECONOMICS REPORTS,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCNM6DIt8A2F_oUGp1gu31SA,Hue Katha Academy,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCmZzv8lp22WGlFZJguQgMKw,The Drive Story,2025-10-27T13:44:22.752482,filtered_subs,,,
+UC3Rr9YlTfQJcp_-Qf2uGGQQ,Past Uncovered,2025-10-27T13:44:22.752482,scored,0.704,0.76,Historical documentaries and storytelling
+UCzEcARkk8d1XdLbo2koY_UA,Unauthorized History of the Pacific War Podcast,2025-10-27T13:44:22.752482,scored,0.637,0.58,Pacific War history and analysis
+UC4P8HE5xrBaRIOe85o9kTuw,UCL Research Impact,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCZ7Wl610iTapb-vhbBj-c5A,VOICES OF IMPACT with Arjun Mirani,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCL7p5y0Tqxq55cXj1orvcnQ,The visual story tellers,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCub1Fn4Yp3qcof0yTr1b2Lw,OA CAP 2.0,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCi6XF582sSwBjjB9M4qNDVw,BingeWorthy Documentaries,2025-10-27T13:44:22.752482,scored,0.814,0.46,Thought-provoking documentaries and analysis
+UCK6QJ0zsBKyXPxF1LI8wlZw,GEOlayers,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCRgMIwmmh1-2k5HeTQ2cdkQ,Gaurav Thakur,2025-10-27T13:44:22.752482,scored,0.745,0.34,Entrepreneurial mindset and self-improvement
+UCOS3jSAXBJwdBiytCOY_Cfg,Hiroshima NERPS,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCE4Gn00XZbpWvGUfIslT-tA,MagnatesMedia,2025-10-27T13:44:22.752482,scored,0.777,0.68,Business storytelling and analysis
+UCjVvwTLFD0QMrPZ1Jo1V0cg,Story Lenz,2025-10-27T13:44:22.752482,filtered_subs,,,
+UC4va6B_Uiv99coEUbm8QHig,The Crime Archives,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCEekHpOnYUz8JRFBRRL2YQQ,The Time Capsule Show,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCdCIGh00efux3N5qIgObmFw,Map & Myth,2025-10-27T13:44:22.752482,scored,0.824,0.92,Geopolitical storytelling and analysis
+UCwGpAyViUpglf6Am7fT_sPg,Geopolitical Stories,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCpWc9F-c0YdnHd3xkNQasOA,LUMS Career Services Office,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCF55EMbtou_U0GBXWCDb4Uw,The Layman Perspective ,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCPcNPnyZZ5bZ2QpOyE1ZzWQ,Museology Insights,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCEW7d1-vgFHvV4Xt0Ff1leQ,Stories of the Great War,2025-10-27T13:44:22.752482,scored,0.719,0.58,World War I stories and analysis
+UCtkBX9BoBHtBPiPml8IqBZA,Logical Documentary,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCaUp2ZO5m1fh34dggHH1bmQ,Economic Truths,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCxOudTMuVJw268_WlsVWDAw,Global Economy & Politics,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCzsugJ1987kccEbCoGMcf0g,Art History TV | Original Art Documentary Series,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCxldSKD_XW27KQm2-BViy8w,History in Conflict,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCmecoCb8UgmdpsKsz33yn7w,Golden Trade Insights,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCgmqDKP04IHmyWjTPrruN1Q,Research Impact Academy,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCdFCa_7HtbBOINg7aZ419ig,Threads from the National Tapestry,2025-10-27T13:44:22.752482,scored,0.718,0.58,American Civil War storytelling and analysis
+UCKZozRVHRYsYHGEyNKuhhdA,Think School,2025-10-27T13:44:22.752482,scored,0.842,0.76,Business and geopolitics education
+UCc5lsTLRNjIKjTysVrFHagA,Money Matrix,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCPaGnAqSy3tvdnin4Lvwadg,Timelines & Territories,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCHa6IuZ8_y9_ysjAlwz0d8w,Documentary with noman ,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCIaTZmxst_cbfIaqYNyVrlA,ArMotion Studios,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCQf99fio1kKEKIKPN2Qg-tA,The Capital Battlefield,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCJg9Ra2mOajL4VStAy4RuFw,Money Matrix,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCkP5dWpe7Mdu-D7prR7MeNQ,IUCN SSC Human-Wildlife Conflict & Coexistence SG,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCNZpmi9GKyPfp676j9BT_Og,Voice to Visual,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCocBDCmGsm4Ro0dG-SQRy1A,EYE ON EARTH,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCYyZEdM322Ui7Ittf7_c-sQ,Map Snake,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCrkiTXHh1ozV8STNJ_0UFHA,World Economy Financial Analysis ,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCgrJN0UWmu7NpJ8T49q8DyA,Primal Worlds,2025-10-27T13:44:22.752482,filtered_subs,,,
+UC3Yq-l5HTEUexT35RE3XwFg,BNP Paribas Economic Research,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCdcVlYGk2NhUJLRcqD3ycHg,News Cafe Malayalam,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCp-QXHsqAwmsp1VBLnv-9RQ,Visual Business Storytelling and Sketchnotes ,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCeAQwlTXPt7DH6Ctbd2B5tw,3T TV MEDIA,2025-10-27T13:44:22.752482,scored,0.758,0.64,News storytelling and analysis
+UCprjYvd-7fC8zPYRa8oXDrg,Rohan Travel Stories,2025-10-27T13:44:22.752482,scored,0.752,0.22,Wildlife travel documentaries and stories
+UCaHT88aobpcvRFEuy4v5Clg,Lessons in Meme Culture,2025-10-27T13:44:22.752482,scored,0.644,0.22,Meme culture trends analysis
+UCZ3L8lA3vzUjVv3AXssWaQA,Strategic Map,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCuxpJ85gQ2-zUMoOb0fOMYw,HR Tuesday’s With Diana,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCeAQskyXQZs5pDgGgLm2jKQ,Globality Explained,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCoh9OmcYvjYXAujJ6EW7V_Q,Global Trade Analysis Project - GTAP,2025-10-27T13:44:22.752482,filtered_subs,,,
+UC_1YnEutl3nq5xc0pZJ_YHg,Here and There - Geopolitical & Economic Analysis,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCno5QpokMONghaq04HKEWPA,Bollywood Silver Screen,2025-10-27T13:44:22.752482,scored,0.652,0.14,Bollywood entertainment news and analysis
+UCgDwK00qSodVWPU9UYBNI_g,A Cultural Impact Project,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCE2aXjP-Mk0aJHV6CDlPmdA,Global Consilient Research,2025-10-27T13:44:22.752482,scored,0.587,0.34,Advanced equity research education
+UCEVAsT1OUOMV3kEzKBy-rmw,Economy Explained,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCMEGt4ywSyM4PlMjvPwg2nQ,Vishal Cinematographer,2025-10-27T13:44:22.752482,filtered_subs,,,
+UC9pfwH9KApZoVeaVeAhX4-g,theratherreports,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCw04ooDi0CoStdYsb2-cqPA,Cinematography Tips,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCbCTw1jDa_JDkhrJMNFjm_w,History In Conflict,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCZlEkWaILb9uy4ZjB1HZb_w,Unravelling Truth,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCfJIseiIXMaIdnxVm0_9X-A,Stories 🌎Geopolitical,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCWDX4kW42NGdr2yV8G8mSvw,School of Visual Storytelling,2025-10-27T13:44:22.752482,scored,0.503,0.16,Online art education and tutorials
+UC1_eDdmnlzCSC54Xp8EZi0Q,Awaken True Crime,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCV8isaayZtsJoGIB3bg2hvA,The Art of Exploration,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCaCdda9wDx0maQtHTTesdsQ,How Global Economy Works,2025-10-27T13:44:22.752482,filtered_subs,,,
+UClMly-R3eWKCYzCbm5Rqimw,Whispers of War,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCiYlpKkXoVLuJHpgCFANzkw,The Documentary Explorer,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCvo6Dbt6YK7SjtISXi_vvsw,Behind The Frame,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCtwwnAiODpBkLFaYKHoYkBQ,Boss Economics World,2025-10-27T13:44:22.752482,scored,0.728,0.74,Global economic insights and analysis
+UCpF9Z2Pq-eCHr0OGm3-DNLw,Fun facts of geopolitics by Aman,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCF58AzQw83B6_2G__XkROpg,Narratives,2025-10-27T13:44:22.752482,scored,0.866,0.86,Journalistic analysis of global issues
+UCOCQNYjfKVtdRnqP7qnZIXA,The Finance Empire,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCKkWJ4npm0qesNRpG-oCRCQ,VFM NEWS,2025-10-27T13:44:22.752482,scored,0.7,0.56,Global and local news coverage
+UCT0dmfFCLWuVKPWZ6wcdKyg,James Jani,2025-10-27T13:44:22.752482,scored,0.753,0.76,Documentary-style storytelling and analysis
+UCmGVjrVzBTjuFrIgqaGXbOQ,Explore to Start,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCRbhLFlx7nhn2cC-A8TYQhw,World In Layers,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCaDunCIbNkQNDfFxSW8n_DA,WW 2 Stories,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCDmE820VYrOtkLGML10Drkw,Economic Analysis,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCPnPNIs8qQHvXbvhTuJuY9g,Xyric Documentary,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCUGwVgtUewevtLvu7NaxVrw,Dr. Roy Casagranda,2025-10-27T13:44:22.752482,scored,0.811,0.76,World history and politics analysis
+UC-cc3tcpdPcqH3D-oAkwU8w,Conflict Narratives,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCVNCvy7Rw_QWzzkKP5cCj5A,Chronicles of war and conflicts ,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCFvdDud6kZ1TS_Cne7Y2-MQ,Visual Storytelling,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCHPfNFptdIad9AF44FLULaw,Ancient Science Documentary,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCTuPko5bUat6bXuITL3aa4w,Finance Express,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCkfOxzYHGYtPJbi13FP5cXQ,MONEY MATRIX ,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCMFDcWL8U22LoYTjxuzwhwA,Culture and Values Webinar Series,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCl6cWYqU5nwMehLtL4_zkIw,Geopolitics by Rohan,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCODHrzPMGbNv67e84WDZhQQ,fern,2025-10-27T13:44:22.752482,scored,0.915,0.86,Global events and historical analysis
+UCBfMx4hfLjVkycFPDpQ4tyA,Jasss Journal,2025-10-27T13:44:22.752482,filtered_subs,,,
+UC4jF5WrKDB54wF6lAONlqYw,The Academy of Medical Education During Conflicts,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCLRWhgoKHNXcv_1kPhVmoDQ,IMPACT STUDIES,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCQneyKMvg0d-BO7oJ1phsig,Deep Global Insights,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCf7SX37XZUBjSz-3KWkPWhg,ETN,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCE-vQGVAk1JVav-EBGZ9j7Q,Memesys Culture Lab,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCdVfxYNPqNYHTb11haAQvjw,Eyes Can See,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCSHXStREsjTZMs8HpMmB3Yw,Impact leadership and Culture Briefs,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCYLpyKtNj1KuuVBT6bGv8PQ,News BD TV,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCwlvSJdcMc7iGdR-aducSog,Geopolitical Economy Report,2025-10-27T13:44:22.752482,scored,0.774,0.86,Geopolitical news and analysis
+UCodbZWKm5nxVxYz6IATv6Ww,Geographilia,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCcCrEjxbQ1ZctdSHB1B-2lg,Time2Documentary,2025-10-27T13:44:22.752482,filtered_subs,,,
+UC1Z7MWGYSCVPDnwsiY5jb9A,Strategic Frontlines,2025-10-27T13:44:22.752482,filtered_subs,,,
+UC9AaaL0pTFtH0JydXMzywgA,Parallel Truths,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCWDvJT6ptY7GrwCEdzGzmwQ,The Global Narrative,2025-10-27T13:44:22.752482,scored,0.729,0.86,Global politics and current events analysis
+UC7hdIIdU-CcS55xdtI4kkDA,Sudeshna Goswami,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCiP_spaVZXko8Mgvk2SOTTA,The Center for Black Visual Culture at NYU,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCypF173Q8FllGf84wnfDujA,Michael | Stock Spotlight,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCKtWsCBgv1mgp4r3O9l8IDQ,Screenwriting with the Storylosopher,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCmNcCKNIFGdTu5JjHbzf9DQ,Centre for Culture and Disability Studies,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCb6-FN6ifFUuID4RL1niVlA,The Retrospectives,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCK8wvnTDxJe8FnvXGvP8M3Q,The Sociolinguistics Channel,2025-10-27T13:44:22.752482,filtered_subs,,,
+UC_IPQ16nPwPtY6L7GkklRmQ,The Ethical Compass,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCx7-8nUXj2SHsNiLrqjTDJg,Finance Empire,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCydVRwmZE4Uwr4mhqtPEaMw,Breaking Political Analysis,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCnltEdiJspLUvN3OwJYVVVA,Golden Sand Films,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCIp06-91QZht4NhPwWpAOxA,WORLD POLITICS AND ECONOMICS,2025-10-27T13:44:22.752482,filtered_subs,,,
+UC3bFGbu3W62K3D6tqVxb5Iw,Cross-Cultural Psychology (IACCP),2025-10-27T13:44:22.752482,filtered_subs,,,
+UCEWyXYbIJGs1GX7VqKExjVg,Kitco Mining,2025-10-27T13:44:22.752482,scored,0.569,0.34,Mining industry news and analysis
+UCrpANfLJQ5RtpDFchPAT-aw,Zero Evidence,2025-10-27T13:44:22.752482,filtered_subs,,,
+UC-VAjBxnOw_dDekhcV1JDYA,Medieval Nocturnes,2025-10-27T13:44:22.752482,filtered_subs,,,
+UC3NgHXf4t9ruAYDmOjUHw5Q,Stories of behind the lens,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCpp7QgsmJ9c4CvU8-jjBFgg,Culture Counts,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCoAjgbRDm_t_NTGcP4-L2-Q,Finance Wisdom,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCF_k0AoDuMCaWuuyPUzJF3g,Storytelling Calligraphy  🎨,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCBwuDmAj5EugA3pMPuVNNWw,WW2 Conflicts Tales,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCL1vxnmPcwS8bNNuU_1g_5g,Chronicle TV,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCSDi6H3csXCMKddITJLZA8g,TheVanishing Point,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCOmt8Vkq0h14ykcgEC1FF_g,Global Shifts,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCZeXJVvzbUbMCHe-Y7pyo8g,Ficstory Tales,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCadHoxMVbH_r3V1Pq64_OAA,Conflicts of The World,2025-10-27T13:44:22.752482,filtered_subs,,,
+UCj4eso6wtE7DJqN4el5b8uw,Mass Culture,2025-10-27T13:44:22.752482,filtered_subs,,,
+UC6WzPg6yxF9dQx2_O6R4lww,Nitish Rajput,2025-10-27T13:44:22.752482,scored,0.768,0.56,Indian societal issues analysis and empowerment
+UCFwQ6w0aMz9Ol17w2Ks71fQ,Historical Digs,2025-10-27T13:44:22.752482,scored,0.692,0.46,Military aviation history documentaries
+UCjIZ6q2_mMKc1BIZ9LAWtZw,"Geopolitics Hub: ""Insights and Analysis""",2025-10-27T13:53:17.888310,filtered_subs,,,
+UCgGgB4JNuyMCTb1oC_u3pLQ,Celebrity Scandals,2025-10-27T13:53:17.888310,filtered_subs,,,
+UCt4p3ouh171_lnhuSDkFPow,Beneath the Narrative,2025-10-27T13:53:17.888310,filtered_subs,,,
+UCUSdTGNcA6sEef-GDz8wtFg,Social Impact,2025-10-27T13:53:17.888310,scored,0.83,0.52,Social change and awareness storytelling
+UC7MT5qXLzkAtSzxYIoHNM_g,TeChniCAl AnAlysis inTerview quesTions ,2025-10-27T13:53:17.888310,filtered_subs,,,
+UCQKsY5JL3s0POKwq8Y0nR9A,World Affairs Insights,2025-10-27T13:53:17.888310,scored,0.76,0.76,Indian geopolitics and current events analysis
+UCPuxT1t3MwSPQB8XmJ4VcNw,Scandal Scope,2025-10-27T13:53:17.888310,filtered_subs,,,
+UC5aE5_undvBtBN5y_BscU0Q,Clarity for UPSC by Dr.Shivin,2025-10-27T13:53:17.888310,scored,0.783,0.58,UPSC exam preparation and insights
+UCjtbwqQ9Y9xPTUyYH4LDisg,Social Impact,2025-10-27T13:53:17.888310,filtered_subs,,,
+UCfuuIqAlezz2PVBNEzBX4nA,The Global Len's Analysis ,2025-10-27T13:53:17.888310,filtered_subs,,,
+UCDVNAks366oODs4J9gY8xmg,HelixSphere Studios,2025-10-27T13:53:17.888310,filtered_subs,,,
+UClzCs-BKomU_JeAYz4WSzrw,Geopolitical Updates,2025-10-27T13:53:17.888310,filtered_subs,,,
+UCDbmZwhe54Bo5G7T38SIOig,Stars & Scandals,2025-10-27T13:53:17.888310,filtered_subs,,,
+UCsqfH18pC3C1bRmKRVGGFLA,Manhwa Corner,2025-10-27T13:53:17.888310,filtered_subs,,,
+UCgbzclo4Mfy_D68w_Bm_xHg,Tried&Refused Productions.,2025-10-27T13:53:17.888310,scored,0.714,0.22,Indian cinema reviews and analysis
+UCvqzljL-oYMhmMtiPmniIkQ,FillozaInsights,2025-10-27T13:53:17.888310,filtered_subs,,,
+UCd0SMAQS3ipckMxSTlWpN1g,Documentary The Lesean,2025-10-27T13:53:17.888310,filtered_subs,,,
+UCBYeG_konCW0RUXj7GE3f9A,Reality Scandals Daily,2025-10-27T13:53:17.888310,filtered_subs,,,
+UCFTqEHKxXvqcFXd3hRlKKxQ,Stars & Scandals ,2025-10-27T13:53:17.888310,filtered_subs,,,
+UCxI0gCvSKqWeqgpFp5Qd53A,Centre for Social Impact,2025-10-27T13:53:17.888310,filtered_subs,,,
+UCy6hv2n-ZoMCzAc6Tbc0i-Q,Random Facts,2025-10-27T13:53:17.888310,filtered_subs,,,
+UCR4nFeL0ZZPRlCLJDtQPNEg,IREME EDUCATION FOR SOCIAL IMPACT,2025-10-27T13:53:17.888310,filtered_subs,,,
+UCJWKjrrUh2KL1d3zXQW79cQ,EXPLORE WITH US,2025-10-27T13:53:17.888310,scored,0.678,0.46,Police procedures and local news documentaries
+UCnAcTL8wkvAZ2townGIdLDw,UN-Wrap The Bias,2025-10-27T13:53:17.888310,filtered_subs,,,
+UC7RLqC5dBBYKy0ao_zFnw0A,lexi aka newlynova,2025-10-27T13:53:17.888310,scored,0.659,0.13,Book reviews and literary analysis
+UCrOmFbHgf_k4pk-jYRmyhjw,Dr.Gajendra Purohit - GATE / IIT JAM / CSIR NET,2025-10-27T13:53:17.888310,scored,0.418,0.13,Higher mathematics exam preparation
+UCnbnepiFBcKvPZlpMmoHuHw,Business Analysis Interview Preparation ,2025-10-27T13:53:17.888310,filtered_subs,,,
+UC_3qs3JCyqbYGmq0Vx_p6UA,Kean Wong,2025-10-27T13:53:17.888310,filtered_subs,,,
+UC_ChdwB3-d8CfWi53A3vbGA,Air Crash Investigation,2025-10-27T13:53:17.888310,scored,0.677,0.34,Aviation incident analysis and documentaries
+UCyY-l5A-92TkCghNoZ0_SLw,Artificial Progress Made Natural ,2025-10-27T13:53:17.888310,filtered_subs,,,
+UCGKUQte8RBCNnI_OYpckErg,Hannah Alonzo,2025-10-27T13:53:17.888310,scored,0.783,0.34,Commentary on MLMs and social media culture
+UCwxod2w5NT4qMWfMgZivCYQ,The FBI Files,2025-10-27T13:53:17.888310,scored,0.656,0.34,FBI crime investigations docudrama
+UC9T3UswBXvXUPQHkHglGY-A,Fraud Squad,2025-10-27T13:53:17.888310,scored,0.559,0.34,Scam awareness and prevention news
+UCqjSVeZZIGSxOxR-vz3K-AA,POL SC HELP,2025-10-27T13:53:17.888310,scored,0.583,0.34,Exam preparation for political science students
+UC7krt1E6XvrywJBu0ZOyq3Q,Khan Global Studies,2025-10-27T13:53:17.888310,scored,0.447,0.22,Competitive exam preparation guidance
+UCKDYCHY47yvz-XQRU6EsNKA,The Drawing Cut - Illustrated Movie Commentary,2025-10-27T13:53:17.888310,filtered_subs,,,
+UCKXT1kq8ih7H7iZklUdRDmA,Geopolitical Unplugged ,2025-10-27T13:53:17.888310,filtered_subs,,,
+UCFej_1UB2D_yfXYMJR7-28Q,Social Impact Lab by Abdul Alim,2025-10-27T13:53:17.888310,filtered_subs,,,
+UCgICvp2wLhrBKZXt73tw9bw,BE THEE COMMENTATOR,2025-10-27T13:53:17.888310,scored,0.85,0.42,Fame and scandal storytelling analysis
+UCneBQEDcJON3tJ6r8qtn2YQ,Global Strategic Reports  : Insightful Analysis  ,2025-10-27T13:53:17.888310,filtered_subs,,,
+UC4rjVGcU_TNq61Ps4MqBlhg,Mindful of the Media,2025-10-27T13:53:17.888310,filtered_subs,,,
+UCXumeg94itIska4Yz_43Ttw,History That Keep Secrets,2025-10-27T13:53:17.888310,filtered_subs,,,
+UC4ZjhYMFoWWmYUN0min75Ug,Mugfile,2025-10-27T13:53:17.888310,filtered_subs,,,
+UCrYz6CwU8UV5gQqRL3Chjpg,GeoPolitics Decoded,2025-10-27T13:53:17.888310,filtered_subs,,,
+UCtsWj3m-d8YY57C7oVDmiBA,Hight Media - Corporate,2025-10-27T13:53:17.888310,filtered_subs,,,
+UCJhHJj9-eBHNtFqBTmAyYMw,Brooklyn Savvy Talk Show | Shifting Narratives ,2025-10-27T13:53:17.888310,scored,0.879,0.64,Social change and cultural analysis
+UCWdEI-adtq0qZIHCus4-6dQ,Pranav Sharma,2025-10-27T13:53:17.888310,scored,0.589,0.1,Stand-up comedy entertainment videos
+UCFdISTpjgOKkhuNrdXqRniw,Journey Into Discovery,2025-10-27T13:53:17.888310,filtered_subs,,,
+UCz-IFchgvFq797AHYuaB29A,pwnyy,2025-10-27T13:53:17.888310,filtered_subs,,,
+UC0MgfX0-FkINpUaKFUbGRnw,The Business Analysis Doctor - IIBA Certification,2025-10-27T13:53:17.888310,scored,0.681,0.22,Business analysis certification preparation
+UCqwsGv1KJfFUwGfmp-Ylxlw,Mythological Heritage Ph,2025-10-27T13:53:17.888310,filtered_subs,,,
+UCQC9GRq_J3TJlf3J58bUfag,Filming explainr,2025-10-27T13:53:17.888310,filtered_subs,,,
+UCNgO2NDoR1lvclMOJ9A8YzQ,Dragon Fruit Films,2025-10-27T13:53:17.888310,filtered_subs,,,
+UCnQC_G5Xsjhp9fEJKuIcrSw,Ben Shapiro,2025-10-27T13:53:17.888310,scored,0.8,0.76,Conservative political commentary and analysis
+UCEQiEyMO9ci0Y-KwLOF4ysQ,Rebal D,2025-10-27T13:53:17.888310,scored,0.706,0.46,Commentary and reaction entertainment
+UC9gRSLtA-XxQPeo3LAG7JTw,Geopolitics Insights by AK ,2025-10-27T13:53:17.888310,filtered_subs,,,
+UC3KGumGbw4sHlnUtgtn9IqQ,Bobby Ustad,2025-10-27T13:53:17.888310,scored,0.681,0.34,Viral trends and influencer commentary
+UC9hcDFT96IyFGllwlO0T-ug,Culturally Inappropriate With A.C. Lee ,2025-10-27T13:53:17.888310,filtered_subs,,,
+UCZx9QK9Xo9Jtwds4oARiXZg,Close to Study,2025-10-27T13:53:17.888310,filtered_subs,,,
+UCY0bcyBExmWN7a0AApC79FA,Social Impact Award,2025-10-27T13:53:17.888310,filtered_subs,,,
+UC4n19X13O_7Qt6SHO52YO2w,Audit & Fraud Detection - Uncensored,2025-10-27T13:53:17.888310,filtered_subs,,,
+UC31ujPXl0w8N9GJf6_Y_reQ,Culture Stories ,2025-10-27T13:53:17.888310,filtered_subs,,,
+UCDtWPZbaEQ8X_M3DuuDFK3A,Commentary Guy,2025-10-27T13:53:17.888310,filtered_subs,,,
+UCmz3HxVzUVpZ1bdjrBzJb6w,Whispered Scandals,2025-10-27T13:53:17.888310,filtered_subs,,,
+UCOMTSueTGYW5V2HkWWNAN0g,Analysis of Global Events,2025-10-27T13:53:17.888310,filtered_subs,,,
+UC1lzoOfaH5avSHx0I3lPPmA,The Trending Minutes,2025-10-27T13:53:17.888310,scored,0.698,0.1,Bollywood and Hollywood movie analysis
+UCkXqJ7fMhUBR9i8AdNTMhow,World Beyond The West,2025-10-27T13:53:17.888310,filtered_subs,,,
+UCANgZIP7XNvJzSIJptNy8pw,INVESTIGATIVE STORIES WITH DOE,2025-10-27T13:53:17.888310,filtered_subs,,,
+UCX6-YmbGJjPAE0jHqGmHTKg,Can't Handle The Crime and Scandal ,2025-10-27T13:53:17.888310,filtered_subs,,,
+UCiesFU6y_xINko6f_VLlXlw,Analysis of Global Events,2025-10-27T13:53:17.888310,filtered_subs,,,
+UCbY-d6umXmVm82jNpiMoL9Q,Seoul Book Club hosted by Barry Welsh,2025-10-27T13:53:17.888310,filtered_subs,,,
+UCkKz6kTwwAtwvILdOGIwDtA,Search The Truth ,2025-10-27T13:53:17.888310,filtered_subs,,,
+UC1PpZimr9q12NkJW-nde5lQ,UC Utilities Authority Scandals,2025-10-27T13:53:17.888310,filtered_subs,,,
+UCkgCZC4LZfa-7eEvFr8V_Gg,Vidify,2025-10-27T13:53:17.888310,filtered_subs,,,
+UC08wrceRCWhajGG4udhETww,Investigation Discovery,2025-10-27T13:53:17.888310,scored,0.648,0.34,True crime documentaries and analysis
+UCdT70QfZAQ3RUPoVEeJCGTw,SoE for Societal Impact,2025-10-27T13:53:17.888310,filtered_subs,,,
+UCpQWbu8acBfL-ckmE4jemIA,Centre for Social Impact and Philanthropy,2025-10-27T13:53:17.888310,filtered_subs,,,
+UCmJ454rjIrmh1-REISRxIjg,Crime Investigation Hub,2025-10-27T13:53:17.888310,scored,0.714,0.34,Horror crime storytelling and analysis
+UCNgZkv0CmDcdCpAuWvnJArQ,History of Life,2025-10-27T13:53:17.888310,filtered_subs,,,
+UCOebl0Z2RBGI94TwujHLrRw,Social Impact World,2025-10-27T13:53:17.888310,filtered_subs,,,
+UC11PBokrTjcVofRfMZSAqug,Global Report Analysis,2025-10-27T13:53:17.888310,filtered_subs,,,
+UCqORJMJPXCNY36IK08FNy8w,Social Impact Partners,2025-10-27T13:53:17.888310,filtered_subs,,,
+UCQIyL0kmnNiEWTqcVg1S4EQ,GeoPolitical Analysis ,2025-10-27T13:53:17.888310,filtered_subs,,,
+UCgVsZwVGsBC74W4QW4o2LZQ,Shiva's Investigation,2025-10-27T13:53:17.888310,scored,0.633,0.16,Paranormal and mystery storytelling
+UCQXr7cuBAmlPOgKhdLm6C-A,Trending Global event,2025-10-27T13:53:17.888310,filtered_subs,,,
+UCvJ92yro8MOZvvtMPDd2paQ,Arthlogy,2025-10-27T13:53:17.888310,filtered_subs,,,
+UC_GBfnhsCvMf9fMiKq_f_kg,Sarthak Dasgupta,2025-10-27T13:53:17.888310,filtered_subs,,,
+UCoIxdU4F7CgmSE58oTNhEHA,Anti-Fraud Therapy,2025-10-27T13:53:17.888310,filtered_subs,,,
+UCiA5610WXysUqpsEbYufOfA,The Billion Dollar Scandal,2025-10-27T13:53:17.888310,filtered_subs,,,
+UCdvuXykOqpHvvJhqZP6qH5g,Global update ,2025-10-27T13:53:17.888310,filtered_subs,,,
+UCuNhY04LS0Y5nNsA7npIf0g,Chubby Ducki,2025-10-27T13:53:17.888310,filtered_subs,,,
+UCE1986mkMBPwxm-BCHDJCiQ,Claire Reads Books,2025-10-27T13:53:17.888310,scored,0.682,0.22,Literary fiction and nonfiction reviews
+UC9NKpFiNcswKiwKBKjB-hEQ,Mysterious Crimes Malayalam,2025-10-27T13:53:17.888310,scored,0.656,0.16,Malayalam crime stories and investigations
+UCGetiqFX7l-8unkK1LyrG3A,AdviceWithErin,2025-10-27T13:53:17.888310,scored,0.744,0.22,Career and life advice guidance
+UCeNm7lbfRg9wiBDSLQ-M8RA,Self Made Millennial,2025-10-27T13:53:17.888310,scored,0.696,0.13,Job interview preparation and career success
+UCtSI-KILGr9G4CSGGZ_T67A,Catalysing Social Impact - CSI,2025-10-27T13:53:17.888310,filtered_subs,,,
+UCK7I4gSA89BYN8R-EJqdPvQ,Once Upon a Fact,2025-10-27T13:53:17.888310,filtered_subs,,,
+UCgmR6KjRdGAqA-bElcbMmKg,Social Impact Advisors,2025-10-27T13:53:17.888310,filtered_subs,,,
+UChTYUFo4pWhDiSwn9NQJwHQ,War & Geopolitics Insights,2025-10-27T13:53:17.888310,scored,0.733,0.86,Global conflicts and geopolitical analysis
+UCYQNkQNFXspUZ0E4qOso4Bg,Mastering Geopolitics,2025-10-27T13:53:17.888310,filtered_subs,,,
+UCR4EhMZnWtldV8MFRYwwWKQ,Exploring The Absurd,2025-10-27T13:53:17.888310,filtered_subs,,,
+UC1v1QogJxMHiOglk-81Tlnw,Analysis of Global Events,2025-10-27T13:53:17.888310,filtered_subs,,,
+UCUcPMXnXsF3JWkCS8DR0QvA,Geopolitical Insights,2025-10-27T13:53:17.888310,filtered_subs,,,
+UCEPhh0AIOV9GjPkE1JNjH8w,MIT Media Lab,2025-10-27T13:53:17.888310,scored,0.735,0.46,Interdisciplinary innovation and technology impact
+UCzDvtmtCUWdfQMwKKH8CiNw,Global Social Impact Investments,2025-10-27T13:53:17.888310,filtered_subs,,,
+UCsy9I56PY3IngCf_VGjunMQ,Zeihan on Geopolitics,2025-10-27T13:53:17.888310,scored,0.808,0.86,Geopolitical analysis and insights
+UC_ei3h19THLwtvDxbCYENDw,Global Analysis,2025-10-27T13:53:17.888310,filtered_videos,,,
+UCv_E3mjRwJmhDZKMNwMiECg,Cancel Culture Stories,2025-10-27T13:53:17.888310,filtered_subs,,,
+UCvj8AM26uK1CrUe8HKODMfA,External Affairs Insights ,2025-10-27T13:53:17.888310,filtered_subs,,,
+UCc9A6CZwM91XXYf9C2P-RJA,GLOBAL ANALYSIS 4.0,2025-10-27T13:53:17.888310,filtered_subs,,,
+UCe-li_DbkWYJGG4fkrAD4hw,Scandal Scoop,2025-10-27T13:53:17.888310,filtered_subs,,,
+UCvWyoGoz-6OVg0_-aIn-rzg,Tech Trend Insight,2025-10-27T13:53:17.888310,filtered_subs,,,
+UCViY-Nn--4B4jkJxG96OHpA,Mackinder Insights ,2025-10-27T13:53:17.888310,filtered_subs,,,
+UCPu5XKQ60dNGMGKBJ7j4GSA,The Silent Republic,2025-10-27T13:53:17.888310,filtered_subs,,,
+UCVGD7KJZs10PVNCe1gISn4A,Closed Letter Analysis. ,2025-10-27T13:53:17.888310,filtered_subs,,,
+UC_C9vM54o3-bDcOUIt_P-pQ,Going to Bed with Mike & Steve,2025-10-27T13:53:17.888310,filtered_subs,,,
+UCJXchjMS3ey6ObqsvazfgVQ,Woke Celebs Scandals,2025-10-27T13:53:17.888310,filtered_subs,,,
+UChitqn0OJBJSPfJ3LZ7OZkg,Scripture And Scandal,2025-10-27T13:53:17.888310,filtered_subs,,,
+UCk7NcgnqCmui1AV7MTXZwOw,Ankit Bansal,2025-10-27T13:53:17.888310,scored,0.504,0.1,SQL skills and data engineering education
+UCCXCbNKb_DxsC-mKe7kyv3A,NewsJive,2025-10-27T13:53:17.888310,filtered_subs,,,
+UCZtoXgyg_JrxknVgPF571BA,Global News Analysis,2025-10-27T13:53:17.888310,filtered_subs,,,
+UCOMG0iHHi27owoyxGvURxiQ,Analytics with Nags,2025-10-27T13:53:17.888310,scored,0.272,0.13,Power BI and data analytics tutorials
+UCTZ6Brdj1oibftxbJKcIisQ,Our Metallic Earth,2025-10-27T13:53:17.888310,filtered_subs,,,
+UCY6gc9XjXgfcP4MLqWWEEzg,GEOPOLITICAL ANALYSIS,2025-10-27T13:53:17.888310,filtered_subs,,,
+UCIM_frHkq4krGRPUcVgRPNw,The Sports Center Stories ,2025-10-27T13:53:17.888310,filtered_subs,,,
+UC0hEi0ew8df7Ilec4JLzwKg,Analysis of Global Events,2025-10-27T13:53:17.888310,filtered_subs,,,
+UCvN_T5UynMLWE45JUimfSoQ,TNN - The Narrative Now,2025-10-27T13:53:17.888310,filtered_subs,,,
+UCaCG7kHt515g73gjM77i6Xw,Quality Culture,2025-10-27T13:53:17.888310,scored,0.77,0.34,Pop culture storytelling and analysis
+UCxKCFFQG03rZRj94NpAvQaQ,Geopolitics Economics & Finance,2025-10-27T13:53:17.888310,filtered_subs,,,
+UC1KnKD_3QxjI3vzRchXRhjw,Future Forged,2025-10-27T13:53:17.888310,filtered_subs,,,
+UCrmlLbuRwQ4_DMeFlbnwfTQ,The Investigative Historian,2025-10-27T13:53:17.888310,filtered_subs,,,
+UCJsZorhd3JHwyDqNVbkW7Qw,Scandal Files,2025-10-27T13:53:17.888310,filtered_subs,,,
+UCHq0CC3bAE-gLedAIIt4Bcg,Ghost Encounters (PAIRS),2025-10-27T13:53:17.888310,scored,0.635,0.1,Paranormal investigations and case studies
+UCAvbg0Hqt7WSOJwZZM2dqbA,Political Insight,2025-10-27T13:53:17.888310,filtered_subs,,,
+UCVVfo4a68EGVmEG0NdguSnQ,Storytelling Investigation,2025-10-27T13:53:17.888310,filtered_subs,,,
+UC98gE8bm3pyBWOaozN36ozQ,The Nexus Global Narrative,2025-10-27T13:53:17.888310,filtered_subs,,,
+UCotDY8HyFHuSDfEwzvzUJMQ,Social Impact English Speech Contest,2025-10-27T13:53:17.888310,filtered_subs,,,
+UC7KhGaovm5VMnQX3ldrhwQg,Analysis of Global Events,2025-10-27T13:53:17.888310,filtered_subs,,,
+UCW5kjGKvnPGQb-DkvCB71rw,Analysis of Global Events,2025-10-27T13:53:17.888310,filtered_subs,,,
+UCaW-ZKyvD-xCdu-Kv9PK11w,Study Job & Analysis,2025-10-27T13:53:17.888310,scored,0.465,0.14,Power plant operations education
+UC7nv8q7-rUb1WTIP4fFm2EA,Robert McKee,2025-10-27T13:53:17.888310,scored,0.654,0.16,Screenwriting education and mentorship
+UC68lFaJOOOF1V6CXIzjH91Q,Roots & Rashtra,2025-10-27T13:53:17.888310,filtered_subs,,,
+UCYOfhQvPzZ7ALqeXa8NleHQ,Eric Karl Anderson,2025-10-27T13:53:17.888310,scored,0.683,0.22,New fiction reviews and analysis
+UCZE-8tgenFyNaItGDYFpprA,Quest Capsule,2025-10-27T13:53:17.888310,scored,0.688,0.46,History documentaries and storytelling
+UCttMFq0uHUu-LKfYiWpEfwQ,Investigative Post,2025-10-27T13:53:17.888310,filtered_subs,,,
+UCZ_w7b5y2gdVjF3JZs7Hb6g,HistorysPulse,2025-10-27T13:53:17.888310,filtered_subs,,,
+UCJ-vhvjLevrcQwsHmunBNLg,Societal Impact,2025-10-27T13:53:17.888310,filtered_subs,,,
+UCMKJzak_lBdoqkiGz_RpceA,The Entire Story,2025-10-27T13:53:17.888310,filtered_subs,,,
+UC88I2gZFZ1gigTjw5mXdAYg,Investigative Stories,2025-10-27T13:53:17.888310,filtered_subs,,,
+UCA-PEjD8m3gi1LXta3PEtXg,Ankahi Files TV,2025-10-27T13:53:17.888310,filtered_subs,,,
+UCk081mmVz4hzff-3YVBAxow,Saravanan Decodes,2025-10-27T13:53:17.888310,scored,0.702,0.22,Mystery and crime storytelling entertainment
+UCrUaqaEzkMC8EP0dB-2CoeA,Geopolitics Insights US,2025-10-27T13:53:17.888310,filtered_subs,,,
+UCYYBb0x9g1Rx4TxHWqvWNiQ,Matter Of Fraud,2025-10-27T13:53:17.888310,filtered_subs,,,
+UC2EuGf__CSbWq4uYLO8iv2w,Pradeepa -Career Coach,2025-10-27T13:53:17.888310,scored,0.614,0.22,Business analyst career education
+UCVMmHPcM3b2IBOVqa4RNhWg,Defense of the Damned,2025-10-27T13:53:17.888310,filtered_subs,,,
+UCKS-DNHu6BYk9fxH-jCdV_g,Mini Air Crash Investigation,2025-10-27T13:53:17.888310,scored,0.634,0.34,Aviation crash analysis documentaries
+UC62qM_eWJeRAuiCwkvfafmw,Analysis of Global Events,2025-10-27T13:53:17.888310,filtered_subs,,,
+UCB7Gz5IqnsJZl67BMxp9idA,TeChniCAl AnAlysis inTerview quesTions ,2025-10-27T13:53:17.888310,filtered_subs,,,
+UC7Xtu_BXtFZ1xRe1q5zMaqA,fraud company,2025-10-27T13:53:17.888310,filtered_subs,,,
+UCYS_NIypzhGb6v4iuOsvlzA,Investigation Spot,2025-10-27T13:53:17.888310,scored,0.743,0.28,True crime case analysis and storytelling
+UCHD--CfKfy3wu0EYLJcNE6g,Adam Motions,2025-10-27T13:53:17.888310,filtered_subs,,,
+UCXjNO2dWl-HNbWgNgR8S6Kg,InterviewGIG,2025-10-27T13:53:17.888310,scored,0.593,0.14,Job interview preparation resources
+UCyxc2Od8LUXiN3GIw75dkJA,Mr Movie Explain,2025-10-27T13:53:17.888310,filtered_subs,,,
+UCQQbpOcfCzW3lOx0a9k4ZBA,A SECRET LIFE DIARY•KOKBOROK 666k View• 6h•,2025-10-27T13:53:17.888310,scored,0.765,0.22,Storytelling and cultural insights in Kokborok
+UCmdhTXDcN55RQ-uugkJ2zuQ,Youth for Social Impact ,2025-10-27T13:53:17.888310,filtered_subs,,,
+UC1UmdrGZ0CziCoZUW37shhw,Doodle Legend,2025-10-27T13:53:17.888310,filtered_subs,,,
+UCdhCfFRsdI7Jl8ym0tcgrXw,EmpowerCode,2025-10-27T13:53:17.888310,filtered_subs,,,
+UCaFoKURaE9QkglqaRyxXLDw,Study with Social Impact,2025-10-27T13:53:17.888310,filtered_subs,,,
+UCKiCB1NfMot8QJOqaqtlcfA,Apsar Investigation,2025-10-27T13:53:17.888310,scored,0.704,0.13,Paranormal stories and investigations
+UCmTjznoOQHGKe6rJcB_ut6Q,Geopolitical Insight,2025-10-27T13:53:17.888310,filtered_subs,,,
+UCt2Krl4FuQihDRHWBwsPrDQ,World Decode247,2025-10-27T13:53:17.888310,filtered_subs,,,
+UCs1X1iOr8e-eOWBl5hg9GrQ,Surendra Tandon,2025-10-27T13:53:17.888310,filtered_subs,,,
+UCXAfdtVng_T4HtxtWQLMTlA,Evaluating Societal Impact,2025-10-27T13:53:17.888310,filtered_subs,,,
+UCkzmocUeSaGueE20Ke-vgJA,The Social Impact Journal,2025-10-27T13:53:17.888310,filtered_subs,,,
+UCu_LlAdFZNDpDoUqm8rUT4w,Deep Dive Dispatch,2025-10-27T13:53:17.888310,filtered_subs,,,
+UCVkVtvmSsKxC9UTs3uLsTLw,Behind the Hustle,2025-10-27T13:53:17.888310,filtered_subs,,,
+UCaMjclI5dWY5XKsmOAqAZiw,FASHCREW CONSULTANCY,2025-10-27T13:53:17.888310,scored,0.668,0.13,Cabin crew career preparation
+UClAyxJhMp3ICOjSjGqZbHTg,Investigation stories malayalam,2025-10-27T13:53:17.888310,scored,0.653,0.16,Malayalam crime and thriller storytelling
+UC79QSH8uTXR5Wn8QbCekGnA,Yukcy Global analysis ,2025-10-27T13:53:17.888310,filtered_subs,,,
+UCJNYjn_5vR-7domUXNMb0IQ,ALL ABOUT 90's Movies Music Trivia's Scandals,2025-10-27T13:53:17.888310,filtered_subs,,,
+UC6CmdWofWEmbUyWPPel7EAw,Geopolitical Insights,2025-10-27T13:53:17.888310,filtered_subs,,,
+UCM6NNtjZ3n8Ud8uV0BjEAXA,Global Event,2025-10-27T13:53:17.888310,filtered_subs,,,
+UCut-ErSJsbhh8sS8LIMiZPA,Social Impact Partners,2025-10-27T13:53:17.888310,filtered_subs,,,
+UCYwVxWpjeKFWwu8TML-Te9A,JCS - Criminal Psychology,2025-10-27T13:53:17.888310,scored,0.731,0.46,Criminal case analysis and storytelling
+UCUJPoW4CB5TVzrJ6wGJMEYQ,Global Event,2025-10-27T13:53:17.888310,filtered_subs,,,
+UC2eqprx_bNy3SmR62rLxqhg,Investigative Reporting Lab,2025-10-27T13:53:17.888310,scored,0.771,0.82,Investigative journalism and storytelling
+UCagZ0j4TiZ8l-eQ-i2KZlqA,Eco-Business,2025-10-27T13:53:17.888310,filtered_subs,,,
+UCfqiFlv5Pe-YoyMh9ndRT7w,Life Through Her Eyes,2025-10-27T13:53:17.888310,filtered_subs,,,
+UCfYpJzuw-eO6QRKJPTJQX6g,DeepListn,2025-10-27T13:53:17.888310,filtered_subs,,,
+UCn3rYV57csGv_6BPQ94QA7Q,Explaining Insight ,2025-10-27T13:53:17.888310,filtered_subs,,,
+UC4GsD6vidibgMw-SlNvDYAg,Ruined By The Internet?,2025-10-27T13:53:17.888310,filtered_subs,,,
+UCQhpnItclGAUn4NdGGcEyPQ,Shakra Shamim,2025-10-27T13:53:17.888310,scored,0.587,0.13,Data analytics career education
