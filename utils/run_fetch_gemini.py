@@ -1,13 +1,8 @@
-# /run_fetch_videos.py  (TESTING VERSION - Modified for Gemini)
-
 import pandas as pd
 import sys
 from pathlib import Path
-
-# Import the NEW Gemini fingerprint function
 from utils.gemini_utils import create_channel_fingerprint_gemini
-# Comment out or remove the old TF-IDF import
-# from utils.fingerprint_utils import create_fingerprint
+
 
 base_dir = Path(__file__).resolve().parent
 
