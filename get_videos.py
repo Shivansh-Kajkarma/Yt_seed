@@ -23,7 +23,7 @@ def main():
     seed_to_process = seed_df  # e.g., process first 9 seeds; change as needed
 
     print("Loading seed channels and fetching videos (API mode)...")
-    df_videos = fetch_for_seed_channels(seed_to_process, limit_per_channel=20, filter_shorts=True)
+    df_videos = fetch_for_seed_channels(seed_to_process, limit_per_channel=30, filter_shorts=True)
 
     if df_videos is not None and not df_videos.empty:
         df_videos.to_csv(out_csv, index=False, encoding="utf-8-sig")
