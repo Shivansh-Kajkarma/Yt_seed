@@ -1,0 +1,4422 @@
+{
+  "total_unique_channels": 552,
+  "total_searches": 37,
+  "frequency_data": [
+    {
+      "rank": 1,
+      "channel_id": "UCvz84_Q0BbvZThy75mbd-Dg",
+      "channel_name": "Zack D. Films",
+      "frequency": 11,
+      "percentage": 29.7,
+      "first_seen_in": "The INSANE Truth About YouTube"
+    },
+    {
+      "rank": 2,
+      "channel_id": "UCKnXoCVJImQTzff4Ej8x3Ww",
+      "channel_name": "Wealth Capital",
+      "frequency": 11,
+      "percentage": 29.7,
+      "first_seen_in": "How This Farm Boy Built The World's Biggest Company"
+    },
+    {
+      "rank": 3,
+      "channel_id": "UCWo_im5HsWahBQi1Zkda65w",
+      "channel_name": "Magnatess Media",
+      "frequency": 9,
+      "percentage": 24.3,
+      "first_seen_in": "The $47 Billion Cult"
+    },
+    {
+      "rank": 4,
+      "channel_id": "UCEAUtiSCldESQeJOfI93bpQ",
+      "channel_name": "Global Secrets ",
+      "frequency": 8,
+      "percentage": 21.6,
+      "first_seen_in": "The Untold TRUTH Of Nintendo"
+    },
+    {
+      "rank": 5,
+      "channel_id": "UCbG-JX0arzjkMMm5nRIHnFw",
+      "channel_name": "The Insight Lab",
+      "frequency": 5,
+      "percentage": 13.5,
+      "first_seen_in": "The Nazi Brothers Who Started Rival Shoe Companies"
+    },
+    {
+      "rank": 6,
+      "channel_id": "UCfdNM3NAhaBOXCafH7krzrA",
+      "channel_name": "The Infographics Show",
+      "frequency": 4,
+      "percentage": 10.8,
+      "first_seen_in": "The INSANE Truth About YouTube"
+    },
+    {
+      "rank": 7,
+      "channel_id": "UCLvr4NZGWXzIh21VRoUC6Gg",
+      "channel_name": "Roy StoryTales",
+      "frequency": 4,
+      "percentage": 10.8,
+      "first_seen_in": "Thomas Edison: The IDIOT Who Changed The World"
+    },
+    {
+      "rank": 8,
+      "channel_id": "UCNIFiHaLZkYASaWDdkC1njg",
+      "channel_name": "A&E",
+      "frequency": 4,
+      "percentage": 10.8,
+      "first_seen_in": "The Family That Drugged America"
+    },
+    {
+      "rank": 9,
+      "channel_id": "UCT2_-33ecYddBgn8MFfImEA",
+      "channel_name": "BizHistory",
+      "frequency": 4,
+      "percentage": 10.8,
+      "first_seen_in": "The INSANE Truth About IKEA"
+    },
+    {
+      "rank": 10,
+      "channel_id": "UC5jAU-dDCbwtY9_i6BuQFdA",
+      "channel_name": "CutEverything",
+      "frequency": 3,
+      "percentage": 8.1,
+      "first_seen_in": "The INSANE Truth About YouTube"
+    },
+    {
+      "rank": 11,
+      "channel_id": "UC-YCUUKrjnXz7aFA7cF5HvA",
+      "channel_name": "Mega Peaks ",
+      "frequency": 3,
+      "percentage": 8.1,
+      "first_seen_in": "How This Farm Boy Built The World's Biggest Company"
+    },
+    {
+      "rank": 12,
+      "channel_id": "UCvEzjbmimhYSdpn2SitKRDw",
+      "channel_name": "Biz Titans",
+      "frequency": 3,
+      "percentage": 8.1,
+      "first_seen_in": "How This Farm Boy Built The World's Biggest Company"
+    },
+    {
+      "rank": 13,
+      "channel_id": "UCC5Kuql4pp5s0Kmv159wvEA",
+      "channel_name": "Plutocrats Media ",
+      "frequency": 3,
+      "percentage": 8.1,
+      "first_seen_in": "The INSANE Truth About IKEA"
+    },
+    {
+      "rank": 14,
+      "channel_id": "UCRlLwTzF2HuplJsnmJUOqzA",
+      "channel_name": "Monopoly Game",
+      "frequency": 3,
+      "percentage": 8.1,
+      "first_seen_in": "The Evil Crimes of Volkswagen"
+    },
+    {
+      "rank": 15,
+      "channel_id": "UCvJJ_dzjViJCoLf5uKUTwoA",
+      "channel_name": "CNBC",
+      "frequency": 3,
+      "percentage": 8.1,
+      "first_seen_in": "Why did Starbucks REALLY become so popular?"
+    },
+    {
+      "rank": 16,
+      "channel_id": "UCZLFu8bHbwtnIgWLg5UtINw",
+      "channel_name": "vidIQ",
+      "frequency": 2,
+      "percentage": 5.4,
+      "first_seen_in": "The INSANE Truth About YouTube"
+    },
+    {
+      "rank": 17,
+      "channel_id": "UCPNKv8Wt3DY2R2RmkkQpI7Q",
+      "channel_name": "Corporation Watch",
+      "frequency": 2,
+      "percentage": 5.4,
+      "first_seen_in": "The INSANE Truth About OpenAI"
+    },
+    {
+      "rank": 18,
+      "channel_id": "UCehBVAPy-bxmnbNARF-_tvA",
+      "channel_name": "More Perfect Union",
+      "frequency": 2,
+      "percentage": 5.4,
+      "first_seen_in": "The INSANE Truth About OpenAI"
+    },
+    {
+      "rank": 19,
+      "channel_id": "UClogVqKsal63mDqNLGJ-ClA",
+      "channel_name": "iCentury",
+      "frequency": 2,
+      "percentage": 5.4,
+      "first_seen_in": "The INSANE Truth About OpenAI"
+    },
+    {
+      "rank": 20,
+      "channel_id": "UCY8SLLJjWpS4sx1dEqECaIw",
+      "channel_name": "Tyler Oliveira",
+      "frequency": 2,
+      "percentage": 5.4,
+      "first_seen_in": "The Family That Drugged America"
+    },
+    {
+      "rank": 21,
+      "channel_id": "UCmFeOdJI3IXgTBDzqBLD8qg",
+      "channel_name": "Moon",
+      "frequency": 2,
+      "percentage": 5.4,
+      "first_seen_in": "The Scariest Business In The World"
+    },
+    {
+      "rank": 22,
+      "channel_id": "UCImisRlZTVQ0vblWjjYih4Q",
+      "channel_name": "Spencer Lackey",
+      "frequency": 2,
+      "percentage": 5.4,
+      "first_seen_in": "The Scariest Business In The World"
+    },
+    {
+      "rank": 23,
+      "channel_id": "UCWBWgCD4oAqT3hUeq40SCUw",
+      "channel_name": "Sambucha",
+      "frequency": 2,
+      "percentage": 5.4,
+      "first_seen_in": "The World’s Most Wanted Woman"
+    },
+    {
+      "rank": 24,
+      "channel_id": "UCIXX8VqhFewJ4XJTjjdRnYw",
+      "channel_name": "Money Route",
+      "frequency": 2,
+      "percentage": 5.4,
+      "first_seen_in": "Diamonds: An Evil Scam"
+    },
+    {
+      "rank": 25,
+      "channel_id": "UCHCClgUB-YWIvY2hRpwGpxg",
+      "channel_name": "pro investors",
+      "frequency": 2,
+      "percentage": 5.4,
+      "first_seen_in": "Diamonds: An Evil Scam"
+    },
+    {
+      "rank": 26,
+      "channel_id": "UCe3abvxujqWZK4VM7MJwobA",
+      "channel_name": "storyblocks2.0",
+      "frequency": 2,
+      "percentage": 5.4,
+      "first_seen_in": "Diamonds: An Evil Scam"
+    },
+    {
+      "rank": 27,
+      "channel_id": "UCbSJN5WMo-Hu2nIVi16s95A",
+      "channel_name": "Evil-god94",
+      "frequency": 2,
+      "percentage": 5.4,
+      "first_seen_in": "Diamonds: An Evil Scam"
+    },
+    {
+      "rank": 28,
+      "channel_id": "UCnpOlzpWAjg03o8sOd6K1xw",
+      "channel_name": "Coffee and Cults",
+      "frequency": 2,
+      "percentage": 5.4,
+      "first_seen_in": "The $47 Billion Cult"
+    },
+    {
+      "rank": 29,
+      "channel_id": "UCWYOCkFMLC8almJ2OS3OtXA",
+      "channel_name": "TycoonMedia ",
+      "frequency": 2,
+      "percentage": 5.4,
+      "first_seen_in": "The $47 Billion Cult"
+    },
+    {
+      "rank": 30,
+      "channel_id": "UC9r_Ya05s-7p5OIjby8nw6g",
+      "channel_name": "PureEliteVibes",
+      "frequency": 2,
+      "percentage": 5.4,
+      "first_seen_in": "The Nazi Brothers Who Started Rival Shoe Companies"
+    },
+    {
+      "rank": 31,
+      "channel_id": "UCAhDXe43oUNISCvOf0-1c4g",
+      "channel_name": "The legend profile.",
+      "frequency": 2,
+      "percentage": 5.4,
+      "first_seen_in": "The Nazi Brothers Who Started Rival Shoe Companies"
+    },
+    {
+      "rank": 32,
+      "channel_id": "UCII7ou5RUtI8Zlxwb563reg",
+      "channel_name": "Ancient tales",
+      "frequency": 2,
+      "percentage": 5.4,
+      "first_seen_in": "The Nazi Brothers Who Started Rival Shoe Companies"
+    },
+    {
+      "rank": 33,
+      "channel_id": "UCXXvOMN_74Jad119ybNce8g",
+      "channel_name": "The Travel Shack",
+      "frequency": 2,
+      "percentage": 5.4,
+      "first_seen_in": "The World's Most Controversial Restaurant"
+    },
+    {
+      "rank": 34,
+      "channel_id": "UC0QHWhjbe5fGJEPz3sVb6nw",
+      "channel_name": "Doctor Mike",
+      "frequency": 2,
+      "percentage": 5.4,
+      "first_seen_in": "The Disturbing TRUTH About Vaping"
+    },
+    {
+      "rank": 35,
+      "channel_id": "UCHP3G9mWR21e_dZme5-Nicg",
+      "channel_name": "Dr. Janine Bowring, ND",
+      "frequency": 2,
+      "percentage": 5.4,
+      "first_seen_in": "The Disturbing TRUTH About Vaping"
+    },
+    {
+      "rank": 36,
+      "channel_id": "UCIaH-gZIVC432YRjNVvnyCA",
+      "channel_name": "Chris Williamson",
+      "frequency": 2,
+      "percentage": 5.4,
+      "first_seen_in": "The Disturbing TRUTH About Vaping"
+    },
+    {
+      "rank": 37,
+      "channel_id": "UCpko_-a4wgz2u_DgDgd9fqA",
+      "channel_name": "BuzzFeedVideo",
+      "frequency": 2,
+      "percentage": 5.4,
+      "first_seen_in": "The Toy That Was Accidentally A Pyramid Scheme"
+    },
+    {
+      "rank": 38,
+      "channel_id": "UCxlJ45KjG4XVcQ_hd8j227A",
+      "channel_name": "Peekaboo Kidz",
+      "frequency": 2,
+      "percentage": 5.4,
+      "first_seen_in": "The Toy That Was Accidentally A Pyramid Scheme"
+    },
+    {
+      "rank": 39,
+      "channel_id": "UCQMyhrt92_8XM0KgZH6VnRg",
+      "channel_name": "Company Man",
+      "frequency": 2,
+      "percentage": 5.4,
+      "first_seen_in": "The Most HATED Airline In The World"
+    },
+    {
+      "rank": 40,
+      "channel_id": "UCyLz3TrFBAMR6HvNzK5v8Xg",
+      "channel_name": "Foreshadow ",
+      "frequency": 2,
+      "percentage": 5.4,
+      "first_seen_in": "How Sony Took Over The World"
+    },
+    {
+      "rank": 41,
+      "channel_id": "UCwEbBiuWApN67y5AFgPKoiA",
+      "channel_name": "Segredos da Humanidade 2026",
+      "frequency": 2,
+      "percentage": 5.4,
+      "first_seen_in": "The Dark Truth About PayPal"
+    },
+    {
+      "rank": 42,
+      "channel_id": "UCdQ6MCYJFjPKDNkdoDoPpYQ",
+      "channel_name": "Money & Wealth",
+      "frequency": 2,
+      "percentage": 5.4,
+      "first_seen_in": "The Dark Truth About PayPal"
+    },
+    {
+      "rank": 43,
+      "channel_id": "UCrn5kB1W-cbEAiBfCliZuLA",
+      "channel_name": "Culture Craze USA",
+      "frequency": 2,
+      "percentage": 5.4,
+      "first_seen_in": "The Dark Truth About PayPal"
+    },
+    {
+      "rank": 44,
+      "channel_id": "UCijwxjo3mIEXPY8_uNWkdIw",
+      "channel_name": "Monu Gaming ",
+      "frequency": 2,
+      "percentage": 5.4,
+      "first_seen_in": "YouTube Is A Game, These Are The Cheat Codes"
+    },
+    {
+      "rank": 45,
+      "channel_id": "UC030dGuyrBKTv73rBx93TaA",
+      "channel_name": "DOCCEO",
+      "frequency": 2,
+      "percentage": 5.4,
+      "first_seen_in": "How This Farm Boy Built The World's Biggest Company"
+    },
+    {
+      "rank": 46,
+      "channel_id": "UC6i4-GuVpkcR_1UbgfldM_g",
+      "channel_name": "Big Company",
+      "frequency": 2,
+      "percentage": 5.4,
+      "first_seen_in": "How This Farm Boy Built The World's Biggest Company"
+    },
+    {
+      "rank": 47,
+      "channel_id": "UCiaSemPeQyAW-Z7MvorY3hA",
+      "channel_name": "Prosperity Sagas",
+      "frequency": 2,
+      "percentage": 5.4,
+      "first_seen_in": "How This Farm Boy Built The World's Biggest Company"
+    },
+    {
+      "rank": 48,
+      "channel_id": "UCb_2aQH7ZcW8tvlnJvjW8rQ",
+      "channel_name": "Live Hindi Facts",
+      "frequency": 2,
+      "percentage": 5.4,
+      "first_seen_in": "The INSANE Truth About IKEA"
+    },
+    {
+      "rank": 49,
+      "channel_id": "UCbDo1OTZue5k-Gc9nMY3HVA",
+      "channel_name": "FeminineLifestyleGuide",
+      "frequency": 2,
+      "percentage": 5.4,
+      "first_seen_in": "The Freak Show Billionaire"
+    },
+    {
+      "rank": 50,
+      "channel_id": "UCVJROQkSTxcW1EgWJkDIIcg",
+      "channel_name": "Kyle Travel",
+      "frequency": 2,
+      "percentage": 5.4,
+      "first_seen_in": "The Freak Show Billionaire"
+    },
+    {
+      "rank": 51,
+      "channel_id": "UCWI0X3l7BlfJltQkLdKQBiw",
+      "channel_name": "Monacoluxurylifestyle",
+      "frequency": 2,
+      "percentage": 5.4,
+      "first_seen_in": "The Freak Show Billionaire"
+    },
+    {
+      "rank": 52,
+      "channel_id": "UCyAg4vjO3QCfmGSUB-mHSGA",
+      "channel_name": "Story Seekers",
+      "frequency": 2,
+      "percentage": 5.4,
+      "first_seen_in": "The Craziest Story You've Ever Heard"
+    },
+    {
+      "rank": 53,
+      "channel_id": "UCNjHc-qBWw1rRw97Q70ZKzA",
+      "channel_name": "Luxury Revealed",
+      "frequency": 2,
+      "percentage": 5.4,
+      "first_seen_in": "The Evil Crimes of Volkswagen"
+    },
+    {
+      "rank": 54,
+      "channel_id": "UCC4Dj-AjqVwmUIt4wEGisWQ",
+      "channel_name": "Reddit Short Stories",
+      "frequency": 2,
+      "percentage": 5.4,
+      "first_seen_in": "The Deadly TRUTH About Reddit"
+    },
+    {
+      "rank": 55,
+      "channel_id": "UCEXlW57nyF2jxPZVwrDGjZQ",
+      "channel_name": "MoneydocuTV",
+      "frequency": 2,
+      "percentage": 5.4,
+      "first_seen_in": "The Banana Billionaire: The INSANE True Story"
+    },
+    {
+      "rank": 56,
+      "channel_id": "UCN6nGPfxHdNCVDKq-QTjsGA",
+      "channel_name": "FinanceFinesse",
+      "frequency": 2,
+      "percentage": 5.4,
+      "first_seen_in": "The Banana Billionaire: The INSANE True Story"
+    },
+    {
+      "rank": 57,
+      "channel_id": "UCI7Kq3faUcWDVl_tAn79h_w",
+      "channel_name": "QFINCC - Business & Finance",
+      "frequency": 2,
+      "percentage": 5.4,
+      "first_seen_in": "J.P. Morgan: The Man Who Owned America"
+    },
+    {
+      "rank": 58,
+      "channel_id": "UCr4ZsGt2SNTBVVqwNX_i0ow",
+      "channel_name": "Verv",
+      "frequency": 2,
+      "percentage": 5.4,
+      "first_seen_in": "Why Pepsi Went Bankrupt"
+    },
+    {
+      "rank": 59,
+      "channel_id": "UCCHoZSsdaqP0q3T0LAXWdQA",
+      "channel_name": "Top 10 Things",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The INSANE Truth About YouTube"
+    },
+    {
+      "rank": 60,
+      "channel_id": "UCauFw0dCT76i_Kz7XdFGjEg",
+      "channel_name": "Chilling Crime Stories",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The INSANE Truth About YouTube"
+    },
+    {
+      "rank": 61,
+      "channel_id": "UCCuZ0r9pDMI8DwhtRV1fNhg",
+      "channel_name": "Danno Cal Drawings",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The INSANE Truth About YouTube"
+    },
+    {
+      "rank": 62,
+      "channel_id": "UCJWKjrrUh2KL1d3zXQW79cQ",
+      "channel_name": "EXPLORE WITH US",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The INSANE Truth About YouTube"
+    },
+    {
+      "rank": 63,
+      "channel_id": "UC-g_O9HWb5B0rVDG1hLd5Hw",
+      "channel_name": "EYstreem",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The INSANE Truth About YouTube"
+    },
+    {
+      "rank": 64,
+      "channel_id": "UC9zkhz_mSljSGl6-rmvSo9Q",
+      "channel_name": "ScienceNine",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The INSANE Truth About YouTube"
+    },
+    {
+      "rank": 65,
+      "channel_id": "UCOnF_609TSdgcXurRRrJXIg",
+      "channel_name": "Gage Kenyon",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The INSANE Truth About YouTube"
+    },
+    {
+      "rank": 66,
+      "channel_id": "UCJZam2u1G0syq3kyqrCXrNw",
+      "channel_name": "PrestonPlayz",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The INSANE Truth About YouTube"
+    },
+    {
+      "rank": 67,
+      "channel_id": "UCL5RSUdzpCPdZxIFw6ryaow",
+      "channel_name": "Ai Pulse ",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The INSANE Truth About OpenAI"
+    },
+    {
+      "rank": 68,
+      "channel_id": "UCupvZG-5ko_eiXAupbDfxWw",
+      "channel_name": "CNN",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The INSANE Truth About OpenAI"
+    },
+    {
+      "rank": 69,
+      "channel_id": "UC91S6O8y8CtuB7YlP7I1SZA",
+      "channel_name": "Business Saga",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The INSANE Truth About OpenAI"
+    },
+    {
+      "rank": 70,
+      "channel_id": "UC7qxuJnsADaskQrIBvtBdrA",
+      "channel_name": "MetaverseMentors",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The INSANE Truth About OpenAI"
+    },
+    {
+      "rank": 71,
+      "channel_id": "UCRmGm1uCb9O-PyfPblb6wnA",
+      "channel_name": "AI Conversations",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The INSANE Truth About OpenAI"
+    },
+    {
+      "rank": 72,
+      "channel_id": "UCxEXSuI8mtYhgE3HInhuhog",
+      "channel_name": "ControlAI",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The INSANE Truth About OpenAI"
+    },
+    {
+      "rank": 73,
+      "channel_id": "UCvCYE-3TrY1GAe2l8K08N-w",
+      "channel_name": "Digital Engine",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The INSANE Truth About OpenAI"
+    },
+    {
+      "rank": 74,
+      "channel_id": "UC5LlHFGkWp3ziRY_bdJDmVg",
+      "channel_name": "Ohh Niten",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The INSANE Truth About OpenAI"
+    },
+    {
+      "rank": 75,
+      "channel_id": "UCV2rpDtv_YR4ytALNBvUOVQ",
+      "channel_name": "Alternate Realities",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The INSANE Truth About OpenAI"
+    },
+    {
+      "rank": 76,
+      "channel_id": "UCftG4eO4XAQ5kOb1J10fYxQ",
+      "channel_name": "Rumen Ahmed",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The INSANE Truth About OpenAI"
+    },
+    {
+      "rank": 77,
+      "channel_id": "UCTyq02fwYYvwpfkM3SHw6HQ",
+      "channel_name": "Ehtesham Malik",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The INSANE Truth About OpenAI"
+    },
+    {
+      "rank": 78,
+      "channel_id": "UCBRYeSGcB8VoemMQ9IW978w",
+      "channel_name": "shogoz",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The INSANE Truth About OpenAI"
+    },
+    {
+      "rank": 79,
+      "channel_id": "UCq6ErjkpEeKgxvn98kwyhYw",
+      "channel_name": "Lords Of Cash",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The INSANE Truth About OpenAI"
+    },
+    {
+      "rank": 80,
+      "channel_id": "UCGdPm5Aq081vVD7ih9jZf6Q",
+      "channel_name": "FactTechz",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The INSANE Truth About OpenAI"
+    },
+    {
+      "rank": 81,
+      "channel_id": "UCJRRleWQEEZnz3utzqEmVbA",
+      "channel_name": "Docuseries",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "Thomas Edison: The IDIOT Who Changed The World"
+    },
+    {
+      "rank": 82,
+      "channel_id": "UCBQm3YIViD1VTetKp880iEQ",
+      "channel_name": "MogulsMedia",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "Thomas Edison: The IDIOT Who Changed The World"
+    },
+    {
+      "rank": 83,
+      "channel_id": "UClk81dSb4CPLSk6P1jegx6A",
+      "channel_name": "ETERNUM",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "Thomas Edison: The IDIOT Who Changed The World"
+    },
+    {
+      "rank": 84,
+      "channel_id": "UCiDiAIon5iWqMkODTL6-h9w",
+      "channel_name": "The Last Story Keeper",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "Thomas Edison: The IDIOT Who Changed The World"
+    },
+    {
+      "rank": 85,
+      "channel_id": "UCD_GtQX-WuV5C-GXmIiLAyw",
+      "channel_name": "AI MoralBurrow",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "Thomas Edison: The IDIOT Who Changed The World"
+    },
+    {
+      "rank": 86,
+      "channel_id": "UCUxzMP205gnSiP0hPW-PyzQ",
+      "channel_name": "Toufikopedia",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "Thomas Edison: The IDIOT Who Changed The World"
+    },
+    {
+      "rank": 87,
+      "channel_id": "UCUahTFpKE6StkfKxTdwSMQA",
+      "channel_name": "The forgotten, the forbidden, the buried...",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "Thomas Edison: The IDIOT Who Changed The World"
+    },
+    {
+      "rank": 88,
+      "channel_id": "UCRWnIRZjQrgpSqE5vykIklA",
+      "channel_name": "True Soul Stories",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "Thomas Edison: The IDIOT Who Changed The World"
+    },
+    {
+      "rank": 89,
+      "channel_id": "UC9yjvpVG3DARuaVoWYVh0YQ",
+      "channel_name": "Dazzling",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "Thomas Edison: The IDIOT Who Changed The World"
+    },
+    {
+      "rank": 90,
+      "channel_id": "UCaxCvHbt9TiViFSVHGnQqIQ",
+      "channel_name": "Nerds and Mics",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "Thomas Edison: The IDIOT Who Changed The World"
+    },
+    {
+      "rank": 91,
+      "channel_id": "UC8LQKvQviSRXGuz5wrXdmmw",
+      "channel_name": "The Curious Cobra",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "Thomas Edison: The IDIOT Who Changed The World"
+    },
+    {
+      "rank": 92,
+      "channel_id": "UCRK3R8P41-CvLvO0UvKohog",
+      "channel_name": "Ryan Duke",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "Thomas Edison: The IDIOT Who Changed The World"
+    },
+    {
+      "rank": 93,
+      "channel_id": "UCM3J2MkF0PMisZwOJAg8yFQ",
+      "channel_name": "Dave Stratton",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "Thomas Edison: The IDIOT Who Changed The World"
+    },
+    {
+      "rank": 94,
+      "channel_id": "UCfg9jHHg1TovB-yVABnj4zQ",
+      "channel_name": "The Toonscout",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "Thomas Edison: The IDIOT Who Changed The World"
+    },
+    {
+      "rank": 95,
+      "channel_id": "UCkrErXs3JE11g9esg7_3Gxg",
+      "channel_name": "LAMRE",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "Thomas Edison: The IDIOT Who Changed The World"
+    },
+    {
+      "rank": 96,
+      "channel_id": "UC8MalTYHvpmBKt5y365hDmQ",
+      "channel_name": "Crime World ",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Family That Drugged America"
+    },
+    {
+      "rank": 97,
+      "channel_id": "UCTklam7pd1JR7hsyw6lkb1Q",
+      "channel_name": "Arthur Turner",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Family That Drugged America"
+    },
+    {
+      "rank": 98,
+      "channel_id": "UCcZTNx7hWaj-gMA0npvgsSg",
+      "channel_name": "MalOutThere",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Family That Drugged America"
+    },
+    {
+      "rank": 99,
+      "channel_id": "UCSKicS9JZCN7Cu3wkSn_A_Q",
+      "channel_name": "Flash And Finesse Podcast ",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Family That Drugged America"
+    },
+    {
+      "rank": 100,
+      "channel_id": "UCoMdktPbSTixAyNGwb-UYkQ",
+      "channel_name": "Sky News",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Family That Drugged America"
+    },
+    {
+      "rank": 101,
+      "channel_id": "UCytbWDTXFErSDgj0rlVwH3A",
+      "channel_name": "THE GLOBAL NEWS",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Family That Drugged America"
+    },
+    {
+      "rank": 102,
+      "channel_id": "UCQbzE9f9DACb5C-VkDTFffQ",
+      "channel_name": "ALL TIME MEDIA ",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Family That Drugged America"
+    },
+    {
+      "rank": 103,
+      "channel_id": "UCKTrRrMOaeYltDtM5FdMBYg",
+      "channel_name": "LazorEffect",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Family That Drugged America"
+    },
+    {
+      "rank": 104,
+      "channel_id": "UCrJCsEPCG31OLjr76RbGmUQ",
+      "channel_name": "Brain Tickle",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Family That Drugged America"
+    },
+    {
+      "rank": 105,
+      "channel_id": "UCElF_pnVvp7K7XNfXbFDxKg",
+      "channel_name": "Inmyst",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Family That Drugged America"
+    },
+    {
+      "rank": 106,
+      "channel_id": "UCxzO6qXHzMhfTiWlnum_Zjw",
+      "channel_name": "Cass K",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Family That Drugged America"
+    },
+    {
+      "rank": 107,
+      "channel_id": "UCHLyP4MuA-JAFBCwxXOEDdA",
+      "channel_name": "FOX 5 Washington DC",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Family That Drugged America"
+    },
+    {
+      "rank": 108,
+      "channel_id": "UCFQMnBA3CS502aghlcr0_aw",
+      "channel_name": "Coffeezilla",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Scariest Business In The World"
+    },
+    {
+      "rank": 109,
+      "channel_id": "UCF8x70Sa8vejl5vgmEgqO8A",
+      "channel_name": "Jason Payne",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Scariest Business In The World"
+    },
+    {
+      "rank": 110,
+      "channel_id": "UCOm5D1K20slB4ETh8hfIBZg",
+      "channel_name": "cocomemes",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Scariest Business In The World"
+    },
+    {
+      "rank": 111,
+      "channel_id": "UCel2FW-aAKimLE-R0izie2A",
+      "channel_name": "Masti tach",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Scariest Business In The World"
+    },
+    {
+      "rank": 112,
+      "channel_id": "UCja7QUMRG9AD8X2F_vXFb9A",
+      "channel_name": "The Royalty Family",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Scariest Business In The World"
+    },
+    {
+      "rank": 113,
+      "channel_id": "UCmLQ0TRBI-uj__y9jvU9fGw",
+      "channel_name": "Best Sonam 22",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Scariest Business In The World"
+    },
+    {
+      "rank": 114,
+      "channel_id": "UCG0Qf22I90f8iTyu7ttv0Gw",
+      "channel_name": "Dire Horror",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Scariest Business In The World"
+    },
+    {
+      "rank": 115,
+      "channel_id": "UCW39O0Fmryk_yxalbHn8VIw",
+      "channel_name": "Vaishu's Ulagam",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Scariest Business In The World"
+    },
+    {
+      "rank": 116,
+      "channel_id": "UCj5K5MThs1DpTWIG6AOVPBw",
+      "channel_name": "Dark Robot",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Scariest Business In The World"
+    },
+    {
+      "rank": 117,
+      "channel_id": "UC3j51IOFN9Tu8tXtcOZqbRQ",
+      "channel_name": "ANY icON",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Scariest Business In The World"
+    },
+    {
+      "rank": 118,
+      "channel_id": "UCKSVUHI9rbbkXhvAXK-2uxA",
+      "channel_name": "Supercar Blondie",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Scariest Business In The World"
+    },
+    {
+      "rank": 119,
+      "channel_id": "UCEUYMM-sDyfCgLBA-3EAPaw",
+      "channel_name": "it's 11 oclock ",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Scariest Business In The World"
+    },
+    {
+      "rank": 120,
+      "channel_id": "UC_JOUf3Fi41QkSawKI7--iw",
+      "channel_name": "Wk Official",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Scariest Business In The World"
+    },
+    {
+      "rank": 121,
+      "channel_id": "UCDHdiedPwCRvafXq1I2j0dA",
+      "channel_name": "Christian Cagle",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Scariest Business In The World"
+    },
+    {
+      "rank": 122,
+      "channel_id": "UC4dD7XXdwPIrTLStHwfsJOQ",
+      "channel_name": "World List",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The World’s Most Wanted Woman"
+    },
+    {
+      "rank": 123,
+      "channel_id": "UCQXHTFnQYFTqN0MqmNh9EIA",
+      "channel_name": "BBC World Service",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The World’s Most Wanted Woman"
+    },
+    {
+      "rank": 124,
+      "channel_id": "UCkQO3QsgTpNTsOw6ujimT5Q",
+      "channel_name": "BE AMAZED",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The World’s Most Wanted Woman"
+    },
+    {
+      "rank": 125,
+      "channel_id": "UCNDlxHqR3ofCP7SVCZ0BdIg",
+      "channel_name": "Jude Bela",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The World’s Most Wanted Woman"
+    },
+    {
+      "rank": 126,
+      "channel_id": "UC3WCUmboRSypDtn_I9Booww",
+      "channel_name": "OCG TV",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The World’s Most Wanted Woman"
+    },
+    {
+      "rank": 127,
+      "channel_id": "UCODHrzPMGbNv67e84WDZhQQ",
+      "channel_name": "fern",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The World’s Most Wanted Woman"
+    },
+    {
+      "rank": 128,
+      "channel_id": "UCkRmoZiR_SOssKA89m1eYJg",
+      "channel_name": "Only Human",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The World’s Most Wanted Woman"
+    },
+    {
+      "rank": 129,
+      "channel_id": "UCo_ZvIqAy9nvDwA3vxXy6Iw",
+      "channel_name": "Beyond the Frontline: WW2 Stories",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The World’s Most Wanted Woman"
+    },
+    {
+      "rank": 130,
+      "channel_id": "UCF9iKrbqQV8bwHRbXS0_cgw",
+      "channel_name": "REAL 3D DATA",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The World’s Most Wanted Woman"
+    },
+    {
+      "rank": 131,
+      "channel_id": "UCvrQF9KNM2aqSpR_etwESzg",
+      "channel_name": "Certained Facts",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The World’s Most Wanted Woman"
+    },
+    {
+      "rank": 132,
+      "channel_id": "UC_ZR3lKBFJM-VX-JTgF7dfA",
+      "channel_name": "Into The Deep - True Crime",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The World’s Most Wanted Woman"
+    },
+    {
+      "rank": 133,
+      "channel_id": "UCCsREoj8rSRkEvxWqxr74rQ",
+      "channel_name": "Cybernews",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The World’s Most Wanted Woman"
+    },
+    {
+      "rank": 134,
+      "channel_id": "UCCFAhfMvHmqSO1W8sRQShqQ",
+      "channel_name": "Crime Recap",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The World’s Most Wanted Woman"
+    },
+    {
+      "rank": 135,
+      "channel_id": "UCaHFxHeMxHeU_SVSG5fk38A",
+      "channel_name": "Wise",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The World’s Most Wanted Woman"
+    },
+    {
+      "rank": 136,
+      "channel_id": "UC8SsLrswXK-yyHC7vdPaJ8g",
+      "channel_name": "Deadly Quest",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The World’s Most Wanted Woman"
+    },
+    {
+      "rank": 137,
+      "channel_id": "UCKVsdeoHExltrWMuK0hOWmg",
+      "channel_name": "KTN News Kenya",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The World’s Most Wanted Woman"
+    },
+    {
+      "rank": 138,
+      "channel_id": "UCT9ehHCu59wpsPyrcKZt72w",
+      "channel_name": "True Lives",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The World’s Most Wanted Woman"
+    },
+    {
+      "rank": 139,
+      "channel_id": "UC3_qYh4foNgVXI7NzcuxlCA",
+      "channel_name": "Matthew Cox | Inside True Crime",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The World’s Most Wanted Woman"
+    },
+    {
+      "rank": 140,
+      "channel_id": "UCXW_DdWtSviKkF7IDCq5_hQ",
+      "channel_name": "Cash Curiosities",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "Diamonds: An Evil Scam"
+    },
+    {
+      "rank": 141,
+      "channel_id": "UCEOCok6_wZiVw6O3bzXosDw",
+      "channel_name": "Zero to Millions",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "Diamonds: An Evil Scam"
+    },
+    {
+      "rank": 142,
+      "channel_id": "UCQ0pkDM9vkGcf12365DoPGQ",
+      "channel_name": "Globle Dark Side",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "Diamonds: An Evil Scam"
+    },
+    {
+      "rank": 143,
+      "channel_id": "UCLJ0PEGr5OAHt-_jqE0qv5Q",
+      "channel_name": "Crafting Video Official",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "Diamonds: An Evil Scam"
+    },
+    {
+      "rank": 144,
+      "channel_id": "UCNE5VEPseM9Rf5Qi37H6Sjg",
+      "channel_name": "Money Boss Smoke",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "Diamonds: An Evil Scam"
+    },
+    {
+      "rank": 145,
+      "channel_id": "UCIyCXxOCbPa5uZGNTU4H-Ww",
+      "channel_name": "Avinash Kumar",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "Diamonds: An Evil Scam"
+    },
+    {
+      "rank": 146,
+      "channel_id": "UCNTpozDlSkqcoU6DKs7VPJw",
+      "channel_name": "DempodShorts",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "Diamonds: An Evil Scam"
+    },
+    {
+      "rank": 147,
+      "channel_id": "UCKWTHRsZ3Q7YSINEryKH8Gg",
+      "channel_name": "247paps.tv",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "Diamonds: An Evil Scam"
+    },
+    {
+      "rank": 148,
+      "channel_id": "UCX281vmK3kYM3LK-PrqJMZw",
+      "channel_name": "Janique ",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "Diamonds: An Evil Scam"
+    },
+    {
+      "rank": 149,
+      "channel_id": "UCeM6kyLWFd-_mY5BxlZi4Yg",
+      "channel_name": "Business Profusion",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "Diamonds: An Evil Scam"
+    },
+    {
+      "rank": 150,
+      "channel_id": "UCSf0s2ogUVYpJPuzW1zpAOg",
+      "channel_name": "LankyBox",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "Diamonds: An Evil Scam"
+    },
+    {
+      "rank": 151,
+      "channel_id": "UC-5TqnWNgV2upm2rOKpmSEg",
+      "channel_name": "Mahdi The Magician",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "Diamonds: An Evil Scam"
+    },
+    {
+      "rank": 152,
+      "channel_id": "UCc0YbtMkRdhcqwhu3Oad-lw",
+      "channel_name": "Breaking Bad & Better Call Saul",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "Diamonds: An Evil Scam"
+    },
+    {
+      "rank": 153,
+      "channel_id": "UC02n2oDfBu33xEEmJX1pBdQ",
+      "channel_name": "HipHopMadness",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "Diamonds: An Evil Scam"
+    },
+    {
+      "rank": 154,
+      "channel_id": "UCqTSWtEdySNlnbD40PmQsPg",
+      "channel_name": "Vault Files",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The $47 Billion Cult"
+    },
+    {
+      "rank": 155,
+      "channel_id": "UCcKBpB-P-ihnMitoXHhBu5w",
+      "channel_name": "Spark Vision TV",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The $47 Billion Cult"
+    },
+    {
+      "rank": 156,
+      "channel_id": "UCxwdp_yG0J6UTI_Lt6FOZEw",
+      "channel_name": "Get Magnetized!",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The $47 Billion Cult"
+    },
+    {
+      "rank": 157,
+      "channel_id": "UCUMZ7gohGI9HcU9VNsr2FJQ",
+      "channel_name": "Bloomberg Originals",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The $47 Billion Cult"
+    },
+    {
+      "rank": 158,
+      "channel_id": "UCzxKef_ekfMMdtPG1DULqKA",
+      "channel_name": "Tycoon Media",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The $47 Billion Cult"
+    },
+    {
+      "rank": 159,
+      "channel_id": "UCySPaJYUgTe8fw2EAWI2Gxw",
+      "channel_name": "MINIMALISTIC",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The $47 Billion Cult"
+    },
+    {
+      "rank": 160,
+      "channel_id": "UC1Myj674wRVXB9I4c6Hm5zA",
+      "channel_name": "Apple TV",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The $47 Billion Cult"
+    },
+    {
+      "rank": 161,
+      "channel_id": "UC0vxvXSLPNRrDa12WJxcZQg",
+      "channel_name": "Leapfrog Crypto",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The $47 Billion Cult"
+    },
+    {
+      "rank": 162,
+      "channel_id": "UCDeOxPsFwUm5GjyhoKisOKQ",
+      "channel_name": "Hidden Facts ",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The $47 Billion Cult"
+    },
+    {
+      "rank": 163,
+      "channel_id": "UCNruPWfg4GUGw3RcwaKtsXQ",
+      "channel_name": "Dogwoof",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The $47 Billion Cult"
+    },
+    {
+      "rank": 164,
+      "channel_id": "UCz1GPotHecuLngiLuY739QQ",
+      "channel_name": "Rotten Tomatoes TV",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The $47 Billion Cult"
+    },
+    {
+      "rank": 165,
+      "channel_id": "UCFa2hGreOxUxp_tIjH6SmLw",
+      "channel_name": "Empire of Lies",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The $47 Billion Cult"
+    },
+    {
+      "rank": 166,
+      "channel_id": "UCTd08bYLVmO6sMR0ftRltuQ",
+      "channel_name": "NothingButTech",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The $47 Billion Cult"
+    },
+    {
+      "rank": 167,
+      "channel_id": "UC0jVwqMoyAu6J0S0GMrnOBA",
+      "channel_name": "Multi Gossip",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The $47 Billion Cult"
+    },
+    {
+      "rank": 168,
+      "channel_id": "UChcpRAdCyFdo78TOUMlVGSw",
+      "channel_name": "Top10 Facts Club",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Nazi Brothers Who Started Rival Shoe Companies"
+    },
+    {
+      "rank": 169,
+      "channel_id": "UCmDgjmqNkeFDQanGN_Jmc8g",
+      "channel_name": "CypherMind ",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Nazi Brothers Who Started Rival Shoe Companies"
+    },
+    {
+      "rank": 170,
+      "channel_id": "UCbEbpvqXFEdwgJAU_e_PajQ",
+      "channel_name": "Just Internet Things",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Nazi Brothers Who Started Rival Shoe Companies"
+    },
+    {
+      "rank": 171,
+      "channel_id": "UCmfhpPWcDt_HgMCb8vzjkww",
+      "channel_name": "Techno research tube",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Nazi Brothers Who Started Rival Shoe Companies"
+    },
+    {
+      "rank": 172,
+      "channel_id": "UCFN6lQpfY8XIRdhv9G-f4bg",
+      "channel_name": "Henry Belcaster",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Nazi Brothers Who Started Rival Shoe Companies"
+    },
+    {
+      "rank": 173,
+      "channel_id": "UClwCxaQ_k0sCKWQjBRciT-Q",
+      "channel_name": "Business Boost",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Nazi Brothers Who Started Rival Shoe Companies"
+    },
+    {
+      "rank": 174,
+      "channel_id": "UC5hAB0GF8-56KbAlvK37g4w",
+      "channel_name": "The Business Legends",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Nazi Brothers Who Started Rival Shoe Companies"
+    },
+    {
+      "rank": 175,
+      "channel_id": "UCO8htHWSGk1LP7FnYwCdE4g",
+      "channel_name": "Magnet Documentry",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Nazi Brothers Who Started Rival Shoe Companies"
+    },
+    {
+      "rank": 176,
+      "channel_id": "UCxm_CZje5H6zkmLznVlJgqA",
+      "channel_name": "BizTimeTravelsWithKdoory",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Nazi Brothers Who Started Rival Shoe Companies"
+    },
+    {
+      "rank": 177,
+      "channel_id": "UCC3rNVHBCRMsMyFwwkJUTEg",
+      "channel_name": "The Insight Archive",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Nazi Brothers Who Started Rival Shoe Companies"
+    },
+    {
+      "rank": 178,
+      "channel_id": "UCYSQpTFRtVUoAyqXPevGZuA",
+      "channel_name": "Millionaires & Billionaires Playground",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Nazi Brothers Who Started Rival Shoe Companies"
+    },
+    {
+      "rank": 179,
+      "channel_id": "UC1bztHzlCZTwE1jV4SzZSOw",
+      "channel_name": "PowerTrace",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Nazi Brothers Who Started Rival Shoe Companies"
+    },
+    {
+      "rank": 180,
+      "channel_id": "UCTdMhilGQIL_Cava5S5GriA",
+      "channel_name": "Michael Ligier",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The World's Most Controversial Restaurant"
+    },
+    {
+      "rank": 181,
+      "channel_id": "UCXvbilRzK1DrcrYM_0-BxfQ",
+      "channel_name": "Megan and Ben",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The World's Most Controversial Restaurant"
+    },
+    {
+      "rank": 182,
+      "channel_id": "UCuF49lP5gkkw5L8HK3H6GJg",
+      "channel_name": "SunnyV2",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The World's Most Controversial Restaurant"
+    },
+    {
+      "rank": 183,
+      "channel_id": "UCSVDjqMfqWNNRVn5WtyeMQQ",
+      "channel_name": "Deddonekku",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The World's Most Controversial Restaurant"
+    },
+    {
+      "rank": 184,
+      "channel_id": "UCNzFhleZyCHPeIgmp-McMmQ",
+      "channel_name": "Japan Eat",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The World's Most Controversial Restaurant"
+    },
+    {
+      "rank": 185,
+      "channel_id": "UCp5p6e83X5blZ93BaW_dvpg",
+      "channel_name": "PhantomStrider",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The World's Most Controversial Restaurant"
+    },
+    {
+      "rank": 186,
+      "channel_id": "UCMZ4xncweheuvjB87OTa7BQ",
+      "channel_name": "Buchter chef 123",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The World's Most Controversial Restaurant"
+    },
+    {
+      "rank": 187,
+      "channel_id": "UCvzELh5-1isqYAji44Ao-Tg",
+      "channel_name": "Youngstars family 🙃",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The World's Most Controversial Restaurant"
+    },
+    {
+      "rank": 188,
+      "channel_id": "UCn1Ul7mjHIBA401UVrtqSxg",
+      "channel_name": "Ramiz Rizvi",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The World's Most Controversial Restaurant"
+    },
+    {
+      "rank": 189,
+      "channel_id": "UCfLkrtVxUgZoXAsYkLwPUmA",
+      "channel_name": "Łukasz Michalsky",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The World's Most Controversial Restaurant"
+    },
+    {
+      "rank": 190,
+      "channel_id": "UC7JpXnk2T_M7gllNnRLJYQw",
+      "channel_name": "Natkhat couple shorts",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The World's Most Controversial Restaurant"
+    },
+    {
+      "rank": 191,
+      "channel_id": "UCBEY_Z44umpRZEutIUEEVAw",
+      "channel_name": "Jaipur Food Tales",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The World's Most Controversial Restaurant"
+    },
+    {
+      "rank": 192,
+      "channel_id": "UCClnAS2Sm122iy_2WH6YE_A",
+      "channel_name": "Big Buzz Stories",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The World's Most Controversial Restaurant"
+    },
+    {
+      "rank": 193,
+      "channel_id": "UCAFWtJVSsDH1IunFIbvxtlQ",
+      "channel_name": "TIME PASS LIVE",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The World's Most Controversial Restaurant"
+    },
+    {
+      "rank": 194,
+      "channel_id": "UC6OMNM6IDHW-p9w9Eq07Cjg",
+      "channel_name": "Oye Hoye India",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The World's Most Controversial Restaurant"
+    },
+    {
+      "rank": 195,
+      "channel_id": "UCNvn8oBGvJKUYmX4-s7UnjA",
+      "channel_name": "Worldly Past",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The World's Most Controversial Restaurant"
+    },
+    {
+      "rank": 196,
+      "channel_id": "UCC552Sd-3nyi_tk2BudLUzA",
+      "channel_name": "AsapSCIENCE",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Disturbing TRUTH About Vaping"
+    },
+    {
+      "rank": 197,
+      "channel_id": "UCc-Yj3lMj3s_n1tqcGIzQ6g",
+      "channel_name": "Dr Karan",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Disturbing TRUTH About Vaping"
+    },
+    {
+      "rank": 198,
+      "channel_id": "UCsXVk37bltHxD1rDPwtNM8Q",
+      "channel_name": "Kurzgesagt – In a Nutshell",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Disturbing TRUTH About Vaping"
+    },
+    {
+      "rank": 199,
+      "channel_id": "UC9HQXWbt14wTdr_Tzc8ZE0A",
+      "channel_name": "Doctor Youn",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Disturbing TRUTH About Vaping"
+    },
+    {
+      "rank": 200,
+      "channel_id": "UC1jdxQi0pQDYBG3iN1duYng",
+      "channel_name": "Lung Foundation Australia",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Disturbing TRUTH About Vaping"
+    },
+    {
+      "rank": 201,
+      "channel_id": "UCMd2NTL8m-oTb3zn2uXTs5A",
+      "channel_name": "cancerNSW",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Disturbing TRUTH About Vaping"
+    },
+    {
+      "rank": 202,
+      "channel_id": "UCqYI3lmZgTsRs202mY15QfA",
+      "channel_name": "Talking With Docs",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Disturbing TRUTH About Vaping"
+    },
+    {
+      "rank": 203,
+      "channel_id": "UCIAVtZ5QM072nSkyXalU6gw",
+      "channel_name": "Islam",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Disturbing TRUTH About Vaping"
+    },
+    {
+      "rank": 204,
+      "channel_id": "UCACU6FM4RgOgX0IHB7dudFA",
+      "channel_name": "Science and fun",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Disturbing TRUTH About Vaping"
+    },
+    {
+      "rank": 205,
+      "channel_id": "UCTLXtCGn6b60TQp1RsmJcGA",
+      "channel_name": "Valcs Documentaries",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Disturbing TRUTH About Vaping"
+    },
+    {
+      "rank": 206,
+      "channel_id": "UCcilbrY8iMEwzNHNugHqlhw",
+      "channel_name": "Idaho Public Television",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Disturbing TRUTH About Vaping"
+    },
+    {
+      "rank": 207,
+      "channel_id": "UC4ChY_9MSvXsft5kiPyZk9g",
+      "channel_name": "teddytwin",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Disturbing TRUTH About Vaping"
+    },
+    {
+      "rank": 208,
+      "channel_id": "UCYoBSNpod9Gn45zKx_OtBow",
+      "channel_name": "CPHS News",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Disturbing TRUTH About Vaping"
+    },
+    {
+      "rank": 209,
+      "channel_id": "UCkrs_sMZE6IUM-AKm2_TDHg",
+      "channel_name": "Dirty Laundry Shorts",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Toy That Was Accidentally A Pyramid Scheme"
+    },
+    {
+      "rank": 210,
+      "channel_id": "UCb2GOdKgqBxQICKJ2HqZ6hQ",
+      "channel_name": "Atsugang The Toy Collector ",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Toy That Was Accidentally A Pyramid Scheme"
+    },
+    {
+      "rank": 211,
+      "channel_id": "UCM30Utw40PYZTGgvrMXNuWw",
+      "channel_name": "Kurlyheadmarr",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Toy That Was Accidentally A Pyramid Scheme"
+    },
+    {
+      "rank": 212,
+      "channel_id": "UCqRCfVYeU6QpkTxOt24XMgQ",
+      "channel_name": "Brick Arsenal 🧱",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Toy That Was Accidentally A Pyramid Scheme"
+    },
+    {
+      "rank": 213,
+      "channel_id": "UCjaObEv0PIjii0w2RGOHyJQ",
+      "channel_name": "Portal Master Studios",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Toy That Was Accidentally A Pyramid Scheme"
+    },
+    {
+      "rank": 214,
+      "channel_id": "UCMhD97ZasArNEhc7oOsE75A",
+      "channel_name": "Surfnboy Shorts",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Toy That Was Accidentally A Pyramid Scheme"
+    },
+    {
+      "rank": 215,
+      "channel_id": "UCJdQLiStMQVMarIwPdPLrdQ",
+      "channel_name": "Nostalgia Mountain",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Toy That Was Accidentally A Pyramid Scheme"
+    },
+    {
+      "rank": 216,
+      "channel_id": "UCljz_M6NK7ASp5u0t2ImfiQ",
+      "channel_name": "Icycol",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Toy That Was Accidentally A Pyramid Scheme"
+    },
+    {
+      "rank": 217,
+      "channel_id": "UCfAfMATkdp1kClTEENP1oqg",
+      "channel_name": "Ivan Mars - Movie Detective",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Toy That Was Accidentally A Pyramid Scheme"
+    },
+    {
+      "rank": 218,
+      "channel_id": "UC1qi29JIh37TEbl5Bn-m_zw",
+      "channel_name": "StarFireShorts",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Toy That Was Accidentally A Pyramid Scheme"
+    },
+    {
+      "rank": 219,
+      "channel_id": "UCt8jfvd9skBAOT6XJwc_mJg",
+      "channel_name": "Family Feud",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Toy That Was Accidentally A Pyramid Scheme"
+    },
+    {
+      "rank": 220,
+      "channel_id": "UCt2fhOTmOMX1zxTNbh3dtkA",
+      "channel_name": "Film Time",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Toy That Was Accidentally A Pyramid Scheme"
+    },
+    {
+      "rank": 221,
+      "channel_id": "UCl-cMShLFCKI69NYzU45NGA",
+      "channel_name": "Infernox",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Toy That Was Accidentally A Pyramid Scheme"
+    },
+    {
+      "rank": 222,
+      "channel_id": "UCIYYODkPyCTNV2yGGzgT7Fg",
+      "channel_name": "Flying Where To",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Most HATED Airline In The World"
+    },
+    {
+      "rank": 223,
+      "channel_id": "UC2htIc3-njRI5BKTJ2QqNfA",
+      "channel_name": "Our Future",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Most HATED Airline In The World"
+    },
+    {
+      "rank": 224,
+      "channel_id": "UCisy6taOAeLfyaCqcMQDfig",
+      "channel_name": "Max Klymenko",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Most HATED Airline In The World"
+    },
+    {
+      "rank": 225,
+      "channel_id": "UCG87YG1V412ZqJCkEVpOxHw",
+      "channel_name": "Melina Kim",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Most HATED Airline In The World"
+    },
+    {
+      "rank": 226,
+      "channel_id": "UCzCXDfvCw0m7GNVXI5fD5yQ",
+      "channel_name": "Live The Dash",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Most HATED Airline In The World"
+    },
+    {
+      "rank": 227,
+      "channel_id": "UCxB7jMnHekMzHsOl9iZpXrA",
+      "channel_name": "Danny Rayes",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Most HATED Airline In The World"
+    },
+    {
+      "rank": 228,
+      "channel_id": "UCYHqQVNSj7DvpRbIv3rPDlg",
+      "channel_name": "Brand cover by ( Yawar )",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Most HATED Airline In The World"
+    },
+    {
+      "rank": 229,
+      "channel_id": "UCqWZX4DI3-lbwsUdHxY5z5g",
+      "channel_name": "ColdWarEconomics",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Most HATED Airline In The World"
+    },
+    {
+      "rank": 230,
+      "channel_id": "UCDv-Fv9bAt-1bU9EBOnqHvw",
+      "channel_name": "Eric Struk",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Most HATED Airline In The World"
+    },
+    {
+      "rank": 231,
+      "channel_id": "UConQeJRfaLwJ9LbXBS5nhxQ",
+      "channel_name": "Charlie Berens",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Most HATED Airline In The World"
+    },
+    {
+      "rank": 232,
+      "channel_id": "UCnmGIkw-KdI0W5siakKPKog",
+      "channel_name": "Ryan Trahan",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Most HATED Airline In The World"
+    },
+    {
+      "rank": 233,
+      "channel_id": "UCPpATKqmMV-CNRNWYaDUwiA",
+      "channel_name": "Alexa Rivera",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Most HATED Airline In The World"
+    },
+    {
+      "rank": 234,
+      "channel_id": "UCBxl96QJ_T3riOiUZQxtWpA",
+      "channel_name": "Technical Movie",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Most HATED Airline In The World"
+    },
+    {
+      "rank": 235,
+      "channel_id": "UCGlBzXPpZJBBmZy0ltDdtWA",
+      "channel_name": "Damon Geis",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Most HATED Airline In The World"
+    },
+    {
+      "rank": 236,
+      "channel_id": "UCsQLTECz1bCA56JIryaw-lA",
+      "channel_name": "Jeb Brooks",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Most HATED Airline In The World"
+    },
+    {
+      "rank": 237,
+      "channel_id": "UChQc-Y6wPyfA5YCPHoNa-qw",
+      "channel_name": "LuxPlanes",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Most HATED Airline In The World"
+    },
+    {
+      "rank": 238,
+      "channel_id": "UC88tlMjiS7kf8uhPWyBTn_A",
+      "channel_name": "Captain Joe",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Most HATED Airline In The World"
+    },
+    {
+      "rank": 239,
+      "channel_id": "UCcnyF01oSONZb8wrZdkc7Tg",
+      "channel_name": "Over Load",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Most HATED Airline In The World"
+    },
+    {
+      "rank": 240,
+      "channel_id": "UCADqvNq-pw6IqRsDFuEjM6A",
+      "channel_name": "JuJu-Bee's",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "How 2 Bullied Kids Became Ice Cream Millionaires 🍧"
+    },
+    {
+      "rank": 241,
+      "channel_id": "UC3xWCpnWd8l7HaiqfvtzIhQ",
+      "channel_name": "FunnyMike",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "How 2 Bullied Kids Became Ice Cream Millionaires 🍧"
+    },
+    {
+      "rank": 242,
+      "channel_id": "UCxkDCRR6Zm3azw4qzK1BmYg",
+      "channel_name": "sophia decodes",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "How Sony Took Over The World"
+    },
+    {
+      "rank": 243,
+      "channel_id": "UCFIDjDuLC5cyUMx5gl_glcA",
+      "channel_name": "zOc",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "How Sony Took Over The World"
+    },
+    {
+      "rank": 244,
+      "channel_id": "UC2-_WWPT_124iN6jiym4fOw",
+      "channel_name": "Asian Boss",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "How Sony Took Over The World"
+    },
+    {
+      "rank": 245,
+      "channel_id": "UC3KcVLryunEQuMfF9VbhOSQ",
+      "channel_name": "Miguel Munuera",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "How Sony Took Over The World"
+    },
+    {
+      "rank": 246,
+      "channel_id": "UCBFGWYjTwhI115v2ZAYSXTw",
+      "channel_name": "GameVisors",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "How Sony Took Over The World"
+    },
+    {
+      "rank": 247,
+      "channel_id": "UCTR-goODbFfSC7xVFoX_WjA",
+      "channel_name": "Globalisto",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "How Sony Took Over The World"
+    },
+    {
+      "rank": 248,
+      "channel_id": "UCs0we_iMm78G5w4DqFQQHBA",
+      "channel_name": "Journey Stateside",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "How Sony Took Over The World"
+    },
+    {
+      "rank": 249,
+      "channel_id": "UCokeVZg4VaSLVBDiziJsMDA",
+      "channel_name": "Behind Asia",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "How Sony Took Over The World"
+    },
+    {
+      "rank": 250,
+      "channel_id": "UCcqAE3U7TM7P4XiD1xs4pXQ",
+      "channel_name": "It’s Technologia",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "How Sony Took Over The World"
+    },
+    {
+      "rank": 251,
+      "channel_id": "UCeFPEWDNdVq_k7qgRF1I2dQ",
+      "channel_name": "HydroTeck",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "How Sony Took Over The World"
+    },
+    {
+      "rank": 252,
+      "channel_id": "UCpDd9PNiPHb12yyWo2miyog",
+      "channel_name": "English Avenue",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "How Sony Took Over The World"
+    },
+    {
+      "rank": 253,
+      "channel_id": "UCMHaWzhnle8gD6zthV0dWrA",
+      "channel_name": "Hidden Stories",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "How Sony Took Over The World"
+    },
+    {
+      "rank": 254,
+      "channel_id": "UCd5fOX2BPbVv19YpIlWQ8xA",
+      "channel_name": "BrainWave Media ",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "How Sony Took Over The World"
+    },
+    {
+      "rank": 255,
+      "channel_id": "UCUP07eevDGoVEmi9IuThtaQ",
+      "channel_name": "snappiness",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "How Sony Took Over The World"
+    },
+    {
+      "rank": 256,
+      "channel_id": "UCVjS9AuBloqJJjhsy3vIfug",
+      "channel_name": "Sony",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "How Sony Took Over The World"
+    },
+    {
+      "rank": 257,
+      "channel_id": "UCOUCMCUmxMpFIHqCsHr9Wsw",
+      "channel_name": "Keshav Bihani",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "How Sony Took Over The World"
+    },
+    {
+      "rank": 258,
+      "channel_id": "UCT6U8LEDSRflm2HBZdqz0lw",
+      "channel_name": "Successful Person",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Dark Truth About PayPal"
+    },
+    {
+      "rank": 259,
+      "channel_id": "UCDHs-rgdPq0E1S1VjtVtacg",
+      "channel_name": "Dark Truth",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Dark Truth About PayPal"
+    },
+    {
+      "rank": 260,
+      "channel_id": "UCMiFCGNWCQWzvU68xdy8s8w",
+      "channel_name": "Originate",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Dark Truth About PayPal"
+    },
+    {
+      "rank": 261,
+      "channel_id": "UCJyWyuFmr38aOkOcxoVjOfg",
+      "channel_name": "MythBuster Bharat",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Dark Truth About PayPal"
+    },
+    {
+      "rank": 262,
+      "channel_id": "UCbCdLip-sqbc3bWRdH_XGEQ",
+      "channel_name": "K0AN0",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Dark Truth About PayPal"
+    },
+    {
+      "rank": 263,
+      "channel_id": "UCyuM764LTH_zUiLOdIgI0Dw",
+      "channel_name": "wak3upNEHA",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Dark Truth About PayPal"
+    },
+    {
+      "rank": 264,
+      "channel_id": "UCcD9UxkFgk-RVUmwDEWUnqw",
+      "channel_name": "CHRISTIANO SHORTS",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Dark Truth About PayPal"
+    },
+    {
+      "rank": 265,
+      "channel_id": "UCKiXz0KDfCC92CGa0Qktaqg",
+      "channel_name": "Business Central",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Dark Truth About PayPal"
+    },
+    {
+      "rank": 266,
+      "channel_id": "UCY74-6cAK55Z9cxJ8LXLjAw",
+      "channel_name": "Mystery Mavens",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Dark Truth About PayPal"
+    },
+    {
+      "rank": 267,
+      "channel_id": "UCOtLoTqqtVlPeFCdG52Wwbw",
+      "channel_name": "Vishal",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Dark Truth About PayPal"
+    },
+    {
+      "rank": 268,
+      "channel_id": "UCca2961Ton2js_f9IDXK9Wg",
+      "channel_name": "Trilogy Media",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Dark Truth About PayPal"
+    },
+    {
+      "rank": 269,
+      "channel_id": "UCdSqgdyJOWff5xTab2NT4iQ",
+      "channel_name": "Gabbar MTC ",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Dark Truth About PayPal"
+    },
+    {
+      "rank": 270,
+      "channel_id": "UC0TnW9acNxqeojxXDMbohcA",
+      "channel_name": "Mark Manson",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "YouTube Is A Game, These Are The Cheat Codes"
+    },
+    {
+      "rank": 271,
+      "channel_id": "UCc94ORdB5CoWoKTWDXe0_Jg",
+      "channel_name": "tomtrades",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "YouTube Is A Game, These Are The Cheat Codes"
+    },
+    {
+      "rank": 272,
+      "channel_id": "UCUatUzPH6WbskaIl1W6Hx8g",
+      "channel_name": "ItsJonathanReed",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "YouTube Is A Game, These Are The Cheat Codes"
+    },
+    {
+      "rank": 273,
+      "channel_id": "UCHQ0GPGhqjinKm-Y9DLC3hw",
+      "channel_name": "Mae Alice Suzuki",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "YouTube Is A Game, These Are The Cheat Codes"
+    },
+    {
+      "rank": 274,
+      "channel_id": "UCNvrOQD5KqnMiySNbpNJjog",
+      "channel_name": "RK CODE OFFICIAL",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "YouTube Is A Game, These Are The Cheat Codes"
+    },
+    {
+      "rank": 275,
+      "channel_id": "UCqg_UA38s7i2g3M37q7qb7g",
+      "channel_name": "ALL GAMER__2.3 YT",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "YouTube Is A Game, These Are The Cheat Codes"
+    },
+    {
+      "rank": 276,
+      "channel_id": "UCHfD-HVY2ZNKgkmKtUDAKGA",
+      "channel_name": "Gamonomix",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "YouTube Is A Game, These Are The Cheat Codes"
+    },
+    {
+      "rank": 277,
+      "channel_id": "UCXO4df87pqj_xPQiUPoqG3g",
+      "channel_name": "Gamenetics DIY",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "YouTube Is A Game, These Are The Cheat Codes"
+    },
+    {
+      "rank": 278,
+      "channel_id": "UC4ZVkG3RQPzvZk7alIVjcCg",
+      "channel_name": "theMITmonk",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "YouTube Is A Game, These Are The Cheat Codes"
+    },
+    {
+      "rank": 279,
+      "channel_id": "UC3WrUCdhrhsgQxiQ8OwhHqw",
+      "channel_name": "ONEGTA",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "YouTube Is A Game, These Are The Cheat Codes"
+    },
+    {
+      "rank": 280,
+      "channel_id": "UCIGEBB32IQdzLOhEtlSP06g",
+      "channel_name": "Chase Chappell",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "YouTube Is A Game, These Are The Cheat Codes"
+    },
+    {
+      "rank": 281,
+      "channel_id": "UCUPpgACglOj4P07Y52FJiIg",
+      "channel_name": "gruz",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "YouTube Is A Game, These Are The Cheat Codes"
+    },
+    {
+      "rank": 282,
+      "channel_id": "UCwUqkZzjxFEn3XnH9blxJtg",
+      "channel_name": "(SK ka Khazana)",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "YouTube Is A Game, These Are The Cheat Codes"
+    },
+    {
+      "rank": 283,
+      "channel_id": "UCXs9hrMGusUSLVpahnJ7rSA",
+      "channel_name": "A_R GAMER BOIZ ",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "YouTube Is A Game, These Are The Cheat Codes"
+    },
+    {
+      "rank": 284,
+      "channel_id": "UCFvqW6YoyyrFVXQ4OnuSgXw",
+      "channel_name": "Relax Indian Gaming",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "YouTube Is A Game, These Are The Cheat Codes"
+    },
+    {
+      "rank": 285,
+      "channel_id": "UCDHC0OxyARHRf4tghxG6KUw",
+      "channel_name": "Mr Guddu Yt",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "YouTube Is A Game, These Are The Cheat Codes"
+    },
+    {
+      "rank": 286,
+      "channel_id": "UCb5i6_HZwULIDtMjNT1k68Q",
+      "channel_name": "Beyond The Theory",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "How This Farm Boy Built The World's Biggest Company"
+    },
+    {
+      "rank": 287,
+      "channel_id": "UCrssmhonvzWWGOFMWsoy22Q",
+      "channel_name": "MixMastersHub",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "How This Farm Boy Built The World's Biggest Company"
+    },
+    {
+      "rank": 288,
+      "channel_id": "UCmE8VImxTDI0-WmunXI3MwA",
+      "channel_name": "STORY HUB ",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "How This Farm Boy Built The World's Biggest Company"
+    },
+    {
+      "rank": 289,
+      "channel_id": "UC9ymOL0MW0pILwF0l4GRgFA",
+      "channel_name": "Finance 101",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "How This Farm Boy Built The World's Biggest Company"
+    },
+    {
+      "rank": 290,
+      "channel_id": "UCsbNOWQRumo_SNSqQToFgew",
+      "channel_name": "Cricket Prix",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "How This Farm Boy Built The World's Biggest Company"
+    },
+    {
+      "rank": 291,
+      "channel_id": "UCLiOS-A80bb7ACPxUgEWeqA",
+      "channel_name": "Shoaib samad",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "How This Farm Boy Built The World's Biggest Company"
+    },
+    {
+      "rank": 292,
+      "channel_id": "UCm_0LG9NaVrqGly8To-DRnw",
+      "channel_name": "Realism",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "How This Farm Boy Built The World's Biggest Company"
+    },
+    {
+      "rank": 293,
+      "channel_id": "UC8G5Go_tVDFqudEiD6G5mbw",
+      "channel_name": "Otw Docs",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "How This Farm Boy Built The World's Biggest Company"
+    },
+    {
+      "rank": 294,
+      "channel_id": "UCORD_dJwMi2-vHHj7_IZPxA",
+      "channel_name": "CORE WISE",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The INSANE Truth About IKEA"
+    },
+    {
+      "rank": 295,
+      "channel_id": "UCNfW7GU24XqvLXSME4tGKKA",
+      "channel_name": "Standup Mania",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The INSANE Truth About IKEA"
+    },
+    {
+      "rank": 296,
+      "channel_id": "UCL9fAL20yaD7o_pMdSW9oWQ",
+      "channel_name": "Dwayne's View",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The INSANE Truth About IKEA"
+    },
+    {
+      "rank": 297,
+      "channel_id": "UCtjr6Y7FWnaVu6ql7_NDDjw",
+      "channel_name": "Global Money Mindset",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The INSANE Truth About IKEA"
+    },
+    {
+      "rank": 298,
+      "channel_id": "UCAP-67GK1_YJlkb4x5xL8cA",
+      "channel_name": "Rakhi Pujarii",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The INSANE Truth About IKEA"
+    },
+    {
+      "rank": 299,
+      "channel_id": "UCxh2LOjUpVk1QR6gopAfktA",
+      "channel_name": "James Gazi",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The INSANE Truth About IKEA"
+    },
+    {
+      "rank": 300,
+      "channel_id": "UCZd9VT5jPN1oetJSQOBbidg",
+      "channel_name": "Vishal Sharma",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The INSANE Truth About IKEA"
+    },
+    {
+      "rank": 301,
+      "channel_id": "UCOTGVctbHD4UJK3R6Evfx9Q",
+      "channel_name": "TECH-iELA Shorts",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The INSANE Truth About IKEA"
+    },
+    {
+      "rank": 302,
+      "channel_id": "UC9nAfP4Le9r_K2NM6mIDSXA",
+      "channel_name": "Wonder Weasel",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The INSANE Truth About IKEA"
+    },
+    {
+      "rank": 303,
+      "channel_id": "UCGvIBxqin_rx3sY9qacQEhQ",
+      "channel_name": "Mashed",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The INSANE Truth About IKEA"
+    },
+    {
+      "rank": 304,
+      "channel_id": "UCp57W-eQjbYUPJuTMEfbf1Q",
+      "channel_name": "Counting Unique",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The INSANE Truth About IKEA"
+    },
+    {
+      "rank": 305,
+      "channel_id": "UCwrwLfvtRF5mN-iZiosyKPw",
+      "channel_name": "Kick it Forward",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The INSANE Truth About IKEA"
+    },
+    {
+      "rank": 306,
+      "channel_id": "UC5PYHgAzJ1wLEidB58SK6Xw",
+      "channel_name": "Blippi - Educational Videos for Kids",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The INSANE Truth About IKEA"
+    },
+    {
+      "rank": 307,
+      "channel_id": "UC5QJ5atSUPvvOfJ8mwYlq6g",
+      "channel_name": "livvx",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The INSANE Truth About IKEA"
+    },
+    {
+      "rank": 308,
+      "channel_id": "UCK0uAka_jtEFLwJX2jbw0lQ",
+      "channel_name": "Bhavana Srinivas",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The INSANE Truth About IKEA"
+    },
+    {
+      "rank": 309,
+      "channel_id": "UCTI2PO8HYn6EwBXuu8kQFBg",
+      "channel_name": "The Millionaire's Shade",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Freak Show Billionaire"
+    },
+    {
+      "rank": 310,
+      "channel_id": "UCX8bZ5_d1a1FCWefHrjnO8Q",
+      "channel_name": "PRESTIGE TIMEPIECES",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Freak Show Billionaire"
+    },
+    {
+      "rank": 311,
+      "channel_id": "UCfMAKIn8O0MoVU7TFlqgoNA",
+      "channel_name": "Iblame sean",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Freak Show Billionaire"
+    },
+    {
+      "rank": 312,
+      "channel_id": "UCd78-GmOCtxwYhqkw33AbMw",
+      "channel_name": "The Shorts Podcast",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Freak Show Billionaire"
+    },
+    {
+      "rank": 313,
+      "channel_id": "UCUhmReBGZtCcwLnJB9_bEVQ",
+      "channel_name": "Billionaire Shots",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Freak Show Billionaire"
+    },
+    {
+      "rank": 314,
+      "channel_id": "UCgApFGvQWDhnXvi5b9q_Nsg",
+      "channel_name": "Salman Khan TV",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Freak Show Billionaire"
+    },
+    {
+      "rank": 315,
+      "channel_id": "UCzv4Z4UaBoJFZNyeerjCt6w",
+      "channel_name": "Watch With Sam",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Freak Show Billionaire"
+    },
+    {
+      "rank": 316,
+      "channel_id": "UC7W4c-JwR_jSWlRHaqLme9Q",
+      "channel_name": "MotivationVerz",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Freak Show Billionaire"
+    },
+    {
+      "rank": 317,
+      "channel_id": "UCSPy6VAHbkR5TeIGthkMJdw",
+      "channel_name": "MONEY_TALKS",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Freak Show Billionaire"
+    },
+    {
+      "rank": 318,
+      "channel_id": "UCtLo1ovTSFkAm09lpoIkLYA",
+      "channel_name": "City Travel Tours",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Freak Show Billionaire"
+    },
+    {
+      "rank": 319,
+      "channel_id": "UCWYLvsMJgT14LhVkDfIL8tg",
+      "channel_name": "Exotic Mind ",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Freak Show Billionaire"
+    },
+    {
+      "rank": 320,
+      "channel_id": "UCr0SeT_T9shRksVUJ4qDZAw",
+      "channel_name": "Love Luxury",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Freak Show Billionaire"
+    },
+    {
+      "rank": 321,
+      "channel_id": "UCvfUkLeSVA8jo8D8Zbs6Bmw",
+      "channel_name": "Wealthy Pot",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Freak Show Billionaire"
+    },
+    {
+      "rank": 322,
+      "channel_id": "UCTMOmVWmWGBB4RZmL7OBt6Q",
+      "channel_name": "Chad Alexander",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Freak Show Billionaire"
+    },
+    {
+      "rank": 323,
+      "channel_id": "UCpybdYUAZsJivCv-GSWXv5Q",
+      "channel_name": "Luxury life...💰",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Freak Show Billionaire"
+    },
+    {
+      "rank": 324,
+      "channel_id": "UC9KphTfaS_xgcH9wRE3zz-Q",
+      "channel_name": "ProGenius Group",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Freak Show Billionaire"
+    },
+    {
+      "rank": 325,
+      "channel_id": "UCn-0-u1CEhLNEt_V7pJIcxA",
+      "channel_name": "Manosphere",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Craziest Story You've Ever Heard"
+    },
+    {
+      "rank": 326,
+      "channel_id": "UC45OWitn6BWG20rxLCL109A",
+      "channel_name": "Snook",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Craziest Story You've Ever Heard"
+    },
+    {
+      "rank": 327,
+      "channel_id": "UCVyU6MTtawZRjR4_V-xOXGA",
+      "channel_name": "Rogan Extra's",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Craziest Story You've Ever Heard"
+    },
+    {
+      "rank": 328,
+      "channel_id": "UCDeCvTK1KSvRUbJT1Z_ZgAg",
+      "channel_name": "StoryBro",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Craziest Story You've Ever Heard"
+    },
+    {
+      "rank": 329,
+      "channel_id": "UCmaG0bTIgp1H0Nvzp4sVT7A",
+      "channel_name": "Sebastiank22 ",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Craziest Story You've Ever Heard"
+    },
+    {
+      "rank": 330,
+      "channel_id": "UCDeX3wlGJZ9cdRG1y6xlpvg",
+      "channel_name": "Secret Diaries",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Craziest Story You've Ever Heard"
+    },
+    {
+      "rank": 331,
+      "channel_id": "UC0pCo97jL5xklWl6ZlMi3Xg",
+      "channel_name": "CLIPBANK",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Craziest Story You've Ever Heard"
+    },
+    {
+      "rank": 332,
+      "channel_id": "UCjK9zjrADUtRWC26jNbd1uA",
+      "channel_name": "Haretheditzzzz",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Craziest Story You've Ever Heard"
+    },
+    {
+      "rank": 333,
+      "channel_id": "UCuYFw7Fh2EdWnCzv_ViUGFg",
+      "channel_name": "ashleeinc",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Craziest Story You've Ever Heard"
+    },
+    {
+      "rank": 334,
+      "channel_id": "UC0I7OF7PU6V5iKy1DOql0tg",
+      "channel_name": "Depressed Ginger",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Craziest Story You've Ever Heard"
+    },
+    {
+      "rank": 335,
+      "channel_id": "UCHOKvQW2N4kLVhKYn2bvF7A",
+      "channel_name": "Prakhar Gupta",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Craziest Story You've Ever Heard"
+    },
+    {
+      "rank": 336,
+      "channel_id": "UCIkq7TQlJUpg3FV74bDpHYg",
+      "channel_name": "Wondering Guru",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Craziest Story You've Ever Heard"
+    },
+    {
+      "rank": 337,
+      "channel_id": "UCI0_ITL3l48FPNVC9HTE3kA",
+      "channel_name": "Roganized",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Craziest Story You've Ever Heard"
+    },
+    {
+      "rank": 338,
+      "channel_id": "UCZbDycYPRMKxFiEeBTAcmnw",
+      "channel_name": "Ali Koca Stories",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Craziest Story You've Ever Heard"
+    },
+    {
+      "rank": 339,
+      "channel_id": "UC-2YHgc363EdcusLIBbgxzg",
+      "channel_name": "Joe Scott",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Craziest Story You've Ever Heard"
+    },
+    {
+      "rank": 340,
+      "channel_id": "UCUV47thXkNc4SbcTNpO1kVQ",
+      "channel_name": "Dustin Poynter",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Craziest Story You've Ever Heard"
+    },
+    {
+      "rank": 341,
+      "channel_id": "UCqseWqrl7r-hNoWme7hIfTw",
+      "channel_name": "Rebecca Rogers ",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Craziest Story You've Ever Heard"
+    },
+    {
+      "rank": 342,
+      "channel_id": "UCQQ5OMysD4LwLCbhDtIUhYg",
+      "channel_name": "Reddit.Daisy&",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Craziest Story You've Ever Heard"
+    },
+    {
+      "rank": 343,
+      "channel_id": "UCjlM_UHQs33tAlkVifLSYRA",
+      "channel_name": "The Daily Deep Dive",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Evil Crimes of Volkswagen"
+    },
+    {
+      "rank": 344,
+      "channel_id": "UC30RUsMT43eZKSEFGdH8Hzw",
+      "channel_name": "Lawlens Chronicles ",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Evil Crimes of Volkswagen"
+    },
+    {
+      "rank": 345,
+      "channel_id": "UC6NbDJIawGMOEqZxB8cEN9A",
+      "channel_name": "Guru Motion",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Evil Crimes of Volkswagen"
+    },
+    {
+      "rank": 346,
+      "channel_id": "UC_wgPVBmh-yDQ40phwhnt8g",
+      "channel_name": "iBrisensei",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Evil Crimes of Volkswagen"
+    },
+    {
+      "rank": 347,
+      "channel_id": "UCDBBYepAaqcM8yjROjMb_DQ",
+      "channel_name": "Improve Now",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Evil Crimes of Volkswagen"
+    },
+    {
+      "rank": 348,
+      "channel_id": "UCgkjCzpxgfg8n895tjvlaTg",
+      "channel_name": "Copy & Paste",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Evil Crimes of Volkswagen"
+    },
+    {
+      "rank": 349,
+      "channel_id": "UClZhNzTBE9or5OXQKCuBhew",
+      "channel_name": "Anshuman Joshi",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Evil Crimes of Volkswagen"
+    },
+    {
+      "rank": 350,
+      "channel_id": "UChPPof6Em836UbHYNYgZH3g",
+      "channel_name": "Weird Crimes",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Evil Crimes of Volkswagen"
+    },
+    {
+      "rank": 351,
+      "channel_id": "UCXZpQgX1897wYDLtvzmgyIA",
+      "channel_name": "Facts Verse",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Evil Crimes of Volkswagen"
+    },
+    {
+      "rank": 352,
+      "channel_id": "UCNyaqi8gQVSoVmTkdFnZizg",
+      "channel_name": "Hidden Reddit",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Deadly TRUTH About Reddit"
+    },
+    {
+      "rank": 353,
+      "channel_id": "UCbySksOlV461eicpIf30j5Q",
+      "channel_name": "The RedditNerd",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Deadly TRUTH About Reddit"
+    },
+    {
+      "rank": 354,
+      "channel_id": "UCcCVJ0i-ALTeADgClIGlKaQ",
+      "channel_name": "Reddit Say",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Deadly TRUTH About Reddit"
+    },
+    {
+      "rank": 355,
+      "channel_id": "UCQ7CfMdTuWkhOjzIGMNor9w",
+      "channel_name": "Reddit tales unleased",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Deadly TRUTH About Reddit"
+    },
+    {
+      "rank": 356,
+      "channel_id": "UCVrEHNmwOcTM85daIG6PSVg",
+      "channel_name": "Andy Jiang",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Deadly TRUTH About Reddit"
+    },
+    {
+      "rank": 357,
+      "channel_id": "UCitycWC9sZdmdZbtMMhQS-g",
+      "channel_name": "Reddit Radio",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Deadly TRUTH About Reddit"
+    },
+    {
+      "rank": 358,
+      "channel_id": "UCwmAx8uagtDqget2TQtV0YQ",
+      "channel_name": "Bald Reddit",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Deadly TRUTH About Reddit"
+    },
+    {
+      "rank": 359,
+      "channel_id": "UCgNLVlmk9RPHXJ5K0WUQOGQ",
+      "channel_name": "Daily Dose of Reddit",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Deadly TRUTH About Reddit"
+    },
+    {
+      "rank": 360,
+      "channel_id": "UCXngvSUZLbifQOADBseULyg",
+      "channel_name": "Short Stories from Reddit",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Deadly TRUTH About Reddit"
+    },
+    {
+      "rank": 361,
+      "channel_id": "UC4xCNAOaWA_BAAGNPMeNk5w",
+      "channel_name": "Darshank",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Deadly TRUTH About Reddit"
+    },
+    {
+      "rank": 362,
+      "channel_id": "UCWWuud4LqVBU1K8tVIePi4Q",
+      "channel_name": "WillUMineBTC",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Deadly TRUTH About Reddit"
+    },
+    {
+      "rank": 363,
+      "channel_id": "UCEqqsRa4if49534t7NOtcpQ",
+      "channel_name": "Reddit-Guts",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Deadly TRUTH About Reddit"
+    },
+    {
+      "rank": 364,
+      "channel_id": "UCZb00zd6F2Hl-KSEBChSqOw",
+      "channel_name": "RealStoriesForYou",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Deadly TRUTH About Reddit"
+    },
+    {
+      "rank": 365,
+      "channel_id": "UCgyPeoTG301t9W5p2zP33bA",
+      "channel_name": "CreepyEncounters",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Deadly TRUTH About Reddit"
+    },
+    {
+      "rank": 366,
+      "channel_id": "UCD6TPU-PvTMvqgzC_AM7_uA",
+      "channel_name": "The People Profiles",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "Rockefeller: The World’s First Billionaire"
+    },
+    {
+      "rank": 367,
+      "channel_id": "UCurYxozQbvKn-oNUxNJh45Q",
+      "channel_name": "GREAT IDEAS GREAT LIFE",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "Rockefeller: The World’s First Billionaire"
+    },
+    {
+      "rank": 368,
+      "channel_id": "UCXl4i9dYBrFOabk0xGmbkRA",
+      "channel_name": "Dwarkesh Patel",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "Rockefeller: The World’s First Billionaire"
+    },
+    {
+      "rank": 369,
+      "channel_id": "UC-TQPfKOAH5f9vmVnGT9GPQ",
+      "channel_name": "Aaron Watson ",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "Rockefeller: The World’s First Billionaire"
+    },
+    {
+      "rank": 370,
+      "channel_id": "UCPQvV5Wohj9DSXJWQkQx2kA",
+      "channel_name": "MeetMattL",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "Rockefeller: The World’s First Billionaire"
+    },
+    {
+      "rank": 371,
+      "channel_id": "UCAvN9ZZcikXioxCb2BKCXGw",
+      "channel_name": "Decades TV Network",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "Rockefeller: The World’s First Billionaire"
+    },
+    {
+      "rank": 372,
+      "channel_id": "UCaDzND50rlv34BSlpgyhzzg",
+      "channel_name": "Epic History Narrator",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "Rockefeller: The World’s First Billionaire"
+    },
+    {
+      "rank": 373,
+      "channel_id": "UC4yZtAQkAzPXxNh3GhUCPGw",
+      "channel_name": "Strivor",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "Rockefeller: The World’s First Billionaire"
+    },
+    {
+      "rank": 374,
+      "channel_id": "UCGncvW6agi37Dh-_bR126yg",
+      "channel_name": " The Empire Inside",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "Rockefeller: The World’s First Billionaire"
+    },
+    {
+      "rank": 375,
+      "channel_id": "UC1EB82wjWKsGKVgUuFzWmcw",
+      "channel_name": "Insight Fusion",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "Rockefeller: The World’s First Billionaire"
+    },
+    {
+      "rank": 376,
+      "channel_id": "UCAdNB3_kWkpGLs0aPnM0Yvw",
+      "channel_name": "Inspirational Ideas",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "Rockefeller: The World’s First Billionaire"
+    },
+    {
+      "rank": 377,
+      "channel_id": "UClcQvRxBvvH4aiQ3NH33j7A",
+      "channel_name": "Uncovering Hollywood",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "Rockefeller: The World’s First Billionaire"
+    },
+    {
+      "rank": 378,
+      "channel_id": "UCjD3WNDVsBsIljpp2sAdHpQ",
+      "channel_name": "Past Unlocked History ",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "Rockefeller: The World’s First Billionaire"
+    },
+    {
+      "rank": 379,
+      "channel_id": "UCBv1sCrlRDoafM0oQlpCG7g",
+      "channel_name": "Bio Sphere",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "Rockefeller: The World’s First Billionaire"
+    },
+    {
+      "rank": 380,
+      "channel_id": "UCqrb6jwGlyvOv68nkpiPvgA",
+      "channel_name": "How to Buy Money",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "Rockefeller: The World’s First Billionaire"
+    },
+    {
+      "rank": 381,
+      "channel_id": "UCtNdVINwfYFTQEEZgMiQ8FA",
+      "channel_name": "Bailey Sarian",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "Rockefeller: The World’s First Billionaire"
+    },
+    {
+      "rank": 382,
+      "channel_id": "UCS8kEXMv9Iszsj8BXnVERXg",
+      "channel_name": "Rich Life Stories",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "Rockefeller: The World’s First Billionaire"
+    },
+    {
+      "rank": 383,
+      "channel_id": "UCfiKlcndrue5YZZNAKijoGg",
+      "channel_name": "Online Campus School",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "Rockefeller: The World’s First Billionaire"
+    },
+    {
+      "rank": 384,
+      "channel_id": "UC2TEx6wTQcP6rR2K4bi89aQ",
+      "channel_name": "Historical Wealth",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "Rockefeller: The World’s First Billionaire"
+    },
+    {
+      "rank": 385,
+      "channel_id": "UCDAbrXOj2yIrzj8QE4jC-Og",
+      "channel_name": "BRAD LEA TV",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The CRAZY Truth About McDonald's"
+    },
+    {
+      "rank": 386,
+      "channel_id": "UCxrafbFk0SOiI9ePkSsuxWw",
+      "channel_name": "TrendQs",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The CRAZY Truth About McDonald's"
+    },
+    {
+      "rank": 387,
+      "channel_id": "UCgBg0LcHfnJDPmFTTf677Pw",
+      "channel_name": "Paul Saladino MD",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The CRAZY Truth About McDonald's"
+    },
+    {
+      "rank": 388,
+      "channel_id": "UClRy15yhufiir6oE5BTXbyw",
+      "channel_name": "Healthier Than Yesterday",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The CRAZY Truth About McDonald's"
+    },
+    {
+      "rank": 389,
+      "channel_id": "UCNaE2DBszMe1VR8ibY-RWVQ",
+      "channel_name": "Artha Mind",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The CRAZY Truth About McDonald's"
+    },
+    {
+      "rank": 390,
+      "channel_id": "UCAmitojA7r-IirkRLcfi5Tw",
+      "channel_name": "The Blondie Girl",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The CRAZY Truth About McDonald's"
+    },
+    {
+      "rank": 391,
+      "channel_id": "UCugDYsaRpXOir1k7Izo6a9g",
+      "channel_name": "just the nobodys podcast",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The CRAZY Truth About McDonald's"
+    },
+    {
+      "rank": 392,
+      "channel_id": "UCoduoDqy8x7vXH7leL364pw",
+      "channel_name": "FactVoyager",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The CRAZY Truth About McDonald's"
+    },
+    {
+      "rank": 393,
+      "channel_id": "UCaWd5_7JhbQBe4dknZhsHJg",
+      "channel_name": "WatchMojo.com",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The CRAZY Truth About McDonald's"
+    },
+    {
+      "rank": 394,
+      "channel_id": "UCw9z5l_SGrhXl857j1S_FoA",
+      "channel_name": "Conciousmb",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The CRAZY Truth About McDonald's"
+    },
+    {
+      "rank": 395,
+      "channel_id": "UCAGHBJqInuyyjK1WfrM5YUQ",
+      "channel_name": "MindBlast",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The CRAZY Truth About McDonald's"
+    },
+    {
+      "rank": 396,
+      "channel_id": "UCzWr_L8-BmcNtScK8LGfpDA",
+      "channel_name": "Factastic",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The CRAZY Truth About McDonald's"
+    },
+    {
+      "rank": 397,
+      "channel_id": "UCygtI4UWECLjR3x3Ne1DeEA",
+      "channel_name": "Ben Farr",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The CRAZY Truth About McDonald's"
+    },
+    {
+      "rank": 398,
+      "channel_id": "UCkSFpsuEOQ8aAVgJjM9LSTA",
+      "channel_name": "Lively Lewis Family",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The CRAZY Truth About McDonald's"
+    },
+    {
+      "rank": 399,
+      "channel_id": "UCKyrfjhPYXQNZ7wHjvW9dyg",
+      "channel_name": "Rocco Talks",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "How Zoom REALLY Took Over The World"
+    },
+    {
+      "rank": 400,
+      "channel_id": "UCIBaDdAbGlFDeS33shmlD0A",
+      "channel_name": "European Space Agency, ESA",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "How Zoom REALLY Took Over The World"
+    },
+    {
+      "rank": 401,
+      "channel_id": "UCdgpfQ5snGKcP-eqoVXI0pw",
+      "channel_name": "Cosmoknowledge",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "How Zoom REALLY Took Over The World"
+    },
+    {
+      "rank": 402,
+      "channel_id": "UCgjWvtgSDhcdxLTxSPKuIOA",
+      "channel_name": "MacroLab3D",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "How Zoom REALLY Took Over The World"
+    },
+    {
+      "rank": 403,
+      "channel_id": "UCfa7MqiicQeOj-vYj0uXedw",
+      "channel_name": "Damon Scotting",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "How Zoom REALLY Took Over The World"
+    },
+    {
+      "rank": 404,
+      "channel_id": "UCFJbWaAgsUI-EsLybL23PsQ",
+      "channel_name": "Raj’s Astrophotography",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "How Zoom REALLY Took Over The World"
+    },
+    {
+      "rank": 405,
+      "channel_id": "UCZBuMzT8SvhRVeYTMOQRpOA",
+      "channel_name": "Euforik",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "How Zoom REALLY Took Over The World"
+    },
+    {
+      "rank": 406,
+      "channel_id": "UCB4x0Weme5SWDzPmuyTGgKg",
+      "channel_name": "STICKY Art Shorts",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "How Zoom REALLY Took Over The World"
+    },
+    {
+      "rank": 407,
+      "channel_id": "UCd1T8CDVLrTMijqR4hQ6P-w",
+      "channel_name": "UrDay",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "How Zoom REALLY Took Over The World"
+    },
+    {
+      "rank": 408,
+      "channel_id": "UC470NTvB-NnlwK_Q5Hgiffg",
+      "channel_name": "Galaxy ai ",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "How Zoom REALLY Took Over The World"
+    },
+    {
+      "rank": 409,
+      "channel_id": "UCrSvDunJEc1CME4-KvhW_3Q",
+      "channel_name": "Howfinity",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "How Zoom REALLY Took Over The World"
+    },
+    {
+      "rank": 410,
+      "channel_id": "UCmdpxuhoq5xmG_8_Tau39hQ",
+      "channel_name": "SPDADNAN",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "How Zoom REALLY Took Over The World"
+    },
+    {
+      "rank": 411,
+      "channel_id": "UCJ6nBDbZYh3ujS26wZhazYw",
+      "channel_name": "TechFact4u",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "How Zoom REALLY Took Over The World"
+    },
+    {
+      "rank": 412,
+      "channel_id": "UCJBh3PF4V1rnQO6FQyAfiaA",
+      "channel_name": "Hello Science",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "How Zoom REALLY Took Over The World"
+    },
+    {
+      "rank": 413,
+      "channel_id": "UCr-QK4iNHigpHINHoNPjuBA",
+      "channel_name": "Mjute",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "How Zoom REALLY Took Over The World"
+    },
+    {
+      "rank": 414,
+      "channel_id": "UCt1XbJt5FxMBLsQAsWHap_w",
+      "channel_name": "Chris Brockhurst",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "How Zoom REALLY Took Over The World"
+    },
+    {
+      "rank": 415,
+      "channel_id": "UCRlkswtoK0fzEXHQovlsGWQ",
+      "channel_name": "Nirvan Vlogs",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "How Zoom REALLY Took Over The World"
+    },
+    {
+      "rank": 416,
+      "channel_id": "UCOtiyC31iTzPM6EOAcPQAeQ",
+      "channel_name": "INI Mel Crazy 亗",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "How Zoom REALLY Took Over The World"
+    },
+    {
+      "rank": 417,
+      "channel_id": "UC1KrRuj9mEuS6JhApLQjfLg",
+      "channel_name": "Steven Divish",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "How Zoom REALLY Took Over The World"
+    },
+    {
+      "rank": 418,
+      "channel_id": "UCC_ZkMZF-AEh9F7p_a-yv-A",
+      "channel_name": "Breaking Free",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "Henry Ford’s Secrets"
+    },
+    {
+      "rank": 419,
+      "channel_id": "UCI-hvDR22xiIAT-vJw-qLdQ",
+      "channel_name": "Global Impact",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "Henry Ford’s Secrets"
+    },
+    {
+      "rank": 420,
+      "channel_id": "UC3cpN6gcJQqcCM6mxRUo_dA",
+      "channel_name": "Wendigoon",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "Henry Ford’s Secrets"
+    },
+    {
+      "rank": 421,
+      "channel_id": "UCCODtTcd5M1JavPCOr_Uydg",
+      "channel_name": "Extra History",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "Henry Ford’s Secrets"
+    },
+    {
+      "rank": 422,
+      "channel_id": "UCtrPorg1h8PYUSgXnTQU8dw",
+      "channel_name": "IntellectInSync",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "Henry Ford’s Secrets"
+    },
+    {
+      "rank": 423,
+      "channel_id": "UC_gPJk0dFX1b7xNh8GT2J1g",
+      "channel_name": "Rich Americans University",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "Henry Ford’s Secrets"
+    },
+    {
+      "rank": 424,
+      "channel_id": "UC8XGOrE1U_HYdYFonEuyCfw",
+      "channel_name": "AishJewish",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "Henry Ford’s Secrets"
+    },
+    {
+      "rank": 425,
+      "channel_id": "UC4Y65ixQtXWqtBUHC02yang",
+      "channel_name": "HistyFacts",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "Henry Ford’s Secrets"
+    },
+    {
+      "rank": 426,
+      "channel_id": "UChujSNPbb9216kZNyvXrZ0w",
+      "channel_name": "FreedomInHours",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "Henry Ford’s Secrets"
+    },
+    {
+      "rank": 427,
+      "channel_id": "UC-rcwbOBt9njEyGw9MjTQ_w",
+      "channel_name": "7 Figure Squad",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "Henry Ford’s Secrets"
+    },
+    {
+      "rank": 428,
+      "channel_id": "UCW0DUBb5ys5EPjiLoGpZ7TA",
+      "channel_name": "MONEY",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "Henry Ford’s Secrets"
+    },
+    {
+      "rank": 429,
+      "channel_id": "UCdjA4gBvyHhTeAYU-Yhc2hQ",
+      "channel_name": "Pure Quotes Motivation",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "Henry Ford’s Secrets"
+    },
+    {
+      "rank": 430,
+      "channel_id": "UC7Y5bt6MFSJSr0ClezDsRFg",
+      "channel_name": "Billionaire Biosphere",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "Henry Ford’s Secrets"
+    },
+    {
+      "rank": 431,
+      "channel_id": "UC7ULQz6PkIqdgXGEMZwJYDg",
+      "channel_name": "Daren Martin, PhD | Motivational Keynote Speaker",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "Henry Ford’s Secrets"
+    },
+    {
+      "rank": 432,
+      "channel_id": "UCtVzqLs8gPbwhFATIk4dyDA",
+      "channel_name": "John Rose",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "Henry Ford’s Secrets"
+    },
+    {
+      "rank": 433,
+      "channel_id": "UCsoJYqM5IOnIfJXx1FgcWfg",
+      "channel_name": "Panthera Motivation",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "Henry Ford’s Secrets"
+    },
+    {
+      "rank": 434,
+      "channel_id": "UCC-mq8E5MKdmXFdqPpvrRtg",
+      "channel_name": "Vanguard Media",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "Henry Ford’s Secrets"
+    },
+    {
+      "rank": 435,
+      "channel_id": "UCHqKtBoatZwyHSr7AMl7UiA",
+      "channel_name": "Riches Code",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "Henry Ford’s Secrets"
+    },
+    {
+      "rank": 436,
+      "channel_id": "UCtm5kmcOW2XcV3uRSexIhAQ",
+      "channel_name": "The Clever Investor",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Untold TRUTH Of Nintendo"
+    },
+    {
+      "rank": 437,
+      "channel_id": "UCFU51ISkkROy-Pl81ue4YTw",
+      "channel_name": "Startup Savant",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Untold TRUTH Of Nintendo"
+    },
+    {
+      "rank": 438,
+      "channel_id": "UC6zLDd_5GEw-vWBBAWhQxGg",
+      "channel_name": "Orblo",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Untold TRUTH Of Nintendo"
+    },
+    {
+      "rank": 439,
+      "channel_id": "UCX77Km4pLRsU9OFYEMdIvew",
+      "channel_name": "TheGamer",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Untold TRUTH Of Nintendo"
+    },
+    {
+      "rank": 440,
+      "channel_id": "UCjoh0FuHNoyMMOhUPAaitdg",
+      "channel_name": "Fire & Ice Games",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Untold TRUTH Of Nintendo"
+    },
+    {
+      "rank": 441,
+      "channel_id": "UCnfWi7eVPFm8xGWfBT1zjeQ",
+      "channel_name": "cdotkom",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Untold TRUTH Of Nintendo"
+    },
+    {
+      "rank": 442,
+      "channel_id": "UC4LikfSI4YeoH-ZNzPDDJ3g",
+      "channel_name": "Ramesh raj official ",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Untold TRUTH Of Nintendo"
+    },
+    {
+      "rank": 443,
+      "channel_id": "UCcr4LMJ3Ft3Z-Ms4PQ04pew",
+      "channel_name": "Business Bout",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Untold TRUTH Of Nintendo"
+    },
+    {
+      "rank": 444,
+      "channel_id": "UCYdImV_R4X0JWAfhdnkclNA",
+      "channel_name": "DesertRose Business",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Untold TRUTH Of Nintendo"
+    },
+    {
+      "rank": 445,
+      "channel_id": "UCeyTkVngv-GlQN6kU8FvyWw",
+      "channel_name": "Angry Vigilante Show",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Untold TRUTH Of Nintendo"
+    },
+    {
+      "rank": 446,
+      "channel_id": "UCI_skbe7nmVFc0rYf_Gytyg",
+      "channel_name": "The Hustle Archives",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Untold TRUTH Of Nintendo"
+    },
+    {
+      "rank": 447,
+      "channel_id": "UCl0XiEgng4LZFpYVDd8oR8A",
+      "channel_name": "Kit & Krysta",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Untold TRUTH Of Nintendo"
+    },
+    {
+      "rank": 448,
+      "channel_id": "UCmGSJVG3mCRXVOP4yZrU1Dw",
+      "channel_name": "Johnny Harris",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Evil Business of Bananas"
+    },
+    {
+      "rank": 449,
+      "channel_id": "UCOmJNb6js8v95UHnvQAuALg",
+      "channel_name": "Business Central",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Evil Business of Bananas"
+    },
+    {
+      "rank": 450,
+      "channel_id": "UCvAfKUlC0yW73samIP7rzvQ",
+      "channel_name": "Amely AI",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Evil Business of Bananas"
+    },
+    {
+      "rank": 451,
+      "channel_id": "UCcyq283he07B7_KUX07mmtA",
+      "channel_name": "Business Insider",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Evil Business of Bananas"
+    },
+    {
+      "rank": 452,
+      "channel_id": "UCdfhf_vuxMbgjSowJkQk-dA",
+      "channel_name": "Alex Lieberman",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Evil Business of Bananas"
+    },
+    {
+      "rank": 453,
+      "channel_id": "UCK6l_7fZ9uG1bvJp2jO9ONA",
+      "channel_name": "Brain Field",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Evil Business of Bananas"
+    },
+    {
+      "rank": 454,
+      "channel_id": "UC2iHsHXOiUVH7jON3VBosXA",
+      "channel_name": "GLC Strike",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Evil Business of Bananas"
+    },
+    {
+      "rank": 455,
+      "channel_id": "UCp8XXZFBujNVzuGbDlqwaeg",
+      "channel_name": "smokinggoldfish",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Evil Business of Bananas"
+    },
+    {
+      "rank": 456,
+      "channel_id": "UCDibZSxWokkvcMgVltEBLZg",
+      "channel_name": "Ahnaf Hasan Alvi",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Evil Business of Bananas"
+    },
+    {
+      "rank": 457,
+      "channel_id": "UCV6g95OBbVtFmN9uiJzkFqQ",
+      "channel_name": "CircleToonsHD",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Evil Business of Bananas"
+    },
+    {
+      "rank": 458,
+      "channel_id": "UCPy1ea66Wp1eQkviXysyNsA",
+      "channel_name": "Meta History",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Evil Business of Bananas"
+    },
+    {
+      "rank": 459,
+      "channel_id": "UCwSWheJ9xiYm3P4WnXZWrkw",
+      "channel_name": "Patrick Campbell",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Evil Business of Bananas"
+    },
+    {
+      "rank": 460,
+      "channel_id": "UC2oHjQ_kBE7zevCsA_8f3ZA",
+      "channel_name": "This Evil",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Evil Business of Bananas"
+    },
+    {
+      "rank": 461,
+      "channel_id": "UCVCOBZnqTANC4fRiY4qajoQ",
+      "channel_name": "FAR OUT WITH FAUST",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Evil Business of Bananas"
+    },
+    {
+      "rank": 462,
+      "channel_id": "UCRXJMH0HKtxdtKI0ADQu0YA",
+      "channel_name": "Cricket Story",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Banana Billionaire: The INSANE True Story"
+    },
+    {
+      "rank": 463,
+      "channel_id": "UC0kp3YP6l_-9Lzkq0gEpvDQ",
+      "channel_name": "Ashish cinematography ",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Banana Billionaire: The INSANE True Story"
+    },
+    {
+      "rank": 464,
+      "channel_id": "UCxzZin_urHP_40EaVu5IyZQ",
+      "channel_name": "Successful Entrepreneurs",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Banana Billionaire: The INSANE True Story"
+    },
+    {
+      "rank": 465,
+      "channel_id": "UC7vTq7aY0zIbr8a2Fa0a_Zw",
+      "channel_name": "Fitshortie",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Banana Billionaire: The INSANE True Story"
+    },
+    {
+      "rank": 466,
+      "channel_id": "UCidJGHeUNI7KwVnXjO7b0GA",
+      "channel_name": "Alex Cars",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Banana Billionaire: The INSANE True Story"
+    },
+    {
+      "rank": 467,
+      "channel_id": "UCWA5c-eNEUAwWnsz-6izHZQ",
+      "channel_name": "Mr Hindi Rockers",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Banana Billionaire: The INSANE True Story"
+    },
+    {
+      "rank": 468,
+      "channel_id": "UCs6dsYVELXch2l1biewvMrg",
+      "channel_name": "Filmo Recaps",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Banana Billionaire: The INSANE True Story"
+    },
+    {
+      "rank": 469,
+      "channel_id": "UCYLn8giAPDoiRHSfJQZGbkA",
+      "channel_name": "Zac_toe",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Banana Billionaire: The INSANE True Story"
+    },
+    {
+      "rank": 470,
+      "channel_id": "UCSE7lHmwMjYBDT84hi3ZTWQ",
+      "channel_name": "crazy friends😜 A*R*P*P",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Banana Billionaire: The INSANE True Story"
+    },
+    {
+      "rank": 471,
+      "channel_id": "UCQa0lU-wUwDqSUqeh6zOyng",
+      "channel_name": "Justin Hood",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Banana Billionaire: The INSANE True Story"
+    },
+    {
+      "rank": 472,
+      "channel_id": "UCRp3A2R6WwhfmQ68IB3mWag",
+      "channel_name": "Inspire Yourself",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "Why did Starbucks REALLY become so popular?"
+    },
+    {
+      "rank": 473,
+      "channel_id": "UCRgMIwmmh1-2k5HeTQ2cdkQ",
+      "channel_name": "Gaurav Thakur",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "Why did Starbucks REALLY become so popular?"
+    },
+    {
+      "rank": 474,
+      "channel_id": "UCrVBBt7IMNLgtv59cLoyynw",
+      "channel_name": "Behind The Shadows",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "Why did Starbucks REALLY become so popular?"
+    },
+    {
+      "rank": 475,
+      "channel_id": "UCLP01eG9YCVJ4eP3mvahd3w",
+      "channel_name": "Wisdom Time",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "Why did Starbucks REALLY become so popular?"
+    },
+    {
+      "rank": 476,
+      "channel_id": "UCIPu8C-eG0uWi0iWZxfAp9w",
+      "channel_name": "KnowNjoy",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "Why did Starbucks REALLY become so popular?"
+    },
+    {
+      "rank": 477,
+      "channel_id": "UCf_XYgupvdx7rA44Ap3uI5w",
+      "channel_name": "Full Disclosure",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "Why did Starbucks REALLY become so popular?"
+    },
+    {
+      "rank": 478,
+      "channel_id": "UCl-Zrl0QhF66lu1aGXaTbfw",
+      "channel_name": "Neil Patel",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "Why did Starbucks REALLY become so popular?"
+    },
+    {
+      "rank": 479,
+      "channel_id": "UCS5ChIu1Rme9qU4Z61lNjLw",
+      "channel_name": "Rise of Flavours",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "Why did Starbucks REALLY become so popular?"
+    },
+    {
+      "rank": 480,
+      "channel_id": "UCdP1s0QSc9Hw4RKS51QXFew",
+      "channel_name": "Business Sikhna",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "Why did Starbucks REALLY become so popular?"
+    },
+    {
+      "rank": 481,
+      "channel_id": "UC8TlLhW3BTZ2IDE7IyTvv2A",
+      "channel_name": "BARI ENGLISH ACADEMY",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "Why did Starbucks REALLY become so popular?"
+    },
+    {
+      "rank": 482,
+      "channel_id": "UChD7Sm4Gj1z_RiuteNX3U2w",
+      "channel_name": "Aaditya Iyengar",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "Why did Starbucks REALLY become so popular?"
+    },
+    {
+      "rank": 483,
+      "channel_id": "UC-OJ-24roEfQ_-PCnLJSckg",
+      "channel_name": "Levi Hildebrand",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "Why did Starbucks REALLY become so popular?"
+    },
+    {
+      "rank": 484,
+      "channel_id": "UC_E4px0RST-qFwXLJWBav8Q",
+      "channel_name": "Business Casual",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "J.P. Morgan: The Man Who Owned America"
+    },
+    {
+      "rank": 485,
+      "channel_id": "UC-YvsfPu6tlCAd8AQUyoWRg",
+      "channel_name": "Business Bulls",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "J.P. Morgan: The Man Who Owned America"
+    },
+    {
+      "rank": 486,
+      "channel_id": "UC8r8FEur5-W4fh6t_kdX1eg",
+      "channel_name": "Hustler coach ",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "J.P. Morgan: The Man Who Owned America"
+    },
+    {
+      "rank": 487,
+      "channel_id": "UCB8sMtMOYVY_m6jYZcnQdUA",
+      "channel_name": "Blockchain Basement",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "J.P. Morgan: The Man Who Owned America"
+    },
+    {
+      "rank": 488,
+      "channel_id": "UC8Rj7wh2IbhcGId7O8yLwHA",
+      "channel_name": "Big Money Media",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "J.P. Morgan: The Man Who Owned America"
+    },
+    {
+      "rank": 489,
+      "channel_id": "UCIBo50_zkVAB8QxPrA8TurA",
+      "channel_name": "Lav Luka",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "J.P. Morgan: The Man Who Owned America"
+    },
+    {
+      "rank": 490,
+      "channel_id": "UCJmTLwpI7FuhxNpKMTl2pRg",
+      "channel_name": "Football Lovers!",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "J.P. Morgan: The Man Who Owned America"
+    },
+    {
+      "rank": 491,
+      "channel_id": "UC9e4phxfwx07pvzpoygIcYw",
+      "channel_name": "Fact Chronicle",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "J.P. Morgan: The Man Who Owned America"
+    },
+    {
+      "rank": 492,
+      "channel_id": "UCQ-AzTJa53fxoYym-8z9EsQ",
+      "channel_name": "Prominent Journeys",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "J.P. Morgan: The Man Who Owned America"
+    },
+    {
+      "rank": 493,
+      "channel_id": "UCGXZgBOJgkweIeuONOiijgQ",
+      "channel_name": "Financial Underworld Chronicles",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "J.P. Morgan: The Man Who Owned America"
+    },
+    {
+      "rank": 494,
+      "channel_id": "UCi7YKV9l9q0LYrjXNYDswbg",
+      "channel_name": "Knowledge Dynasty",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "J.P. Morgan: The Man Who Owned America"
+    },
+    {
+      "rank": 495,
+      "channel_id": "UC7sn7FbLwOc_hAlrv6spauA",
+      "channel_name": "Fact Frame Chronicle",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "J.P. Morgan: The Man Who Owned America"
+    },
+    {
+      "rank": 496,
+      "channel_id": "UC4lvNcE7hQ5ZH45Rza_LvMQ",
+      "channel_name": "Mini-Movies",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The INSANE Story of Domino's Pizza"
+    },
+    {
+      "rank": 497,
+      "channel_id": "UC-uyCqaVXTvcBLa5wSUGHgg",
+      "channel_name": "Page variant  ",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The INSANE Story of Domino's Pizza"
+    },
+    {
+      "rank": 498,
+      "channel_id": "UCyuJ7UCj99gsAStjVLh3-bw",
+      "channel_name": "Hook",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The INSANE Story of Domino's Pizza"
+    },
+    {
+      "rank": 499,
+      "channel_id": "UCz3Qhn26J-3GU2-XKzL_f9Q",
+      "channel_name": "Empire Stories",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The INSANE Story of Domino's Pizza"
+    },
+    {
+      "rank": 500,
+      "channel_id": "UC8loJ4ZUdmXo5vy2uMO4iDQ",
+      "channel_name": "The Think Flick",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The INSANE Story of Domino's Pizza"
+    },
+    {
+      "rank": 501,
+      "channel_id": "UC6vdeOtd0P0Y_UclUgtnAaw",
+      "channel_name": "Above Knowledge",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The INSANE Story of Domino's Pizza"
+    },
+    {
+      "rank": 502,
+      "channel_id": "UCXk3mB0sKNXvmyhZWZdq9Zg",
+      "channel_name": "Money Bender",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The INSANE Story of Domino's Pizza"
+    },
+    {
+      "rank": 503,
+      "channel_id": "UCmZNivf99fGPXgWsD4MWZOA",
+      "channel_name": "Unfiltered Feed",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The INSANE Story of Domino's Pizza"
+    },
+    {
+      "rank": 504,
+      "channel_id": "UCW47nVFbKyp_480Te-mLhyg",
+      "channel_name": "ZA W",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The INSANE Story of Domino's Pizza"
+    },
+    {
+      "rank": 505,
+      "channel_id": "UCnsFQmrN0lMJLEmE8PvuJ2A",
+      "channel_name": "Tubelysis Businesses Tales",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The INSANE Story of Domino's Pizza"
+    },
+    {
+      "rank": 506,
+      "channel_id": "UC6i4A2iKG9hHKKt5i2lgS7g",
+      "channel_name": "AnkiTalks",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The INSANE Story of Domino's Pizza"
+    },
+    {
+      "rank": 507,
+      "channel_id": "UC_Rp6VFMp4e9Y5tZPQLngiQ",
+      "channel_name": "Unfiltered Truth",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The INSANE Story of Domino's Pizza"
+    },
+    {
+      "rank": 508,
+      "channel_id": "UCu6akY3YNzCxpb0Q3dYvV2A",
+      "channel_name": "JB.BRANDS",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The INSANE Story of Domino's Pizza"
+    },
+    {
+      "rank": 509,
+      "channel_id": "UCllD1oT5vaPTEecdkBOtLCQ",
+      "channel_name": "The Millionaire Lifestyle",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The INSANE Story of Domino's Pizza"
+    },
+    {
+      "rank": 510,
+      "channel_id": "UCnF1WNxNsbEmoWUXL5RY7LA",
+      "channel_name": "Business Corner",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The INSANE Story of Domino's Pizza"
+    },
+    {
+      "rank": 511,
+      "channel_id": "UCPTOU3iXVQnqPohx4u5OGBA",
+      "channel_name": "Vega",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "How MagnatesMedia Almost Got DELETED"
+    },
+    {
+      "rank": 512,
+      "channel_id": "UC325aDk_4t33YA87xw_A5Wg",
+      "channel_name": "TARS",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "How MagnatesMedia Almost Got DELETED"
+    },
+    {
+      "rank": 513,
+      "channel_id": "UCVWlk2m6qmvZQraOOXk4J6g",
+      "channel_name": "The Last Stop",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Richest Man In The World: The Ugly Truth"
+    },
+    {
+      "rank": 514,
+      "channel_id": "UC_gPylPje6I142M9wf9O77g",
+      "channel_name": "Infinite Luxury",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Richest Man In The World: The Ugly Truth"
+    },
+    {
+      "rank": 515,
+      "channel_id": "UCco8o08rKOCYy8h-h3YXFsg",
+      "channel_name": "Lavish Origins",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Richest Man In The World: The Ugly Truth"
+    },
+    {
+      "rank": 516,
+      "channel_id": "UC74GKuDcGSMjeogYKHVfuBg",
+      "channel_name": "Top Tech",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Richest Man In The World: The Ugly Truth"
+    },
+    {
+      "rank": 517,
+      "channel_id": "UCSFBN_puI6J_9aqdlU_SYXw",
+      "channel_name": "Climax",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Richest Man In The World: The Ugly Truth"
+    },
+    {
+      "rank": 518,
+      "channel_id": "UCemsKI5HSQPuJTSBaXWRDNA",
+      "channel_name": "Zagnon Luxury",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Richest Man In The World: The Ugly Truth"
+    },
+    {
+      "rank": 519,
+      "channel_id": "UCXkEsNe-yK7vKCNiSxmNaeQ",
+      "channel_name": "Profit Prodigy",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Richest Man In The World: The Ugly Truth"
+    },
+    {
+      "rank": 520,
+      "channel_id": "UC8oNSA15e6_pD-4MRSF7ZPA",
+      "channel_name": "ICONIC FAMEFILES",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Richest Man In The World: The Ugly Truth"
+    },
+    {
+      "rank": 521,
+      "channel_id": "UCkARqJ007Onje5zZgf8Xizg",
+      "channel_name": "FernFlix",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Richest Man In The World: The Ugly Truth"
+    },
+    {
+      "rank": 522,
+      "channel_id": "UCmUs0Wd0vD2V7lDR1Ok3ROA",
+      "channel_name": "Documentary Dive",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "The Richest Man In The World: The Ugly Truth"
+    },
+    {
+      "rank": 523,
+      "channel_id": "UCIeaec758YyVkb4Xdl8-xeA",
+      "channel_name": "TopBizTV",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "Why Pepsi Went Bankrupt"
+    },
+    {
+      "rank": 524,
+      "channel_id": "UCZQbU7NatGY0jRpatHNYqhQ",
+      "channel_name": "Hustle Diaries",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "Why Pepsi Went Bankrupt"
+    },
+    {
+      "rank": 525,
+      "channel_id": "UCvfsnU0M4rGkVMqM3WGjubA",
+      "channel_name": "Entrepreneurial Vision",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "Why Pepsi Went Bankrupt"
+    },
+    {
+      "rank": 526,
+      "channel_id": "UCmxiUZvhKOsTpRPskh-Uplw",
+      "channel_name": "Aspire Capital",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "Why Pepsi Went Bankrupt"
+    },
+    {
+      "rank": 527,
+      "channel_id": "UCpIwLkl5rqE-C-wUSwzTdJQ",
+      "channel_name": "Austin Daniel Patry",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "Why Pepsi Went Bankrupt"
+    },
+    {
+      "rank": 528,
+      "channel_id": "UCliuTAos2SsBKLend3BW4gw",
+      "channel_name": "Design Stories",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "Why Pepsi Went Bankrupt"
+    },
+    {
+      "rank": 529,
+      "channel_id": "UC0nXl87KE4B9DdZuiTnobZQ",
+      "channel_name": "VAGISH KUMAR (edtz)",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "Why Pepsi Went Bankrupt"
+    },
+    {
+      "rank": 530,
+      "channel_id": "UC5bURwWvSlrBH-mCzmBKlUQ",
+      "channel_name": "Renan Tismo",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "Why Pepsi Went Bankrupt"
+    },
+    {
+      "rank": 531,
+      "channel_id": "UCuGKUzps7Wn7tW7fMeD5Gmg",
+      "channel_name": "Uniq History",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "Why Pepsi Went Bankrupt"
+    },
+    {
+      "rank": 532,
+      "channel_id": "UCJEa4XbZaASl1Yq2uGfhSpQ",
+      "channel_name": "Riddle Room",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "Why Pepsi Went Bankrupt"
+    },
+    {
+      "rank": 533,
+      "channel_id": "UC6kxwsPdh5qEUZvnyIzE11g",
+      "channel_name": "brand behind success",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "Why Pepsi Went Bankrupt"
+    },
+    {
+      "rank": 534,
+      "channel_id": "UCBLO7-XtHgRuPPQXtedrJhw",
+      "channel_name": "BaronsLab",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "Why Pepsi Went Bankrupt"
+    },
+    {
+      "rank": 535,
+      "channel_id": "UCLSEcCm31sxPnzHitxPwlbA",
+      "channel_name": "Business Stories A-Z",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "Why Pepsi Went Bankrupt"
+    },
+    {
+      "rank": 536,
+      "channel_id": "UCNIK740udJ7p2fsGjydXM4w",
+      "channel_name": "Stubilm",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "Why Pepsi Went Bankrupt"
+    },
+    {
+      "rank": 537,
+      "channel_id": "UCcBDfGThx7AyM9aXsX3cWyw",
+      "channel_name": "Rumen Ahmed",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "How Facebook Destroyed Google"
+    },
+    {
+      "rank": 538,
+      "channel_id": "UCU12C0XJn1Cdwesv_MtK4cw",
+      "channel_name": "Real Curio",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "How Facebook Destroyed Google"
+    },
+    {
+      "rank": 539,
+      "channel_id": "UCD-gnjO4LsDha3_2076wH3A",
+      "channel_name": "Synpix Studio",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "How Facebook Destroyed Google"
+    },
+    {
+      "rank": 540,
+      "channel_id": "UCzBvAIHPZ_Y7chhoN5ebv_A",
+      "channel_name": "Best Of TRS | English",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "How Facebook Destroyed Google"
+    },
+    {
+      "rank": 541,
+      "channel_id": "UCOaqDaZl22ZHAjvoV32iZOA",
+      "channel_name": "SEO",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "How Facebook Destroyed Google"
+    },
+    {
+      "rank": 542,
+      "channel_id": "UCW39zufHfsuGgpLviKh297Q",
+      "channel_name": "DW Documentary",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "How Facebook Destroyed Google"
+    },
+    {
+      "rank": 543,
+      "channel_id": "UCqFqqzB3dG6d55vLMKITqAw",
+      "channel_name": "Matt Diamante",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "How Facebook Destroyed Google"
+    },
+    {
+      "rank": 544,
+      "channel_id": "UCVKSzegMKDxpzzmkYBiD8lA",
+      "channel_name": "Conceptastic",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "How Facebook Destroyed Google"
+    },
+    {
+      "rank": 545,
+      "channel_id": "UCsT0YIqwnpJCM-mx7-gSA4Q",
+      "channel_name": "TEDx Talks",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "How Facebook Destroyed Google"
+    },
+    {
+      "rank": 546,
+      "channel_id": "UComhtcZ-SQ5rI3uwCk8JXmw",
+      "channel_name": "Yasir Khan Shorts",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "How Facebook Destroyed Google"
+    },
+    {
+      "rank": 547,
+      "channel_id": "UCshPyRiu9XTQb2gEagNt-3A",
+      "channel_name": "Raj Shamani Clips",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "How Facebook Destroyed Google"
+    },
+    {
+      "rank": 548,
+      "channel_id": "UCLMKbNh6-pA2Vf4gcKR9-nw",
+      "channel_name": "K2 shorts",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "How Facebook Destroyed Google"
+    },
+    {
+      "rank": 549,
+      "channel_id": "UCC42mfl8rYr0IA5jhRJlqAg",
+      "channel_name": "Daniel Does Art",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "How Facebook Destroyed Google"
+    },
+    {
+      "rank": 550,
+      "channel_id": "UCPgfM-dk3XAb4T3DtT6Nwsw",
+      "channel_name": "CA Rahul Malodia",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "How Facebook Destroyed Google"
+    },
+    {
+      "rank": 551,
+      "channel_id": "UCR0IA4owvwjqMYG6L1idyUw",
+      "channel_name": "&pictures",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "How Facebook Destroyed Google"
+    },
+    {
+      "rank": 552,
+      "channel_id": "UCMxruXrXajkHJc2sw7p3-4A",
+      "channel_name": "Curioso Mundo DIY",
+      "frequency": 1,
+      "percentage": 2.7,
+      "first_seen_in": "How Facebook Destroyed Google"
+    }
+  ]
+}

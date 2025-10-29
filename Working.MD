@@ -150,3 +150,6 @@ Columns:
 * Dummy `seed_channels.csv` and a sample `discovered_channels.csv`
 * `README.md` explaining how to run locally and how Uday should call the main function (signature and expected inputs/outputs)
 * Sample `token_placeholder_info.txt` describing how to add `client_secret.json` and perform OAuth for his account.
+
+# New flow
+now i will use client approach to extract top 20 video titles and then directly search them on youtube and then i will see the channels manually and if i approves it( approval criteria: like my finding the unique and frequency count and may have the actuall competitors like thomas frank) then we can integrate my current flow of niche and llm calls to get score as well that if this channel comes so whats its niche and how good is it to seed_channel like ali abdal? in that way i will have 2 scorings one is frequency and other is gpt and 3rd might be the embeddings one my current approach? so is this now good?

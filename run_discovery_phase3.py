@@ -46,10 +46,7 @@ MODEL_PROVIDER = "gpt"  # "gemini" or "gpt"
 
 # Multi-seed configuration
 SEED_CHANNELS = [
-    "Ali Abdaal",
-    "Vox",
-    "Johnny Harris",
-    "Moon"
+    "Ali Abdaal"
 ]
 
 
@@ -241,7 +238,7 @@ def process_seed_channel(seed_channel, seed_channel_id, seed_keywords,
     try:
         candidate_ids = search_videos_multi_focused(
             seed_keywords, 
-            max_results_per_search=20,
+            max_results_per_search=30,
             max_keywords=10
         )
     except Exception as e:
@@ -407,10 +404,10 @@ def process_seed_channel(seed_channel, seed_channel_id, seed_keywords,
                 "Discovered_Channel_URL": candidate['url'],
                 "Discovered_Subs": candidate['subscribers'],
                 "Discovered_Niche": cand_niche,        # ← ADD THIS
+                "Seed_Keywords": ", ".join(seed_keywords),
                 "Discovered_Keywords": ", ".join(cand_keywords),
                 "Level": 1,
-                "Timestamp": datetime.now().isoformat(),
-                "Seed_Keywords": ", ".join(seed_keywords)
+                "Timestamp": datetime.now().isoformat()
             }
 
             

@@ -1,0 +1,25 @@
+{
+  "timestamp": "2025-10-28T16:50:35.072895",
+  "total_channels": 1,
+  "total_videos_processed": 30,
+  "model": "gpt-4o",
+  "channels": {
+    "Ali Abdaal": {
+      "niche": "Productivity strategies and self-improvement",
+      "keywords": [
+        "financial freedom strategies",
+        "productivity desk setup",
+        "lifestyle business building",
+        "wealth creation methods",
+        "entrepreneurial mindset tips",
+        "time management techniques",
+        "motivational storytelling",
+        "interview format discussions",
+        "case study breakdowns",
+        "goal-setting workshops"
+      ],
+      "video_count": 30,
+      "status": "success"
+    }
+  }
+}

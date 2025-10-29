@@ -1,0 +1,103 @@
+{
+  "execution_time": "2025-10-28T15:21:02.894878",
+  "seed_channel": {
+    "name": "Magnets Media",
+    "id": "UCE4Gn00XZbpWvGUfIslT-tA"
+  },
+  "input": {
+    "total_videos": 9,
+    "video_titles": [
+      "The INSANE Truth About YouTube",
+      "The INSANE Truth About OpenAI",
+      "Thomas Edison: The IDIOT Who Changed The World",
+      "The Family That Drugged America",
+      "The Scariest Business In The World",
+      "The World’s Most Wanted Woman",
+      "Diamonds: An Evil Scam",
+      "The $47 Billion Cult",
+      "The Nazi Brothers Who Started Rival Shoe Companies"
+    ]
+  },
+  "results": {
+    "total_unique_channels_found": 148,
+    "threshold_used": {
+      "min_frequency": 2,
+      "total_searches": 9,
+      "percentage": 22.2
+    },
+    "candidates_above_threshold": 13,
+    "average_frequency": 2.3
+  },
+  "top_10_candidates": [
+    {
+      "rank": 1,
+      "name": "Roy StoryTales",
+      "frequency": 4,
+      "frequency_score": 0.4444444444444444,
+      "subscribers": 68
+    },
+    {
+      "rank": 2,
+      "name": "CutEverything",
+      "frequency": 3,
+      "frequency_score": 0.3333333333333333,
+      "subscribers": 87
+    },
+    {
+      "rank": 3,
+      "name": "Tyler Oliveira",
+      "frequency": 3,
+      "frequency_score": 0.3333333333333333,
+      "subscribers": 8290000
+    },
+    {
+      "rank": 4,
+      "name": "Zack D. Films",
+      "frequency": 2,
+      "frequency_score": 0.2222222222222222,
+      "subscribers": 24100000
+    },
+    {
+      "rank": 5,
+      "name": "The Infographics Show",
+      "frequency": 2,
+      "frequency_score": 0.2222222222222222,
+      "subscribers": 15300000
+    },
+    {
+      "rank": 6,
+      "name": "Corporation Watch",
+      "frequency": 2,
+      "frequency_score": 0.2222222222222222,
+      "subscribers": 84
+    },
+    {
+      "rank": 7,
+      "name": "More Perfect Union",
+      "frequency": 2,
+      "frequency_score": 0.2222222222222222,
+      "subscribers": 2240000
+    },
+    {
+      "rank": 8,
+      "name": "iCentury",
+      "frequency": 2,
+      "frequency_score": 0.2222222222222222,
+      "subscribers": 4710
+    },
+    {
+      "rank": 9,
+      "name": "Moon",
+      "frequency": 2,
+      "frequency_score": 0.2222222222222222,
+      "subscribers": 1570000
+    },
+    {
+      "rank": 10,
+      "name": "Money Route",
+      "frequency": 2,
+      "frequency_score": 0.2222222222222222,
+      "subscribers": 3150
+    }
+  ]
+}

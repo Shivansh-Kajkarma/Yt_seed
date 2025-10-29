@@ -1,0 +1,54 @@
+{
+  "threshold_used": {
+    "min_frequency": 7,
+    "total_searches": 37,
+    "percentage": 18.9
+  },
+  "total_candidates": 4,
+  "candidates": [
+    {
+      "channel_id": "UCvz84_Q0BbvZThy75mbd-Dg",
+      "channel_name": "Zack D. Films",
+      "frequency": 11,
+      "frequency_score": 0.2972972972972973,
+      "appearances": "11/37",
+      "subscribers": 24100000,
+      "video_count": 2463,
+      "country": "unknown",
+      "first_seen_in": "The INSANE Truth About YouTube"
+    },
+    {
+      "channel_id": "UCKnXoCVJImQTzff4Ej8x3Ww",
+      "channel_name": "Wealth Capital",
+      "frequency": 11,
+      "frequency_score": 0.2972972972972973,
+      "appearances": "11/37",
+      "subscribers": 1450,
+      "video_count": 99,
+      "country": "US",
+      "first_seen_in": "How This Farm Boy Built The World's Biggest Company"
+    },
+    {
+      "channel_id": "UCWo_im5HsWahBQi1Zkda65w",
+      "channel_name": "Magnatess Media",
+      "frequency": 9,
+      "frequency_score": 0.24324324324324326,
+      "appearances": "9/37",
+      "subscribers": 0,
+      "video_count": 109,
+      "country": "US",
+      "first_seen_in": "The $47 Billion Cult"
+    },
+    {
+      "channel_id": "UCEAUtiSCldESQeJOfI93bpQ",
+      "channel_name": "Global Secrets ",
+      "frequency": 8,
+      "frequency_score": 0.21621621621621623,
+      "appearances": "8/37",
+      "subscribers": 1230,
+      "video_count": 193,
+      "country": "SE",
+      "first_seen_in": "The Untold TRUTH Of Nintendo"
+    }
+  ]
+}
