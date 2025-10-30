@@ -289,7 +289,7 @@ def calculate_llm_similarity(
                  return 0.0
             
             response = gpt_client.chat.completions.create(
-                model="gpt-4o", # Using your specified model
+                model="gpt-4o-mini", # Using your specified model
                 messages=[{"role": "user", "content": prompt}],
                 temperature=0
             )
@@ -400,7 +400,7 @@ def calculate_llm_similarity(
 #                 print("❌ GPT not initialized for niche.")
 #                 return "General"
 #             response = gpt_client.chat.completions.create(
-#                 model="gpt-4o",
+#                 model="gpt-4o-mini",
 #                 messages=[{"role": "user", "content": prompt}],
 #                 temperature=0.1,
 #                 max_tokens=50,
@@ -512,7 +512,7 @@ def extract_niche_llm(
         elif model_type.lower() == "gpt":
             if not gpt_client: return "General - Unknown"
             response = gpt_client.chat.completions.create(
-                model="gpt-4o", # Use your specified model
+                model="gpt-4o-mini", # Use your specified model
                 messages=[{"role": "user", "content": prompt}],
                 temperature=0.1,
                 max_tokens=50,
@@ -781,7 +781,7 @@ def extract_keywords_llm(
                     print("❌ GPT client not initialized.")
                     return []
                 response = gpt_client.chat.completions.create(
-                    model="gpt-4o",
+                    model="gpt-4o-mini",
                     messages=[
                         {"role": "system", "content": "You are a YouTube keyword expert."},
                         {"role": "user", "content": prompt},
@@ -949,7 +949,7 @@ def detect_channel_language_llm(
         elif model_type.lower() == "gpt":
             if not gpt_client: return "un"
             response = gpt_client.chat.completions.create(
-                model="gpt-4o", # gpt-3.5-turbo could also work here
+                model="gpt-4o-mini", # gpt-3.5-turbo could also work here
                 messages=[{"role": "user", "content": prompt}],
                 temperature=0,
                 max_tokens=10,
@@ -993,7 +993,7 @@ def is_direct_competitor_llm(
     retries: int = 2
 ) -> str:
     """
-    Uses GPT-4o-mini for a final check: Are these channels direct competitors
+    Uses gpt-4o-mini for a final check: Are these channels direct competitors
     based *primarily* on Niche (Topic) and Format (Intent)?
 
     Returns: "Yes" or "No" (or "Error" on failure)
@@ -1079,13 +1079,13 @@ def is_direct_competitor_llm(
 
     for attempt in range(retries):
         try:
-            # Using GPT-4o-mini as requested
+            # Using gpt-4o-mini as requested
             if model_provider.lower() == "gpt":
                 if not gpt_client:
                     print("  ❌ GPT client not initialized for competitor check.")
                     return "Error"
                 
-                # --- USE GPT-4o-mini ---
+                # --- USE gpt-4o-mini-mini ---
                 response = gpt_client.chat.completions.create(
                     model="gpt-4o-mini", # Use the mini model
                     messages=[{"role": "user", "content": prompt}],
