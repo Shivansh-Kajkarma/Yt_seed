@@ -505,7 +505,8 @@ def get_channel_metadata_batch(channel_ids: List[str]) -> List[Dict]:
                     "url": channel_url,
                     "description": snippet.get("description", ""),
                     "subscribers": int(stats.get("subscriberCount", 0)) if not stats.get("hiddenSubscriberCount", False) else -1,
-                    "video_count": int(stats.get("videoCount", 0))
+                    "video_count": int(stats.get("videoCount", 0)),
+                    "country": snippet.get("country", "Unknown")
                 })
         except Exception as e:
             print(f"   ❌ ERROR fetching metadata batch {batch_num}: {e}")
