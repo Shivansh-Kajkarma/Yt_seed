@@ -111,7 +111,8 @@ def main():
             )
 
             print(f"✅ Fingerprint for {channel_name}:")
-            print(fingerprint)
+            # print(fingerprint)
+            print(json.dumps(fingerprint, indent=2))
             
             # Store results
             channel_fingerprints[channel_name] = fingerprint
@@ -146,7 +147,7 @@ def main():
         print(f"\n✅ Results saved to: {output_json_path}")
         
         # Also save simplified version (just channel: keywords)
-        simple_json_path = base_dir / f"channel_keywords_simple_{MODEL_TO_USE}.json"
+        simple_json_path = base_dir / f"channel_keywords_simple_{MODEL_TO_USE}_29th_oct_4pm.json"
         with open(simple_json_path, 'w', encoding='utf-8') as f:
             json.dump(channel_fingerprints, f, indent=2, ensure_ascii=False)
         
@@ -160,12 +161,29 @@ def main():
     print(f"FINAL LLM ({MODEL_NAME}) FINGERPRINT REPORT")
     print("="*60)
     
+    # for channel, fp in channel_fingerprints.items():
+        # status = "✅" if fp and fp[0] != "ERROR_PROCESSING" else "❌"
+        # # --- MODIFIED: Also print the niche in the summary ---
+        # niche_found = processing_metadata["channels"][channel].get('niche', 'N/A')
+        # print(f"\n{status} {channel} (Niche: {niche_found}):")
+        # print(f"   {fp}")
+
     for channel, fp in channel_fingerprints.items():
-        status = "✅" if fp and fp[0] != "ERROR_PROCESSING" else "❌"
-        # --- MODIFIED: Also print the niche in the summary ---
+        # --- MODIFIED: Check if fp is a list and has content before accessing index ---
+        is_error = not fp or (isinstance(fp, list) and fp and fp[0] == "ERROR_PROCESSING")
+        status = "❌" if is_error else "✅"
         niche_found = processing_metadata["channels"][channel].get('niche', 'N/A')
         print(f"\n{status} {channel} (Niche: {niche_found}):")
-        print(f"   {fp}")
+        # Check if fp is a dictionary (new format) or list (old format/error)
+        if isinstance(fp, dict):
+            # Pretty print the dictionary for the summary
+            print(f"   {json.dumps(fp, indent=4)}") # <-- CHANGE: Pretty print dictionary
+            # Optional: Calculate total keywords
+            # total_kws = sum(len(v) for v in fp.values())
+            # print(f"   (Total Keywords: {total_kws})")
+        else:
+            # Handle the error case or potentially old list format
+            print(f"   {fp}") # Print the error list or unexpected format
     
     # Summary stats
     successful = sum(1 for ch in processing_metadata["channels"].values() if ch["status"] == "success")

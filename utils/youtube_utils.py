@@ -514,20 +514,74 @@ def get_channel_metadata_batch(channel_ids: List[str]) -> List[Dict]:
     return channel_data
 
 
-# --- Multi-Focused Channel Search ---
+# --- Multi-Focused Channel Search --- For channel extraction
+# def search_videos_multi_focused(keywords: List[str], max_results_per_search: int = 10, max_keywords: int = 7) -> set[str]:
+#     """ Performs multiple searches biased towards English """
+#     if not API_KEY: print("❌ ERROR: API key missing."); return set()
+#     if not keywords: print("⚠️ WARNING: No keywords provided."); return set()
+
+#     keywords_to_search = min(len(keywords), max_keywords)
+#     all_candidates = set()
+
+#     print(f"  🔎 Performing {keywords_to_search} focused searches (biased to English)...")
+
+#     for i in range(keywords_to_search):
+#         keyword = keywords[i]
+#         search_query = keyword # No quotes, as discussed
+
+#         print(f"     Search {i+1}/{keywords_to_search}: '{search_query}'")
+
+#         url = f"{YT_BASE}/search"
+#         params = {
+#             "part": "snippet",
+#             "q": search_query,
+#             "type": "channel",
+#             "order": "relevance",
+#             "maxResults": max_results_per_search,
+#             "key": API_KEY,
+#             "relevanceLanguage": "en" # <-- ADDED LANGUAGE BIAS
+#         }
+
+#         try:
+#             response = _safe_get_json(url, params)
+#             items = response.get("items", []) # Changed var name from 'videos' to 'items'
+#             found_count = 0
+#             for item in items:
+#                 # Ensure it's actually a channel result
+#                 if item.get("id", {}).get("kind") == "youtube#channel":
+#                     ch_id = item.get("id", {}).get("channelId")
+#                     # Sometimes search returns videoId even with type=channel, filter those
+#                     if ch_id:
+#                          all_candidates.add(ch_id)
+#                          found_count += 1
+
+#             print(f"        ✅ {found_count} channels found")
+
+#         except Exception as e:
+#             print(f"        ❌ Search Error: {str(e)[:100]}") # Show more error context
+#             continue
+
+#     print(f"  📊 Total: {len(all_candidates)} unique candidate channels found from {keywords_to_search} searches.\n")
+#     return all_candidates
+
+
+# For video extraction
 def search_videos_multi_focused(keywords: List[str], max_results_per_search: int = 10, max_keywords: int = 7) -> set[str]:
-    """ Performs multiple searches biased towards English """
+    """
+    Performs multiple searches biased towards English.
+    *** MODIFIED TO SEARCH FOR VIDEOS and extract Channel IDs from them ***
+    """
     if not API_KEY: print("❌ ERROR: API key missing."); return set()
     if not keywords: print("⚠️ WARNING: No keywords provided."); return set()
 
     keywords_to_search = min(len(keywords), max_keywords)
-    all_candidates = set()
+    all_candidate_channel_ids = set() # Renamed variable for clarity
 
-    print(f"  🔎 Performing {keywords_to_search} focused searches (biased to English)...")
+    print(f"  🔎 Performing {keywords_to_search} focused VIDEO searches (biased to English)...") # Modified print
 
     for i in range(keywords_to_search):
         keyword = keywords[i]
-        search_query = keyword # No quotes, as discussed
+        search_query = keyword
 
         print(f"     Search {i+1}/{keywords_to_search}: '{search_query}'")
 
@@ -535,36 +589,42 @@ def search_videos_multi_focused(keywords: List[str], max_results_per_search: int
         params = {
             "part": "snippet",
             "q": search_query,
-            "type": "channel",
+            "type": "video",  # <-- CHANGED TO VIDEO
             "order": "relevance",
-            "maxResults": max_results_per_search,
+            "maxResults": max_results_per_search, # This now means max *videos* per keyword
             "key": API_KEY,
-            "relevanceLanguage": "en" # <-- ADDED LANGUAGE BIAS
+            "relevanceLanguage": "en",
+            "order": "viewCount"
         }
 
         try:
             response = _safe_get_json(url, params)
-            items = response.get("items", []) # Changed var name from 'videos' to 'items'
-            found_count = 0
-            for item in items:
-                # Ensure it's actually a channel result
-                if item.get("id", {}).get("kind") == "youtube#channel":
-                    ch_id = item.get("id", {}).get("channelId")
-                    # Sometimes search returns videoId even with type=channel, filter those
-                    if ch_id:
-                         all_candidates.add(ch_id)
-                         found_count += 1
+            items = response.get("items", []) # These items are now VIDEO search results
+            found_channels_in_batch = set() # Track channels found in this specific search
 
-            print(f"        ✅ {found_count} channels found")
+            for item in items:
+                # Ensure it's a video result and has snippet + channelId
+                if item.get("id", {}).get("kind") == "youtube#video" and "snippet" in item:
+                    # --- THIS IS THE KEY CHANGE ---
+                    # For video results, channel ID is inside the snippet
+                    ch_id = item.get("snippet", {}).get("channelId")
+                    # --- END KEY CHANGE ---
+
+                    if ch_id:
+                         # Add the channel ID to the overall set
+                         all_candidate_channel_ids.add(ch_id)
+                         # Add to batch set for printing count
+                         found_channels_in_batch.add(ch_id)
+
+            # Print how many unique channels were found from this specific keyword's video results
+            print(f"        ✅ Found videos from {len(found_channels_in_batch)} unique channels")
 
         except Exception as e:
-            print(f"        ❌ Search Error: {str(e)[:100]}") # Show more error context
+            print(f"        ❌ Search Error: {str(e)[:100]}")
             continue
 
-    print(f"  📊 Total: {len(all_candidates)} unique candidate channels found from {keywords_to_search} searches.\n")
-    return all_candidates
-
-
+    print(f"  📊 Total: {len(all_candidate_channel_ids)} unique candidate channels found across {keywords_to_search} video searches.\n")
+    return all_candidate_channel_ids # Return the SET of unique channel IDs
 
 # Client approach----
 # ==================================================
