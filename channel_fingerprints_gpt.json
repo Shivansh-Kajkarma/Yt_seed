@@ -1,23 +1,55 @@
 {
-  "timestamp": "2025-10-28T16:50:35.072895",
+  "timestamp": "2025-10-29T16:29:27.305274",
   "total_channels": 1,
   "total_videos_processed": 30,
   "model": "gpt-4o",
   "channels": {
     "Ali Abdaal": {
-      "niche": "Productivity strategies and self-improvement",
-      "keywords": [
-        "financial freedom strategies",
-        "productivity desk setup",
-        "lifestyle business building",
-        "wealth creation methods",
-        "entrepreneurial mindset tips",
-        "time management techniques",
-        "motivational storytelling",
-        "interview format discussions",
-        "case study breakdowns",
-        "goal-setting workshops"
-      ],
+      "niche": "Productivity - Educational Tutorials",
+      "keywords": {
+        "Business & Entrepreneurship": [
+          "build a business",
+          "lifestyle business",
+          "boring business ideas",
+          "entrepreneurship 2025",
+          "make money online",
+          "business ideas for beginners",
+          "how to start a business"
+        ],
+        "Financial Freedom": [
+          "financial freedom",
+          "get rich",
+          "passive income",
+          "how to make money",
+          "wealth building",
+          "millionaire habits",
+          "money mindset"
+        ],
+        "Productivity & Life Design": [
+          "productivity tips",
+          "how to change your life",
+          "self improvement",
+          "time management",
+          "habits and routines",
+          "discipline and motivation",
+          "overthinking"
+        ],
+        "Creator Economy": [
+          "youtube growth",
+          "how to start a youtube channel",
+          "creator business",
+          "content creator",
+          "personal brand",
+          "solopreneur"
+        ],
+        "AI & Technology": [
+          "ai for entrepreneurs",
+          "ai productivity tools",
+          "how to use ai for business",
+          "ai workflow",
+          "ai tools 2025"
+        ]
+      },
       "video_count": 30,
       "status": "success"
     }
