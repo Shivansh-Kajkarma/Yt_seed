@@ -1,0 +1,14 @@
+﻿Tier,Discovered_Channel_Name,Discovered_Niche,LLM_Score,Embedding_Score,Discovered_Subs,Discovered_Country,Method,Reason
+1,The Koerner Office Business Ideas,Entrepreneurship - Talking-Head Analysis,0.85,0.928,87000,US,LLM_SCORE,LLM Score >= 0.8
+2,Futurepedia,AI Tools - Educational Tutorials,0.76,0.775,594000,US,LLM_SCORE,LLM Score >= 0.7
+2,OpenAI,Technology - Educational Tutorials,0.76,0.811,1880000,US,LLM_SCORE,LLM Score >= 0.7
+1,Learn With Shopify,Entrepreneurship - Educational Tutorials,0.88,0.875,817000,CA,LLM_SCORE,LLM Score >= 0.8
+1,Jeff Su,Productivity - Educational Tutorials,0.92,0.846,1500000,US,LLM_SCORE,LLM Score >= 0.8
+2,Stefanovic,Tech Careers - Talking-Head Analysis,0.76,0.827,327000,US,LLM_SCORE,LLM Score >= 0.7
+2,Greg Isenberg,Entrepreneurship - Podcast/Interviews,0.73,0.897,491000,US,LLM_SCORE,LLM Score >= 0.7
+1,Charlie Chang,Entrepreneurship - Educational Tutorials,0.94,0.949,1380000,US,LLM_SCORE,LLM Score >= 0.8
+1,Alex Hormozi,Entrepreneurship - Talking-Head Analysis,0.85,0.923,3740000,US,LLM_SCORE,LLM Score >= 0.8
+2,Mark Tilbury,Entrepreneurship - Talking-Head Analysis,0.79,0.887,7090000,GB,LLM_SCORE,LLM Score >= 0.7
+2,The Futur,Entrepreneurship - Educational Tutorials,0.76,0.816,2730000,US,LLM_SCORE,LLM Score >= 0.7
+1,Dan Martell,Entrepreneurship - Educational Tutorials,0.91,0.93,2070000,CA,LLM_SCORE,LLM Score >= 0.8
+2,Money Making Community,Entrepreneurship - Talking-Head Analysis,0.76,0.924,140000,CA,LLM_SCORE,LLM Score >= 0.7
