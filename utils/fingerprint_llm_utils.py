@@ -311,118 +311,6 @@ def calculate_llm_similarity(
         return 0.0
 
 
-# def extract_niche_llm(
-#     channel_description: str, 
-#     video_titles: List[str],  # <-- ADD THIS
-#     channel_name: str, 
-#     model_type: str = "gemini", 
-#     max_chars: int = 2000
-# ) -> str:
-#     """
-#     HYBRID APPROACH: 
-#     1. Try channel description first (90% of cases)
-#     2. Fallback to video titles (10% of cases)
-#     """
-    
-#     # Step 1: Check if description is good quality
-#     text_for_niche = ""
-#     text_source = ""
-    
-#     if channel_description and len(channel_description) >= 100:
-#         # Check if not mostly URLs
-#         url_count = channel_description.count("http")
-#         if url_count / max(len(channel_description), 1) < 0.3:  # Less than 30% URLs
-#             text_for_niche = channel_description[:max_chars]
-#             text_source = "channel description"
-#             print(f"  ℹ️ Using channel description for {channel_name}")
-    
-#     # Step 2: Fallback to video titles if description is poor
-#     if not text_for_niche and video_titles:
-#         # Concatenate top 10 video titles
-#         text_for_niche = " | ".join(video_titles[:10])
-#         text_source = "video titles"
-#         print(f"  ⚠️ Using video titles fallback for {channel_name}")
-    
-#     # Step 3: No data available
-#     if not text_for_niche:
-#         print(f"  ❌ No data for {channel_name}, returning 'General'")
-#         return "General"
-    
-#     # Preprocess
-#     truncated_text = preprocess_text_for_llm(text_for_niche)[:max_chars]
-    
-#     # Updated prompt that mentions the source
-#     prompt = f"""You are an expert YouTube channel analyst.
-#         Your task is to analyze the following {text_source} for the channel "{channel_name}" and identify its single primary niche.
-
-#         {text_source.upper()}:
-#         \"\"\"
-#         {truncated_text}
-#         \"\"\"
-
-#         TASK: Identify the channel's **primary niche** in a single, concise phrase (3-7 words).
-#         The niche must describe the **content's PURPOSE and TOPIC** for a viewer.
-
-#         **CRITICAL RULE: Distinguish the channel's INTENT.**
-#         - Is it **"Career / Education"** (teaching a skill, 'how to', job prep)?
-#         - Is it **"Storytelling / Analysis"** (documentaries, case studies, news, entertainment)?
-#         - Is it **"Mindset / Motivation"** (self-improvement, leadership advice)?
-
-#         **EXAMPLES OF GOOD NICHES (Note the INTENT):**
-
-#         # Example 1: The "Business Analysis" Problem
-#         - **GOOD Niche:** "Business analysis career prep" (This is Career/Education)
-#         - **GOOD Niche:** "Business documentaries and case studies" (This is Storytelling/Analysis)
-#         - **BAD Niche:** "Business analysis" (This is too vague)
-
-#         # Example 2: The "Creator" Problem
-#         - **GOOD Niche:** "Creator economy news and interviews" (This is Storytelling/Analysis)
-#         - **GOOD Niche:** "YouTube growth tips and tutorials" (This is Career/Education)
-
-#         # Example 3: Other Good Niches
-#         - "Product management and tech careers" (Career/Education)
-#         - "Consumer tech reviews and unboxings" (Storytelling/Analysis)
-#         - "Entrepreneurial mindset and leadership" (Mindset/Motivation)
-
-#         Return ONLY the single niche phrase, nothing else.
-#         """
-    
-#     try:
-#         if model_type.lower() == "gemini":
-#             if not gemini_model:
-#                 print("❌ Gemini not initialized for niche.")
-#                 return "General"
-#             response = gemini_model.generate_content(prompt)
-#             niche = response.text.strip().replace('"', '')
-            
-#         elif model_type.lower() == "gpt":
-#             if not gpt_client:
-#                 print("❌ GPT not initialized for niche.")
-#                 return "General"
-#             response = gpt_client.chat.completions.create(
-#                 model="gpt-4o-mini",
-#                 messages=[{"role": "user", "content": prompt}],
-#                 temperature=0.1,
-#                 max_tokens=50,
-#             )
-#             niche = response.choices[0].message.content.strip().replace('"', '')
-            
-#         else:
-#             print(f"❌ Unknown model type '{model_type}'.")
-#             return "General"
-            
-#         if not niche:
-#             print(f"⚠️ LLM returned empty niche for {channel_name}")
-#             return "General"
-            
-#         print(f"  ✅ Niche for {channel_name}: {niche} (from {text_source})")
-#         time.sleep(2)
-#         return niche
-
-#     except Exception as e:
-#         print(f"  ❌ LLM niche extraction error for {channel_name}: {str(e)[:50]}")
-#         return "General"
-
 # ============================================
 # NEW Niche-Format Extraction (niche+format)
 # ============================================
@@ -969,51 +857,41 @@ def detect_channel_language_llm(
     except Exception as e:
         print(f"  ❌ LLM language detection error: {str(e)[:50]}")
         return "un"
-    
 
-
-
-import time
-import re
-import json
-# Add any other necessary imports if not already present at the top
-# (like genai, OpenAI client etc.)
-
-# ... (keep all your existing functions like extract_niche_llm, calculate_llm_similarity, etc.) ...
 
 # ============================================
-# NEW: Final Competitor Check LLM Call
+# NEW: Final "Extra Call" Competitor Check (v2)
 # ============================================
-def is_direct_competitor_llm(
+def is_direct_competitor_llm_final_check(
     seed_name: str,
     seed_niche_format: str, # e.g., "Productivity - Educational Tutorials"
     candidate_name: str,
     candidate_niche_format: str, # e.g., "Entrepreneurship - Podcast/Interviews"
-    model_provider: str = "gpt", # Ensure this matches your main script config
+    model_provider: str = "gpt",
     retries: int = 2
-) -> str:
+) -> dict:
     """
-    Uses gpt-4o-mini for a final check: Are these channels direct competitors
-    based *primarily* on Niche (Topic) and Format (Intent)?
-
-    Returns: "Yes" or "No" (or "Error" on failure)
+    Uses GPT-4o-mini for a final, strict "Yes/No" check.
+    This is the "extra LLM call" for borderline cases.
+    
+    Returns a dictionary:
+    {'is_competitor': True/False, 'confidence': 'High/Medium/Low', 'reason': '...'}
     """
 
-    # Basic check for valid inputs
-    if not seed_niche_format or not candidate_niche_format or " - " not in seed_niche_format or " - " not in candidate_niche_format:
-        print(f"  ⚠️ Invalid Niche-Format input for competitor check ({seed_name} vs {candidate_name}). Skipping.")
-        return "Error"
+    # Split Niche-Format strings
+    try:
+        seed_niche, seed_format = seed_niche_format.split(" - ", 1)
+    except ValueError:
+        seed_niche, seed_format = seed_niche_format, "Unknown"
+        
+    try:
+        cand_niche, cand_format = candidate_niche_format.split(" - ", 1)
+    except ValueError:
+        cand_niche, cand_format = candidate_niche_format, "Unknown"
 
-    seed_parts = seed_niche_format.split(" - ", 1)
-    cand_parts = candidate_niche_format.split(" - ", 1)
-    seed_niche = seed_parts[0]
-    seed_format = seed_parts[1]
-    cand_niche = cand_parts[0]
-    cand_format = cand_parts[1]
+    prompt = f"""You are an expert YouTube analyst. Your job is to make a final "Yes" or "No" decision on whether two channels are DIRECT content competitors.
 
-    prompt = f"""You are an expert YouTube analyst determining if two channels are DIRECT content competitors.
-
-    DEFINITION: Direct competitors create content on very similar TOPICS using the same primary FORMAT/INTENT. Would a typical viewer of the SEED channel likely subscribe to the CANDIDATE channel because the content serves the exact same need?
+    DEFINITION: Direct competitors create content on very similar TOPICS using the same primary FORMAT/INTENT. Would a typical viewer of the SEED channel **watches or subscribe** to the CANDIDATE channel because it serves the **similar need**?
 
     SEED CHANNEL: "{seed_name}"
     - Primary Niche (Topic): "{seed_niche}"
@@ -1023,14 +901,23 @@ def is_direct_competitor_llm(
     - Primary Niche (Topic): "{cand_niche}"
     - Primary Format (Intent): "{cand_format}"
 
+    ---
+    **IMPORTANT INSTRUCTION :**
+    Your primary evaluation MUST be the Niche (Topic) and Format (Intent) provided above.
+    However, the provided "Primary Format" label might be slightly inaccurate.
+    
+    Use your general knowledge of these YouTube channels ONLY to **verify or correct the Format**.
+    For example, if the channel name is "The Diary Of A CEO" but the format is listed as "Educational Tutorial", you should use your knowledge that it is a "Podcast/Interviews" channel.
+    
+    **DO NOT** say "Yes" just because the topics are similar. The **Format (Intent)** match is the most critical part.
+    ---
+
     CRITICAL EVALUATION (Answer YES only if BOTH are true):
 
     1. FORMAT MATCH? (Primary Check - Must be identical or extremely similar)
        - "Educational Tutorials" vs "Educational Tutorials" = YES
        - "Documentary" vs "Documentary" = YES
-       - "Podcast/Interviews" vs "Podcast/Interviews" = YES
        - "Educational Tutorials" vs "Talking-Head Analysis" = YES (Similar Intent)
-       - "Documentary" vs "Video Essay" = YES (Similar Intent)
        ----------------------------------------------------
        - "Educational Tutorials" vs "Podcast/Interviews" = NO (Different Intent)
        - "Documentary" vs "Educational Tutorials" = NO (Different Intent)
@@ -1039,86 +926,68 @@ def is_direct_competitor_llm(
     2. NICHE (TOPIC) MATCH? (Secondary Check - Must be highly relevant)
        - "Business Case Studies" vs "Corporate History" = YES (High Relevance)
        - "Productivity" vs "Study Skills" = YES (High Relevance)
-       - "Entrepreneurship" vs "Startup Growth" = YES (High Relevance)
        ----------------------------------------------------
        - "Business" vs "Personal Finance" = NO (Related, but Different Focus)
        - "Productivity" vs "Tech Reviews" = NO (Different Niches)
-       - "Creator Economy" vs "Digital Marketing" = NO (Overlapping, but Different Focus)
 
     EXAMPLES:
 
     Seed: "Ali Abdaal", Niche: "Productivity", Format: "Educational Tutorials"
     Cand: "The Diary Of A CEO", Niche: "Entrepreneurship", Format: "Podcast/Interviews"
-    Decision: NO (Format mismatch is critical)
+    Decision: NO (Format mismatch is critical, even if topics overlap)
 
     Seed: "MagnatesMedia", Niche: "Business", Format: "Documentary"
     Cand: "Business Breakdown", Niche: "Business Case Studies", Format: "Documentary"
     Decision: YES (Format matches, Niches are highly relevant)
 
-    Seed: "Fireship", Niche: "Web Development", Format: "Educational Tutorials"
-    Cand: "Traversy Media", Niche: "Web Development", Format: "Educational Tutorials"
-    Decision: YES (Format matches, Niches match)
-
-    Seed: "Johnny Harris", Niche: "Geopolitics", Format: "Documentary"
-    Cand: "Vox", Niche: "News Analysis", Format: "Video Essay"
-    Decision: YES (Formats are similar storytelling/analysis, Niches are related enough)
-
     Seed: "Ali Abdaal", Niche: "Productivity", Format: "Educational Tutorials"
     Cand: "Thomas Frank", Niche: "Study Skills", Format: "Educational Tutorials"
     Decision: YES (Format matches, Niches highly relevant)
 
-    Seed: "MrBeast", Niche: "Entertainment", Format: "Challenge/Vlog"
-    Cand: "Dude Perfect", Niche: "Entertainment", Format: "Challenge/Stunts"
-    Decision: YES (Formats similar, Niches match)
+    TASK: First, verify if the provided Format (Intent) for each channel seems correct, using the channel name as a clue. Then, applying the strict evaluation criteria (Format Match > Niche Match), decide if these two channels are DIRECT competitors.
 
-
-    FINAL QUESTION: Based *only* on the Niche (Topic) and Format (Intent), are these two channels DIRECT competitors? Answer with only "Yes" or "No".
-
-    ANSWER:
+    **Output Format** (Return ONLY a single, valid JSON object):
+    {{
+      "is_competitor": [true/false],
+      "confidence": "[High/Medium/Low]",
+      "reason": "[One sentence explaining the format and niche match/mismatch]"
+    }}
     """
 
     for attempt in range(retries):
         try:
-            # Using gpt-4o-mini as requested
             if model_provider.lower() == "gpt":
                 if not gpt_client:
-                    print("  ❌ GPT client not initialized for competitor check.")
-                    return "Error"
+                    print("  ❌ GPT client not initialized for final check.")
+                    return {"is_competitor": False, "confidence": "Low", "reason": "GPT client not initialized."}
                 
-                # --- USE gpt-4o-mini-mini ---
                 response = gpt_client.chat.completions.create(
-                    model="gpt-4o-mini", # Use the mini model
+                    model="gpt-4o-mini", # Use the cheap mini model
+                    response_format={"type": "json_object"}, # Force JSON output
                     messages=[{"role": "user", "content": prompt}],
-                    temperature=0.1, # Low temp for direct answer
-                    max_tokens=10 # Expecting only "Yes" or "No"
+                    temperature=0.1,
+                    max_tokens=150
                 )
-                result_text = response.choices[0].message.content.strip().capitalize()
+                result_text = response.choices[0].message.content.strip()
                 
-                if result_text in ["Yes", "No"]:
-                    print(f"     ✅ LLM Competitor Check: {result_text}")
-                    return result_text
-                else:
-                    print(f"  ⚠️ LLM Competitor Check returned unexpected text: '{result_text}' (Attempt {attempt+1})")
+                # Parse the JSON
+                try:
+                    result_json = json.loads(result_text)
+                    if 'is_competitor' in result_json:
+                        print(f"     ✅ LLM Final Check: {'Yes' if result_json['is_competitor'] else 'No'}. Reason: {result_json.get('reason', 'N/A')}")
+                        return result_json
+                except json.JSONDecodeError:
+                    print(f"  ⚠️ LLM Final Check returned invalid JSON: '{result_text}' (Attempt {attempt+1})")
                     # Fall through to retry
 
-            # Add Gemini or other providers if needed, ensure they use a comparable small model
-            # elif model_provider.lower() == "gemini":
-            #     # ... use gemini flash ...
-            #     pass
-
             else:
-                 print(f"  ❌ Unknown model provider '{model_provider}' for competitor check.")
-                 return "Error"
+                 print(f"  ❌ Unknown model provider '{model_provider}'")
+                 return {"is_competitor": False, "confidence": "Low", "reason": "Unknown model provider."}
 
         except Exception as e:
-            print(f"  ❌ LLM Competitor Check Error (Attempt {attempt+1}/{retries}): {str(e)[:100]}")
-            if "rate limit" in str(e).lower() or "quota" in str(e).lower():
-                print("     Rate limit hit, waiting 30s...")
-                time.sleep(30)
-            elif attempt < retries - 1:
-                time.sleep(5 * (attempt + 1))
-            else:
-                print("  ❌ All retries failed for LLM Competitor Check.")
-                return "Error" # Failed after retries
+            print(f"  ❌ LLM Final Check Error (Attempt {attempt+1}/{retries}): {str(e)[:100]}")
+            time.sleep(5 * (attempt + 1))
+            
+    # Failed after all retries
+    return {"is_competitor": False, "confidence": "Low", "reason": "All API retries failed."}
 
-    return "Error" # Should not be reached, but safety return
