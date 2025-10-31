@@ -119,18 +119,64 @@ def calculate_embedding_similarity_hybrid(keywords1: List[str], keywords2: List[
         return 0.0
     
 # --- Helper for the new prompt in niche finding ---
-def _get_keyword_sample(kw_dict: dict, max_sample=5) -> str:
-    """Gets a representative sample of keywords, one from each category."""
-    if not isinstance(kw_dict, dict): 
+# def _get_keyword_sample(kw_dict: dict, max_sample=5) -> str:
+#     """Gets a representative sample of keywords, one from each category."""
+#     if not isinstance(kw_dict, dict): 
+#         return "N/A"
+#     sample = []
+#     # Get first keyword from up to 5 categories
+#     for cat, kws in kw_dict.items():
+#         if kws and isinstance(kws, list) and kws[0]:
+#             sample.append(kws[0])
+#         if len(sample) >= max_sample:
+#             break
+#     return ", ".join(sample)
+
+def _get_keyword_sample(kw_dict: dict, max_categories=3, keywords_per_category=3) -> str:
+    """
+    Gets top keywords from each category for LLM validation.
+    
+    Args:
+        kw_dict: Dictionary of {category: [keywords]}
+        max_categories: Maximum number of categories to sample (default: 3)
+        keywords_per_category: Keywords to take from each category (default: 3)
+    
+    Returns:
+        Formatted string: "cat1: kw1, kw2, kw3 | cat2: kw1, kw2, kw3"
+        
+    Example:
+        Input: {
+            "Business Scandals": ["corporate scandals", "business failures", "evil corporations"],
+            "Success Stories": ["successful entrepreneurs", "startup success"]
+        }
+        Output: "Business Scandals: corporate scandals, business failures, evil corporations | Success Stories: successful entrepreneurs, startup success"
+    """
+    if not isinstance(kw_dict, dict) or not kw_dict:
         return "N/A"
-    sample = []
-    # Get first keyword from up to 5 categories
-    for cat, kws in kw_dict.items():
-        if kws and isinstance(kws, list) and kws[0]:
-            sample.append(kws[0])
-        if len(sample) >= max_sample:
+    
+    samples = []
+    categories_processed = 0
+    
+    for category, keywords in kw_dict.items():
+        # Stop if we've processed enough categories
+        if categories_processed >= max_categories:
             break
-    return ", ".join(sample)
+        
+        # Validate keywords list
+        if not keywords or not isinstance(keywords, list):
+            continue
+        
+        # Get top N keywords from this category
+        top_keywords = [kw for kw in keywords[:keywords_per_category] if kw]
+        
+        if top_keywords:
+            # Format: "Category: keyword1, keyword2, keyword3"
+            category_sample = f"{category}: {', '.join(top_keywords)}"
+            samples.append(category_sample)
+            categories_processed += 1
+    
+    # Join categories with " | " separator
+    return " | ".join(samples) if samples else "N/A"
 
 # --- MODIFIED: Function updated to include Niche for context ---
 def calculate_llm_similarity(
@@ -448,206 +494,85 @@ def extract_keywords_llm(
     print(f"📤 Sending {len(truncated_content)} chars to {model_type.upper()}...")
     channel_name_cleaned = channel_name.lower().strip() if channel_name else "[Channel Name Unavailable]"
     
+    print(channel_name, "\n\n")
+    
     # --- MODIFIED: Prompt now includes the niche ---
-    prompt = f"""You are a YouTube competitor research analyst. Your goal is to extract search keywords that will surface COMPETITOR CHANNELS when searched on YouTube.
+    prompt = f"""You are a YouTube SEO and competitor research analyst.
+    Your task is to analyze the provided content for "{channel_name}" and identify its **2-3 most dominant content categories**.
 
-        ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-        CHANNEL: "{channel_name}"
-        ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    CHANNEL NICHE-FORMAT: {niche or "Unknown"}
+    CONTENT TO ANALYZE:
+    \"\"\"
+    {truncated_content}
+    \"\"\"
 
-        CONTENT TO ANALYZE:
-        \"\"\"
-        {truncated_content}
-        \"\"\"
+    CRITICAL TASK:
+    1.  Identify ONLY the **2 or 3** most central, high-volume categories for this channel.
+    2.  **IGNORE** minor or occasional topics (like "AI" for a business channel). Focus on the channel's "heartland" content.
+    3.  For each of these 2-3 categories, extract **10-15 high-intent** YouTube search keywords that a user would type to find **other channels just like this one**.
+    4.  Keywords must be 2-4 words. Avoid generic single words.
 
-        ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-        CRITICAL OBJECTIVE:
-        ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    ---
+    REFERENCE EXAMPLES (MATCH THIS EXACT STYLE):
+    ---
 
-        Generate keywords that REAL USERS actually type into YouTube search to find channels like this one.
+    Example 1 - Business Documentary Channel (Niche: Business - Documentary):
+    (Notice: No "AI" or "Creator Economy" categories, as they are not the *major* focus)
+    {{
+      "Corporate History & Scandals": [
+        "company rise and fall", "business empire", "corporate scandal", "brand failure",
+        "startup bankruptcy", "company history", "how companies failed", 
+        "business investigation", "corporate greed", "failed businesses",
+        "business stories", "corporate analysis"
+      ],
+      "Business Documentaries": [
+        "business documentary", "cinematic documentary", "company story", 
+        "entrepreneur story", "business breakdown", "business case study",
+        "corporate deep dive", "business analysis", "brand story", "ceo story",
+        "economic documentary"
+      ]
+    }}
 
-        Priority: SEARCHABILITY over specificity. Use the exact phrases people search, even if they seem generic.
+    Example 2 - Student Productivity Channel (Niche: Productivity - Educational Tutorials):
+    {{
+      "Productivity Systems": [
+        "productivity tips", "time management", "habits and routines", "self discipline",
+        "focus strategies", "overcoming procrastination", "how to wake up early",
+        "productivity hacks", "self improvement", "deep work", "getting things done"
+      ],
+      "Learning & Study Skills": [
+        "study tips", "how to learn faster", "active recall", "spaced repetition",
+        "note taking methods", "how to read more", "best learning resources",
+        "exam preparation", "how to organize", "study habits"
+      ],
+      "Productivity Tech & Tools": [
+        "best productivity apps", "notion tutorial", "best apps for students",
+        "task management apps", "digital organization", "tech for productivity",
+        "notion setup", "best note taking apps", "obsidian tutorial"
+      ]
+    }}
 
-        ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-        TASK:
-        ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    Example 3 - Educational Business Channel (Niche: Entrepreneurship - Educational Tutorials):
+    {{
+      "Business & Entrepreneurship": [
+        "build a business", "lifestyle business", "boring business ideas",
+        "entrepreneurship 2025", "make money online", "business ideas for beginners",
+        "how to start a business", "small business ideas", "online business"
+      ],
+      "Financial Freedom": [
+        "financial freedom", "get rich", "passive income", "how to make money",
+        "wealth building", "millionaire habits", "money mindset", "investing for beginners"
+      ]
+    }}
 
-        1. Identify 3-6 main content categories (consider: Business, Finance, Productivity, Creator Economy, AI/Tech, Education, Documentary Style, Career, Marketing)
-        2. For each category, extract 5-7 keyword phrases that users search to find this content type
-        3. Keep phrases SHORT (2-3 words preferred, max 4 words)
-
-        ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-        KEYWORD PRINCIPLES:
-        ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-        ✓ PRIORITIZE (High search volume phrases):
-        - Common search queries: "make money online", "financial freedom", "youtube growth"
-        - Popular topics: "passive income", "productivity tips", "self improvement"
-        - Specific methods: "time blocking", "notion system", "active recall"
-        - Audience-specific: "for beginners", "for students", "2025"
-        - Natural language: How people actually talk/search
-
-        ✓ ALLOW SELECTIVELY (When it's part of a real search):
-        - "how to" phrases: "how to start a business", "how to make money"
-        - "tips": "productivity tips", "study tips" (standalone searches)
-        - Numbers/years: "business ideas 2025", "ai tools 2025"
-
-        ✗ STRICTLY AVOID:
-        - Channel name: '{channel_name}'
-        - Unnecessary modifiers: Don't add "strategies", "techniques", "methods", "journey", "guide" unless in original content
-        - Platform names: "youtube", "instagram", "tiktok" (unless part of search like "youtube growth")
-        - Pure clickbait: "ultimate", "insane", "crazy", "amazing", "shocking"
-        - Too generic alone: "business", "productivity", "success" (add context)
-        - Calls to action: "subscribe", "like", "watch now"
-
-        ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-        KEYWORD GUIDELINES:
-        ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-        LENGTH: Prefer 2-3 words. Use 4+ words ONLY if it's a complete search phrase.
-        ✓ "financial freedom" (2 words)
-        ✓ "make money online" (3 words)
-        ✓ "how to start a business" (5 words - complete phrase)
-        ✗ "financial freedom journey" (don't add "journey")
-        ✗ "passive income strategies" (don't add "strategies")
-
-        NATURALNESS: Use conversational search terms, not formal/academic language.
-        ✓ "get rich" (what people search)
-        ✗ "wealth accumulation practices" (too formal)
-        ✓ "productivity tips" (common search)
-        ✗ "productivity optimization methodologies" (too academic)
-
-        SPECIFICITY: Add context to broad terms, but keep it searchable.
-        ✗ "business" (too broad)
-        ✓ "lifestyle business", "online business", "small business ideas"
-        ✗ "content" (too broad)
-        ✓ "content creator", "content creation", "content strategy"
-
-        ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-        REFERENCE EXAMPLES (MATCH THIS EXACT STYLE):
-        ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-        Example 1 - Educational Business Channel (Ali Abdaal style):
-        {{
-            "Business & Entrepreneurship": [
-                "build a business",
-                "lifestyle business",
-                "boring business ideas",
-                "entrepreneurship 2025",
-                "make money online",
-                "business ideas for beginners",
-                "how to start a business"
-            ],
-            "Financial Freedom": [
-                "financial freedom",
-                "get rich",
-                "passive income",
-                "how to make money",
-                "wealth building",
-                "millionaire habits",
-                "money mindset"
-            ],
-            "Productivity & Life Design": [
-                "productivity tips",
-                "how to change your life",
-                "self improvement",
-                "time management",
-                "habits and routines",
-                "discipline and motivation",
-                "overthinking"
-            ],
-            "Creator Economy": [
-                "youtube growth",
-                "how to start a youtube channel",
-                "creator business",
-                "content creator",
-                "personal brand",
-                "solopreneur"
-            ],
-            "AI & Technology": [
-                "ai for entrepreneurs",
-                "ai productivity tools",
-                "how to use ai for business",
-                "ai workflow"
-            ]
-        }}
-
-        Example 2 - Business Documentary Channel (MagnatesMedia style):
-        {{
-            "Corporate History": [
-                "company rise and fall",
-                "business empire",
-                "corporate scandal",
-                "brand failure",
-                "startup bankruptcy",
-                "company history"
-            ],
-            "Documentary Storytelling": [
-                "business documentary",
-                "cinematic documentary",
-                "company story",
-                "entrepreneur story",
-                "business breakdown"
-            ],
-            "Business Analysis": [
-                "business case study",
-                "company analysis",
-                "business strategy",
-                "how companies failed",
-                "business investigation"
-            ]
-        }}
-
-        Example 3 - Student Productivity Channel (Thomas Frank style):
-        {{
-            "Study Techniques": [
-                "study tips",
-                "how to study better",
-                "active recall",
-                "spaced repetition",
-                "exam preparation",
-                "study strategies"
-            ],
-            "Productivity Systems": [
-                "notion productivity",
-                "time blocking",
-                "second brain",
-                "productivity system",
-                "task management",
-                "note taking"
-            ],
-            "Student Life": [
-                "college productivity",
-                "student morning routine",
-                "study motivation",
-                "productive student"
-            ]
-        }}
-
-        ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-        VALIDATION (Check each keyword):
-        ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-        Before including a keyword, ask:
-        1. ✓ Would real users type this into YouTube search?
-        2. ✓ Is it 2-4 words maximum? (Shorter = better)
-        3. ✓ Does it avoid unnecessary modifiers (strategies, techniques, journey, guide)?
-        4. ✓ Is it natural/conversational, not academic?
-        5. ✓ Will it surface similar channels, not just similar videos?
-
-        ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-        OUTPUT FORMAT:
-        ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-        Return ONLY valid JSON:
-        - Keys: Category names (2-4 words, Title Case)
-        - Values: Lists of 5-7 lowercase keyword phrases (2-4 words each)
-
-        {{
-            "Category Name": ["keyword one", "keyword two", "keyword three", "keyword four", "keyword five"]
-        }}
-        """
-
+    OUTPUT FORMAT:
+    Return ONLY valid JSON with 2-3 keys (highle related categories) and 10-15 keywords per key.
+    {{
+      "Primary Category 1": ["keyword one", "keyword two", ...],
+      "Primary Category 2": ["keyword one", "keyword two", ...]
+    }}
+    """
+    
     retries = 3
     for attempt in range(retries):
         try:
@@ -859,58 +784,57 @@ def detect_channel_language_llm(
         return "un"
 
 
+# (Make sure json, re, time, and gpt_client are available)
+
+# This is a simple helper just to trim the long keyword string for the prompt
+def _get_keyword_sample_from_string(kw_string: str, max_sample=20) -> str:
+    """Gets a representative sample of keywords from a flat string."""
+    if not isinstance(kw_string, str): 
+        return "N/A"
+    kws = [k.strip() for k in kw_string.split(',') if k.strip()]
+    return ", ".join(kws[:max_sample])
+
 # ============================================
-# NEW: Final "Extra Call" Competitor Check (v2)
+# NEW: Final "Extra Call" Competitor Check (v5 - Raw Data Only)
 # ============================================
 def is_direct_competitor_llm_final_check(
     seed_name: str,
-    seed_niche_format: str, # e.g., "Productivity - Educational Tutorials"
+    seed_keywords_str: str,     # <-- NEW: Pass seed's flat keyword string
     candidate_name: str,
-    candidate_niche_format: str, # e.g., "Entrepreneurship - Podcast/Interviews"
+    candidate_description: str,
+    candidate_keywords_str: str, # <-- Pass candidate's flat keyword string
     model_provider: str = "gpt",
     retries: int = 2
 ) -> dict:
     """
     Uses GPT-4o-mini for a final, strict "Yes/No" check.
-    This is the "extra LLM call" for borderline cases.
-    
-    Returns a dictionary:
-    {'is_competitor': True/False, 'confidence': 'High/Medium/Low', 'reason': '...'}
+    This version IGNORES Niche/Format labels and infers from raw data.
     """
 
-    # Split Niche-Format strings
-    try:
-        seed_niche, seed_format = seed_niche_format.split(" - ", 1)
-    except ValueError:
-        seed_niche, seed_format = seed_niche_format, "Unknown"
-        
-    try:
-        cand_niche, cand_format = candidate_niche_format.split(" - ", 1)
-    except ValueError:
-        cand_niche, cand_format = candidate_niche_format, "Unknown"
+    # Get keyword samples from the flat strings
+    seed_kw_sample = _get_keyword_sample_from_string(seed_keywords_str, max_sample=20)
+    cand_kw_sample = _get_keyword_sample_from_string(candidate_keywords_str, max_sample=20)
+    cand_desc_snippet = (candidate_description[:1000] if candidate_description else "N/A")
 
     prompt = f"""You are an expert YouTube analyst. Your job is to make a final "Yes" or "No" decision on whether two channels are DIRECT content competitors.
-
-    DEFINITION: Direct competitors create content on very similar TOPICS using the same primary FORMAT/INTENT. Would a typical viewer of the SEED channel **watches or subscribe** to the CANDIDATE channel because it serves the **similar need**?
-
-    SEED CHANNEL: "{seed_name}"
-    - Primary Niche (Topic): "{seed_niche}"
-    - Primary Format (Intent): "{seed_format}"
-
-    CANDIDATE CHANNEL: "{candidate_name}"
-    - Primary Niche (Topic): "{cand_niche}"
-    - Primary Format (Intent): "{cand_format}"
-
-    ---
-    **IMPORTANT INSTRUCTION :**
-    Your primary evaluation MUST be the Niche (Topic) and Format (Intent) provided above.
-    However, the provided "Primary Format" label might be slightly inaccurate.
     
-    Use your general knowledge of these YouTube channels ONLY to **verify or correct the Format**.
-    For example, if the channel name is "The Diary Of A CEO" but the format is listed as "Educational Tutorial", you should use your knowledge that it is a "Podcast/Interviews" channel.
-    
-    **DO NOT** say "Yes" just because the topics are similar. The **Format (Intent)** match is the most critical part.
-    ---
+    **CRITICAL INSTRUCTION: IGNORE any Niche/Format labels. Infer EVERYTHING from the raw data provided below.**
+
+    SEED CHANNEL (RAW DATA):
+    - Name: "{seed_name}"
+    - Keyword Sample: "{seed_kw_sample}"
+
+    CANDIDATE CHANNEL (RAW DATA):
+    - Name: "{candidate_name}"
+    - Description: "{cand_desc_snippet}..."
+    - Keyword List: "{cand_kw_sample}"
+
+    YOUR TASK:
+    1.  **Infer** the Seed's true Format (e.g., Documentary, Podcast, Tutorial) and Niche (e.g., Business, Productivity) from its Name and Keyword Sample.
+    2.  **Infer** the Candidate's true Format and Niche from its Name, Description, and Keyword List.
+    3.  **Compare** your *inferred* data. Are they direct competitors (same format/intent, similar niche)?
+
+    DEFINITION: Direct competitors create content on very similar TOPICS using the same primary FORMAT/INTENT. Would a typical viewer of the SEED channel subscribe to the CANDIDATE channel because it serves the exact same need?
 
     CRITICAL EVALUATION (Answer YES only if BOTH are true):
 
@@ -921,36 +845,38 @@ def is_direct_competitor_llm_final_check(
        ----------------------------------------------------
        - "Educational Tutorials" vs "Podcast/Interviews" = NO (Different Intent)
        - "Documentary" vs "Educational Tutorials" = NO (Different Intent)
-       - "Podcast/Interviews" vs "Vlog" = NO (Different Intent)
 
     2. NICHE (TOPIC) MATCH? (Secondary Check - Must be highly relevant)
        - "Business Case Studies" vs "Corporate History" = YES (High Relevance)
        - "Productivity" vs "Study Skills" = YES (High Relevance)
        ----------------------------------------------------
        - "Business" vs "Personal Finance" = NO (Related, but Different Focus)
-       - "Productivity" vs "Tech Reviews" = NO (Different Niches)
 
-    EXAMPLES:
+    EXAMPLES (How you should think):
 
-    Seed: "Ali Abdaal", Niche: "Productivity", Format: "Educational Tutorials"
-    Cand: "The Diary Of A CEO", Niche: "Entrepreneurship", Format: "Podcast/Interviews"
-    Decision: NO (Format mismatch is critical, even if topics overlap)
+    Seed: "Ali Abdaal" (Keywords: "productivity tips, notion, study hacks, self improvement")
+    Cand: "The Diary Of A CEO" (Desc: "host of the #1 podcast...", Keywords: "podcast, interview, mindset")
+    Inferred Seed Format: Educational Tutorials
+    Inferred Cand Format: Podcast/Interviews
+    Decision: NO (Format mismatch is critical)
 
-    Seed: "MagnatesMedia", Niche: "Business", Format: "Documentary"
-    Cand: "Business Breakdown", Niche: "Business Case Studies", Format: "Documentary"
-    Decision: YES (Format matches, Niches are highly relevant)
+    Seed: "MagnatesMedia" (Keywords: "business documentary, company rise and fall, corporate scandal")
+    Cand: "Company Man" (Desc: "business documentaries...", Keywords: "company analysis, business stories, documentary")
+    Inferred Seed Format: Documentary
+    Inferred Cand Format: Documentary
+    Decision: YES (Perfect match)
 
-    Seed: "Ali Abdaal", Niche: "Productivity", Format: "Educational Tutorials"
-    Cand: "Thomas Frank", Niche: "Study Skills", Format: "Educational Tutorials"
-    Decision: YES (Format matches, Niches highly relevant)
-
-    TASK: First, verify if the provided Format (Intent) for each channel seems correct, using the channel name as a clue. Then, applying the strict evaluation criteria (Format Match > Niche Match), decide if these two channels are DIRECT competitors.
+    Seed: "MagnatesMedia" (Keywords: "business documentary, corporate scandal")
+    Cand: "Jake Tran" (Desc: "documentaries on money and power", Keywords: "geopolitics, business, war, history")
+    Inferred Seed Format: Business Documentary
+    Inferred Cand Format: Geopolitics/Business Documentary
+    Decision: YES (Format matches, Niches are related "big picture" analysis)
 
     **Output Format** (Return ONLY a single, valid JSON object):
     {{
       "is_competitor": [true/false],
       "confidence": "[High/Medium/Low]",
-      "reason": "[One sentence explaining the format and niche match/mismatch]"
+      "reason": "[One sentence explaining your *inferred* format and niche match/mismatch]"
     }}
     """
 
@@ -970,7 +896,6 @@ def is_direct_competitor_llm_final_check(
                 )
                 result_text = response.choices[0].message.content.strip()
                 
-                # Parse the JSON
                 try:
                     result_json = json.loads(result_text)
                     if 'is_competitor' in result_json:
@@ -978,7 +903,6 @@ def is_direct_competitor_llm_final_check(
                         return result_json
                 except json.JSONDecodeError:
                     print(f"  ⚠️ LLM Final Check returned invalid JSON: '{result_text}' (Attempt {attempt+1})")
-                    # Fall through to retry
 
             else:
                  print(f"  ❌ Unknown model provider '{model_provider}'")
@@ -988,6 +912,4 @@ def is_direct_competitor_llm_final_check(
             print(f"  ❌ LLM Final Check Error (Attempt {attempt+1}/{retries}): {str(e)[:100]}")
             time.sleep(5 * (attempt + 1))
             
-    # Failed after all retries
     return {"is_competitor": False, "confidence": "Low", "reason": "All API retries failed."}
-

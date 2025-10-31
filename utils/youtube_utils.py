@@ -595,7 +595,7 @@ def search_videos_multi_focused(keywords: List[str], max_results_per_search: int
             "maxResults": max_results_per_search, # This now means max *videos* per keyword
             "key": API_KEY,
             "relevanceLanguage": "en",
-            "order": "viewCount"
+            "regionCode": "US"
         }
 
         try:

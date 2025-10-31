@@ -20,7 +20,7 @@ from utils.fingerprint_llm_utils import (
     extract_niche_llm,
     calculate_embedding_similarity_hybrid,
     calculate_llm_similarity,
-    detect_channel_language_llm # <-- ADDED
+    # detect_channel_language_llm # <-- ADDED
 )
 
 
@@ -28,12 +28,12 @@ from utils.fingerprint_llm_utils import (
 base_dir = Path(__file__).resolve().parent
 
 # --- Input Files ---
-keywords_file_path = base_dir / "channel_fingerprints_gpt.json"
-seed_video_data_path = base_dir / "sample_videos.csv"
-seen_channels_path = base_dir / "seen_channels.csv" # High-level log
+keywords_file_path = base_dir / "channel_fingerprints_gpt_moon.json"
+seed_video_data_path = base_dir / "sample_videos_moon.csv"
+seen_channels_path = base_dir / "seen_channels_moon.csv" # High-level log
 
 # --- NEW: Primary Output File (The "Everything" Cache) ---
-intermediate_data_path = base_dir / "phase3_intermediate_data.csv"
+intermediate_data_path = base_dir / "phase3_intermediate_data_moon.csv"
 
 # --- NEW: Define ALL columns for the intermediate file ---
 INTERMEDIATE_COLUMN_ORDER = [
@@ -46,8 +46,7 @@ INTERMEDIATE_COLUMN_ORDER = [
     "Discovered_Subs",
     "Discovered_Video_Count",  # <-- NEW
     "Discovered_Niche",
-    "Discovered_Country",
-    "Language",                # <-- NEW
+    "Discovered_Country",              # <-- NEW
     "LLM_Score",               # <-- NEW
     "Embedding_Score",         # <-- NEW
     "Discovered_Channel_Description", # <-- NEW
@@ -57,14 +56,24 @@ INTERMEDIATE_COLUMN_ORDER = [
     "Timestamp",
 ]
 
+AUTO_KEEP_COUNTRIES = [
+    'US',  # United States
+    'GB',  # United Kingdom
+    'CA',  # Canada
+    'AU',  # Australia
+    'NZ',  # New Zealand
+    'NG',  # Nigeria
+    'Unknown' # Keep 'Unknown' for now, or remove to filter them
+]
+
 # --- Settings ---
 MODEL_PROVIDER = "gpt"  # "gemini" or "gpt" (as requested, not changed)
-SEED_CHANNELS = ["Ali Abdaal"] # Your seed channels
+SEED_CHANNELS = ["Moon"] # Your seed channels
 
 # --- Filtering (for Data Collection) ---
 MIN_SUBSCRIBERS = 10000
-MIN_VIDEOS = 3
-VIDEOS_PER_CANDIDATE = 6 # Your change, kept as requested
+MIN_VIDEOS = 6
+VIDEOS_PER_CANDIDATE = 20 # Your change, kept as requested
 
 # --- Rate Limiting ---
 DELAY_BETWEEN_CANDIDATES = 3
@@ -215,7 +224,7 @@ def process_seed_channel(
     try:
         candidate_ids = search_videos_multi_focused(
             seed_keywords_list, # Use the flattened list
-            max_results_per_search=10,
+            max_results_per_search=30,
             max_keywords=len(seed_keywords_list)
         )
     except Exception as e:
@@ -256,6 +265,11 @@ def process_seed_channel(
         if meta["video_count"] < MIN_VIDEOS:
             print(f"  - Filtering {meta['name']} (videos: {meta['video_count']})")
             _update_status(seen_channels_data, meta["id"], "filtered_videos")
+            continue
+        country = meta.get('country', 'Unknown')
+        if country not in AUTO_KEEP_COUNTRIES:
+            print(f"  - Filtering {meta['name']} (Country: {country})")
+            _update_status(seen_channels_data, meta["id"], f"filtered_country_{country}")
             continue
         qualified.append(meta)
     save_seen_channels(seen_channels_data, seen_channels_path) # Save filter status to log
@@ -306,14 +320,14 @@ def process_seed_channel(
             )
 
             # --- Step 5b: Get Language ---
-            print(f"     Detecting language...")
-            primary_language = detect_channel_language_llm(
-                channel_description=cand_desc,
-                video_titles=video_titles_list,
-                channel_name=candidate["name"],
-                model_type=MODEL_PROVIDER,
-            )
-            print(f"     Language: {primary_language} | Niche: {cand_niche}")
+            # print(f"     Detecting language...")
+            # primary_language = detect_channel_language_llm(
+            #     channel_description=cand_desc,
+            #     video_titles=video_titles_list,
+            #     channel_name=candidate["name"],
+            #     model_type=MODEL_PROVIDER,
+            # )
+            # print(f"     Language: {primary_language} | Niche: {cand_niche}")
             # ** NO FILTERING HERE - We just save the language **
 
             # --- Step 5c: Get Keywords (as DICT) ---
@@ -391,7 +405,6 @@ def process_seed_channel(
                 "Discovered_Video_Count": candidate["video_count"], # <-- ADDED
                 "Discovered_Country": candidate.get("country", "Unknown"),
                 "Discovered_Niche": cand_niche,
-                "Language": primary_language,                         # <-- ADDED
                 "LLM_Score": similarity_llm,                          # <-- ADDED
                 "Embedding_Score": similarity_embeddings,             # <-- ADDED
                 "Discovered_Channel_Description": cand_desc,          # <-- ADDED

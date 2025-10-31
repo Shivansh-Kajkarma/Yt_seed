@@ -16,7 +16,7 @@ base_dir = Path(__file__).resolve().parent
 # --- ADDED: Set your model choice in ONE place ---
 # Change this to "gemini" if you want to use Gemini
 MODEL_TO_USE = "gpt"
-MODEL_NAME = "gpt-4o" if MODEL_TO_USE == "gpt" else "gemini-2.0-flash-exp"
+MODEL_NAME = "gpt-4o-mini" if MODEL_TO_USE == "gpt" else "gemini-2.0-flash-exp"
 
 
 def main():
@@ -28,7 +28,7 @@ def main():
     """
     print(f"--- Starting LLM Fingerprint Run ({MODEL_NAME}) ---")
     print("Loading local video data (API calls for video lists are OFF)...")
-    video_file_path = base_dir / "sample_videos.csv"
+    video_file_path = base_dir / "sample_videos_moon.csv"
 
     try:
         df = pd.read_csv(video_file_path)
@@ -138,7 +138,7 @@ def main():
             }
 
     # === SAVE TO JSON ===
-    output_json_path = base_dir / f"channel_fingerprints_{MODEL_TO_USE}.json"
+    output_json_path = base_dir / f"channel_fingerprints_{MODEL_TO_USE}_moon.json"
     
     try:
         with open(output_json_path, 'w', encoding='utf-8') as f:
