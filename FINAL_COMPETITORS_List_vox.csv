@@ -1,0 +1,18 @@
+﻿Tier,Discovered_Channel_Name,Discovered_Niche,LLM_Score,Embedding_Score,Discovered_Subs,Discovered_Country,Method,Reason
+2,Scripps News,News - Documentary,0.76,0.749,625000,US,LLM_SCORE,LLM Score >= 0.7
+3,John Stossel,Libertarianism - Educational Tutorials,0.67,0.833,1120000,US,EXTRA_LLM_VALIDATION,"Both channels focus on free speech and government issues, with Vox presenting educational content and John Stossel providing commentary, making them direct competitors in the realm of political and social discourse."
+2,Channel 4 News,News - Documentary,0.73,0.776,4010000,GB,LLM_SCORE,LLM Score >= 0.7
+2,Simon Clark,Climate Literacy - Educational Tutorials,0.76,0.812,678000,GB,LLM_SCORE,LLM Score >= 0.7
+2,CGTN Europe,Geopolitics - Documentary,0.73,0.803,1880000,GB,LLM_SCORE,LLM Score >= 0.7
+2,Laura Flanders & Friends,Public Affairs - Podcast/Interviews,0.76,0.777,75500,US,LLM_SCORE,LLM Score >= 0.7
+2,CBS Evening News,News - Documentary,0.76,0.734,2290000,Unknown,LLM_SCORE,LLM Score >= 0.7
+2,The Earthshot Prize,Environmental Awareness - Documentary,0.76,0.776,267000,GB,LLM_SCORE,LLM Score >= 0.7
+2,The Federalist Society,Law and Public Policy - Educational Tutorials,0.76,0.736,106000,US,LLM_SCORE,LLM Score >= 0.7
+2,AJ+,News - Documentary,0.73,0.57,2390000,US,LLM_SCORE,LLM Score >= 0.7
+2,BBC My World,Global Issues - Documentary,0.76,0.801,28200,GB,LLM_SCORE,LLM Score >= 0.7
+2,TVO Today,Current Affairs - Documentary,0.73,0.77,338000,CA,LLM_SCORE,LLM Score >= 0.7
+2,potholer54,Science Communication - Talking-Head Analysis,0.73,0.838,240000,AU,LLM_SCORE,LLM Score >= 0.7
+2,The Economist,International News - Documentary,0.73,0.704,3650000,GB,LLM_SCORE,LLM Score >= 0.7
+2,homeproject,Environmental Awareness - Documentary,0.76,0.712,164000,Unknown,LLM_SCORE,LLM Score >= 0.7
+2,NowThis Earth,Climate Crisis - Documentary,0.76,0.8,322000,US,LLM_SCORE,LLM Score >= 0.7
+2,PBS NewsHour,News - Documentary,0.73,0.684,5020000,US,LLM_SCORE,LLM Score >= 0.7

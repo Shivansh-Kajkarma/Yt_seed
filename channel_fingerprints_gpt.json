@@ -1,53 +1,47 @@
 {
-  "timestamp": "2025-10-29T16:29:27.305274",
+  "timestamp": "2025-10-30T23:30:22.126284",
   "total_channels": 1,
   "total_videos_processed": 30,
-  "model": "gpt-4o",
+  "model": "gpt-4o-mini",
   "channels": {
     "Ali Abdaal": {
       "niche": "Productivity - Educational Tutorials",
       "keywords": {
-        "Business & Entrepreneurship": [
-          "build a business",
-          "lifestyle business",
-          "boring business ideas",
-          "entrepreneurship 2025",
-          "make money online",
-          "business ideas for beginners",
-          "how to start a business"
-        ],
-        "Financial Freedom": [
-          "financial freedom",
-          "get rich",
-          "passive income",
-          "how to make money",
-          "wealth building",
-          "millionaire habits",
-          "money mindset"
-        ],
-        "Productivity & Life Design": [
-          "productivity tips",
+        "Personal Development": [
+          "find your life's purpose",
           "how to change your life",
-          "self improvement",
-          "time management",
-          "habits and routines",
-          "discipline and motivation",
-          "overthinking"
+          "stop overthinking tips",
+          "achieve your goals",
+          "personal growth strategies",
+          "self improvement techniques",
+          "life advice for young adults",
+          "how to get ahead in life",
+          "mindset for success",
+          "overcoming self-doubt"
         ],
-        "Creator Economy": [
-          "youtube growth",
-          "how to start a youtube channel",
-          "creator business",
-          "content creator",
-          "personal brand",
-          "solopreneur"
+        "Entrepreneurship & Business": [
+          "build a lifestyle business",
+          "how to start a business",
+          "business ideas for 2025",
+          "financial freedom strategies",
+          "make money online",
+          "how to earn $1m",
+          "successful business case studies",
+          "entrepreneurial mindset",
+          "wealth building tips",
+          "starting a business from scratch"
         ],
-        "AI & Technology": [
-          "ai for entrepreneurs",
-          "ai productivity tools",
-          "how to use ai for business",
-          "ai workflow",
-          "ai tools 2025"
+        "Productivity & Time Management": [
+          "productivity tips and tricks",
+          "how to make time for everything",
+          "best productivity apps",
+          "time management strategies",
+          "habits for success",
+          "how to stay organized",
+          "boosting productivity at work",
+          "daily routines for productivity",
+          "overcoming procrastination",
+          "effective goal setting"
         ]
       },
       "video_count": 30,

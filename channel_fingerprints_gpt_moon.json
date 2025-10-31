@@ -1,0 +1,57 @@
+{
+  "timestamp": "2025-10-31T15:51:03.638763",
+  "total_channels": 1,
+  "total_videos_processed": 30,
+  "model": "gpt-4o-mini",
+  "channels": {
+    "Moon": {
+      "niche": "Current Events - Talking-Head Analysis",
+      "keywords": {
+        "Societal Critique & Commentary": [
+          "society problems today",
+          "cultural commentary",
+          "issues with modern society",
+          "social commentary channels",
+          "societal collapse analysis",
+          "cultural critique",
+          "society breakdown",
+          "modern societal issues",
+          "cultural analysis",
+          "social issues discussion",
+          "societal trends analysis",
+          "current events critique"
+        ],
+        "Celebrity & Pop Culture Exposé": [
+          "celebrity scandals",
+          "pop culture critique",
+          "celebrity news analysis",
+          "famous people exposed",
+          "celebrity controversies",
+          "hollywood criticism",
+          "celebrity downfall stories",
+          "pop culture commentary",
+          "celebrity gossip channels",
+          "famous personalities analysis",
+          "celebrity culture critique",
+          "celebrity news today"
+        ],
+        "Political & Economic Analysis": [
+          "political commentary channels",
+          "economic crisis analysis",
+          "political issues today",
+          "government corruption exposed",
+          "political scandals",
+          "economic collapse discussion",
+          "political news analysis",
+          "current events politics",
+          "political critique",
+          "economic issues today",
+          "government analysis",
+          "political trends analysis"
+        ]
+      },
+      "video_count": 30,
+      "status": "success"
+    }
+  }
+}

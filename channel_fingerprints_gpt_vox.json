@@ -1,0 +1,51 @@
+{
+  "timestamp": "2025-10-31T14:02:09.527942",
+  "total_channels": 1,
+  "total_videos_processed": 30,
+  "model": "gpt-4o-mini",
+  "channels": {
+    "Vox": {
+      "niche": "Current Events - Documentary",
+      "keywords": {
+        "Free Speech & Civil Rights": [
+          "free speech debate",
+          "civil rights issues",
+          "free speech limits",
+          "first amendment rights",
+          "free speech controversies",
+          "censorship discussions",
+          "free speech in america",
+          "free speech and social media",
+          "impact of free speech",
+          "free speech activism"
+        ],
+        "Climate Change & Environmental Issues": [
+          "climate change solutions",
+          "climate change impact",
+          "environmental documentaries",
+          "climate change awareness",
+          "sustainable energy solutions",
+          "climate change discussions",
+          "climate crisis explained",
+          "renewable energy future",
+          "climate change myths",
+          "climate change adaptation"
+        ],
+        "Societal Challenges & Trends": [
+          "american societal issues",
+          "current events analysis",
+          "political extremism",
+          "social media impact",
+          "rural america challenges",
+          "healthcare in america",
+          "economic inequality discussions",
+          "future of education",
+          "trends in society",
+          "cultural commentary"
+        ]
+      },
+      "video_count": 30,
+      "status": "success"
+    }
+  }
+}

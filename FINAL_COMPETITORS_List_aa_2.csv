@@ -1,0 +1,50 @@
+﻿Tier,Discovered_Channel_Name,Discovered_Niche,LLM_Score,Embedding_Score,Discovered_Subs,Discovered_Country,Method,Reason
+1,Thomas Frank,Productivity - Educational Tutorials,0.87,0.874,3010000,US,LLM_SCORE,LLM Score >= 0.8
+1,Koi,Self-Reliance - Educational Tutorials,0.83,0.908,1330000,US,LLM_SCORE,LLM Score >= 0.8
+1,The Bliss Bean,Productivity - Educational Tutorials,0.83,0.816,292000,US,LLM_SCORE,LLM Score >= 0.8
+1,Robin Sharma,Personal Development - Educational Tutorials,0.83,0.907,1010000,Unknown,LLM_SCORE,LLM Score >= 0.8
+1,Carlino Denver,Productivity - Educational Tutorials,0.87,0.885,15100,Unknown,LLM_SCORE,LLM Score >= 0.8
+1,Dr. Shadé Zahrai,Personal Development - Educational Tutorials,0.84,0.844,1350000,AU,LLM_SCORE,LLM Score >= 0.8
+1,"simple, actually",Productivity - Educational Tutorials,0.83,0.852,234000,US,LLM_SCORE,LLM Score >= 0.8
+1,Better Than Yesterday,Personal Growth - Educational Tutorials,0.83,0.947,2640000,CA,LLM_SCORE,LLM Score >= 0.8
+1,The Art of Improvement,Personal Growth - Educational Tutorials,0.83,0.868,1100000,GB,LLM_SCORE,LLM Score >= 0.8
+1,Dr. Tiffany Shelton,Productivity - Educational Tutorials,0.83,0.874,29900,US,LLM_SCORE,LLM Score >= 0.8
+1,Amy Landino,Entrepreneurship - Educational Tutorials,0.85,0.944,489000,US,LLM_SCORE,LLM Score >= 0.8
+2,Chris Tomshack,Productivity - Educational Tutorials,0.73,0.567,62700,Unknown,LLM_SCORE,LLM Score >= 0.7
+2,Justin Sung,Learning Strategies - Educational Tutorials,0.76,0.853,1830000,NZ,LLM_SCORE,LLM Score >= 0.7
+2,Rise With Odn,Financial Education - Educational Tutorials,0.73,0.903,106000,US,LLM_SCORE,LLM Score >= 0.7
+2,Natalie Dawson,Entrepreneurship - Educational Tutorials,0.76,0.878,806000,US,LLM_SCORE,LLM Score >= 0.7
+2,Ruri Ohama,Productivity - Educational Tutorials,0.76,0.795,1450000,US,LLM_SCORE,LLM Score >= 0.7
+2,KeyPersonOfInfluence,Entrepreneurship - Educational Tutorials,0.76,0.827,54000,Unknown,LLM_SCORE,LLM Score >= 0.7
+2,Scott Ste Marie,Mental Health - Educational Tutorials,0.73,0.793,397000,CA,LLM_SCORE,LLM Score >= 0.7
+2,SUCCESS Magazine,Personal Development - Educational Tutorials,0.76,0.895,121000,US,LLM_SCORE,LLM Score >= 0.7
+2,Better Ideas,Self-Improvement - Talking-Head Analysis,0.76,0.909,3010000,CA,LLM_SCORE,LLM Score >= 0.7
+2,Evan Carmichael,Self-Improvement - Talking-Head Analysis,0.76,0.939,4370000,US,LLM_SCORE,LLM Score >= 0.7
+2,Baddie In Business,Entrepreneurship - Educational Tutorials,0.73,0.73,1570000,US,LLM_SCORE,LLM Score >= 0.7
+2,Jordan Platten,Entrepreneurship - Educational Tutorials,0.76,0.839,374000,GB,LLM_SCORE,LLM Score >= 0.7
+2,SpoonFedStudy,Personal Development - Talking-Head Analysis,0.76,0.833,237000,US,LLM_SCORE,LLM Score >= 0.7
+2,Noah Kagan,Entrepreneurship - Educational Tutorials,0.73,0.853,1180000,US,LLM_SCORE,LLM Score >= 0.7
+2,Foundr ,Entrepreneurship - Educational Tutorials,0.73,0.841,306000,AU,LLM_SCORE,LLM Score >= 0.7
+2,Leila Hormozi,Entrepreneurship - Educational Tutorials,0.76,0.883,1060000,US,LLM_SCORE,LLM Score >= 0.7
+2,Mitch Manly,Self-Improvement - Educational Tutorials,0.76,0.916,926000,CA,LLM_SCORE,LLM Score >= 0.7
+2,Amy Wang,Personal Growth - Talking-Head Analysis,0.73,0.888,765000,US,LLM_SCORE,LLM Score >= 0.7
+2,Feel Real Good,Entrepreneurship - Educational Tutorials,0.76,0.938,166000,US,LLM_SCORE,LLM Score >= 0.7
+2,Improvement Pill,Self-Improvement - Educational Tutorials,0.73,0.779,3740000,US,LLM_SCORE,LLM Score >= 0.7
+2,Brendon Burchard,Personal Development - Podcast/Interviews,0.76,0.892,1010000,US,LLM_SCORE,LLM Score >= 0.7
+2,Passion Planner,Productivity - Educational Tutorials,0.76,0.824,47500,US,LLM_SCORE,LLM Score >= 0.7
+2,Mindvalley ,Personal Growth - Educational Tutorials,0.76,0.863,2470000,US,LLM_SCORE,LLM Score >= 0.7
+2,Nikko Montanez,Entrepreneurship - Educational Tutorials,0.73,0.782,205000,US,LLM_SCORE,LLM Score >= 0.7
+2,Noah Sioly,Self-Improvement - Educational Tutorials,0.73,0.861,199000,Unknown,LLM_SCORE,LLM Score >= 0.7
+2,Ü STAMPS,Entrepreneurship - Educational Tutorials,0.73,0.75,17100,Unknown,LLM_SCORE,LLM Score >= 0.7
+3,Mark Manson,Self-Improvement - Talking-Head Analysis,0.67,0.75,2870000,US,EXTRA_LLM_VALIDATION,"Both channels focus on personal growth and self-improvement, using an educational format to provide strategies and insights for achieving success and resilience."
+3,Tam Kaur,Self-Improvement - Educational Tutorials,0.67,0.836,1750000,GB,EXTRA_LLM_VALIDATION,"Both channels focus on self-improvement and personal growth, using an educational tutorial format to help viewers achieve their goals and enhance their lives."
+3,Rise Above Mediocrity ,Self-Improvement - Educational Tutorials,0.67,0.862,53500,Unknown,EXTRA_LLM_VALIDATION,"Both channels focus on personal growth and success strategies, with similar educational tutorial formats aimed at motivating and guiding viewers in achieving their goals."
+3,Simon Alexander Ong,Personal Development - Talking-Head Analysis,0.62,0.814,173000,GB,EXTRA_LLM_VALIDATION,"Both channels focus on personal development and self-improvement, using a similar educational tutorial format to provide life advice and strategies for success."
+3,Mindset Fuel,Mindset - Shorts,0.67,0.886,26700,US,EXTRA_LLM_VALIDATION,"Both channels focus on personal growth and self-improvement with a similar educational format, making them direct competitors in the personal development niche."
+3,Success Secrets TV,Success Secrets - Educational Tutorials,0.67,0.891,1370000,NG,EXTRA_LLM_VALIDATION,"Both channels focus on personal growth and success strategies, using an educational format to deliver similar content aimed at self-improvement and financial freedom."
+3,Success Affection,Motivational Content - Shorts,0.56,0.891,227000,Unknown,EXTRA_LLM_VALIDATION,"Both channels focus on personal growth and success strategies, using a motivational and educational format that appeals to similar audiences."
+2,ira,Productivity - Educational Tutorials,0.76,0.681,39000,Unknown,LLM_SCORE,LLM Score >= 0.7
+2,Rise With Rahul,Entrepreneurship - Educational Tutorials,0.76,0.875,280000,Unknown,LLM_SCORE,LLM Score >= 0.7
+2,Study To Success,Education - Educational Tutorials,0.73,0.766,2140000,US,LLM_SCORE,LLM Score >= 0.7
+3,Art of Charm,Self-Improvement - Podcast/Interviews,0.67,0.781,66400,US,EXTRA_LLM_VALIDATION,"Both channels focus on self-improvement and personal growth, using an educational format to provide strategies and advice, making them direct content competitors."
+3,Proctor Gallagher Institute,Life Coaching - Educational Tutorials,0.67,0.784,2230000,US,EXTRA_LLM_VALIDATION,"Both channels focus on personal growth and self-improvement strategies, utilizing an educational format to provide actionable insights and coaching techniques."

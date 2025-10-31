@@ -1,0 +1,6 @@
+﻿Tier,Discovered_Channel_Name,Discovered_Niche,LLM_Score,Embedding_Score,Discovered_Subs,Discovered_Country,Method,Reason
+2,Business Casual,Business - Documentary,0.76,0.915,1160000,US,EXTRA_LLM_VALIDATION,"Both channels focus on the 'Business' niche and utilize a 'Documentary' format, making them direct competitors."
+2,Business Stories,Business Case Studies - Documentary,0.76,0.911,302000,US,EXTRA_LLM_VALIDATION,"Both channels focus on business-related content in a documentary format, making them direct competitors in terms of both format and niche."
+2,Modern Business,Business - Documentary,0.76,0.786,89600,US,EXTRA_LLM_VALIDATION,"Both channels focus on the 'Business' niche and utilize a 'Documentary' format, making them direct competitors."
+2,Explorist,Documentary - Documentary,0.76,0.893,245000,US,EXTRA_LLM_VALIDATION,"Both channels focus on documentary-style content, with MagnatesMedia centered on business topics and Explorist covering a broader documentary niche, making them direct competitors in format and relevant topics."
+1,FINAiUS,Finance - Documentary,0.87,0.874,724000,US,LLM_SCORE,LLM Score >= 0.8

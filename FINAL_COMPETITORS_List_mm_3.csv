@@ -1,0 +1,12 @@
+﻿Tier,Discovered_Channel_Name,Discovered_Niche,LLM_Score,Embedding_Score,Discovered_Subs,Discovered_Country,Method,Reason
+1,FINAiUS,Finance - Documentary,0.87,0.874,724000,US,LLM_SCORE,LLM Score >= 0.8
+2,Business Stories,Business Case Studies - Documentary,0.76,0.911,302000,US,LLM_SCORE,LLM Score >= 0.7
+2,Explorist,Documentary - Documentary,0.76,0.893,245000,US,LLM_SCORE,LLM Score >= 0.7
+2,THIRD,Business Case Studies - Documentary,0.76,0.895,60400,Unknown,LLM_SCORE,LLM Score >= 0.7
+2,Delvett,Business - Documentary,0.76,0.908,20900,Unknown,LLM_SCORE,LLM Score >= 0.7
+2,Modern Business,Business - Documentary,0.76,0.786,89600,US,LLM_SCORE,LLM Score >= 0.7
+2,Business Casual,Business - Documentary,0.76,0.915,1160000,US,LLM_SCORE,LLM Score >= 0.7
+3,Tales Of Success,Business - Documentary,0.76,0.899,34200,CA,LLM_SCORE,LLM Score >= 0.7
+3,This Skill,Financial Education - Educational Tutorials,0.67,0.852,491000,Unknown,EXTRA_LLM_VALIDATION,"Both channels focus on business-related content with an educational intent, discussing topics like business success stories and corporate controversies, which aligns closely in format and niche."
+3,Moon,Current Events - Talking-Head Analysis,0.36,0.599,1570000,Unknown,EXTRA_LLM_VALIDATION,"Seed focuses on business-related content while Candidate centers on celebrity and societal issues, leading to significant niche mismatch despite both being documentary-style formats"
+3,Shark Tank Global,Entrepreneurship - Documentary,0.73,0.742,1720000,US,LLM_SCORE,LLM Score >= 0.7
