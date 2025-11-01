@@ -1,7 +1,6 @@
 import os
 import re
 import time
-import google.generativeai as genai
 from openai import OpenAI
 import pandas as pd
 from typing import Dict, List
@@ -16,13 +15,12 @@ import numpy as np
 # 1️⃣ Load Environment & API Keys
 # ============================================
 load_dotenv()
-GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 
 
 try:
     # Using a reliable, efficient model
-    embedding_model = SentenceTransformer('all-MiniLM-L6-v2')
+    embedding_model = SentenceTransformer("all-MiniLM-L6-v2")
     print("✅ Sentence Transformer model loaded ('all-MiniLM-L6-v2').")
 except Exception as e:
     print(f"❌ ERROR loading Sentence Transformer model: {e}")
@@ -30,43 +28,13 @@ except Exception as e:
 
 
 # ============================================
-# 2️⃣ Configure Gemini (if key present)
-# ============================================
-gemini_model = None
-if GOOGLE_API_KEY:
-    try:
-        genai.configure(api_key=GOOGLE_API_KEY)
-        # --- MODIFIED: Upped tokens slightly for niche/keyword prompts ---
-        generation_config = genai.GenerationConfig(
-            max_output_tokens=300, # Increased from 200
-            temperature=0.1
-        )
-        safety_settings = [
-            {"category": "HARM_CATEGORY_HARASSMENT", "threshold": "BLOCK_MEDIUM_AND_ABOVE"},
-            {"category": "HARM_CATEGORY_HATE_SPEECH", "threshold": "BLOCK_MEDIUM_AND_ABOVE"},
-            {"category": "HARM_CATEGORY_SEXUALLY_EXPLICIT", "threshold": "BLOCK_MEDIUM_AND_ABOVE"},
-            {"category": "HARM_CATEGORY_DANGEROUS_CONTENT", "threshold": "BLOCK_MEDIUM_AND_ABOVE"},
-        ]
-        gemini_model = genai.GenerativeModel(
-            'gemini-2.0-flash-exp', # --- MODIFIED: Using gemini-pro for better reasoning
-            generation_config=generation_config,
-            safety_settings=safety_settings
-        )
-        print("✅ Gemini model configured: gemini-pro")
-    except Exception as e:
-        print(f"❌ Gemini configuration failed: {e}")
-else:
-    print("⚠️ No GOOGLE_API_KEY found — Gemini disabled.")
-
-
-# ============================================
-# 3️⃣ Configure OpenAI GPT (if key present)
+# 2️⃣ Configure OpenAI GPT
 # ============================================
 gpt_client = None
 if OPENAI_API_KEY:
     try:
         gpt_client = OpenAI(api_key=OPENAI_API_KEY)
-        print("✅ OpenAI client configured.")
+        print("✅ OpenAI GPT client configured.")
     except Exception as e:
         print(f"❌ OpenAI initialization failed: {e}")
 else:
@@ -80,72 +48,63 @@ def preprocess_text_for_llm(text: str) -> str:
     if not isinstance(text, str):
         return ""
     text = text.lower()
-    text = re.sub(r'http\S+|www\S+|https\S+', '', text)
-    text = re.sub(r'\S+@\S+', '', text)
-    text = re.sub(r'[\n\t]+', ' ', text)
-    text = re.sub(r'\s+', ' ', text)
+    text = re.sub(r"http\S+|www\S+|https\S+", "", text)
+    text = re.sub(r"\S+@\S+", "", text)
+    text = re.sub(r"[\n\t]+", " ", text)
+    text = re.sub(r"\s+", " ", text)
     return text.strip()
 
 
-def calculate_embedding_similarity_hybrid(keywords1: List[str], keywords2: List[str]) -> float:
+def calculate_embedding_similarity_hybrid(
+    keywords1: List[str], keywords2: List[str]
+) -> float:
     """
     Hybrid approach: Combines average similarity + max similarity.
     Most robust method.
     """
     if not embedding_model or not keywords1 or not keywords2:
         return 0.0
-    
+
     try:
         embeddings1 = embedding_model.encode(keywords1)
         embeddings2 = embedding_model.encode(keywords2)
-        
+
         # 1. Average embedding similarity (overall niche)
         avg_emb1 = embeddings1.mean(axis=0)
         avg_emb2 = embeddings2.mean(axis=0)
         avg_similarity = cosine_similarity(
-            avg_emb1.reshape(1, -1),
-            avg_emb2.reshape(1, -1)
+            avg_emb1.reshape(1, -1), avg_emb2.reshape(1, -1)
         )[0][0]
-        
+
         # 2. Maximum pairwise similarity (best keyword matches)
         similarity_matrix = cosine_similarity(embeddings1, embeddings2)
         max_similarity = similarity_matrix.max()
-        
+
         # 3. Weighted combination (70% average, 30% max)
         final_score = 0.7 * avg_similarity + 0.3 * max_similarity
-        
+
         return round(float(final_score), 3)
-        
+
     except Exception as e:
         print(f"  ❌ Embedding error: {e}")
         return 0.0
-    
-# --- Helper for the new prompt in niche finding ---
-# def _get_keyword_sample(kw_dict: dict, max_sample=5) -> str:
-#     """Gets a representative sample of keywords, one from each category."""
-#     if not isinstance(kw_dict, dict): 
-#         return "N/A"
-#     sample = []
-#     # Get first keyword from up to 5 categories
-#     for cat, kws in kw_dict.items():
-#         if kws and isinstance(kws, list) and kws[0]:
-#             sample.append(kws[0])
-#         if len(sample) >= max_sample:
-#             break
-#     return ", ".join(sample)
 
-def _get_keyword_sample(kw_dict: dict, max_categories=3, keywords_per_category=3) -> str:
+
+
+def _get_keyword_sample(
+    kw_dict: dict, max_categories=3, keywords_per_category=3
+) -> str:
     """
     Gets top keywords from each category for LLM validation.
-    
+
     Args:
         kw_dict: Dictionary of {category: [keywords]}
         max_categories: Maximum number of categories to sample (default: 3)
         keywords_per_category: Keywords to take from each category (default: 3)
-    
+
     Returns:
         Formatted string: "cat1: kw1, kw2, kw3 | cat2: kw1, kw2, kw3"
-        
+
     Example:
         Input: {
             "Business Scandals": ["corporate scandals", "business failures", "evil corporations"],
@@ -155,49 +114,56 @@ def _get_keyword_sample(kw_dict: dict, max_categories=3, keywords_per_category=3
     """
     if not isinstance(kw_dict, dict) or not kw_dict:
         return "N/A"
-    
+
     samples = []
     categories_processed = 0
-    
+
     for category, keywords in kw_dict.items():
         # Stop if we've processed enough categories
         if categories_processed >= max_categories:
             break
-        
+
         # Validate keywords list
         if not keywords or not isinstance(keywords, list):
             continue
-        
+
         # Get top N keywords from this category
         top_keywords = [kw for kw in keywords[:keywords_per_category] if kw]
-        
+
         if top_keywords:
             # Format: "Category: keyword1, keyword2, keyword3"
             category_sample = f"{category}: {', '.join(top_keywords)}"
             samples.append(category_sample)
             categories_processed += 1
-    
+
     # Join categories with " | " separator
     return " | ".join(samples) if samples else "N/A"
 
+
 # --- MODIFIED: Function updated to include Niche for context ---
 def calculate_llm_similarity(
-    seed_keywords: dict,        # <-- This is now a DICT
-    candidate_keywords: dict,   # <-- This is now a DICT
+    seed_keywords: dict,  # <-- This is now a DICT
+    candidate_keywords: dict,  # <-- This is now a DICT
     seed_channel_name: str,
     candidate_channel_name: str,
-    seed_niche: str = "",       # <-- This is "Niche - Format"
+    seed_niche: str = "",  # <-- This is "Niche - Format"
     candidate_niche: str = "",  # <-- This is "Niche - Format"
-    model_type: str = "gpt"
+    model_type: str = "gpt",
 ) -> float:
     """
     Uses LLM to directly score channel similarity, now using Niche as a key factor.
     Returns float 0.0-1.0
     """
-    
-    seed_categories = list(seed_keywords.keys()) if isinstance(seed_keywords, dict) else ["Unknown"]
-    candidate_categories = list(candidate_keywords.keys()) if isinstance(candidate_keywords, dict) else ["Unknown"]
-    
+
+    seed_categories = (
+        list(seed_keywords.keys()) if isinstance(seed_keywords, dict) else ["Unknown"]
+    )
+    candidate_categories = (
+        list(candidate_keywords.keys())
+        if isinstance(candidate_keywords, dict)
+        else ["Unknown"]
+    )
+
     seed_kw_sample = _get_keyword_sample(seed_keywords)
     candidate_kw_sample = _get_keyword_sample(candidate_keywords)
 
@@ -321,39 +287,28 @@ def calculate_llm_similarity(
     No explanations, no text, just the number.
     """
 
-    
     try:
-        if model_type.lower() == "gemini":
-            if not gemini_model:
-                print("❌ Gemini not initialized for similarity.")
-                return 0.0
-            
-            response = gemini_model.generate_content(prompt)
-            result_text = response.text.strip()
-            
-        else:  # OpenAI
-            if not gpt_client:
-                 print("❌ GPT not initialized for similarity.")
-                 return 0.0
-            
-            response = gpt_client.chat.completions.create(
-                model="gpt-4o-mini", # Using your specified model
-                messages=[{"role": "user", "content": prompt}],
-                temperature=0
-            )
-            result_text = response.choices[0].message.content.strip()
-        
-        # Extract number from response
-        import re
-        match = re.search(r'0?\.\d+|1\.0|0|1', result_text)
-        
+        if not gpt_client:
+            print("❌ GPT not initialized for similarity.")
+            return 0.0
+
+        response = gpt_client.chat.completions.create(
+            model="gpt-4o-mini",
+            messages=[{"role": "user", "content": prompt}],
+            temperature=0,
+        )
+        result_text = response.choices[0].message.content.strip()
+
+
+        match = re.search(r"0?\.\d+|1\.0|0|1", result_text)
+
         if match:
             score = float(match.group())
             return round(min(max(score, 0.0), 1.0), 3)  # Clamp 0-1
         else:
             print(f"  ⚠️ LLM returned non-numeric: {result_text}")
             return 0.0
-            
+
     except Exception as e:
         print(f"  ❌ LLM similarity error: {str(e)[:50]}")
         return 0.0
@@ -366,14 +321,13 @@ def extract_niche_llm(
     channel_description: str,
     video_titles: List[str],
     channel_name: str,
-    model_type: str = "gemini",
-    max_chars: int = 2000
+    max_chars: int = 2000,
 ) -> str:
     """
     HYBRID APPROACH:
     1. Try channel description first.
     2. Fallback to video titles if description is poor.
-    
+
     Returns a single string: "Primary Niche - Primary Format"
     """
 
@@ -385,20 +339,20 @@ def extract_niche_llm(
             text_for_niche = channel_description[:max_chars]
             text_source = "channel description"
             print(f"  ℹ️ Using channel description for {channel_name}")
-    
+
     # Step 2: Fallback to video titles
     if not text_for_niche and video_titles:
         text_for_niche = " | ".join(video_titles[:10])
         text_source = "video titles"
         print(f"  ⚠️ Using video titles fallback for {channel_name}")
-    
+
     # Step 3: No data
     if not text_for_niche:
         print(f"  ❌ No data for {channel_name}, returning 'General - Unknown'")
         return "General - Unknown"
-    
+
     truncated_text = preprocess_text_for_llm(text_for_niche)[:max_chars]
-    
+
     # --- THIS IS THE NEW, STRICT PROMPT ---
     prompt = f"""You are an expert YouTube channel analyst.
     Analyze the following {text_source} for the channel "{channel_name}" and identify its single primary niche and single primary format.
@@ -438,27 +392,19 @@ def extract_niche_llm(
     Return only one concise answer in the format: “Niche - Format”. 
     Do not add explanations or any other text.
     """
-    
+
     try:
-        if model_type.lower() == "gemini":
-            if not gemini_model: return "General - Unknown"
-            response = gemini_model.generate_content(prompt)
-            niche_format = response.text.strip().replace('"', '')
-            
-        elif model_type.lower() == "gpt":
-            if not gpt_client: return "General - Unknown"
-            response = gpt_client.chat.completions.create(
-                model="gpt-4o-mini", # Use your specified model
-                messages=[{"role": "user", "content": prompt}],
-                temperature=0.1,
-                max_tokens=50,
-            )
-            niche_format = response.choices[0].message.content.strip().replace('"', '')
-            
-        else:
-            print(f"❌ Unknown model type '{model_type}'.")
+        if not gpt_client:
             return "General - Unknown"
-            
+
+        response = gpt_client.chat.completions.create(
+            model="gpt-4o-mini",
+            messages=[{"role": "user", "content": prompt}],
+            temperature=0.1,
+            max_tokens=50,
+        )
+        niche_format = response.choices[0].message.content.strip().replace('"', "")
+
         # Validate the "Niche - Format" structure
         if " - " not in niche_format or len(niche_format) < 7:
             print(f"⚠️ LLM returned invalid format: '{niche_format}'. Defaulting.")
@@ -466,38 +412,35 @@ def extract_niche_llm(
             if niche_format:
                 return f"{niche_format} - Unknown"
             return "General - Unknown"
-            
-        print(f"  ✅ Niche/Format for {channel_name}: {niche_format} (from {text_source})")
-        time.sleep(2) # Keep your rate limit
+
+        print(
+            f"  ✅ Niche/Format for {channel_name}: {niche_format} (from {text_source})"
+        )
+        time.sleep(2)  # Keep your rate limit
         return niche_format
 
     except Exception as e:
         print(f"  ❌ LLM niche extraction error for {channel_name}: {str(e)[:50]}")
         return "General - Unknown"
 
+
 # ============================================
 # 6️⃣ LLM Keyword Extraction (Gemini / GPT Modular)
 # ============================================
 # --- MODIFIED: Function updated to accept 'niche' for context ---
 def extract_keywords_llm(
-    combined_text: str, 
-    channel_name: str = "", 
-    niche: str = "", # <-- ADDED
-    model_type: str = "gemini", 
-    max_chars: int = 40000
+    combined_text: str, channel_name: str = "", niche: str = "", max_chars: int = 40000
 ) -> Dict[str, List[str]]:
     """Extracts keywords using Gemini or GPT, now guided by the channel's niche."""
     if not combined_text:
         print("⚠️ No text provided.")
         return {}
 
-
     truncated_content = combined_text[:max_chars]
-    print(f"📤 Sending {len(truncated_content)} chars to {model_type.upper()}...")
-    channel_name_cleaned = channel_name.lower().strip() if channel_name else "[Channel Name Unavailable]"
-    
+    print(f"📤 Sending {len(truncated_content)} chars to GPT...")
+
     print(channel_name, "\n\n")
-    
+
     # --- MODIFIED: Prompt now includes the niche ---
     prompt = f"""You are a YouTube SEO and competitor research analyst.
     Your task is to analyze the provided content for "{channel_name}" and identify its **2-3 most dominant content categories**.
@@ -574,88 +517,83 @@ def extract_keywords_llm(
       "Primary Category 2": ["keyword one", "keyword two", ...]
     }}
     """
-    
+
     retries = 3
     for attempt in range(retries):
         try:
-            # ========== GEMINI MODE ==========
-            if model_type.lower() == "gemini":
-                if not gemini_model:
-                    print("❌ Gemini not initialized.")
-                    return []
-                response = gemini_model.generate_content(prompt)
-                if not response.parts:
-                    print("⚠️ Gemini blocked or empty response.")
-                    return []
-                text_out = response.text.strip()
+            if not gpt_client:
+                print("❌ GPT client not initialized.")
+                return {}
 
-
-            # ========== GPT MODE ==========
-            elif model_type.lower() == "gpt":
-                if not gpt_client:
-                    print("❌ GPT client not initialized.")
-                    return []
-                response = gpt_client.chat.completions.create(
-                    model="gpt-4o-mini",
-                    messages=[
-                        {"role": "system", "content": "You are a YouTube keyword expert."},
-                        {"role": "user", "content": prompt},
-                    ],
-                    temperature=0.2,
-                    max_tokens=1000,
-                )
-                text_out = response.choices[0].message.content.strip()
-
-
-            else:
-                print(f"❌ Unknown model type '{model_type}'. Use 'gemini' or 'gpt'.")
-                return []
-
+            response = gpt_client.chat.completions.create(
+                model="gpt-4o-mini",
+                messages=[
+                    {"role": "system", "content": "You are a YouTube keyword expert."},
+                    {"role": "user", "content": prompt},
+                ],
+                temperature=0.2,
+                max_tokens=1000,
+            )
+            text_out = response.choices[0].message.content.strip()
 
             # ========== Parse Keywords ==========
             # ========== Parse JSON Keywords ==========
-            keywords_categorized = {} # Default to empty dict
+            keywords_categorized = {}  # Default to empty dict
             try:
                 # Clean potential markdown wrappers
-                json_match = re.search(r"```json\s*(\{.*?\})\s*```", text_out, re.DOTALL)
+                json_match = re.search(
+                    r"```json\s*(\{.*?\})\s*```", text_out, re.DOTALL
+                )
                 if json_match:
                     json_str = json_match.group(1)
                 else:
-                    json_str = text_out # Assume raw output is JSON
+                    json_str = text_out  # Assume raw output is JSON
 
                 parsed_json = json.loads(json_str)
 
                 # Validate structure: Dict where values are lists of strings
-                if isinstance(parsed_json, dict) and all(isinstance(v, list) and all(isinstance(s, str) for s in v) for v in parsed_json.values()):
-                     # Clean keys and keywords
-                     keywords_categorized = {k.strip(): [kw.strip().lower() for kw in v if kw.strip()]
-                                             for k, v in parsed_json.items() if k.strip() and v} # Keep only non-empty categories/lists
+                if isinstance(parsed_json, dict) and all(
+                    isinstance(v, list) and all(isinstance(s, str) for s in v)
+                    for v in parsed_json.values()
+                ):
+                    # Clean keys and keywords
+                    keywords_categorized = {
+                        k.strip(): [kw.strip().lower() for kw in v if kw.strip()]
+                        for k, v in parsed_json.items()
+                        if k.strip() and v
+                    }  # Keep only non-empty categories/lists
 
-                     if keywords_categorized:
-                         total_kws = sum(len(v) for v in keywords_categorized.values())
-                         print(f"✅ Parsed {total_kws} keywords across {len(keywords_categorized)} categories from {model_type.upper()}.")
-                         # NO sleep needed here, already slept after API call potentially
-                         return keywords_categorized # <-- Return the dictionary
-                     else:
-                         print(f"⚠️ LLM returned valid JSON but no categories/keywords.")
-                         # Fall through to return empty dict outside try block if needed
+                    if keywords_categorized:
+                        total_kws = sum(len(v) for v in keywords_categorized.values())
+                        print(
+                            f"✅ Parsed {total_kws} keywords across {len(keywords_categorized)} categories from GPT."
+                        )
+                        return keywords_categorized
+                    else:
+                        print("⚠️ LLM returned valid JSON but no categories/keywords.")
+                        # Fall through to return empty dict outside try block if needed
                 else:
-                    print(f"⚠️ LLM output was not a valid Dict[str, List[str]] structure: {text_out[:100]}...")
+                    print(
+                        f"⚠️ LLM output was not a valid Dict[str, List[str]] structure: {text_out[:100]}..."
+                    )
                     # Fall through to retry or return empty
 
             except json.JSONDecodeError:
-                print(f"⚠️ LLM output was not valid JSON (attempt {attempt+1}): {text_out[:100]}...")
+                print(
+                    f"⚠️ LLM output was not valid JSON (attempt {attempt + 1}): {text_out[:100]}..."
+                )
                 # Fall through to retry or return empty
             except Exception as parse_e:
                 # Catch any other unexpected parsing errors
-                print(f"⚠️ Error parsing/validating LLM JSON (attempt {attempt+1}): {parse_e}")
+                print(
+                    f"⚠️ Error parsing/validating LLM JSON (attempt {attempt + 1}): {parse_e}"
+                )
                 # Fall through to retry or return empty
 
             # If parsing failed, keywords_categorized is still {}, loop will retry if possible
 
-
         except Exception as e:
-            print(f"❌ Error ({model_type.upper()} attempt {attempt+1}/{retries}): {str(e)[:100]}")
+            print(f"❌ Error (GPT attempt {attempt + 1}/{retries}): {str(e)[:100]}")
             if "429" in str(e) or "quota" in str(e).lower():
                 print("💤 Rate limit hit, waiting 60s...")
                 time.sleep(60)
@@ -672,33 +610,26 @@ def extract_keywords_llm(
 # ============================================
 # --- MODIFIED: Function updated to accept 'niche' for context ---
 def create_channel_fingerprint_llm(
-    video_df: pd.DataFrame, 
-    channel_name: str = "", 
-    niche: str = "", # <-- ADDED
-    top_n: int = 15, 
-    model_type: str = "gemini"
+    video_df: pd.DataFrame, channel_name: str = "", niche: str = "", top_n: int = 15
 ) -> Dict[str, List[str]]:
     """Creates channel fingerprint using either Gemini or GPT, guided by the niche."""
     if video_df.empty:
         print("⚠️ Empty DataFrame")
         return {}
 
-
     print(f"📊 Processing {len(video_df)} videos for {channel_name}...")
-
 
     combined_texts = []
     for _, row in video_df.iterrows():
-        title = str(row.get('title', ''))
-        description = str(row.get('description', ''))
+        title = str(row.get("title", ""))
+        description = str(row.get("description", ""))
         clean_title = preprocess_text_for_llm(title)
         clean_desc = preprocess_text_for_llm(description[:200])
         if channel_name:
-            clean_title = clean_title.replace(channel_name.lower(), '')
-            clean_desc = clean_desc.replace(channel_name.lower(), '')
+            clean_title = clean_title.replace(channel_name.lower(), "")
+            clean_desc = clean_desc.replace(channel_name.lower(), "")
         combined_texts.append(clean_title * 2)  # weight titles higher
         combined_texts.append(clean_desc)
-
 
     full_text_blob = "\n---\n".join(filter(None, combined_texts))
     if not full_text_blob:
@@ -707,34 +638,30 @@ def create_channel_fingerprint_llm(
 
     # --- MODIFIED: Pass the niche to the keyword extractor ---
     keywords = extract_keywords_llm(
-        full_text_blob, 
-        channel_name=channel_name, 
-        niche=niche,  # <-- Pass the niche here
-        model_type=model_type
+        full_text_blob, channel_name=channel_name, niche=niche
     )
     return keywords
 
 
 # ============================================
-# NEW FUNCTION: Language Detection 
+# NEW FUNCTION: Language Detection
 # ============================================
 def detect_channel_language_llm(
-    channel_description: str, 
-    video_titles: List[str], 
-    channel_name: str, 
-    model_type: str = "gemini",
-    max_chars: int = 1500
+    channel_description: str,
+    video_titles: List[str],
+    channel_name: str,
+    max_chars: int = 1500,
 ) -> str:
     """
     Analyzes channel text to detect the primary language.
     Returns a 2-letter ISO 639-1 code (e.g., 'en', 'hi', 'es') or 'un' for unknown.
     """
-    
+
     # Combine the most telling pieces of text
     text_blob = f"Channel Name: {channel_name}\n\n"
     text_blob += f"Description: {channel_description}\n\n"
     text_blob += "Recent Video Titles:\n- " + "\n- ".join(video_titles[:10])
-    
+
     truncated_text = preprocess_text_for_llm(text_blob)[:max_chars]
 
     prompt = f"""You are an expert language detection system.
@@ -754,28 +681,19 @@ def detect_channel_language_llm(
     """
 
     try:
-        if model_type.lower() == "gemini":
-            if not gemini_model: return "un"
-            # Use a config with fewer tokens for this simple task
-            simple_config = genai.GenerationConfig(max_output_tokens=10, temperature=0.0)
-            response = gemini_model.generate_content(prompt, generation_config=simple_config)
-            lang_code = response.text.strip().lower()
-            
-        elif model_type.lower() == "gpt":
-            if not gpt_client: return "un"
-            response = gpt_client.chat.completions.create(
-                model="gpt-4o-mini", # gpt-3.5-turbo could also work here
-                messages=[{"role": "user", "content": prompt}],
-                temperature=0,
-                max_tokens=10,
-            )
-            lang_code = response.choices[0].message.content.strip().lower()
-            
-        else:
+        if not gpt_client:
             return "un"
 
+        response = gpt_client.chat.completions.create(
+            model="gpt-4o-mini",
+            messages=[{"role": "user", "content": prompt}],
+            temperature=0,
+            max_tokens=10,
+        )
+        lang_code = response.choices[0].message.content.strip().lower()
+
         # Basic validation of the 2-letter code
-        if len(lang_code) == 2 and re.match(r'^[a-z]{2}$', lang_code):
+        if len(lang_code) == 2 and re.match(r"^[a-z]{2}$", lang_code):
             return lang_code
         else:
             print(f"  ⚠️  Language detector returned invalid code: {lang_code}")
@@ -788,25 +706,27 @@ def detect_channel_language_llm(
 
 # (Make sure json, re, time, and gpt_client are available)
 
+
 # This is a simple helper just to trim the long keyword string for the prompt
 def _get_keyword_sample_from_string(kw_string: str, max_sample=20) -> str:
     """Gets a representative sample of keywords from a flat string."""
-    if not isinstance(kw_string, str): 
+    if not isinstance(kw_string, str):
         return "N/A"
-    kws = [k.strip() for k in kw_string.split(',') if k.strip()]
+    kws = [k.strip() for k in kw_string.split(",") if k.strip()]
     return ", ".join(kws[:max_sample])
+
 
 # ============================================
 # NEW: Final "Extra Call" Competitor Check (v5 - Raw Data Only)
 # ============================================
 def is_direct_competitor_llm_final_check(
     seed_name: str,
-    seed_keywords_str: str,     # <-- NEW: Pass seed's flat keyword string
+    seed_keywords_str: str,  # <-- NEW: Pass seed's flat keyword string
     candidate_name: str,
     candidate_description: str,
-    candidate_keywords_str: str, # <-- Pass candidate's flat keyword string
+    candidate_keywords_str: str,  # <-- Pass candidate's flat keyword string
     model_provider: str = "gpt",
-    retries: int = 2
+    retries: int = 2,
 ) -> dict:
     """
     Uses GPT-4o-mini for a final, strict "Yes/No" check.
@@ -815,8 +735,10 @@ def is_direct_competitor_llm_final_check(
 
     # Get keyword samples from the flat strings
     seed_kw_sample = _get_keyword_sample_from_string(seed_keywords_str, max_sample=20)
-    cand_kw_sample = _get_keyword_sample_from_string(candidate_keywords_str, max_sample=20)
-    cand_desc_snippet = (candidate_description[:1000] if candidate_description else "N/A")
+    cand_kw_sample = _get_keyword_sample_from_string(
+        candidate_keywords_str, max_sample=20
+    )
+    cand_desc_snippet = candidate_description[:1000] if candidate_description else "N/A"
 
     prompt = f"""You are an expert YouTube analyst. Your job is to make a final "Yes" or "No" decision on whether two channels are DIRECT content competitors.
     
@@ -887,34 +809,53 @@ def is_direct_competitor_llm_final_check(
             if model_provider.lower() == "gpt":
                 if not gpt_client:
                     print("  ❌ GPT client not initialized for final check.")
-                    return {"is_competitor": False, "confidence": "Low", "reason": "GPT client not initialized."}
-                
+                    return {
+                        "is_competitor": False,
+                        "confidence": "Low",
+                        "reason": "GPT client not initialized.",
+                    }
+
                 response = gpt_client.chat.completions.create(
-                    model="gpt-4o-mini", # Use the cheap mini model
-                    response_format={"type": "json_object"}, # Force JSON output
+                    model="gpt-4o-mini",  # Use the cheap mini model
+                    response_format={"type": "json_object"},  # Force JSON output
                     messages=[{"role": "user", "content": prompt}],
                     temperature=0.1,
-                    max_tokens=150
+                    max_tokens=150,
                 )
                 result_text = response.choices[0].message.content.strip()
-                
+
                 try:
                     result_json = json.loads(result_text)
-                    if 'is_competitor' in result_json:
-                        print(f"     ✅ LLM Final Check: {'Yes' if result_json['is_competitor'] else 'No'}. Reason: {result_json.get('reason', 'N/A')}")
+                    if "is_competitor" in result_json:
+                        print(
+                            f"     ✅ LLM Final Check: {'Yes' if result_json['is_competitor'] else 'No'}. Reason: {result_json.get('reason', 'N/A')}"
+                        )
                         return result_json
                 except json.JSONDecodeError:
-                    print(f"  ⚠️ LLM Final Check returned invalid JSON: '{result_text}' (Attempt {attempt+1})")
+                    print(
+                        f"  ⚠️ LLM Final Check returned invalid JSON: '{result_text}' (Attempt {attempt + 1})"
+                    )
 
             else:
-                 print(f"  ❌ Unknown model provider '{model_provider}'")
-                 return {"is_competitor": False, "confidence": "Low", "reason": "Unknown model provider."}
+                print(f"  ❌ Unknown model provider '{model_provider}'")
+                return {
+                    "is_competitor": False,
+                    "confidence": "Low",
+                    "reason": "Unknown model provider.",
+                }
 
         except Exception as e:
-            print(f"  ❌ LLM Final Check Error (Attempt {attempt+1}/{retries}): {str(e)[:100]}")
+            print(
+                f"  ❌ LLM Final Check Error (Attempt {attempt + 1}/{retries}): {str(e)[:100]}"
+            )
             time.sleep(5 * (attempt + 1))
-            
-    return {"is_competitor": False, "confidence": "Low", "reason": "All API retries failed."}
+
+    return {
+        "is_competitor": False,
+        "confidence": "Low",
+        "reason": "All API retries failed.",
+    }
+
 
 # ============================================
 # NEW: "One-Shot" Fingerprint Function
@@ -931,12 +872,12 @@ def _get_openai_embedding(text_list: list, model="text-embedding-3-small") -> li
     """
     if not text_list:
         return []
-    
+
     # Clean input
     text_list = [str(text).strip() for text in text_list if str(text).strip()]
     if not text_list:
         return []
-        
+
     try:
         response = gpt_client.embeddings.create(input=text_list, model=model)
         return [item.embedding for item in response.data]
@@ -946,26 +887,27 @@ def _get_openai_embedding(text_list: list, model="text-embedding-3-small") -> li
 
 
 def calculate_keyword_score_openai(
-    seed_keywords: dict, 
+    seed_keywords: dict,
     candidate_keywords: dict,
     max_keywords_per_channel: int = 50,
-    verbose: bool = False) -> float:
+    verbose: bool = False,
+) -> float:
     """
     OPTIMIZED Keyword Similarity Score using OpenAI embeddings.
-    
+
     Features:
     - Single batched API call (2x faster)
     - Token limit safety
     - Optional verbose logging
     - Averages all keywords into semantic vector
-    
+
     Returns: 0.0 - 1.0
     """
     if not gpt_client:
         if verbose:
             print("  ❌ OpenAI client not initialized.")
         return 0.0
-        
+
     if not seed_keywords or not candidate_keywords:
         return 0.0
 
@@ -979,7 +921,9 @@ def calculate_keyword_score_openai(
         cand_kw_list = cand_kw_list[:max_keywords_per_channel]
 
         if verbose:
-            print(f"  📊 Seed: {len(seed_kw_list)} keywords | Candidate: {len(cand_kw_list)} keywords")
+            print(
+                f"  📊 Seed: {len(seed_kw_list)} keywords | Candidate: {len(cand_kw_list)} keywords"
+            )
 
         if not seed_kw_list or not cand_kw_list:
             return 0.0
@@ -987,7 +931,7 @@ def calculate_keyword_score_openai(
         # --- 2. Batch Embedding (Single API Call) ---
         all_keywords = seed_kw_list + cand_kw_list
         all_vectors = _get_openai_embedding(all_keywords)
-        
+
         if not all_vectors or len(all_vectors) != len(all_keywords):
             if verbose:
                 print("  ⚠️ Embedding generation failed.")
@@ -1004,13 +948,12 @@ def calculate_keyword_score_openai(
 
         # --- 4. Cosine Similarity ---
         final_score = cosine_similarity(
-            avg_seed_vec.reshape(1, -1),
-            avg_cand_vec.reshape(1, -1)
+            avg_seed_vec.reshape(1, -1), avg_cand_vec.reshape(1, -1)
         )[0][0]
-        
+
         if verbose:
             print(f"  ✅ Keyword score: {final_score:.3f}")
-        
+
         return round(float(final_score), 3)
 
     except Exception as e:
@@ -1018,50 +961,64 @@ def calculate_keyword_score_openai(
         return 0.0
 
 
-
 def get_channel_fingerprint_oneshot(
     channel_name: str,
     channel_description: str,
-    video_df: pd.DataFrame, # Pass in the DataFrame of 20 videos
+    video_df: pd.DataFrame,  # Pass in the DataFrame of 20 videos
     model_provider: str = "gpt",
     max_chars: int = 40000,
-    retries: int = 3
+    retries: int = 3,
 ) -> dict:
     """
     Performs a single, "one-shot" LLM call to extract BOTH the
     detailed channel profile and the focused SEO keywords.
     (Version 2: Includes fix for nan/float values and ad detection)
     """
-    
+
     # --- 1. Combine all text for context ---
-    
+
     # --- FIX for nan/float in channel_description ---
-    safe_channel_desc = str(channel_description) if pd.notna(channel_description) else "N/A - No description provided"
-    
+    safe_channel_desc = (
+        str(channel_description)
+        if pd.notna(channel_description)
+        else "N/A - No description provided"
+    )
+
     combined_text = f"CHANNEL NAME: {channel_name}\n"
     combined_text += f"CHANNEL DESCRIPTION:\n{safe_channel_desc}\n\n"
-    
+
     # --- FIX for nan/float in video_titles ---
-    video_titles = video_df['title'].tolist()
-    safe_titles = [str(t) for t in video_titles if pd.notna(t)] # Convert all valid titles to string
+    video_titles = video_df["title"].tolist()
+    safe_titles = [
+        str(t) for t in video_titles if pd.notna(t)
+    ]  # Convert all valid titles to string
     combined_text += "--- RECENT VIDEO TITLES (Sample) ---\n"
     combined_text += "\n".join(safe_titles) + "\n\n"
-    
+
     # --- FIX for nan/float in video_descs + Ad Detection ---
-    video_descs = video_df['description'].tolist()
+    video_descs = video_df["description"].tolist()
     safe_descs = [str(d) for d in video_descs if pd.notna(d) and isinstance(d, str)]
-    
+
     # Heuristic: If > 70% of descriptions start with "http" or "Go to", they are ads.
     ad_count = 0
     for d in safe_descs:
         d_low = d.lower()
-        if d_low.startswith("http") or d_low.startswith("go to") or "tryfum.com" in d_low or "buyraycon.com" in d_low:
+        if (
+            d_low.startswith("http")
+            or d_low.startswith("go to")
+            or "tryfum.com" in d_low
+            or "buyraycon.com" in d_low
+        ):
             ad_count += 1
-            
+
     if safe_descs and (ad_count / len(safe_descs)) > 0.7:
-        print("  ⚠️  CONTEXT DETECTED: Video descriptions are sponsor ads. Telling LLM to IGNORE them.")
+        print(
+            "  ⚠️  CONTEXT DETECTED: Video descriptions are sponsor ads. Telling LLM to IGNORE them."
+        )
         combined_text += "--- RECENT VIDEO DESCRIPTIONS (Sample) ---\n"
-        combined_text += "[Video descriptions are all sponsor ads and have been ignored]\n"
+        combined_text += (
+            "[Video descriptions are all sponsor ads and have been ignored]\n"
+        )
         # We will also add this instruction to the main prompt
     else:
         # If they are not ads, add them.
@@ -1069,14 +1026,16 @@ def get_channel_fingerprint_oneshot(
         for i, desc in enumerate(video_descs):
             # This is the simple fix: convert to string first, THEN slice.
             safe_desc_str = str(desc)
-            if safe_desc_str.lower() == 'nan':
+            if safe_desc_str.lower() == "nan":
                 safe_desc_str = "[No Description]"
-            combined_text += f"Video {i+1} Desc: {safe_desc_str[:300]}...\n" 
-                
+            combined_text += f"Video {i + 1} Desc: {safe_desc_str[:300]}...\n"
+
     truncated_content = combined_text
     # truncated_content = combined_text[:max_chars]
-    print(f"📤 Sending {len(truncated_content)} chars to {model_provider.upper()} for one-shot analysis...")
-    
+    print(
+        f"📤 Sending {len(truncated_content)} chars to {model_provider.upper()} for one-shot analysis..."
+    )
+
     # --- 2. The New "Master" Prompt (Now with Title-Focus) ---
     prompt = f"""You are an expert YouTube channel analyst.
     Analyze the provided raw data (channel name, description, video titles, video descriptions) 
@@ -1151,56 +1110,61 @@ def get_channel_fingerprint_oneshot(
     OUTPUT:
     Return ONLY the valid JSON for the channel in the "RAW DATA" section.
     """
-    
+
     for attempt in range(retries):
         try:
-            # ========== GPT MODE ==========
-            if model_provider.lower() == "gpt":
-                if not gpt_client:
-                    print("❌ GPT client not initialized.")
-                    return {}
-                
-                response = gpt_client.chat.completions.create(
-                    model="gpt-4o-mini", # Use the cheap mini model
-                    response_format={"type": "json_object"}, # Force JSON
-                    messages=[
-                        {"role": "system", "content": "You are a YouTube channel analyst outputting JSON."},
-                        {"role": "user", "content": prompt}
-                    ],
-                    temperature=0.1,
-                    max_tokens=2000 # Allow for larger JSON output
-                )
-                result_text = response.choices[0].message.content.strip()
-
-            # ========== (Add Gemini mode here if needed) ==========
-            else:
-                print(f"❌ Unknown model provider '{model_provider}'.")
+            if not gpt_client:
+                print("❌ GPT client not initialized.")
                 return {}
+
+            response = gpt_client.chat.completions.create(
+                model="gpt-4o",
+                response_format={"type": "json_object"},
+                messages=[
+                    {
+                        "role": "system",
+                        "content": "You are a YouTube channel analyst outputting JSON.",
+                    },
+                    {"role": "user", "content": prompt},
+                ],
+                temperature=0.1,
+                max_tokens=4000,
+            )
+            result_text = response.choices[0].message.content.strip()
 
             # ========== Parse JSON Output ==========
             try:
                 parsed_json = json.loads(result_text)
-                
+
                 # Validate the complex structure
-                if "profile" in parsed_json and "keywords" in parsed_json and \
-                   isinstance(parsed_json["profile"], dict) and \
-                   isinstance(parsed_json["keywords"], dict) and \
-                   "niche" in parsed_json["profile"]:
-                    
+                if (
+                    "profile" in parsed_json
+                    and "keywords" in parsed_json
+                    and isinstance(parsed_json["profile"], dict)
+                    and isinstance(parsed_json["keywords"], dict)
+                    and "niche" in parsed_json["profile"]
+                ):
                     print(f"✅ One-shot analysis successful for {channel_name}.")
-                    return parsed_json # Return the full JSON object
+                    return parsed_json  # Return the full JSON object
                 else:
-                    print(f"⚠️ LLM returned invalid JSON structure: {result_text[:100]}... (Attempt {attempt+1})")
+                    print(
+                        f"⚠️ LLM returned invalid JSON structure: {result_text[:100]}... (Attempt {attempt + 1})"
+                    )
 
             except json.JSONDecodeError:
-                print(f"⚠️ LLM output was not valid JSON: {result_text[:100]}... (Attempt {attempt+1})")
-                
+                print(
+                    f"⚠️ LLM output was not valid JSON: {result_text[:100]}... (Attempt {attempt + 1})"
+                )
+
         except Exception as e:
-            print(f"❌ LLM One-Shot Error (Attempt {attempt+1}/{retries}): {str(e)[:100]}")
+            print(
+                f"❌ LLM One-Shot Error (Attempt {attempt + 1}/{retries}): {str(e)[:100]}"
+            )
             time.sleep(5 * (attempt + 1))
-            
+
     print(f"❌ All retries failed for {channel_name}.")
-    return {} # Return empty dict if all retries fail
+    return {}  # Return empty dict if all retries fail
+
 
 # def calculate_profile_score_llm(
 #     seed_profile: dict,
@@ -1212,14 +1176,14 @@ def get_channel_fingerprint_oneshot(
 #     model_provider: str = "gpt") -> float:
 #     """
 #     OPTIMIZED Profile Score with Target Audience.
-    
+
 #     Scoring cascade:
 #     1. Ideology Filter (HARD)
 #     2. Format/Intent Filter (HARD)
 #     3. Niche + Audience Similarity (SOFT)
 #     4. Speaker Penalty (MINOR)
 #     """
-    
+
 #     # --- Extract profile fields ---
 #     s_niche = seed_profile.get("niche", "Unknown")
 #     s_format = seed_profile.get("format", "Unknown")
@@ -1235,7 +1199,7 @@ def get_channel_fingerprint_oneshot(
 #     c_ideology = candidate_profile.get("ideology", "N/A")
 #     c_audience = candidate_profile.get("target_audience", "General Audience")
 
-    
+
 #     prompt = f"""You are an expert YouTube channel analyst evaluating channel similarity for content discovery.
 #         Calculate a similarity score (0.0 to 1.0) between these two channels based ONLY on their profiles.
 
@@ -1267,11 +1231,11 @@ def get_channel_fingerprint_oneshot(
 #             - Direct opposites (Progressive/Left ↔ Conservative/Right): **SCORE 0.1**. Stop.
 #             - One political, one N/A (e.g., Political ↔ N/A): **MAX SCORE 0.35**. Proceed but cap at 0.35.
 #             - Compatible or both non-political: Proceed normally.
-            
+
 #             Examples:
-#             - Channel A (Progressive) vs Channel B (Conservative): 0.1 
-#             - Channel A (Progressive) vs Channel B (N/A): Max 0.35 
-#             - Channel A (Libertarian) vs Channel B (Progressive): Compatible 
+#             - Channel A (Progressive) vs Channel B (Conservative): 0.1
+#             - Channel A (Progressive) vs Channel B (N/A): Max 0.35
+#             - Channel A (Libertarian) vs Channel B (Progressive): Compatible
 
 #         2. **FORMAT/INTENT COMPATIBILITY (40% of final score):**
 #             - Identical formats: 1.0
@@ -1279,7 +1243,7 @@ def get_channel_fingerprint_oneshot(
 #             - Compatible (Documentary ↔ Podcast/Interviews): 0.7
 #             - Partially compatible (Educational Tutorial ↔ Talking-Head): 0.5
 #             - Incompatible (Vlog ↔ Educational Tutorial): 0.2
-            
+
 #             Intent compatibility:
 #             - "To Persuade" ↔ "To Explain": 0.8 (compatible)
 #             - "To Explain" ↔ "To Entertain": 0.4 (less compatible)
@@ -1296,10 +1260,10 @@ def get_channel_fingerprint_oneshot(
 #             - Partially overlapping (Students ↔ Young Professionals): 0.7
 #             - Different but compatible (Curious Learners ↔ Critical Thinkers): 0.8
 #             - Very different (Students ↔ Retirees): 0.3
-            
+
 #             Examples:
-#             - "Curious Learners" ↔ "Socially Conscious Individuals": 0.8 
-#             - "Students" ↔ "Entrepreneurs": 0.5 
+#             - "Curious Learners" ↔ "Socially Conscious Individuals": 0.8
+#             - "Students" ↔ "Entrepreneurs": 0.5
 
 #         5. **SPEAKER TYPE ADJUSTMENT (5% penalty if mismatch):**
 #             - Solo Creator ↔ Solo Creator: No penalty
@@ -1314,30 +1278,30 @@ def get_channel_fingerprint_oneshot(
 #         - Cap at MAX SCORE from ideology filter (if applicable)
 
 #         **EXAMPLES:**
-#         - Channel A (Libertarian, Video Essay, Persuade, Societal Critique, Skeptics) 
+#         - Channel A (Libertarian, Video Essay, Persuade, Societal Critique, Skeptics)
 #         vs Channel B (Progressive, Explainer Doc, Explain, Political Commentary, Curious Learners):
 #         → Format: 0.9, Intent: 0.8 → Format/Intent: 0.85
 #         → Niche: 0.9
 #         → Audience: 0.75 (Skeptics vs Curious = compatible)
 #         → Speaker: -0.05 (Anonymous vs Media)
-#         → Final: (0.85 × 0.4) + (0.9 × 0.4) + (0.75 × 0.15) - 0.05 = 0.76 
+#         → Final: (0.85 × 0.4) + (0.9 × 0.4) + (0.75 × 0.15) - 0.05 = 0.76
 
 #         - Channel A (N/A, Educational Tutorial, Educate, Productivity, Students)
 #         vs Channel B (N/A, Motivational Talks, Inspire, Self-Help, Executives):
 #         → Niche: 0.6 (Productivity vs Self-Help = related)
 #         → Audience: 0.3 (Students vs Executives = very different!)
-#         → Final: ~0.45 
+#         → Final: ~0.45
 
 #         Return ONLY a decimal number (e.g., 0.76). No explanation.
 #     """
-    
+
 
 #     try:
 #         if model_provider.lower() == "gpt":
 #             if not gpt_client:
 #                  print("  ❌ GPT client not initialized.")
 #                  return 0.0
-            
+
 #             response = gpt_client.chat.completions.create(
 #                 model="gpt-4o-mini",
 #                 messages=[{"role": "user", "content": prompt}],
@@ -1351,37 +1315,39 @@ def get_channel_fingerprint_oneshot(
 
 #         # Extract score
 #         match = re.search(r'0?\.\d+|1\.0', result_text)
-        
+
 #         if match:
 #             score = float(match.group())
 #             return round(min(max(score, 0.0), 1.0), 3)
 #         else:
 #             print(f"  ⚠️ Non-numeric result: {result_text}")
 #             return 0.0
-            
+
 #     except Exception as e:
 #         print(f"  ❌ Profile score error: {str(e)[:100]}")
 #         return 0.0
+
 
 def calculate_profile_score_llm_holistic(
     seed_profile: dict,
     candidate_profile: dict,
     seed_channel_name: str,
     candidate_channel_name: str,
-    model_provider: str = "gpt") -> dict: # --- CHANGED: Returns dict ---
+    model_provider: str = "gpt",
+) -> dict:  # --- CHANGED: Returns dict ---
     """
     V3 - "Holistic Analyst" Model (Replaces rigid calculator)
     ...
     """
-    
+
     # --- Default error return ---
     error_output = {
         "similarity_score": 0.0,
         "competitor_score": 0.0,
         "audience_overlap_score": 0.0,
-        "reason": "API or parsing error."
+        "reason": "API or parsing error.",
     }
-    
+
     # --- Extract profile fields (anonymized for the prompt) ---
     s_niche = seed_profile.get("niche", "Unknown")
     s_format = seed_profile.get("format", "Unknown")
@@ -1396,7 +1362,7 @@ def calculate_profile_score_llm_holistic(
     c_speaker = candidate_profile.get("speaker", "Unknown")
     c_ideology = candidate_profile.get("ideology", "N/A")
     c_audience = candidate_profile.get("target_audience", "General Audience")
-    
+
     # --- Build the new "Holistic Analyst" Prompt ---
     prompt = f"""You are an expert YouTube analyst. Your job is to compare two anonymized channel profiles and provide a holistic competitor analysis.
     
@@ -1464,30 +1430,31 @@ def calculate_profile_score_llm_holistic(
 
     Return ONLY a single, valid JSON object.
     """
-    
+
     try:
-        if model_provider.lower() == "gpt":
-            if not gpt_client:
-                print("  ❌ GPT client not initialized.")
-                return error_output
-            
-            response = gpt_client.chat.completions.create(
-                model="gpt-4o-mini",
-                response_format={"type": "json_object"}, # Force JSON output
-                messages=[{"role": "user", "content": prompt}],
-                temperature=0,
-                max_tokens=250 # Increased tokens for the JSON + reason
-            )
-            result_text = response.choices[0].message.content.strip()
-        else:
-            print(f"  ❌ Unknown model provider.")
+        if not gpt_client:
+            print("  ❌ GPT client not initialized.")
             return error_output
+
+        response = gpt_client.chat.completions.create(
+            model="gpt-4o-mini",
+            response_format={"type": "json_object"},
+            messages=[{"role": "user", "content": prompt}],
+            temperature=0,
+            max_tokens=250,
+        )
+        result_text = response.choices[0].message.content.strip()
 
         # Parse the full JSON object
         try:
             result_json = json.loads(result_text)
             # Validate the required keys
-            if "competitor_score" in result_json and "audience_overlap_score" in result_json and "reason" in result_json and "similarity_score" in result_json:
+            if (
+                "competitor_score" in result_json
+                and "audience_overlap_score" in result_json
+                and "reason" in result_json
+                and "similarity_score" in result_json
+            ):
                 return result_json
             else:
                 print(f"  ⚠️ LLM JSON missing required keys: {result_text}")
@@ -1495,11 +1462,12 @@ def calculate_profile_score_llm_holistic(
         except json.JSONDecodeError:
             print(f"  ⚠️ LLM returned invalid JSON: {result_text}")
             return error_output
-            
+
     except Exception as e:
         print(f"  ❌ Profile score error: {str(e)[:100]}")
         return error_output
-    
+
+
 def calculate_profile_score_llm_with_keywords(
     seed_profile: dict,
     candidate_profile: dict,
@@ -1507,14 +1475,15 @@ def calculate_profile_score_llm_with_keywords(
     candidate_keywords: dict,
     seed_channel_name: str,
     candidate_channel_name: str,
-    model_provider: str = "gpt") -> dict:
+    model_provider: str = "gpt",
+) -> dict:
     """
     NEW V4 - "Audience Match" Model
-    
+
     Asks the LLM to act as a content strategist, deciding if the
     Seed audience would *love* the Candidate channel, considering
     profile, format, and keyword mismatches.
-    
+
     Returns a dict, e.g.,
     {
         "audience_match_score": 0.85,
@@ -1522,17 +1491,12 @@ def calculate_profile_score_llm_with_keywords(
                    and keywords show a strong thematic overlap."
     }
     """
-    
+
     # --- Default error return ---
-    error_output = {
-        "audience_match_score": 0.0,
-        "reason": "API or parsing error."
-    }
-    
+    error_output = {"audience_match_score": 0.0, "reason": "API or parsing error."}
+
     # Use pprint to format the dicts nicely for the prompt
-    s_profile_str = pprint.pformat(seed_profile)
     s_keywords_str = pprint.pformat(seed_keywords)
-    c_profile_str = pprint.pformat(candidate_profile)
     c_keywords_str = pprint.pformat(candidate_keywords)
 
     prompt = f"""You are an expert YouTube Content Strategist. Your goal is to find new channels for your audience.
@@ -1566,24 +1530,20 @@ def calculate_profile_score_llm_with_keywords(
         
     Return ONLY a single, valid JSON object.
     """
-    
+
     try:
-        if model_provider.lower() == "gpt":
-            if not gpt_client:
-                 print("  ❌ GPT client not initialized.")
-                 return error_output
-            
-            response = gpt_client.chat.completions.create(
-                model="gpt-4o-mini",
-                response_format={"type": "json_object"}, # Force JSON
-                messages=[{"role": "user", "content": prompt}],
-                temperature=0.1,
-                max_tokens=1000 # Allow for longer prompt + JSON
-            )
-            result_text = response.choices[0].message.content.strip()
-        else:
-            print(f"  ❌ Unknown model provider.")
+        if not gpt_client:
+            print("  ❌ GPT client not initialized.")
             return error_output
+
+        response = gpt_client.chat.completions.create(
+            model="gpt-4o-mini",
+            response_format={"type": "json_object"},
+            messages=[{"role": "user", "content": prompt}],
+            temperature=0.1,
+            max_tokens=1000,
+        )
+        result_text = response.choices[0].message.content.strip()
 
         try:
             result_json = json.loads(result_text)
@@ -1595,8 +1555,7 @@ def calculate_profile_score_llm_with_keywords(
         except json.JSONDecodeError:
             print(f"  ⚠️ LLM returned invalid JSON: {result_text}")
             return error_output
-            
+
     except Exception as e:
         print(f"  ❌ Profile score error: {str(e)[:100]}")
         return error_output
-    
