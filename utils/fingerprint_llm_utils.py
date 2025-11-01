@@ -1094,10 +1094,10 @@ def get_channel_fingerprint_oneshot(
     ---
     This key must contain an object with these 6 sub-keys:
     1.  "niche": The channel's primary TOPIC (e.g., "Productivity", "Business Case Studies", "Scam Investigation").
-    2.  "format": The primary STYLE (e.g., "Educational Tutorial", "Explainer Documentary", "Video Essay", "Podcast/Interviews", "Talking-Head Analysis").
-    3.  "intent": The channel's main GOAL. Must be one of: ["To Explain", "To Persuade", "To Report News", "To Entertain", "To Educate (Tutorial)", "To Inspire"].
-    4.  "speaker": The primary point of view. Must be one of: ["Solo Creator", "Brand/Corporation", "Media Company", "Anonymous"].
-    5.  "ideology": The channel's political bias. Must be one of: ["Progressive/Left", "Conservative/Right", "Libertarian", "Neutral/Academic"].
+    2.  "format": The primary STYLE .
+    3.  "intent": The channel's main GOAL.
+    4.  "speaker": The primary point of view.
+    5.  "ideology": The channel's political bias. 
     6.  "target_audience": The primary demographic (e.g., "Curious Learners", "Political Activists", "Students", "Entrepreneurs").
 
     ### CRITICAL RULE ###
@@ -1202,25 +1202,187 @@ def get_channel_fingerprint_oneshot(
     print(f"❌ All retries failed for {channel_name}.")
     return {} # Return empty dict if all retries fail
 
-def calculate_profile_score_llm(
+# def calculate_profile_score_llm(
+#     seed_profile: dict,
+#     candidate_profile: dict,
+#     seed_keywords: dict,
+#     candidate_keywords: dict,
+#     seed_channel_name: str,
+#     candidate_channel_name: str,
+#     model_provider: str = "gpt") -> float:
+#     """
+#     OPTIMIZED Profile Score with Target Audience.
+    
+#     Scoring cascade:
+#     1. Ideology Filter (HARD)
+#     2. Format/Intent Filter (HARD)
+#     3. Niche + Audience Similarity (SOFT)
+#     4. Speaker Penalty (MINOR)
+#     """
+    
+#     # --- Extract profile fields ---
+#     s_niche = seed_profile.get("niche", "Unknown")
+#     s_format = seed_profile.get("format", "Unknown")
+#     s_intent = seed_profile.get("intent", "Unknown")
+#     s_speaker = seed_profile.get("speaker", "Unknown")
+#     s_ideology = seed_profile.get("ideology", "N/A")
+#     s_audience = seed_profile.get("target_audience", "General Audience")
+
+#     c_niche = candidate_profile.get("niche", "Unknown")
+#     c_format = candidate_profile.get("format", "Unknown")
+#     c_intent = candidate_profile.get("intent", "Unknown")
+#     c_speaker = candidate_profile.get("speaker", "Unknown")
+#     c_ideology = candidate_profile.get("ideology", "N/A")
+#     c_audience = candidate_profile.get("target_audience", "General Audience")
+
+    
+#     prompt = f"""You are an expert YouTube channel analyst evaluating channel similarity for content discovery.
+#         Calculate a similarity score (0.0 to 1.0) between these two channels based ONLY on their profiles.
+
+#         SEED CHANNEL: "{seed_channel_name}"
+#         Profile: {{
+#         "niche": "{s_niche}",
+#         "format": "{s_format}",
+#         "intent": "{s_intent}",
+#         "speaker": "{s_speaker}",
+#         "ideology": "{s_ideology}",
+#         "target_audience": "{s_audience}"
+#         }}
+#         SEED KEYWORDS: "{seed_keywords}"
+
+#         CANDIDATE CHANNEL: "{candidate_channel_name}"
+#         Profile: {{
+#         "niche": "{c_niche}",
+#         "format": "{c_format}",
+#         "intent": "{c_intent}",
+#         "speaker": "{c_speaker}",
+#         "ideology": "{c_ideology}",
+#         "target_audience": "{c_audience}"
+#         }}
+#         CANDIDATE KEYWORDS: "{candidate_keywords}"
+
+#         **SCORING RULES (Apply in order):**
+
+#         1. **IDEOLOGY FILTER (CRITICAL - Can cause instant rejection):**
+#             - Direct opposites (Progressive/Left ↔ Conservative/Right): **SCORE 0.1**. Stop.
+#             - One political, one N/A (e.g., Political ↔ N/A): **MAX SCORE 0.35**. Proceed but cap at 0.35.
+#             - Compatible or both non-political: Proceed normally.
+            
+#             Examples:
+#             - Channel A (Progressive) vs Channel B (Conservative): 0.1 
+#             - Channel A (Progressive) vs Channel B (N/A): Max 0.35 
+#             - Channel A (Libertarian) vs Channel B (Progressive): Compatible 
+
+#         2. **FORMAT/INTENT COMPATIBILITY (40% of final score):**
+#             - Identical formats: 1.0
+#             - Highly compatible (Video Essay ↔ Explainer Documentary): 0.9
+#             - Compatible (Documentary ↔ Podcast/Interviews): 0.7
+#             - Partially compatible (Educational Tutorial ↔ Talking-Head): 0.5
+#             - Incompatible (Vlog ↔ Educational Tutorial): 0.2
+            
+#             Intent compatibility:
+#             - "To Persuade" ↔ "To Explain": 0.8 (compatible)
+#             - "To Explain" ↔ "To Entertain": 0.4 (less compatible)
+
+#         3. **NICHE SIMILARITY (40% of final score):**
+#             - Identical niche: 1.0
+#             - Very similar (Political Commentary ↔ Social Commentary): 0.9
+#             - Similar (Business Analysis ↔ Economic Analysis): 0.8
+#             - Loosely related (Tech ↔ Business): 0.5
+#             - Unrelated (Cooking ↔ Fitness): 0.1
+
+#         4. **TARGET AUDIENCE OVERLAP (15% of final score):**
+#             - Identical or highly overlapping audiences: 1.0
+#             - Partially overlapping (Students ↔ Young Professionals): 0.7
+#             - Different but compatible (Curious Learners ↔ Critical Thinkers): 0.8
+#             - Very different (Students ↔ Retirees): 0.3
+            
+#             Examples:
+#             - "Curious Learners" ↔ "Socially Conscious Individuals": 0.8 
+#             - "Students" ↔ "Entrepreneurs": 0.5 
+
+#         5. **SPEAKER TYPE ADJUSTMENT (5% penalty if mismatch):**
+#             - Solo Creator ↔ Solo Creator: No penalty
+#             - Media Company ↔ Media Company: No penalty
+#             - Solo ↔ Media Company: -0.05 penalty (minor!)
+#             - Solo ↔ Brand/Corporation: -0.10 penalty
+#             - Anonymous ↔ Known personality: No penalty
+
+#         **CALCULATION:**
+#         - Start with base score from Format/Intent (40%) + Niche (40%) + Audience (15%)
+#         - Apply Speaker penalty (if any)
+#         - Cap at MAX SCORE from ideology filter (if applicable)
+
+#         **EXAMPLES:**
+#         - Channel A (Libertarian, Video Essay, Persuade, Societal Critique, Skeptics) 
+#         vs Channel B (Progressive, Explainer Doc, Explain, Political Commentary, Curious Learners):
+#         → Format: 0.9, Intent: 0.8 → Format/Intent: 0.85
+#         → Niche: 0.9
+#         → Audience: 0.75 (Skeptics vs Curious = compatible)
+#         → Speaker: -0.05 (Anonymous vs Media)
+#         → Final: (0.85 × 0.4) + (0.9 × 0.4) + (0.75 × 0.15) - 0.05 = 0.76 
+
+#         - Channel A (N/A, Educational Tutorial, Educate, Productivity, Students)
+#         vs Channel B (N/A, Motivational Talks, Inspire, Self-Help, Executives):
+#         → Niche: 0.6 (Productivity vs Self-Help = related)
+#         → Audience: 0.3 (Students vs Executives = very different!)
+#         → Final: ~0.45 
+
+#         Return ONLY a decimal number (e.g., 0.76). No explanation.
+#     """
+    
+
+#     try:
+#         if model_provider.lower() == "gpt":
+#             if not gpt_client:
+#                  print("  ❌ GPT client not initialized.")
+#                  return 0.0
+            
+#             response = gpt_client.chat.completions.create(
+#                 model="gpt-4o-mini",
+#                 messages=[{"role": "user", "content": prompt}],
+#                 temperature=0,
+#                 max_tokens=10
+#             )
+#             result_text = response.choices[0].message.content.strip()
+#         else:
+#             print(f"  ❌ Unknown model provider.")
+#             return 0.0
+
+#         # Extract score
+#         match = re.search(r'0?\.\d+|1\.0', result_text)
+        
+#         if match:
+#             score = float(match.group())
+#             return round(min(max(score, 0.0), 1.0), 3)
+#         else:
+#             print(f"  ⚠️ Non-numeric result: {result_text}")
+#             return 0.0
+            
+#     except Exception as e:
+#         print(f"  ❌ Profile score error: {str(e)[:100]}")
+#         return 0.0
+
+def calculate_profile_score_llm_holistic(
     seed_profile: dict,
     candidate_profile: dict,
-    seed_keywords: dict,
-    candidate_keywords: dict,
     seed_channel_name: str,
     candidate_channel_name: str,
-    model_provider: str = "gpt") -> float:
+    model_provider: str = "gpt") -> dict: # --- CHANGED: Returns dict ---
     """
-    OPTIMIZED Profile Score with Target Audience.
-    
-    Scoring cascade:
-    1. Ideology Filter (HARD)
-    2. Format/Intent Filter (HARD)
-    3. Niche + Audience Similarity (SOFT)
-    4. Speaker Penalty (MINOR)
+    V3 - "Holistic Analyst" Model (Replaces rigid calculator)
+    ...
     """
     
-    # --- Extract profile fields ---
+    # --- Default error return ---
+    error_output = {
+        "similarity_score": 0.0,
+        "competitor_score": 0.0,
+        "audience_overlap_score": 0.0,
+        "reason": "API or parsing error."
+    }
+    
+    # --- Extract profile fields (anonymized for the prompt) ---
     s_niche = seed_profile.get("niche", "Unknown")
     s_format = seed_profile.get("format", "Unknown")
     s_intent = seed_profile.get("intent", "Unknown")
@@ -1234,131 +1396,207 @@ def calculate_profile_score_llm(
     c_speaker = candidate_profile.get("speaker", "Unknown")
     c_ideology = candidate_profile.get("ideology", "N/A")
     c_audience = candidate_profile.get("target_audience", "General Audience")
-
-    pprint.pprint(candidate_keywords)
-
-    pprint.pprint(seed_keywords)
     
-    prompt = f"""You are an expert YouTube channel analyst evaluating channel similarity for content discovery.
-        Calculate a similarity score (0.0 to 1.0) between these two channels based ONLY on their profiles.
+    # --- Build the new "Holistic Analyst" Prompt ---
+    prompt = f"""You are an expert YouTube analyst. Your job is to compare two anonymized channel profiles and provide a holistic competitor analysis.
+    
+    **CRITICAL RULE:** Do NOT use any outside knowledge. Base your analysis *ONLY* on the profile data provided for "{seed_channel_name}" and "{candidate_channel_name}".
 
-        SEED CHANNEL: "{seed_channel_name}"
-        Profile: {{
-        "niche": "{s_niche}",
-        "format": "{s_format}",
-        "intent": "{s_intent}",
-        "speaker": "{s_speaker}",
-        "ideology": "{s_ideology}",
-        "target_audience": "{s_audience}"
-        }}
+    ---
+    SEED CHANNEL: "{seed_channel_name}"
+    Profile: {{
+      "niche": "{s_niche}",
+      "format": "{s_format}",
+      "intent": "{s_intent}",
+      "speaker": "{s_speaker}",
+      "ideology": "{s_ideology}",
+      "target_audience": "{s_audience}"
+    }}
 
-        CANDIDATE CHANNEL: "{candidate_channel_name}"
-        Profile: {{
-        "niche": "{c_niche}",
-        "format": "{c_format}",
-        "intent": "{c_intent}",
-        "speaker": "{c_speaker}",
-        "ideology": "{c_ideology}",
-        "target_audience": "{c_audience}"
-        }}
+    CANDIDATE CHANNEL: "{candidate_channel_name}"
+    Profile: {{
+      "niche": "{c_niche}",
+      "format": "{c_format}",
+      "intent": "{c_intent}",
+      "speaker": "{c_speaker}",
+      "ideology": "{c_ideology}",
+      "target_audience": "{c_audience}"
+    }}
+    ---
 
-        **SCORING RULES (Apply in order):**
+    **TASK:**
+    Provide a JSON object with four keys:
+    1.  `"similarity_score"`: (0.0-1.0) How *alike* are they on paper? (Based on niche, format, intent).
+    2.  `"competitor_score"`: (0.0-1.0) How *directly* do they compete for the same user need? (Penalized heavily by ideology/intent mismatch).
+    3.  `"audience_overlap_score"`: (0.0-1.0) How likely is Channel A's audience to *also* watch Channel B? (Driven by audience, format, and niche compatibility).
+    4.  `"reason"`: A one-sentence explanation for your scores, comparing the key profile points.
 
-        1. **IDEOLOGY FILTER (CRITICAL - Can cause instant rejection):**
-            - Direct opposites (Progressive/Left ↔ Conservative/Right): **SCORE 0.1**. Stop.
-            - One political, one N/A (e.g., Political ↔ N/A): **MAX SCORE 0.35**. Proceed but cap at 0.35.
-            - Compatible or both non-political: Proceed normally.
+    **REASONING PRINCIPLES (Apply in this order):**
+
+    1.  **IDEOLOGY (CRITICAL):**
+        -   If `ideology` is a direct opposite (e.g., "Progressive/Left" vs "Conservative/Right") -> They are antagonists. `competitor_score` and `audience_overlap_score` MUST be ~0.1. `similarity_score` can still be high (e.g., 0.7) if they are both political commentators.
+        -   If one is political (Left/Right) and one is "N/A - Non-Political" -> They are not direct competitors. `competitor_score` MUST be low (~0.3). `audience_overlap_score` can be high (0.5-0.8) if `format` and `target_audience` match (e.g., "Curious Learners").
+        -   If ideologies are compatible or both are "N/A", proceed.
+
+    2.  **FORMAT & INTENT (Drives `competitor_score`):**
+        -   Incompatible formats (e.g., "Podcast" vs. "Educational Tutorial") MUST have a low `competitor_score`.
+        -   Highly compatible (e.g., "Video Essay" ↔ "Explainer Documentary") means a high `competitor_score` (if ideology also matches).
+
+    3.  **NICHE & AUDIENCE (Drives `audience_overlap_score`):**
+        -   If Formats match but Niches are different (e.g., "Scam Investigation" vs "Geopolitics"), `competitor_score` is low, but `audience_overlap_score` can be very high if `target_audience` (e.g., "Curious Learners") is the same.
+
+    **EXAMPLE REASONING (This is how you must think):**
+
+    -   **Case 1: (Progressive vs. Progressive)**
+        -   A: {{ "format": "Video Essay", "ideology": "Progressive/Left", "niche": "Media Critique" }}
+        -   B: {{ "format": "Video Essay", "ideology": "Progressive/Left", "niche": "Political Analysis" }}
+        -   *JSON Output:* {{ "similarity_score": 0.9, "competitor_score": 0.9, "audience_overlap_score": 0.95, "reason": "Perfect ideology and format match; they are direct competitors serving a very similar audience." }}
+
+    -   **Case 2: (Progressive vs. Conservative)**
+        -   A: {{ "format": "Video Essay", "ideology": "Progressive/Left" }}
+        -   B: {{ "format": "Talking-Head Analysis", "ideology": "Conservative/Right" }}
+        -   *JSON Output:* {{ "similarity_score": 0.7, "competitor_score": 0.1, "audience_overlap_score": 0.1, "reason": "Ideological opposites. They are antagonists, not competitors, and serve different audiences." }}
+
+    -   **Case 3: (Progressive vs. Non-Political)**
+        -   A: {{ "format": "Video Essay", "ideology": "Progressive/Left", "niche": "Media Critique" }}
+        -   B: {{ "format": "Investigative Documentary", "ideology": "N/A - Non-Political", "niche": "Scam Investigation" }}
+        -   *JSON Output:* {{ "similarity_score": 0.8, "competitor_score": 0.35, "audience_overlap_score": 0.85, "reason": "Formats and audiences are very similar, but they are not direct competitors as one is political and the other is non-political investigation." }}
+
+    Return ONLY a single, valid JSON object.
+    """
+    
+    try:
+        if model_provider.lower() == "gpt":
+            if not gpt_client:
+                print("  ❌ GPT client not initialized.")
+                return error_output
             
-            Examples:
-            - Channel A (Progressive) vs Channel B (Conservative): 0.1 
-            - Channel A (Progressive) vs Channel B (N/A): Max 0.35 
-            - Channel A (Libertarian) vs Channel B (Progressive): Compatible 
+            response = gpt_client.chat.completions.create(
+                model="gpt-4o-mini",
+                response_format={"type": "json_object"}, # Force JSON output
+                messages=[{"role": "user", "content": prompt}],
+                temperature=0,
+                max_tokens=250 # Increased tokens for the JSON + reason
+            )
+            result_text = response.choices[0].message.content.strip()
+        else:
+            print(f"  ❌ Unknown model provider.")
+            return error_output
 
-        2. **FORMAT/INTENT COMPATIBILITY (40% of final score):**
-            - Identical formats: 1.0
-            - Highly compatible (Video Essay ↔ Explainer Documentary): 0.9
-            - Compatible (Documentary ↔ Podcast/Interviews): 0.7
-            - Partially compatible (Educational Tutorial ↔ Talking-Head): 0.5
-            - Incompatible (Vlog ↔ Educational Tutorial): 0.2
+        # Parse the full JSON object
+        try:
+            result_json = json.loads(result_text)
+            # Validate the required keys
+            if "competitor_score" in result_json and "audience_overlap_score" in result_json and "reason" in result_json and "similarity_score" in result_json:
+                return result_json
+            else:
+                print(f"  ⚠️ LLM JSON missing required keys: {result_text}")
+                return error_output
+        except json.JSONDecodeError:
+            print(f"  ⚠️ LLM returned invalid JSON: {result_text}")
+            return error_output
             
-            Intent compatibility:
-            - "To Persuade" ↔ "To Explain": 0.8 (compatible)
-            - "To Explain" ↔ "To Entertain": 0.4 (less compatible)
+    except Exception as e:
+        print(f"  ❌ Profile score error: {str(e)[:100]}")
+        return error_output
+    
+def calculate_profile_score_llm_with_keywords(
+    seed_profile: dict,
+    candidate_profile: dict,
+    seed_keywords: dict,
+    candidate_keywords: dict,
+    seed_channel_name: str,
+    candidate_channel_name: str,
+    model_provider: str = "gpt") -> dict:
+    """
+    NEW V4 - "Audience Match" Model
+    
+    Asks the LLM to act as a content strategist, deciding if the
+    Seed audience would *love* the Candidate channel, considering
+    profile, format, and keyword mismatches.
+    
+    Returns a dict, e.g.,
+    {
+        "audience_match_score": 0.85,
+        "reason": "High match. Formats and ideologies align,
+                   and keywords show a strong thematic overlap."
+    }
+    """
+    
+    # --- Default error return ---
+    error_output = {
+        "audience_match_score": 0.0,
+        "reason": "API or parsing error."
+    }
+    
+    # Use pprint to format the dicts nicely for the prompt
+    s_profile_str = pprint.pformat(seed_profile)
+    s_keywords_str = pprint.pformat(seed_keywords)
+    c_profile_str = pprint.pformat(candidate_profile)
+    c_keywords_str = pprint.pformat(candidate_keywords)
 
-        3. **NICHE SIMILARITY (40% of final score):**
-            - Identical niche: 1.0
-            - Very similar (Political Commentary ↔ Social Commentary): 0.9
-            - Similar (Business Analysis ↔ Economic Analysis): 0.8
-            - Loosely related (Tech ↔ Business): 0.5
-            - Unrelated (Cooking ↔ Fitness): 0.1
-
-        4. **TARGET AUDIENCE OVERLAP (15% of final score):**
-            - Identical or highly overlapping audiences: 1.0
-            - Partially overlapping (Students ↔ Young Professionals): 0.7
-            - Different but compatible (Curious Learners ↔ Critical Thinkers): 0.8
-            - Very different (Students ↔ Retirees): 0.3
-            
-            Examples:
-            - "Curious Learners" ↔ "Socially Conscious Individuals": 0.8 
-            - "Students" ↔ "Entrepreneurs": 0.5 
-
-        5. **SPEAKER TYPE ADJUSTMENT (5% penalty if mismatch):**
-            - Solo Creator ↔ Solo Creator: No penalty
-            - Media Company ↔ Media Company: No penalty
-            - Solo ↔ Media Company: -0.05 penalty (minor!)
-            - Solo ↔ Brand/Corporation: -0.10 penalty
-            - Anonymous ↔ Known personality: No penalty
-
-        **CALCULATION:**
-        - Start with base score from Format/Intent (40%) + Niche (40%) + Audience (15%)
-        - Apply Speaker penalty (if any)
-        - Cap at MAX SCORE from ideology filter (if applicable)
-
-        **EXAMPLES:**
-        - Channel A (Libertarian, Video Essay, Persuade, Societal Critique, Skeptics) 
-        vs Channel B (Progressive, Explainer Doc, Explain, Political Commentary, Curious Learners):
-        → Format: 0.9, Intent: 0.8 → Format/Intent: 0.85
-        → Niche: 0.9
-        → Audience: 0.75 (Skeptics vs Curious = compatible)
-        → Speaker: -0.05 (Anonymous vs Media)
-        → Final: (0.85 × 0.4) + (0.9 × 0.4) + (0.75 × 0.15) - 0.05 = 0.76 
-
-        - Channel A (N/A, Educational Tutorial, Educate, Productivity, Students)
-        vs Channel B (N/A, Motivational Talks, Inspire, Self-Help, Executives):
-        → Niche: 0.6 (Productivity vs Self-Help = related)
-        → Audience: 0.3 (Students vs Executives = very different!)
-        → Final: ~0.45 
-
-        Return ONLY a decimal number (e.g., 0.76). No explanation.
+    prompt = f"""You are an expert YouTube Content Strategist. Your goal is to find new channels for your audience.
+    
+    You are given data for two channels:
+    1.  **Seed Channel ("{seed_channel_name}")**: This is the channel our audience *already loves*.
+    2.  **Candidate Channel ("{candidate_channel_name}")**: This is a new channel we are thinking of recommending.
+    
+    **TASK:**
+    Based *only* on the data below, provide a JSON object with two keys:
+    1.  `"audience_match_score"`: (0.0 - 1.0) How likely is the Seed Channel's audience to *also love* the Candidate Channel?
+    2.  `"reason"`: A one-sentence explanation for your score.
+    
+    ---
+    DATA FOR SEED CHANNEL ("{seed_channel_name}")
+    ---
+    
+    **Keywords:**
+    {s_keywords_str}
+    
+    ---
+    DATA FOR CANDIDATE CHANNEL ("{candidate_channel_name}")
+    ---
+    
+    **Keywords:**
+    {c_keywords_str}
+    
+    ---
+    **SCORING RULES (CRITICAL):**
+    Analyze indepth the keywords of both seed channel and candidate channel and then score them and give a reason that how likely are they related? And target same audience? 
+        
+    Return ONLY a single, valid JSON object.
     """
     
     try:
         if model_provider.lower() == "gpt":
             if not gpt_client:
                  print("  ❌ GPT client not initialized.")
-                 return 0.0
+                 return error_output
             
             response = gpt_client.chat.completions.create(
                 model="gpt-4o-mini",
+                response_format={"type": "json_object"}, # Force JSON
                 messages=[{"role": "user", "content": prompt}],
-                temperature=0,
-                max_tokens=10
+                temperature=0.1,
+                max_tokens=1000 # Allow for longer prompt + JSON
             )
             result_text = response.choices[0].message.content.strip()
         else:
             print(f"  ❌ Unknown model provider.")
-            return 0.0
+            return error_output
 
-        # Extract score
-        match = re.search(r'0?\.\d+|1\.0', result_text)
-        
-        if match:
-            score = float(match.group())
-            return round(min(max(score, 0.0), 1.0), 3)
-        else:
-            print(f"  ⚠️ Non-numeric result: {result_text}")
-            return 0.0
+        try:
+            result_json = json.loads(result_text)
+            if "audience_match_score" in result_json and "reason" in result_json:
+                return result_json
+            else:
+                print(f"  ⚠️ LLM JSON missing required keys: {result_text}")
+                return error_output
+        except json.JSONDecodeError:
+            print(f"  ⚠️ LLM returned invalid JSON: {result_text}")
+            return error_output
             
     except Exception as e:
         print(f"  ❌ Profile score error: {str(e)[:100]}")
-        return 0.0
+        return error_output
+    

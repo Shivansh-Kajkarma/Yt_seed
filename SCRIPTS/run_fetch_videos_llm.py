@@ -147,7 +147,7 @@ def main():
         print(f"\n✅ Results saved to: {output_json_path}")
         
         # Also save simplified version (just channel: keywords)
-        simple_json_path = base_dir / f"channel_keywords_simple_{MODEL_TO_USE}_29th_oct_4pm.json"
+        simple_json_path = base_dir / f"channel_keywords_simple_{MODEL_TO_USE}_1.json"
         with open(simple_json_path, 'w', encoding='utf-8') as f:
             json.dump(channel_fingerprints, f, indent=2, ensure_ascii=False)
         
