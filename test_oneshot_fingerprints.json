@@ -1,0 +1,96 @@
+{
+  "Moon": {
+    "profile": {
+      "niche": "Social Commentary",
+      "format": "Talking-Head Analysis",
+      "intent": "News/Commentary",
+      "point_of_view": "Solo Creator",
+      "target_audience": "General Audience"
+    },
+    "keywords": {
+      "Societal Issues & Critiques": [
+        "society exposed",
+        "cultural decay",
+        "social collapse",
+        "society's downfall",
+        "exposing societal flaws",
+        "cultural critique",
+        "societal commentary",
+        "social justice issues",
+        "society under threat",
+        "cultural commentary"
+      ],
+      "Entertainment Industry Analysis": [
+        "Hollywood corruption",
+        "celebrity scandals",
+        "exposed in Hollywood",
+        "entertainment industry secrets",
+        "celebrity downfall",
+        "media manipulation",
+        "celebrity culture critique",
+        "Hollywood hypocrisy",
+        "famous failures",
+        "celebrity news"
+      ],
+      "Technology & Its Impact": [
+        "AI dangers",
+        "technology ruining society",
+        "digital addiction",
+        "impact of technology",
+        "tech industry exposed",
+        "future of technology",
+        "AI brain rot",
+        "tech backlash",
+        "digital age crisis",
+        "technology and society"
+      ]
+    }
+  },
+  "Vox": {
+    "profile": {
+      "niche": "Current Affairs and Social Issues",
+      "format": "Podcast/Interviews",
+      "intent": "Educational",
+      "point_of_view": "Media Company",
+      "target_audience": "General Audience"
+    },
+    "keywords": {
+      "Social Commentary & Analysis": [
+        "truth about free speech",
+        "understanding climate confusion",
+        "internet decline exposed",
+        "civil conflict in America",
+        "memory remaking the past",
+        "ghost towns of Nevada",
+        "TikTok control revealed",
+        "climate fight strategies",
+        "free speech myths",
+        "rural telehealth solutions"
+      ],
+      "Political and Economic Insights": [
+        "impact of billionaires",
+        "sports betting crisis",
+        "independent theaters survival",
+        "future of thrifting",
+        "Trump's influence on colleges",
+        "hopeful pessimism explained",
+        "AI and education crisis",
+        "volunteer EMS challenges",
+        "probiotic yogurt gimmick",
+        "rural hospital failures"
+      ],
+      "Cultural and Technological Critique": [
+        "future of humanity",
+        "surveillance capitalism",
+        "digital world potential",
+        "crisis of self",
+        "children's vaccination debate",
+        "Trump's education attack",
+        "American right's radical shift",
+        "emergency services crisis",
+        "college cheating epidemic",
+        "climate change urgency"
+      ]
+    }
+  }
+}

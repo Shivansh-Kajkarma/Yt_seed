@@ -1,0 +1,120 @@
+{
+  "Moon": {
+    "profile": {
+      "niche": "Societal and Cultural Critique",
+      "format": "Video Essay",
+      "intent": "To Persuade",
+      "speaker": "Anonymous",
+      "ideology": "Libertarian",
+      "target_audience": "Skeptical Thinkers and Conspiracy Enthusiasts"
+    },
+    "keywords": {
+      "Societal Critique": [
+        "society destroyed",
+        "cultural decay",
+        "society on edge",
+        "society collapse",
+        "cultural downfall",
+        "society unraveling",
+        "society exposed",
+        "cultural critique",
+        "society in crisis",
+        "society's dark side",
+        "cultural apocalypse",
+        "society's hidden truths",
+        "society's downfall",
+        "cultural rot",
+        "society's breaking point"
+      ],
+      "Celebrity and Media Exposés": [
+        "celebrity exposed",
+        "media lies exposed",
+        "hollywood corruption",
+        "celebrity downfall",
+        "media manipulation",
+        "celebrity scandal",
+        "media bias exposed",
+        "celebrity fraud",
+        "hollywood's dark side",
+        "celebrity controversy",
+        "media deception",
+        "celebrity secrets revealed",
+        "hollywood's hidden truths",
+        "celebrity's dark past",
+        "media's hidden agenda"
+      ],
+      "Conspiracy and Government Critique": [
+        "government conspiracy",
+        "secret plot exposed",
+        "deep state revealed",
+        "government corruption",
+        "political scandal",
+        "hidden government agenda",
+        "conspiracy exposed",
+        "government lies",
+        "political manipulation",
+        "shadow government",
+        "government's dark secrets",
+        "political corruption",
+        "conspiracy theory",
+        "government's hidden truths",
+        "political deception"
+      ]
+    }
+  },
+  "Vox": {
+    "profile": {
+      "niche": "Political and Social Commentary",
+      "format": "Explainer Documentary",
+      "intent": "To Explain",
+      "speaker": "Media Company",
+      "ideology": "Progressive/Left",
+      "target_audience": "Curious Learners and Socially Conscious Individuals"
+    },
+    "keywords": {
+      "Social and Political Issues": [
+        "free speech debate",
+        "climate change confusion",
+        "internet decline",
+        "civil conflict risk",
+        "memory manipulation",
+        "ghost towns mystery",
+        "TikTok control",
+        "climate fight strategy",
+        "wealth inequality",
+        "rural healthcare crisis",
+        "billionaire impact",
+        "fire season danger",
+        "US vs China innovation",
+        "New Right influence",
+        "sports betting loss",
+        "independent cinema survival",
+        "digital surveillance",
+        "human extinction scenario",
+        "vaccine necessity",
+        "college future under Trump"
+      ],
+      "Cultural and Economic Analysis": [
+        "economic theory behind Trumpism",
+        "ambulance crisis in US",
+        "dying experience",
+        "hopeful pessimism",
+        "AI in education",
+        "volunteer EMS challenges",
+        "probiotic yogurt debate",
+        "Trump's political impact",
+        "rural hospital closures",
+        "economic inequality",
+        "telehealth necessity",
+        "political philosophy",
+        "solar energy hope",
+        "digital world potential",
+        "self-identity crisis",
+        "cultural obsession with hope",
+        "college cheating culture",
+        "volunteer fire department issues",
+        "media influence on politics"
+      ]
+    }
+  }
+}

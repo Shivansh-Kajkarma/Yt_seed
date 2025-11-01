@@ -1,0 +1,86 @@
+{
+  "Moon": {
+    "profile": {
+      "niche": "Current Events and Social Commentary",
+      "format": "Video Essay",
+      "intent": "To Explain",
+      "speaker": "Anonymous",
+      "ideology": "Libertarian",
+      "target_audience": "Curious Learners and Critical Thinkers"
+    },
+    "keywords": {
+      "Social Commentary": [
+        "social issues analysis",
+        "cultural critique",
+        "society breakdown",
+        "current events commentary",
+        "media criticism",
+        "social trends analysis",
+        "cultural analysis",
+        "society critique",
+        "social dynamics",
+        "cultural issues"
+      ],
+      "Current Events": [
+        "news analysis",
+        "political commentary",
+        "world events",
+        "global news",
+        "current affairs",
+        "political analysis",
+        "news breakdown",
+        "international news",
+        "political issues",
+        "world politics"
+      ]
+    }
+  },
+  "Vox": {
+    "profile": {
+      "niche": "Current Events and Social Issues",
+      "format": "Explainer Documentary",
+      "intent": "To Explain",
+      "speaker": "Media Company",
+      "ideology": "Progressive/Left",
+      "target_audience": "Curious Learners"
+    },
+    "keywords": {
+      "Current Events Analysis": [
+        "political analysis",
+        "current events",
+        "social issues",
+        "news commentary",
+        "political commentary",
+        "world events",
+        "global issues",
+        "society and culture",
+        "political debates",
+        "media analysis"
+      ],
+      "Social and Cultural Documentaries": [
+        "cultural documentaries",
+        "society documentaries",
+        "social change",
+        "cultural analysis",
+        "documentary series",
+        "explainer videos",
+        "educational documentaries",
+        "social commentary",
+        "cultural issues",
+        "society and politics"
+      ],
+      "Environmental and Climate Topics": [
+        "climate change",
+        "environmental issues",
+        "sustainability",
+        "renewable energy",
+        "climate documentaries",
+        "environmental documentaries",
+        "climate policy",
+        "green technology",
+        "environmental activism",
+        "climate solutions"
+      ]
+    }
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "Moon": {
+    "profile": {
+      "niche": "Societal and Cultural Critique",
+      "format": "Video Essay",
+      "intent": "To Persuade",
+      "speaker": "Anonymous",
+      "ideology": "Libertarian",
+      "target_audience": "Critical Thinkers and Skeptics"
+    },
+    "keywords": {
+      "Societal Critique": [
+        "society destroyed",
+        "cultural downfall",
+        "exposed as monster",
+        "society on edge",
+        "cultural collapse",
+        "society's dark side",
+        "society's hidden truths",
+        "cultural critique",
+        "society unraveling",
+        "society's failures"
+      ],
+      "Celebrity and Media Exposés": [
+        "celebrity exposed",
+        "hollywood downfall",
+        "media lies exposed",
+        "celebrity scandal",
+        "media corruption",
+        "celebrity truth revealed",
+        "media manipulation",
+        "celebrity downfall",
+        "media critique",
+        "celebrity controversy"
+      ]
+    }
+  },
+  "Vox": {
+    "profile": {
+      "niche": "Political & Cultural Commentary",
+      "format": "Explainer Documentary",
+      "intent": "To Explain",
+      "speaker": "Media Company",
+      "ideology": "Progressive/Left",
+      "target_audience": "Curious Learners"
+    },
+    "keywords": {
+      "Political & Social Issues": [
+        "free speech debate",
+        "climate change confusion",
+        "civil conflict warning",
+        "memory manipulation",
+        "ghost towns mystery",
+        "TikTok control controversy",
+        "wealth inequality crisis",
+        "rural healthcare crisis",
+        "billionaire impact",
+        "sports betting downfall",
+        "college survival under Trump",
+        "AI education disruption"
+      ],
+      "Cultural & Technological Change": [
+        "internet decline",
+        "future of thrifting",
+        "telehealth necessity",
+        "fire season escalation",
+        "new right movement",
+        "independent cinema struggle",
+        "digital surveillance",
+        "human extinction scenario",
+        "hopeful pessimism",
+        "probiotic yogurt debate",
+        "rural hospital closures",
+        "ambulance crisis"
+      ]
+    }
+  }
+}
