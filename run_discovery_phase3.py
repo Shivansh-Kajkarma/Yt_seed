@@ -16,8 +16,7 @@ from utils.youtube_utils import (
 
 # --- MODIFIED: Import all required LLM functions ---
 from utils.fingerprint_llm_utils import (
-    create_channel_fingerprint_llm,
-    extract_niche_llm,
+    get_channel_fingerprint_oneshot,
     calculate_embedding_similarity_hybrid,
     calculate_llm_similarity,
     # detect_channel_language_llm # <-- ADDED
@@ -37,23 +36,19 @@ intermediate_data_path = base_dir / "phase3_intermediate_data_moon.csv"
 
 # --- NEW: Define ALL columns for the intermediate file ---
 INTERMEDIATE_COLUMN_ORDER = [
-    "Seed_Channel_Name",
-    "Seed_Channel_ID",
-    "Seed_Niche",
-    "Discovered_Channel_Name",
-    "Discovered_Channel_ID",
-    "Discovered_Channel_URL",
-    "Discovered_Subs",
-    "Discovered_Video_Count",  # <-- NEW
-    "Discovered_Niche",
-    "Discovered_Country",              # <-- NEW
-    "LLM_Score",               # <-- NEW
-    "Embedding_Score",         # <-- NEW
-    "Discovered_Channel_Description", # <-- NEW
-    "Discovered_Keywords",
-    "Seed_Keywords",
-    "Level",
-    "Timestamp",
+    "Seed_Channel_Name", "Seed_Channel_ID", "Seed_Niche",
+    "Discovered_Channel_Name", "Discovered_Channel_ID", "Discovered_Channel_URL",
+    "Discovered_Subs", "Discovered_Video_Count", "Discovered_Country",
+    "Discovered_Niche", # This will store the "niche" field
+    "Discovered_Format", # <-- NEW
+    "Discovered_Intent", # <-- NEW
+    "Discovered_POV",    # <-- NEW
+    "Discovered_Audience", # <-- NEW
+    "Discovered_Keywords_JSON", # <-- NEW (for the keywords dict)
+    "LLM_Score", "Embedding_Score",
+    "Discovered_Channel_Description",
+    "Seed_Keywords_JSON", # <-- NEW (changed from Seed_Keywords)
+    "Level", "Timestamp",
 ]
 
 AUTO_KEEP_COUNTRIES = [
@@ -296,7 +291,8 @@ def process_seed_channel(
         print(f"     Subs: {candidate['subscribers']:,} | Videos: {candidate['video_count']:,}")
 
         try:
-            # --- Fetch videos AND description ---
+            # ... (Fetch videos and description - this part is the same) ...
+            # ... (video_df = pd.DataFrame(videos)) ...
             print(f"     Fetching {VIDEOS_PER_CANDIDATE} videos...")
             videos, cand_desc = fetch_recent_videos(
                 candidate["id"], max_results=VIDEOS_PER_CANDIDATE, filter_shorts=False
@@ -309,89 +305,35 @@ def process_seed_channel(
 
             video_df = pd.DataFrame(videos)
             video_titles_list = video_df["title"].tolist()
-
-            # --- Step 5a: Get Niche (Now "Niche - Format") ---
-            print(f"     Extracting niche...")
-            cand_niche = extract_niche_llm(
+            # --- Step 5a: One-Shot Fingerprint (Replaces 3 steps) ---
+            print(f"     Extracting one-shot fingerprint (Profile + Keywords)...")
+            fingerprint_data = get_channel_fingerprint_oneshot(
+                channel_name=candidate["name"],
                 channel_description=cand_desc,
-                video_titles=video_titles_list,
-                channel_name=candidate["name"],
-                model_type=MODEL_PROVIDER,
+                video_df=video_df,
+                model_provider=MODEL_PROVIDER
             )
 
-            # --- Step 5b: Get Language ---
-            # print(f"     Detecting language...")
-            # primary_language = detect_channel_language_llm(
-            #     channel_description=cand_desc,
-            #     video_titles=video_titles_list,
-            #     channel_name=candidate["name"],
-            #     model_type=MODEL_PROVIDER,
-            # )
-            # print(f"     Language: {primary_language} | Niche: {cand_niche}")
-            # ** NO FILTERING HERE - We just save the language **
-
-            # --- Step 5c: Get Keywords (as DICT) ---
-            print(f"     Generating keywords...")
-            cand_keywords_dict = create_channel_fingerprint_llm(
-                video_df,
-                channel_name=candidate["name"],
-                niche=cand_niche,
-                model_type=MODEL_PROVIDER,
-            )
-            
-            # --- FLATTEN candidate keywords for embedding score & saving ---
-            cand_keywords_list = []
-            if isinstance(cand_keywords_dict, dict):
-                 for k, v in cand_keywords_dict.items():
-                     if isinstance(v, list): cand_keywords_list.extend(v)
-            elif isinstance(cand_keywords_dict, list):
-                print(f"     ⚠️  Keywords were a list, not dict. Using as-is.")
-                cand_keywords_list = cand_keywords_dict
-
-            if not cand_keywords_list:
-                print(f"     ⚠️  Keyword generation failed")
+            if not fingerprint_data or "profile" not in fingerprint_data or "keywords" not in fingerprint_data:
+                print(f"     ⚠️  One-shot fingerprint generation failed.")
                 _update_status(seen_channels_data, candidate["id"], "failed_fingerprint")
                 continue
-            print(f"     Keywords: {cand_keywords_list[:3]}...")
 
-            # --- Step 5d: Get BOTH Scores ---
-            # === METHOD 1: EMBEDDINGS (uses flattened lists) ===
+            cand_profile = fingerprint_data.get("profile", {})
+            cand_keywords_dict = fingerprint_data.get("keywords", {})
+
+            # Flatten candidate keywords for embedding score
+            cand_keywords_list = []
+            for k, v in cand_keywords_dict.items():
+                if isinstance(v, list): cand_keywords_list.extend(v)
+
+
+            # For now, let's just save the data. We'll fix the scoring next.
+            similarity_llm = 0.0 # Placeholder
             similarity_embeddings = calculate_embedding_similarity_hybrid(
                 seed_keywords_list, cand_keywords_list
             )
             print(f"     📊 Embeddings: {similarity_embeddings:.3f}")
-
-            # === METHOD 2: LLM (uses full DICTIONARIES) ===
-            # similarity_llm = calculate_llm_similarity(
-            #     seed_keywords,        # <-- Pass the SEED DICT
-            #     cand_keywords_dict,   # <-- Pass the CANDIDATE DICT
-            #     seed_channel,
-            #     candidate["name"],
-            #     seed_niche=seed_niche,
-            #     candidate_niche=cand_niche,
-            #     model_type=MODEL_PROVIDER,
-            # )
-            # print(f"     🤖 LLM: {similarity_llm:.3f}")
-            similarity_llm = 0.0  # Default score
-            
-            # --- NEW: Type check to fix linter error and prevent crash ---
-            if not isinstance(seed_keywords, dict):
-                print(f"     ⚠️  Seed keywords for {seed_channel} are not a dict. Skipping LLM score.")
-            elif not isinstance(cand_keywords_dict, dict):
-                 print(f"     ⚠️  Candidate keywords for {candidate['name']} are not a dict. Skipping LLM score.")
-            else:
-                # --- Linter is now happy ---
-                similarity_llm = calculate_llm_similarity(
-                    seed_keywords,        # <-- This is guaranteed to be a dict
-                    cand_keywords_dict,   # <-- This is guaranteed to be a dict
-                    seed_channel,
-                    candidate["name"],
-                    seed_niche=seed_niche,
-                    candidate_niche=cand_niche,
-                    model_type=MODEL_PROVIDER,
-                )
-            
-            print(f"     🤖 LLM: {similarity_llm:.3f}")
 
             # --- Step 5e: Build the "Everything" Dictionary ---
             candidate_full_data = {
@@ -404,10 +346,14 @@ def process_seed_channel(
                 "Discovered_Subs": candidate["subscribers"],
                 "Discovered_Video_Count": candidate["video_count"], # <-- ADDED
                 "Discovered_Country": candidate.get("country", "Unknown"),
-                "Discovered_Niche": cand_niche,
+                "Discovered_Niche": cand_profile.get("niche", "Unknown"),
+                "Discovered_Format": cand_profile.get("format", "Unknown"),
+                "Discovered_Intent": cand_profile.get("intent", "Unknown"),
+                "Discovered_POV": cand_profile.get("ideology", "Unknown"),
+                "Discovered_Audience": cand_profile.get("target_audience", "Unknown"),
+                "Discovered_Keywords_JSON": json.dumps(cand_keywords_dict), # Save keywords JSON
                 "LLM_Score": similarity_llm,                          # <-- ADDED
-                "Embedding_Score": similarity_embeddings,             # <-- ADDED
-                "Discovered_Channel_Description": cand_desc,          # <-- ADDED
+                "Embedding_Score": similarity_embeddings,             # <-- ADDED        # <-- ADDED
                 "Discovered_Keywords": ", ".join(cand_keywords_list), # Save flattened list
                 "Seed_Keywords": ", ".join(seed_keywords_list),       # Save flattened list
                 "Level": 1,
@@ -426,7 +372,7 @@ def process_seed_channel(
                 "scored",
                 similarity_embeddings,
                 similarity_llm,
-                cand_niche,
+                cand_profile.get("niche", "Unkown")
             )
             save_seen_channels(seen_channels_data, seen_channels_path)
             

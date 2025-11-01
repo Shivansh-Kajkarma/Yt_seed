@@ -9,6 +9,8 @@ from sentence_transformers import SentenceTransformer
 from sklearn.metrics.pairwise import cosine_similarity
 from dotenv import load_dotenv
 import json
+import pprint
+import numpy as np
 
 # ============================================
 # 1️⃣ Load Environment & API Keys
@@ -913,3 +915,450 @@ def is_direct_competitor_llm_final_check(
             time.sleep(5 * (attempt + 1))
             
     return {"is_competitor": False, "confidence": "Low", "reason": "All API retries failed."}
+
+# ============================================
+# NEW: "One-Shot" Fingerprint Function
+# (Replaces extract_niche_llm AND create_channel_fingerprint_llm)
+# ============================================
+# Make sure 'gpt_client' is initialized at the top of your file
+# (e.g., gpt_client = OpenAI(api_key=OPENAI_API_KEY))
+
+
+def _get_openai_embedding(text_list: list, model="text-embedding-3-small") -> list:
+    """
+    Helper to get embeddings from OpenAI.
+    Returns list of embedding vectors.
+    """
+    if not text_list:
+        return []
+    
+    # Clean input
+    text_list = [str(text).strip() for text in text_list if str(text).strip()]
+    if not text_list:
+        return []
+        
+    try:
+        response = gpt_client.embeddings.create(input=text_list, model=model)
+        return [item.embedding for item in response.data]
+    except Exception as e:
+        print(f"  ❌ OpenAI Embedding Error: {e}")
+        return []
+
+
+def calculate_keyword_score_openai(
+    seed_keywords: dict, 
+    candidate_keywords: dict,
+    max_keywords_per_channel: int = 50,
+    verbose: bool = False) -> float:
+    """
+    OPTIMIZED Keyword Similarity Score using OpenAI embeddings.
+    
+    Features:
+    - Single batched API call (2x faster)
+    - Token limit safety
+    - Optional verbose logging
+    - Averages all keywords into semantic vector
+    
+    Returns: 0.0 - 1.0
+    """
+    if not gpt_client:
+        if verbose:
+            print("  ❌ OpenAI client not initialized.")
+        return 0.0
+        
+    if not seed_keywords or not candidate_keywords:
+        return 0.0
+
+    try:
+        # --- 1. Flatten Keywords ---
+        seed_kw_list = [kw for kws in seed_keywords.values() for kw in kws]
+        cand_kw_list = [kw for kws in candidate_keywords.values() for kw in kws]
+
+        # Safety: Limit keywords to avoid token overflow
+        seed_kw_list = seed_kw_list[:max_keywords_per_channel]
+        cand_kw_list = cand_kw_list[:max_keywords_per_channel]
+
+        if verbose:
+            print(f"  📊 Seed: {len(seed_kw_list)} keywords | Candidate: {len(cand_kw_list)} keywords")
+
+        if not seed_kw_list or not cand_kw_list:
+            return 0.0
+
+        # --- 2. Batch Embedding (Single API Call) ---
+        all_keywords = seed_kw_list + cand_kw_list
+        all_vectors = _get_openai_embedding(all_keywords)
+        
+        if not all_vectors or len(all_vectors) != len(all_keywords):
+            if verbose:
+                print("  ⚠️ Embedding generation failed.")
+            return 0.0
+
+        # Split vectors back
+        seed_count = len(seed_kw_list)
+        seed_vectors = all_vectors[:seed_count]
+        cand_vectors = all_vectors[seed_count:]
+
+        # --- 3. Average Vectors ---
+        avg_seed_vec = np.mean(seed_vectors, axis=0)
+        avg_cand_vec = np.mean(cand_vectors, axis=0)
+
+        # --- 4. Cosine Similarity ---
+        final_score = cosine_similarity(
+            avg_seed_vec.reshape(1, -1),
+            avg_cand_vec.reshape(1, -1)
+        )[0][0]
+        
+        if verbose:
+            print(f"  ✅ Keyword score: {final_score:.3f}")
+        
+        return round(float(final_score), 3)
+
+    except Exception as e:
+        print(f"  ❌ Error in keyword scoring: {str(e)[:100]}")
+        return 0.0
+
+
+
+def get_channel_fingerprint_oneshot(
+    channel_name: str,
+    channel_description: str,
+    video_df: pd.DataFrame, # Pass in the DataFrame of 20 videos
+    model_provider: str = "gpt",
+    max_chars: int = 40000,
+    retries: int = 3
+) -> dict:
+    """
+    Performs a single, "one-shot" LLM call to extract BOTH the
+    detailed channel profile and the focused SEO keywords.
+    (Version 2: Includes fix for nan/float values and ad detection)
+    """
+    
+    # --- 1. Combine all text for context ---
+    
+    # --- FIX for nan/float in channel_description ---
+    safe_channel_desc = str(channel_description) if pd.notna(channel_description) else "N/A - No description provided"
+    
+    combined_text = f"CHANNEL NAME: {channel_name}\n"
+    combined_text += f"CHANNEL DESCRIPTION:\n{safe_channel_desc}\n\n"
+    
+    # --- FIX for nan/float in video_titles ---
+    video_titles = video_df['title'].tolist()
+    safe_titles = [str(t) for t in video_titles if pd.notna(t)] # Convert all valid titles to string
+    combined_text += "--- RECENT VIDEO TITLES (Sample) ---\n"
+    combined_text += "\n".join(safe_titles) + "\n\n"
+    
+    # --- FIX for nan/float in video_descs + Ad Detection ---
+    video_descs = video_df['description'].tolist()
+    safe_descs = [str(d) for d in video_descs if pd.notna(d) and isinstance(d, str)]
+    
+    # Heuristic: If > 70% of descriptions start with "http" or "Go to", they are ads.
+    ad_count = 0
+    for d in safe_descs:
+        d_low = d.lower()
+        if d_low.startswith("http") or d_low.startswith("go to") or "tryfum.com" in d_low or "buyraycon.com" in d_low:
+            ad_count += 1
+            
+    if safe_descs and (ad_count / len(safe_descs)) > 0.7:
+        print("  ⚠️  CONTEXT DETECTED: Video descriptions are sponsor ads. Telling LLM to IGNORE them.")
+        combined_text += "--- RECENT VIDEO DESCRIPTIONS (Sample) ---\n"
+        combined_text += "[Video descriptions are all sponsor ads and have been ignored]\n"
+        # We will also add this instruction to the main prompt
+    else:
+        # If they are not ads, add them.
+        combined_text += "--- RECENT VIDEO DESCRIPTIONS (Sample) ---\n"
+        for i, desc in enumerate(video_descs):
+            # This is the simple fix: convert to string first, THEN slice.
+            safe_desc_str = str(desc)
+            if safe_desc_str.lower() == 'nan':
+                safe_desc_str = "[No Description]"
+            combined_text += f"Video {i+1} Desc: {safe_desc_str[:300]}...\n" 
+                
+    truncated_content = combined_text
+    # truncated_content = combined_text[:max_chars]
+    print(f"📤 Sending {len(truncated_content)} chars to {model_provider.upper()} for one-shot analysis...")
+    
+    # --- 2. The New "Master" Prompt (Now with Title-Focus) ---
+    prompt = f"""You are an expert YouTube channel analyst.
+    Analyze the provided raw data (channel name, description, video titles, video descriptions) 
+    and extract a complete channel profile and its SEO keywords.
+
+    RAW DATA TO ANALYZE:
+    \"\"\"
+    {truncated_content}
+    \"\"\"
+
+    TASK: Return a single, valid JSON object with two top-level keys: "profile" and "keywords".
+
+    ---
+    PART 1: "profile"
+    ---
+    This key must contain an object with these 6 sub-keys:
+    1.  "niche": The channel's primary TOPIC (e.g., "Productivity", "Business Case Studies", "Scam Investigation").
+    2.  "format": The primary STYLE (e.g., "Educational Tutorial", "Explainer Documentary", "Video Essay", "Podcast/Interviews", "Talking-Head Analysis").
+    3.  "intent": The channel's main GOAL. Must be one of: ["To Explain", "To Persuade", "To Report News", "To Entertain", "To Educate (Tutorial)", "To Inspire"].
+    4.  "speaker": The primary point of view. Must be one of: ["Solo Creator", "Brand/Corporation", "Media Company", "Anonymous"].
+    5.  "ideology": The channel's political bias. Must be one of: ["Progressive/Left", "Conservative/Right", "Libertarian", "Neutral/Academic"].
+    6.  "target_audience": The primary demographic (e.g., "Curious Learners", "Political Activists", "Students", "Entrepreneurs").
+
+    ### CRITICAL RULE ###
+        - Do NOT default to "N/A" for any of them.
+    ---
+    PART 2: "keywords"
+    ---
+    Generate **2-3 most dominant** content categories with 10-15 high-intent keywords each.
+    **CRITICAL**: Prioritize EMOTIONAL and ACTION-ORIENTED keywords over generic topic keywords.
+    **CRITICAL**: "niche" and "format" are very crucial. So analyze the data of {channel_name} very deeply and then answer.
+    **CRITICAL**: "intent" of channel is very very important. So please rethink and reanalyze the "intent" that is it accurate and then answer.
+
+    Examples of GOOD keywords: 
+    ✅ "exposed as fraud" (emotional + action)
+    ✅ "conspiracy revealed" (emotional + action)
+    ✅ "company destroyed" (emotional + action)
+
+    Examples of BAD keywords:
+    ❌ "business news" (too generic)
+    ❌ "political analysis" (too generic)
+
+    ---
+    EXAMPLE OUTPUT (Do not copy it, use it to learn.):
+    {{
+    "profile": {{
+        "niche": "Political & Cultural Commentary",
+        "format": "Talking-Head Analysis (High Production)",
+        "intent": "Controversy & Exposé",
+        "speaker": "Solo Creator",
+        "ideology": "Progressive-leaning",
+        "target_audience": "Young adults (18-35), progressive, internet-native"
+    }},
+    "keywords": {{
+        "Controversial Exposés": [
+        "celebrity exposed", "hollywood exposed", "everything wrong with",
+        "exposed as fraud", "exposed as monster", "career destroyed",
+        "brutal truth exposed", "fake celebrity exposed", "celebrity lies exposed",
+        "controversial documentary"
+        ],
+        "Conspiracy & Government Critique": [
+        "government conspiracy", "secret plot exposed", "government corruption",
+        "political conspiracy", "deep state exposed", "government lies",
+        "conspiracy documentary", "hidden truth exposed", "shadow government",
+        "corruption exposed"
+        ]
+    }}
+    }}
+
+    --- (End of Example) ---
+
+    OUTPUT:
+    Return ONLY the valid JSON for the channel in the "RAW DATA" section.
+    """
+    
+    for attempt in range(retries):
+        try:
+            # ========== GPT MODE ==========
+            if model_provider.lower() == "gpt":
+                if not gpt_client:
+                    print("❌ GPT client not initialized.")
+                    return {}
+                
+                response = gpt_client.chat.completions.create(
+                    model="gpt-4o-mini", # Use the cheap mini model
+                    response_format={"type": "json_object"}, # Force JSON
+                    messages=[
+                        {"role": "system", "content": "You are a YouTube channel analyst outputting JSON."},
+                        {"role": "user", "content": prompt}
+                    ],
+                    temperature=0.1,
+                    max_tokens=2000 # Allow for larger JSON output
+                )
+                result_text = response.choices[0].message.content.strip()
+
+            # ========== (Add Gemini mode here if needed) ==========
+            else:
+                print(f"❌ Unknown model provider '{model_provider}'.")
+                return {}
+
+            # ========== Parse JSON Output ==========
+            try:
+                parsed_json = json.loads(result_text)
+                
+                # Validate the complex structure
+                if "profile" in parsed_json and "keywords" in parsed_json and \
+                   isinstance(parsed_json["profile"], dict) and \
+                   isinstance(parsed_json["keywords"], dict) and \
+                   "niche" in parsed_json["profile"]:
+                    
+                    print(f"✅ One-shot analysis successful for {channel_name}.")
+                    return parsed_json # Return the full JSON object
+                else:
+                    print(f"⚠️ LLM returned invalid JSON structure: {result_text[:100]}... (Attempt {attempt+1})")
+
+            except json.JSONDecodeError:
+                print(f"⚠️ LLM output was not valid JSON: {result_text[:100]}... (Attempt {attempt+1})")
+                
+        except Exception as e:
+            print(f"❌ LLM One-Shot Error (Attempt {attempt+1}/{retries}): {str(e)[:100]}")
+            time.sleep(5 * (attempt + 1))
+            
+    print(f"❌ All retries failed for {channel_name}.")
+    return {} # Return empty dict if all retries fail
+
+def calculate_profile_score_llm(
+    seed_profile: dict,
+    candidate_profile: dict,
+    seed_keywords: dict,
+    candidate_keywords: dict,
+    seed_channel_name: str,
+    candidate_channel_name: str,
+    model_provider: str = "gpt") -> float:
+    """
+    OPTIMIZED Profile Score with Target Audience.
+    
+    Scoring cascade:
+    1. Ideology Filter (HARD)
+    2. Format/Intent Filter (HARD)
+    3. Niche + Audience Similarity (SOFT)
+    4. Speaker Penalty (MINOR)
+    """
+    
+    # --- Extract profile fields ---
+    s_niche = seed_profile.get("niche", "Unknown")
+    s_format = seed_profile.get("format", "Unknown")
+    s_intent = seed_profile.get("intent", "Unknown")
+    s_speaker = seed_profile.get("speaker", "Unknown")
+    s_ideology = seed_profile.get("ideology", "N/A")
+    s_audience = seed_profile.get("target_audience", "General Audience")
+
+    c_niche = candidate_profile.get("niche", "Unknown")
+    c_format = candidate_profile.get("format", "Unknown")
+    c_intent = candidate_profile.get("intent", "Unknown")
+    c_speaker = candidate_profile.get("speaker", "Unknown")
+    c_ideology = candidate_profile.get("ideology", "N/A")
+    c_audience = candidate_profile.get("target_audience", "General Audience")
+
+    pprint.pprint(candidate_keywords)
+
+    pprint.pprint(seed_keywords)
+    
+    prompt = f"""You are an expert YouTube channel analyst evaluating channel similarity for content discovery.
+        Calculate a similarity score (0.0 to 1.0) between these two channels based ONLY on their profiles.
+
+        SEED CHANNEL: "{seed_channel_name}"
+        Profile: {{
+        "niche": "{s_niche}",
+        "format": "{s_format}",
+        "intent": "{s_intent}",
+        "speaker": "{s_speaker}",
+        "ideology": "{s_ideology}",
+        "target_audience": "{s_audience}"
+        }}
+
+        CANDIDATE CHANNEL: "{candidate_channel_name}"
+        Profile: {{
+        "niche": "{c_niche}",
+        "format": "{c_format}",
+        "intent": "{c_intent}",
+        "speaker": "{c_speaker}",
+        "ideology": "{c_ideology}",
+        "target_audience": "{c_audience}"
+        }}
+
+        **SCORING RULES (Apply in order):**
+
+        1. **IDEOLOGY FILTER (CRITICAL - Can cause instant rejection):**
+            - Direct opposites (Progressive/Left ↔ Conservative/Right): **SCORE 0.1**. Stop.
+            - One political, one N/A (e.g., Political ↔ N/A): **MAX SCORE 0.35**. Proceed but cap at 0.35.
+            - Compatible or both non-political: Proceed normally.
+            
+            Examples:
+            - Channel A (Progressive) vs Channel B (Conservative): 0.1 
+            - Channel A (Progressive) vs Channel B (N/A): Max 0.35 
+            - Channel A (Libertarian) vs Channel B (Progressive): Compatible 
+
+        2. **FORMAT/INTENT COMPATIBILITY (40% of final score):**
+            - Identical formats: 1.0
+            - Highly compatible (Video Essay ↔ Explainer Documentary): 0.9
+            - Compatible (Documentary ↔ Podcast/Interviews): 0.7
+            - Partially compatible (Educational Tutorial ↔ Talking-Head): 0.5
+            - Incompatible (Vlog ↔ Educational Tutorial): 0.2
+            
+            Intent compatibility:
+            - "To Persuade" ↔ "To Explain": 0.8 (compatible)
+            - "To Explain" ↔ "To Entertain": 0.4 (less compatible)
+
+        3. **NICHE SIMILARITY (40% of final score):**
+            - Identical niche: 1.0
+            - Very similar (Political Commentary ↔ Social Commentary): 0.9
+            - Similar (Business Analysis ↔ Economic Analysis): 0.8
+            - Loosely related (Tech ↔ Business): 0.5
+            - Unrelated (Cooking ↔ Fitness): 0.1
+
+        4. **TARGET AUDIENCE OVERLAP (15% of final score):**
+            - Identical or highly overlapping audiences: 1.0
+            - Partially overlapping (Students ↔ Young Professionals): 0.7
+            - Different but compatible (Curious Learners ↔ Critical Thinkers): 0.8
+            - Very different (Students ↔ Retirees): 0.3
+            
+            Examples:
+            - "Curious Learners" ↔ "Socially Conscious Individuals": 0.8 
+            - "Students" ↔ "Entrepreneurs": 0.5 
+
+        5. **SPEAKER TYPE ADJUSTMENT (5% penalty if mismatch):**
+            - Solo Creator ↔ Solo Creator: No penalty
+            - Media Company ↔ Media Company: No penalty
+            - Solo ↔ Media Company: -0.05 penalty (minor!)
+            - Solo ↔ Brand/Corporation: -0.10 penalty
+            - Anonymous ↔ Known personality: No penalty
+
+        **CALCULATION:**
+        - Start with base score from Format/Intent (40%) + Niche (40%) + Audience (15%)
+        - Apply Speaker penalty (if any)
+        - Cap at MAX SCORE from ideology filter (if applicable)
+
+        **EXAMPLES:**
+        - Channel A (Libertarian, Video Essay, Persuade, Societal Critique, Skeptics) 
+        vs Channel B (Progressive, Explainer Doc, Explain, Political Commentary, Curious Learners):
+        → Format: 0.9, Intent: 0.8 → Format/Intent: 0.85
+        → Niche: 0.9
+        → Audience: 0.75 (Skeptics vs Curious = compatible)
+        → Speaker: -0.05 (Anonymous vs Media)
+        → Final: (0.85 × 0.4) + (0.9 × 0.4) + (0.75 × 0.15) - 0.05 = 0.76 
+
+        - Channel A (N/A, Educational Tutorial, Educate, Productivity, Students)
+        vs Channel B (N/A, Motivational Talks, Inspire, Self-Help, Executives):
+        → Niche: 0.6 (Productivity vs Self-Help = related)
+        → Audience: 0.3 (Students vs Executives = very different!)
+        → Final: ~0.45 
+
+        Return ONLY a decimal number (e.g., 0.76). No explanation.
+    """
+    
+    try:
+        if model_provider.lower() == "gpt":
+            if not gpt_client:
+                 print("  ❌ GPT client not initialized.")
+                 return 0.0
+            
+            response = gpt_client.chat.completions.create(
+                model="gpt-4o-mini",
+                messages=[{"role": "user", "content": prompt}],
+                temperature=0,
+                max_tokens=10
+            )
+            result_text = response.choices[0].message.content.strip()
+        else:
+            print(f"  ❌ Unknown model provider.")
+            return 0.0
+
+        # Extract score
+        match = re.search(r'0?\.\d+|1\.0', result_text)
+        
+        if match:
+            score = float(match.group())
+            return round(min(max(score, 0.0), 1.0), 3)
+        else:
+            print(f"  ⚠️ Non-numeric result: {result_text}")
+            return 0.0
+            
+    except Exception as e:
+        print(f"  ❌ Profile score error: {str(e)[:100]}")
+        return 0.0
