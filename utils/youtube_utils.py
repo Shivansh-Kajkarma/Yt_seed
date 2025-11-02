@@ -126,155 +126,31 @@ def extract_channel_id(channel_url: str) -> str:
         )
         return ""
 
-
-# -----------------------------
-# Fetch recent videos using uploads playlist + pagination
-# -----------------------------
-# def fetch_recent_videos(
-#     channel_id: str, max_results: int = 30, filter_shorts: bool = True
-# ) -> Tuple[List[Dict], str]:
-#     """
-#     Fetch up to max_results recent videos and channel description.
-#     """
-#     if not channel_id: return [], ""
-#     if not API_KEY:
-#         print("❌ ERROR: YouTube API key not found. Cannot fetch videos.")
-#         return [], ""
-
-#     channel_description = ""
-#     uploads_playlist = None
-
-#     # 1) Get channel details (snippet + contentDetails)
-#     url = f"{YT_BASE}/channels"
-#     params = {"part": "contentDetails,snippet", "id": channel_id, "key": API_KEY}
-#     try:
-#         data = _safe_get_json(url, params)
-#         items = data.get("items", [])
-#         if not items:
-#             print(f"⚠️ No channel data found for ID {channel_id}")
-#             return [], ""
-
-#         item = items[0]
-#         channel_description = item.get("snippet", {}).get("description", "")
-#         uploads_playlist = item.get("contentDetails", {}).get("relatedPlaylists", {}).get("uploads")
-
-#         if not uploads_playlist:
-#             print(f"⚠️ No uploads playlist found for channel {channel_id}")
-#             # Still return description if found
-#             return [], channel_description
-
-#     except Exception as e:
-#         print(f"❌ Error fetching channel details for {channel_id}: {e}")
-#         return [], ""
-
-#     # 2) Iterate playlistItems to collect videoIds
-#     playlist_url = f"{YT_BASE}/playlistItems"
-#     collected_video_ids: List[str] = []
-#     next_page = None
-#     try:
-#         while len(collected_video_ids) < max_results:
-#             params = {
-#                 "part": "contentDetails", # Only need contentDetails here
-#                 "playlistId": uploads_playlist,
-#                 "maxResults": min(50, max_results - len(collected_video_ids)), # Fetch needed amount up to 50
-#                 "key": API_KEY,
-#             }
-#             if next_page:
-#                 params["pageToken"] = next_page
-
-#             page = _safe_get_json(playlist_url, params)
-#             page_ids = [it.get("contentDetails", {}).get("videoId") for it in page.get("items", []) if it.get("contentDetails", {}).get("videoId")]
-#             collected_video_ids.extend(page_ids)
-
-#             next_page = page.get("nextPageToken")
-#             if not next_page: break
-
-#     except Exception as e:
-#         print(f"❌ Error fetching playlist items for {channel_id}: {e}")
-#         # Return what we have collected so far + description
-#         return [], channel_description
-
-#     if not collected_video_ids:
-#         print(f"  No videos found in uploads playlist for {channel_id}")
-#         return [], channel_description
-
-#     # Ensure we only fetch up to max_results
-#     collected_video_ids = collected_video_ids[:max_results]
-
-#     # 3) Batch get details for collected videoIds
-#     results = []
-#     vids_url = f"{YT_BASE}/videos"
-#     try:
-#         # Process in batches of up to 50
-#         for i in range(0, len(collected_video_ids), 50):
-#             batch_ids = collected_video_ids[i : i + 50]
-#             params = {
-#                 "part": "snippet,contentDetails",
-#                 "id": ",".join(batch_ids),
-#                 "maxResults": 50,
-#                 "key": API_KEY,
-#             }
-#             vdata = _safe_get_json(vids_url, params)
-
-#             for item in vdata.get("items", []):
-#                 vid = item.get("id")
-#                 snippet = item.get("snippet", {})
-#                 content = item.get("contentDetails", {})
-
-#                 raw_title = snippet.get("title", "")
-#                 raw_desc = snippet.get("description", "") or ""
-#                 raw_published = snippet.get("publishedAt", None)
-#                 duration_iso = content.get("duration", None)
-#                 duration_seconds = (
-#                     parse_iso8601_duration(duration_iso) if duration_iso else None
-#                 )
-#                 short_flag = is_short_video(raw_title, duration_seconds)
-
-#                 if filter_shorts and short_flag: continue
-
-#                 clean_desc = html.unescape(raw_desc).replace("\n", " ").replace("\r", " ").strip()
-#                 published_at = ""
-#                 if raw_published:
-#                     try:
-#                         dt_obj = datetime.fromisoformat(raw_published.replace("Z", "+00:00"))
-#                         published_at = dt_obj.strftime("%Y-%m-%d %H:%M:%S")
-#                     except Exception:
-#                         published_at = raw_published # Fallback
-
-#                 results.append({
-#                     "video_id": vid,
-#                     "title": html.unescape(raw_title),
-#                     "description": clean_desc,
-#                     "published_at": published_at,
-#                     "duration_seconds": duration_seconds if duration_seconds is not None else 0,
-#                     "is_short": short_flag,
-#                 })
-
-#         # Reorder results based on original collected_video_ids order
-#         vid_map = {r["video_id"]: r for r in results}
-#         ordered_results = [vid_map[v_id] for v_id in collected_video_ids if v_id in vid_map]
-
-#         print(f"  Fetched details for {len(ordered_results)} videos for channel {channel_id}")
-#         return ordered_results, channel_description
-
-#     except Exception as e:
-#         print(f"❌ Error fetching video details for {channel_id}: {e}")
-#         # Return empty list and description
-#         return [], channel_description
 def fetch_recent_videos(
-    channel_id: str, max_results: int = 30, filter_shorts: bool = True
+    channel_id: str, 
+    max_results: int = 30, 
+    filter_shorts: bool = True,
+    max_items_to_scan: int = 500,  # <-- OLD safety break (long-stop)
+    min_videos_in_first_batch: int = 5 # <-- YOUR NEW HEURISTIC (fast-fail)
 ) -> Tuple[List[Dict], str]:
     """
-    Fetch up to max_results recent videos (filtering shorts *during* fetch until limit is met or playlist ends)
+    Fetch up to max_results recent videos (filtering shorts *during* fetch)
     and channel description.
+    
+    Includes TWO safety breaks:
+    1. min_videos_in_first_batch: Skips channel if first 50 uploads are mostly shorts.
+    2. max_items_to_scan: Long-stop safety for weird channels.
     """
     if not channel_id: return [], ""
     if not API_KEY: print("❌ ERROR: API key missing."); return [], ""
 
     channel_description = ""
     uploads_playlist = None
-    results: List[Dict] = [] # Final list of videos passing filters
-
+    results: List[Dict] = []
+    
+    total_items_scanned = 0
+    is_first_batch = True # <-- NEW FLAG to track the first loop
+    
     # 1) Get channel details (snippet + contentDetails)
     url = f"{YT_BASE}/channels"
     params = {"part": "contentDetails,snippet", "id": channel_id, "key": API_KEY}
@@ -288,24 +164,27 @@ def fetch_recent_videos(
         if not uploads_playlist: print(f"⚠️ No uploads playlist for {channel_id}"); return [], channel_description
     except Exception as e: print(f"❌ Error fetching channel details for {channel_id}: {e}"); return [], ""
 
-    # 2) Iterate through playlist pages, fetch details, filter, UNTIL max_results is reached OR playlist ends
+    # 2) Iterate through playlist pages...
     playlist_url = f"{YT_BASE}/playlistItems"
     vids_url = f"{YT_BASE}/videos"
     next_page = None
     fetched_ids_in_batch = []
-    processed_playlist_items = 0
+    
+    print(f"  Fetching videos for {channel_id} (target: {max_results}, first batch min: {min_videos_in_first_batch})...")
 
-    print(f"  Fetching videos for {channel_id} (target: {max_results} non-shorts)...")
-
-    # This loop continues as long as we haven't reached the target number of valid videos
     while len(results) < max_results:
+        
+        # OLD safety break (long-stop)
+        if total_items_scanned >= max_items_to_scan:
+            print(f"    ⚠️  Hit scan limit ({max_items_to_scan} videos). Stopping search.")
+            break
+            
         print(f"    Fetching playlist batch (found {len(results)}/{max_results} valid videos so far)...")
-        # --- Fetch a batch of Video IDs from the playlist ---
         try:
             params_pl = {
                 "part": "contentDetails",
                 "playlistId": uploads_playlist,
-                "maxResults": 50, # Always fetch max batch size for efficiency
+                "maxResults": 50,
                 "key": API_KEY,
             }
             if next_page:
@@ -317,30 +196,24 @@ def fetch_recent_videos(
                 for it in page.get("items", [])
                 if it.get("contentDetails", {}).get("videoId")
             ]
-            processed_playlist_items += len(page.get("items", []))
-            next_page = page.get("nextPageToken") # Get token for the *next* iteration
+            total_items_scanned += len(page.get("items", []))
+            next_page = page.get("nextPageToken")
 
-            # Check if the playlist ended in this fetch
             if not fetched_ids_in_batch and not next_page:
                  print(f"    No more video IDs found in playlist (end reached).")
-                 break # Exit the while loop if no more items AND no next page token
-
-            # Handle case where a page might be empty but there's a next page (rare)
+                 break
             if not fetched_ids_in_batch and next_page:
                  print(f"    Empty batch but next page exists, continuing...")
-                 continue # Go to next iteration to fetch the next page
+                 continue
 
         except Exception as e:
             print(f"    ❌ Error fetching playlist batch: {e}")
-            break # Stop if playlist fetching fails
+            break
 
-        # --- Fetch details for the IDs in this batch ---
         print(f"    Fetching details for {len(fetched_ids_in_batch)} videos...")
         batch_results_unfiltered = []
         try:
-            # Need to check fetched_ids_in_batch again as it might be empty if we continued above
             if not fetched_ids_in_batch: continue
-
             params_vid = {
                 "part": "snippet,contentDetails",
                 "id": ",".join(fetched_ids_in_batch),
@@ -349,31 +222,26 @@ def fetch_recent_videos(
             }
             vdata = _safe_get_json(vids_url, params_vid)
             batch_results_unfiltered = vdata.get("items", [])
-
         except Exception as e:
             print(f"    ❌ Error fetching video details batch: {e}")
-            break # Stop if video details fetching fails
+            break
 
-        # --- Filter this batch and add to results ---
         print(f"    Filtering batch...")
         filtered_count_in_batch = 0
         for item in batch_results_unfiltered:
-            # Check if we've already hit the target *before* processing this item
             if len(results) >= max_results: break
-
             vid = item.get("id")
             snippet = item.get("snippet", {})
             content = item.get("contentDetails", {})
             raw_title = snippet.get("title", "")
             duration_iso = content.get("duration", None)
             duration_seconds = parse_iso8601_duration(duration_iso) if duration_iso else None
-            is_short = is_short_video(raw_title, duration_seconds) # Use your updated is_short_video logic here
+            is_short = is_short_video(raw_title, duration_seconds)
 
-            # Apply the filter
             if filter_shorts and is_short:
-                 continue # Skip this video
+                 continue
 
-            # Video passed filter, format and add it
+            # ... (Video formatting and results.append logic) ...
             raw_desc = snippet.get("description", "") or ""
             raw_published = snippet.get("publishedAt", None)
             clean_desc = html.unescape(raw_desc).replace("\n", " ").replace("\r", " ").strip()
@@ -381,7 +249,7 @@ def fetch_recent_videos(
             if raw_published:
                 try:
                     dt_obj = datetime.fromisoformat(raw_published.replace("Z", "+00:00"))
-                    published_at = dt_obj.strftime("%Y-%m-%d %H:%M:%S")
+                    published_at = dt_obj.strftime("%Y-%m-%d %H%M:%S")
                 except Exception: published_at = raw_published
 
             results.append({
@@ -396,18 +264,21 @@ def fetch_recent_videos(
 
         print(f"    Added {filtered_count_in_batch} valid videos from this batch.")
 
-        # --- Check if playlist ended (important!) ---
-        # If there was no next page token returned from the playlist fetch, we're done.
+        # --- YOUR NEW HEURISTIC (FAST-FAIL) ---
+        if is_first_batch:
+            is_first_batch = False # Only run this check once
+            if filtered_count_in_batch < min_videos_in_first_batch:
+                print(f"    ⚠️  HEURISTIC: Found only {filtered_count_in_batch} valid videos in first batch.")
+                print(f"    Skipping channel, fails min threshold of {min_videos_in_first_batch}.")
+                break # Stop processing this channel entirely
+        # --- END NEW HEURISTIC ---
+
         if not next_page:
             print("    Reached end of playlist.")
-            break # Exit the while loop
+            break
 
-    # End of while loop
-
-    # --- Final Output ---
-    # Ensure we don't exceed max_results just in case
     final_results = results[:max_results]
-    print(f"  ✅ Finished fetching for {channel_id}. Found {len(final_results)} valid videos (target: {max_results}). Processed approx {processed_playlist_items} playlist items.")
+    print(f"  ✅ Finished fetching for {channel_id}. Found {len(final_results)} valid videos. (Scanned {total_items_scanned} items)")
     return final_results, channel_description
 
 
@@ -514,56 +385,6 @@ def get_channel_metadata_batch(channel_ids: List[str]) -> List[Dict]:
     print(f"  Finished fetching metadata. Got details for {processed_count} channels.")
     return channel_data
 
-
-# --- Multi-Focused Channel Search --- For channel extraction
-# def search_videos_multi_focused(keywords: List[str], max_results_per_search: int = 10, max_keywords: int = 7) -> set[str]:
-#     """ Performs multiple searches biased towards English """
-#     if not API_KEY: print("❌ ERROR: API key missing."); return set()
-#     if not keywords: print("⚠️ WARNING: No keywords provided."); return set()
-
-#     keywords_to_search = min(len(keywords), max_keywords)
-#     all_candidates = set()
-
-#     print(f"  🔎 Performing {keywords_to_search} focused searches (biased to English)...")
-
-#     for i in range(keywords_to_search):
-#         keyword = keywords[i]
-#         search_query = keyword # No quotes, as discussed
-
-#         print(f"     Search {i+1}/{keywords_to_search}: '{search_query}'")
-
-#         url = f"{YT_BASE}/search"
-#         params = {
-#             "part": "snippet",
-#             "q": search_query,
-#             "type": "channel",
-#             "order": "relevance",
-#             "maxResults": max_results_per_search,
-#             "key": API_KEY,
-#             "relevanceLanguage": "en" # <-- ADDED LANGUAGE BIAS
-#         }
-
-#         try:
-#             response = _safe_get_json(url, params)
-#             items = response.get("items", []) # Changed var name from 'videos' to 'items'
-#             found_count = 0
-#             for item in items:
-#                 # Ensure it's actually a channel result
-#                 if item.get("id", {}).get("kind") == "youtube#channel":
-#                     ch_id = item.get("id", {}).get("channelId")
-#                     # Sometimes search returns videoId even with type=channel, filter those
-#                     if ch_id:
-#                          all_candidates.add(ch_id)
-#                          found_count += 1
-
-#             print(f"        ✅ {found_count} channels found")
-
-#         except Exception as e:
-#             print(f"        ❌ Search Error: {str(e)[:100]}") # Show more error context
-#             continue
-
-#     print(f"  📊 Total: {len(all_candidates)} unique candidate channels found from {keywords_to_search} searches.\n")
-#     return all_candidates
 
 
 # For video extraction

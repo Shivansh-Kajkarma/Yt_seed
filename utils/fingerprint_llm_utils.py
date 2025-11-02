@@ -965,7 +965,7 @@ def get_channel_fingerprint_oneshot(
     channel_name: str,
     channel_description: str,
     video_df: pd.DataFrame,  # Pass in the DataFrame of 20 videos
-    model_provider: str = "gpt",
+    model_provider: str = "gpt-4o-mini",
     max_chars: int = 40000,
     retries: int = 3,
 ) -> dict:
@@ -1132,7 +1132,7 @@ def get_channel_fingerprint_oneshot(
                 return {}
 
             response = gpt_client.chat.completions.create(
-                model="gpt-4o",
+                model=model_provider,
                 response_format={"type": "json_object"},
                 messages=[
                     {
@@ -1573,3 +1573,58 @@ def calculate_profile_score_llm_with_keywords(
     except Exception as e:
         print(f"  ❌ Profile score error: {str(e)[:100]}")
         return error_output
+
+def get_vector_from_texts(texts: list[str]) -> np.ndarray | None:
+    """
+    Takes a list of text strings, cleans them, gets embeddings,
+    and returns the single averaged vector.
+    """
+    if not texts:
+        return None
+    cleaned_texts = [preprocess_text_for_llm(text) for text in texts if text]
+    if not cleaned_texts:
+        return None
+    try:
+        embeddings = embedding_model.encode(cleaned_texts)
+        avg_vector = np.mean(embeddings, axis=0)
+        return avg_vector
+    except Exception as e:
+        print(f"  ⚠️ Error encoding texts: {e}")
+        return None
+
+def calculate_cosine_similarity(vec_a, vec_b) -> float:
+    """Calculates cosine similarity between two averaged vectors."""
+    if vec_a is None or vec_b is None:
+        return 0.0
+    try:
+        return cosine_similarity(vec_a.reshape(1, -1), vec_b.reshape(1, -1))[0][0]
+    except Exception as e:
+        print(f"  ⚠️ Error in cosine similarity: {e}")
+        return 0.0
+
+def calculate_matrix_average_similarity(texts_a: list[str], texts_b: list[str]) -> float:
+    """
+    Computes the full pairwise matrix and returns the average of all scores.
+    """
+    if not embedding_model or not texts_a or not texts_b:
+        return 0.0
+    
+    # Clean texts
+    texts_a = [preprocess_text_for_llm(t) for t in texts_a if t]
+    texts_b = [preprocess_text_for_llm(t) for t in texts_b if t]
+    if not texts_a or not texts_b:
+        return 0.0
+        
+    try:
+        embed_a = embedding_model.encode(texts_a)
+        embed_b = embedding_model.encode(texts_b)
+        
+        # This creates the (e.g.) 30x20 matrix
+        similarity_matrix = cosine_similarity(embed_a, embed_b)
+        
+        # Take the mean of the entire matrix
+        avg_score = np.mean(similarity_matrix)
+        return float(avg_score)
+    except Exception as e:
+        print(f"  ⚠️ Error in matrix avg: {e}")
+        return 0.0
