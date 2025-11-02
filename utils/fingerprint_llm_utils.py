@@ -1064,19 +1064,29 @@ def get_channel_fingerprint_oneshot(
     ---
     PART 2: "keywords"
     ---
-    Generate **2-3 most dominant** content categories with 10-15 high-intent keywords each.
-    **CRITICAL**: Prioritize EMOTIONAL and ACTION-ORIENTED keywords over generic topic keywords.
-    **CRITICAL**: "niche" and "format" are very crucial. So analyze the data of {channel_name} very deeply and then answer.
-    **CRITICAL**: "intent" of channel is very very important. So please rethink and reanalyze the "intent" that is it accurate and then answer.
+    Generate 2-3 most dominant content categories. Under each category, list 5-10 high-intent YOUTUBE SEARCH QUERIES that would lead a user to this channel and its competitors.
 
-    Examples of GOOD keywords: 
-    ✅ "exposed as fraud" (emotional + action)
-    ✅ "conspiracy revealed" (emotional + action)
-    ✅ "company destroyed" (emotional + action)
+    **CRITICAL (THE GOAL):**
+    These are NOT just topics. They MUST be phrases a user would actually type into the YouTube search bar to find this content. The queries should be ACTION-ORIENTED and INVESTIGATIVE.
 
-    Examples of BAD keywords:
-    ❌ "business news" (too generic)
-    ❌ "political analysis" (too generic)
+    **CRITICAL (THE RULES):**
+    1.  **Reflect the Profile:** Analyze the 'intent', 'niche', and 'format' from PART 1. The search queries MUST reflect this. (e.g., if 'intent' is 'Exposé', queries must be investigative, not just simple news).
+    2.  **Use Search Templates:** Include common YouTube search patterns like "the downfall of...", "the problem with...", "everything wrong with...", etc.
+
+    **Examples of GOOD search queries (High-Intent):**
+    ✅ "the downfall of [company/celebrity]"
+    ✅ "everything wrong with [cultural trend]"
+    ✅ "the problem with [person/ideology]"
+    ✅ "[company/person] exposed as fraud"
+    ✅ "[topic] conspiracy explained"
+    ✅ "investigative documentary [topic]"
+
+    **Examples of BAD keywords (Too Broad/Academic):**
+    ❌ "political analysis" (Too generic)
+    ❌ "media critique" (This is a CATEGORY, not a search query)
+    ❌ "societal flaws" (Too academic, no one searches this)
+    ❌ "celebrity news" (Wrong intent, not an exposé)
+    ❌ "society destroyed" (Too sensational, poor search results)
 
     ---
     EXAMPLE OUTPUT (Do not copy it, use it to learn.):
@@ -1090,17 +1100,21 @@ def get_channel_fingerprint_oneshot(
         "target_audience": "Young adults (18-35), progressive, internet-native"
     }},
     "keywords": {{
-        "Controversial Exposés": [
-        "celebrity exposed", "hollywood exposed", "everything wrong with",
-        "exposed as fraud", "exposed as monster", "career destroyed",
-        "brutal truth exposed", "fake celebrity exposed", "celebrity lies exposed",
-        "controversial documentary"
+        "Investigative Exposés": [
+        "the downfall of a celebrity",
+        "exposed as fraud",
+        "everything wrong with hollywood",
+        "the problem with influencer culture",
+        "brutal truth about [topic]",
+        "celebrity lies exposed"
         ],
-        "Conspiracy & Government Critique": [
-        "government conspiracy", "secret plot exposed", "government corruption",
-        "political conspiracy", "deep state exposed", "government lies",
-        "conspiracy documentary", "hidden truth exposed", "shadow government",
-        "corruption exposed"
+        "Cultural & Political Critique": [
+        "government conspiracy explained",
+        "the problem with [ideology]",
+        "media manipulation examples",
+        "corporate corruption documentary",
+        "hidden truth about [event]",
+        "political commentary deep dive"
         ]
     }}
     }}

@@ -293,13 +293,15 @@ if __name__ == "__main__":
         print("Please check your internet connection and SentenceTransformer installation.")
         sys.exit(1)
         
-    if len(sys.argv) < 2:
-        print("❌ ERROR: You must provide a run_tag as an argument.")
-        print("This must match the tag from your Phase 1 & 2 runs.")
-        print("Example: python SCRIPTS/phase3_llm_scoring.py moon")
-        print("Example: python SCRIPTS/phase3_llm_scoring.py vox")
-        sys.exit(1)
+    # if len(sys.argv) < 2:
+    #     print("❌ ERROR: You must provide a run_tag as an argument.")
+    #     print("This must match the tag from your Phase 1 & 2 runs.")
+    #     print("Example: python SCRIPTS/phase3_llm_scoring.py moon")
+    #     print("Example: python SCRIPTS/phase3_llm_scoring.py vox")
+    #     sys.exit(1)
         
-    # Use the CLI argument as the run_tag
-    run_tag_arg = sys.argv[1].lower().strip()
+    # # Use the CLI argument as the run_tag
+    # run_tag_arg = sys.argv[1].lower().strip()
+    # print(run_tag_arg)
+    run_tag_arg = "moon"
     main(run_tag_arg)

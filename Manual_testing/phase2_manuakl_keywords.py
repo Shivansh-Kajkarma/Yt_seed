@@ -15,7 +15,7 @@ try:
     from utils.youtube_utils import (
         search_videos_multi_focused,
         get_channel_metadata_batch,
-        fetch_recent_videos,
+        # fetch_recent_videos, # <-- We don't need this anymore
     )
 except ImportError:
     print("Error: Could not import from 'utils' directory.")
@@ -28,12 +28,11 @@ except ImportError:
 # ==================================================
 #
 # --- EDIT THIS TAG FOR EACH TEST ---
-# Change this for each test to create a new, separate output file.
-RUN_TAG = "test_society_destroyed"
+RUN_TAG = "test_society_destroyed_channels_only"
 #
 # --- PASTE YOUR KEYWORDS HERE ---
 MANUAL_KEYWORDS = [
-    "society destroyed"
+    "how billionaires exploit the poor"
     # "exposed as a monster",
     # "everything wrong with",
     # "brain rot exposed"
@@ -51,20 +50,19 @@ SEED_ID_FOR_LOGS = "manual_test_id"
 OUTPUT_CACHE_DIR = BASE_DIR / "PHASE_2_DISCOVERY_CACHE"
 OUTPUT_CACHE_DIR.mkdir(exist_ok=True) # Ensure directory exists
 
-# The cache file that this script WRITES TO
-CACHE_DATA_PATH = OUTPUT_CACHE_DIR / f"phase2_discovered_raw_data_{RUN_TAG}.csv"
+# --- NEW: This is now the FINAL report, not a cache ---
+FINAL_REPORT_PATH = OUTPUT_CACHE_DIR / f"phase2_CHANNELS_ONLY_report_{RUN_TAG}.csv"
 
 # The high-level log file this script UPDATES
 SEEN_CHANNELS_PATH = BASE_DIR / f"seen_channels_MANUAL_TESTS.csv" # A separate log for tests
 
 
-# --- Define ALL columns for the new cache file ---
-CACHE_COLUMN_ORDER = [
-    "Seed_Channel_Name", "Seed_Channel_ID",
+# --- NEW: Simplified columns for the metadata-only report ---
+REPORT_COLUMN_ORDER = [
+    "Seed_Keywords", # <-- Added to see what found this
     "Discovered_Channel_Name", "Discovered_Channel_ID", "Discovered_Channel_URL",
     "Discovered_Subs", "Discovered_Video_Count", "Discovered_Country",
-    "Discovered_Channel_Description", "Discovered_Videos_JSON",
-    "Discovery_Level", "Timestamp",
+    "Timestamp",
 ]
 
 AUTO_KEEP_COUNTRIES = [
@@ -74,30 +72,28 @@ AUTO_KEEP_COUNTRIES = [
 # --- Settings ---
 MIN_SUBSCRIBERS = 10000
 MIN_VIDEOS = 6
-VIDEOS_PER_CANDIDATE = 20
-
-# --- Rate Limiting ---
-DELAY_BETWEEN_CANDIDATES = 2
-DELAY_BETWEEN_SEEDS = 10
+# VIDEOS_PER_CANDIDATE = 20 # <-- Not needed
 
 
-# === HELPER FUNCTIONS (Identical to Phase 2) ===
+# === HELPER FUNCTIONS (Modified) ===
 
-def load_cached_channels(file_path):
+def load_processed_channels(file_path):
+    """Loads the report file and returns a set of processed channel IDs."""
     if not file_path.exists():
         return set()
     try:
         df = pd.read_csv(file_path, usecols=["Discovered_Channel_ID"])
         return set(df["Discovered_Channel_ID"].astype(str).tolist())
     except Exception as e:
-        print(f"  ⚠️  Could not read cache file {file_path.name}: {e}")
+        print(f"  ⚠️  Could not read report file {file_path.name}: {e}")
         return set()
 
-def append_to_cache_csv(data_dict, file_path):
+def append_to_report_csv(data_dict, file_path):
+    """Appends a single row (dict) to the final report CSV file."""
     file_exists = file_path.exists()
     try:
         with open(file_path, mode='a', newline='', encoding='utf-8-sig') as f:
-            writer = csv.DictWriter(f, fieldnames=CACHE_COLUMN_ORDER, extrasaction='ignore')
+            writer = csv.DictWriter(f, fieldnames=REPORT_COLUMN_ORDER, extrasaction='ignore')
             if not file_exists:
                 writer.writeheader()
             writer.writerow(data_dict)
@@ -145,23 +141,22 @@ def _update_status(seen_data, channel_id, status):
 
 # --- MODIFIED processing function ---
 def process_manual_keywords(
-    seed_keywords_list, # <-- TAKES THE LIST DIRECTLY
+    seed_keywords_list,
     seen_channels_data,
     seen_ids,
-    cached_ids,
-    cache_file_path
+    processed_ids,  # <-- Set of already processed IDs
+    report_file_path # <-- Path to save data
 ):
     """
-    MODIFIED version of the Phase 2 processor.
-    Takes a flat list of keywords and runs the discovery.
+    MODIFIED version. Stops after Step 4 and saves only metadata.
     """
     print("\n" + "=" * 70)
     print(f"PROCESSING MANUAL TEST: {RUN_TAG}")
-    print(f"  (Will skip {len(cached_ids)} channels already in {cache_file_path.name})")
+    print(f"  (Will skip {len(processed_ids)} channels already in {report_file_path.name})")
     print("=" * 70)
 
     current_time = datetime.now().isoformat()
-    new_channels_cached_count = 0
+    new_channels_saved_count = 0
 
     if not seed_keywords_list:
         print(f"❌ No keywords in MANUAL_KEYWORDS list. Stopping.")
@@ -222,105 +217,90 @@ def process_manual_keywords(
         qualified.append(meta)
     save_seen_channels(seen_channels_data, SEEN_CHANNELS_PATH)
 
-    # --- STEP 4: Filter against *already cached* channels ---
-    print(f"\n🔍 STEP 4: Filtering against {len(cached_ids)} already cached channels...")
+    # --- STEP 4: Filter against *already processed* channels ---
+    print(f"\n🔍 STEP 4: Filtering against {len(processed_ids)} already processed channels...")
     candidates_to_process = []
     for c in qualified:
-        if c['id'] not in cached_ids:
+        if c['id'] not in processed_ids:
             candidates_to_process.append(c)
             
     if not candidates_to_process:
-        print("  ✅ No new qualified candidates to cache for this test.")
+        print("  ✅ No new qualified candidates to save for this test.")
         return 0
-    print(f"  🎯 {len(candidates_to_process)} new candidates to fetch and cache (out of {len(qualified)} qualified).")
+    print(f"  🎯 {len(candidates_to_process)} new candidates to save (out of {len(qualified)} qualified).")
 
-    # --- STEP 5: Fetch Video Data & Cache (Save-as-you-go) ---
-    print(f"\n🎯 STEP 5: Fetching and Caching {len(candidates_to_process)} candidates...")
+
+    # --- STEP 5: SAVE METADATA (NO VIDEO FETCH) ---
+    print(f"\n🎯 STEP 5: Saving metadata for {len(candidates_to_process)} candidates...")
 
     for i, candidate in enumerate(candidates_to_process, 1):
-        print(f"\n  [{i}/{len(candidates_to_process)}] {candidate['name']}")
-        print(f"     Subs: {candidate['subscribers']:,} | Videos: {candidate['video_count']:,}")
-
         try:
-            print(f"     Fetching {VIDEOS_PER_CANDIDATE} videos...")
-            videos, cand_desc = fetch_recent_videos(
-                candidate["id"], max_results=VIDEOS_PER_CANDIDATE, filter_shorts=True
-            )
-            
-            if len(videos) < 3:
-                print(f"     ⚠️  Only {len(videos)} videos found, logging and skipping")
-                _update_status(seen_channels_data, candidate["id"], "skipped_few_videos")
-                continue
-
-            candidate_raw_data = {
-                "Seed_Channel_Name": SEED_NAME_FOR_LOGS,
-                "Seed_Channel_ID": SEED_ID_FOR_LOGS,
+            # Build the simple report dictionary
+            report_data = {
+                "Seed_Keywords": ", ".join(seed_keywords_list),
                 "Discovered_Channel_Name": candidate["name"],
                 "Discovered_Channel_ID": candidate["id"],
                 "Discovered_Channel_URL": candidate["url"],
                 "Discovered_Subs": candidate["subscribers"],
                 "Discovered_Video_Count": candidate["video_count"],
                 "Discovered_Country": candidate.get("country", "Unknown"),
-                "Discovered_Channel_Description": cand_desc,
-                "Discovered_Videos_JSON": json.dumps(videos),
-                "Discovery_Level": 1,
                 "Timestamp": datetime.now().isoformat(),
             }
 
-            append_to_cache_csv(candidate_raw_data, cache_file_path)
-            new_channels_cached_count += 1
-            print(f"     ✅ Cached raw data for {candidate['name']} to {cache_file_path.name}")
+            # Save the metadata row
+            append_to_report_csv(report_data, report_file_path)
+            new_channels_saved_count += 1
+            print(f"     ✅ Saved metadata for {candidate['name']} ({i}/{len(candidates_to_process)})")
 
-            _update_status(seen_channels_data, candidate["id"], "cached_for_llm")
+            # Update high-level log
+            _update_status(seen_channels_data, candidate["id"], "saved_metadata_only")
             save_seen_channels(seen_channels_data, SEEN_CHANNELS_PATH)
             
-            time.sleep(DELAY_BETWEEN_CANDIDATES)
-
         except Exception as e:
-            print(f"     ❌ Error on {candidate['name']}: {str(e)[:100]}")
-            _update_status(seen_channels_data, candidate["id"], "error_caching")
+            print(f"     ❌ Error saving {candidate['name']}: {str(e)[:100]}")
+            _update_status(seen_channels_data, candidate["id"], "error_saving_metadata")
 
-    return new_channels_cached_count
+    return new_channels_saved_count
 
 
 # === MAIN FUNCTION ===
 def main():
     start_time = time.time()
     print("=" * 70)
-    print(f"MANUAL KEYWORD TEST (PHASE 2)")
+    print(f"MANUAL KEYWORD TEST (METADATA ONLY)")
     print(f"Run Tag: {RUN_TAG}")
-    print(f"Output Cache: {CACHE_DATA_PATH.name}")
+    print(f"Output Report: {FINAL_REPORT_PATH.name}")
     print("=" * 70)
 
     # --- 1. Load Seen Channels Log ---
     print(f"\n📂 Loading seen channels log from {SEEN_CHANNELS_PATH.name}...")
     seen_channels_data, seen_ids = load_seen_channels(SEEN_CHANNELS_PATH)
 
-    # --- 2. Load ALREADY CACHED channels (from this test's cache file) ---
-    print(f"\n🔄 Loading already cached channels from {CACHE_DATA_PATH.name}...")
-    cached_channel_ids = load_cached_channels(CACHE_DATA_PATH)
-    print(f"  ✅ Found {len(cached_channel_ids)} channels in cache to skip.")
+    # --- 2. Load ALREADY PROCESSED channels (from this test's report file) ---
+    print(f"\n🔄 Loading already processed channels from {FINAL_REPORT_PATH.name}...")
+    processed_channel_ids = load_processed_channels(FINAL_REPORT_PATH)
+    print(f"  ✅ Found {len(processed_channel_ids)} channels in report to skip.")
 
     # --- 3. Process The Manual Keywords ---
-    total_new_channels_cached = process_manual_keywords(
+    total_new_channels_saved = process_manual_keywords(
         MANUAL_KEYWORDS,
         seen_channels_data,
         seen_ids,
-        cached_channel_ids,
-        CACHE_DATA_PATH
+        processed_channel_ids,
+        FINAL_REPORT_PATH
     )
 
     # === FINAL SUMMARY ===
     elapsed = time.time() - start_time
     print("\n" + "=" * 70)
-    print("MANUAL TEST COMPLETE")
+    print("MANUAL TEST COMPLETE (METADATA ONLY)")
     print("=" * 70)
     print(f"Keywords tested: {', '.join(MANUAL_KEYWORDS)}")
-    print(f"Total new channels cached this run: {total_new_channels_cached}")
-    print(f"Total channels in this test's cache: {len(cached_channel_ids) + total_new_channels_cached}")
+    print(f"Total new channels saved this run: {total_new_channels_saved}")
+    print(f"Total channels in this test's report: {len(processed_channel_ids) + total_new_channels_saved}")
     print(f"⏱️  Total runtime: {elapsed / 60:.1f} minutes")
     print(f"\n✅ You can now inspect the results in:")
-    print(f"   {CACHE_DATA_PATH.name}")
+    print(f"   {FINAL_REPORT_PATH.name}")
     print("=" * 70)
 
 if __name__ == "__main__":
