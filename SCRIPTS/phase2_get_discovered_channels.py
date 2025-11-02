@@ -86,6 +86,7 @@ AUTO_KEEP_COUNTRIES = [
 SEED_CHANNELS = ["Moon"] # Which seeds from the fingerprint file to use
 MIN_SUBSCRIBERS = 10000
 MIN_VIDEOS = 6
+MAX_VIDEOS = 2500
 VIDEOS_PER_CANDIDATE = 20 # How many videos to fetch for LLM analysis
 
 # --- Rate Limiting ---
@@ -248,6 +249,10 @@ def process_seed_channel(
             print(f"  - Filtering {meta['name']} (videos: {meta['video_count']})")
             _update_status(seen_channels_data, meta["id"], "filtered_videos")
             continue
+        if meta["video_count"] > MAX_VIDEOS:
+            print(f"  - Filtering {meta['name']} (videos: {meta['video_count']:,}) - LIKELY A NEWS ORG")
+            _update_status(seen_channels_data, meta["id"], "filtered_max_videos")
+            continue
         country = meta.get('country', 'Unknown')
         if country not in AUTO_KEEP_COUNTRIES:
             print(f"  - Filtering {meta['name']} (Country: {country})")
@@ -279,7 +284,7 @@ def process_seed_channel(
             # --- 5a. Fetch recent videos and channel description ---
             print(f"     Fetching {VIDEOS_PER_CANDIDATE} videos...")
             videos, cand_desc = fetch_recent_videos(
-                candidate["id"], max_results=VIDEOS_PER_CANDIDATE, filter_shorts=True
+                candidate["id"], max_results=VIDEOS_PER_CANDIDATE, filter_shorts=True, min_videos_in_first_batch=5, max_items_to_scan=500
             )
             
             if len(videos) < 3:
