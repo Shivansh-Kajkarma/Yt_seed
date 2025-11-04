@@ -1180,6 +1180,8 @@ def get_channel_fingerprint_oneshot(
     return {}  # Return empty dict if all retries fail
 
 
+
+
 # def calculate_profile_score_llm(
 #     seed_profile: dict,
 #     candidate_profile: dict,
@@ -1628,3 +1630,151 @@ def calculate_matrix_average_similarity(texts_a: list[str], texts_b: list[str]) 
     except Exception as e:
         print(f"  ⚠️ Error in matrix avg: {e}")
         return 0.0
+
+
+
+def get_channel_tier_gpt(
+    seed_name:str,
+    candidate_name: str, 
+    candidate_titles: list, 
+    seed_profile_str: str, 
+    seed_categories_str: str,
+    seed_keywords_str: str,
+    retries: int = 3
+) -> dict:
+    """
+    Calls Gemini to perform the "Client's Gut Check" and assign a tier.
+    """
+    
+    # Create the text blob of candidate titles
+    titles_blob = "\n- ".join(candidate_titles)
+    
+    # --- This is the new SOTA prompt ---
+    # --- PROMPT START ---
+    
+    prompt = f"""You are an expert YouTube analyst and content strategist.
+    Your goal is to help me find *exact* competitors for my seed channel by analyzing a candidate.
+
+    ---
+    **SEED CHANNEL CONTEXT**
+    ---
+    My seed channel's name is **"{seed_name}"**.
+
+    My Seed Channel's **Profile** (its core identity):
+    {seed_profile_str}
+
+    My Seed Channel's **Keywords** (the topics it covers):
+    {seed_keywords_str}
+
+    ---
+    **CANDIDATE CHANNEL ANALYSIS**
+    ---
+    I will now provide the most recent video titles from a candidate channel.
+    Candidate Name: **"{candidate_name}"**
+    Candidate Titles:
+    - {titles_blob}
+
+    ---
+    **YOUR TASK (Must follow these 3 steps):**
+    ---
+    1.  **Candidate Profile Generation:** Based *only* on the candidate's titles, infer its 'Niche', 'Format', and 'Intent'.
+    2.  **Comparative Analysis:** Compare the Seed's Profile (Niche, Intent, Format) against the Candidate's inferred Profile.
+    3.  **Tier Assignment:** Use the definitions and rules below to assign a tier.
+
+    ---
+    **TIERING RULES (NEW - READ CAREFULLY)**
+    ---
+    This is a test of **Niche & Intent**, not just topics.
+
+    * **Tier 1 (Direct Competitor):**
+        * **Niche MATCH:** Seed and Candidate have the *same* core niche (e.g., 'Societal Critique' vs 'Societal Critique').
+        * **Intent MATCH:** Both channels have the *same* goal (e.g., 'To critique' vs 'To critique').
+        * (Format must also be similar, e.g., 'Video Essay').
+
+    * **Tier 2 (Niche Competitor):**
+        * **Niche is RELATED:** The niches are in the same *family* but not identical (e.g., Seed is 'Societal Critique', Candidate is 'Business Case Studies').
+        * **Intent MATCH:** Both have a similar goal (e.g., 'To explain').
+        * **Format MATCH:** (e.g., 'Video Essay' vs 'Explainer Documentary').
+
+    * **Tier 3 (Audience Overlap / "The News" Tier):**
+        * **Niche MATCH:** The *topic* is the same (e.g., 'Politics').
+        * **Format MISMATCH:** The *format* is completely different (e.g., Seed is 'Video Essay', Candidate is 'Daily News Clips' or 'Livestream').
+        * This tier is for channels that cover the same topics but in a different, non-competitor format.
+
+    * **Tier 4 (Irrelevant / "The Movie Cynic" Tier):**
+        * **Niche MISMATCH:** The niches are fundamentally different.
+        * **This is the most important filter.** If the niche is wrong, it's Tier 4, *even if the topic seems related*.
+        * (e.g., Seed is 'Societal Critique using movies' vs. Candidate is 'Movie Reviews'. This is a NICHE MISMATCH.)
+        * (e.g., Seed is 'Documentary' vs. Candidate is 'Gaming Walkthrough' or 'Vlog'.)
+
+    ---
+    **OUTPUT FORMAT**
+    ---
+    Return ONLY a single, valid JSON object with two keys: "tier" and "reason".
+    In your "reason" text, you **MUST NOT** use double quotes ("). Use single quotes (') instead.
+
+    ---
+    **EXAMPLES (Follow this new Niche/Intent logic)**
+    ---
+
+    **Example (Tier 1 - Direct Competitor):**
+    {{
+    "tier": 1,
+    "reason": "Niche & Intent Match. Seed's niche is 'Explanatory Journalism'. Candidate's inferred niche is 'In-depth Analysis', and their intents to 'explain' align. This is a direct competitor."
+    }}
+
+    **Example (Tier 2 - Niche Competitor):**
+    {{
+    "tier": 2,
+    "reason": "Niche is Related. Seed's niche is 'Societal Critique', but Candidate's inferred niche is 'Business Case Studies'. While both are 'Video Essays' that 'explain', their core niches are adjacent, not identical."
+    }}
+
+    **Example (Tier 3 - Format Mismatch):**
+    {{
+    "tier": 3,
+    "reason": "Format Mismatch. Seed's format is 'Video Essay'. Candidate's titles ('Biden Speaks', 'Market Update') infer a 'Daily News Clip' format. Although the *topic* is 'Politics', the format is not a competitor."
+    }}
+
+    **Example (Tier 4 - Irrelevant Niche):**
+    {{
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal Critique'. Candidate's titles ('When Nepo-Babies Self-Destruct', 'Marvel - Death Of An Empire') infer a 'Movie Review' niche. The *intent* is to review, not to critique society. This is irrelevant."
+    }}
+
+    Provide ONLY the JSON output for the candidate.
+    """
+
+    # --- PROMPT END --- """
+    for attempt in range(retries):
+        try:
+            # --- Call GPT ---
+            response = gpt_client.chat.completions.create(
+                model="gpt-4o-mini",
+                response_format={"type": "json_object"}, # Force JSON output
+                messages=[{"role": "user", "content": prompt}],
+                temperature=0.1,
+                max_tokens=500 # 500 tokens is plenty for the reason
+            )
+            
+            result_text = response.choices[0].message.content.strip()
+            parsed_json = json.loads(result_text)
+            
+            if "tier" in parsed_json and "reason" in parsed_json:
+                return parsed_json # Success!
+            else:
+                print(f"  ⚠️  JSON missing 'tier' or 'reason' keys.")
+                return {"tier": -1, "reason": "ERROR: Malformed JSON."}
+
+        except Exception as e:
+            error_str = str(e)
+            print(f"  ❌ LLM Error: {error_str[:150]}")
+            if "rate_limit_exceeded" in error_str:
+                print(f"  ...RATE LIMIT HIT. Sleeping for 20 seconds (Attempt {attempt+1}/{retries})...")
+                time.sleep(20)
+                continue # Try again
+            
+            # For other errors, fail
+            return {"tier": -1, "reason": f"ERROR: {error_str[:100]}"}
+            
+    # Fallback if loop finishes
+    return {"tier": -1, "reason": "ERROR: All retries failed."}
