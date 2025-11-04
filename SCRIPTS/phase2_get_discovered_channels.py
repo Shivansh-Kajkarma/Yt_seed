@@ -18,6 +18,7 @@ try:
         get_channel_metadata_batch,
         fetch_recent_videos,
     )
+    print("✅ Successfully imported YouTube utils.")
 except ImportError:
     print("Error: Could not import from 'utils' directory.")
     print(f"Ensure 'utils' is at this path: {BASE_DIR / 'utils'}")
@@ -26,8 +27,8 @@ except ImportError:
 
 # === CONFIGURATION ===
 # --- EDIT THIS TAG ---
-# Set a memorable name for this run (e.g., "moon", "vox_analysis")
-RUN_TAG = "moon"
+# Set a memorable name for this run (e.g., "moon", "vox")
+RUN_TAG = "vox"
 #
 # ==================================================
 
@@ -60,7 +61,9 @@ except Exception as e:
 
 # --- Output Files (for Phase 2) ---
 OUTPUT_CACHE_DIR = BASE_DIR / "PHASE_2_DISCOVERY_CACHE"
-OUTPUT_CACHE_DIR.mkdir(exist_ok=True) # Ensure directory exists
+OUTPUT_SEARCH_CACHE_DIR = BASE_DIR / "PHASE_2_SEARCH_CACHE" # <-- NEW: Search Cache
+OUTPUT_CACHE_DIR.mkdir(exist_ok=True) 
+OUTPUT_SEARCH_CACHE_DIR.mkdir(exist_ok=True) # <-- NEW: Create Dir
 
 # The cache file that this script WRITES TO
 CACHE_DATA_PATH = OUTPUT_CACHE_DIR / f"phase2_discovered_raw_data_{RUN_TAG}.csv"
@@ -83,10 +86,10 @@ AUTO_KEEP_COUNTRIES = [
 ]
 
 # --- Settings ---
-SEED_CHANNELS = ["Moon"] # Which seeds from the fingerprint file to use
+SEED_CHANNELS = ["Vox"] # Which seeds from the fingerprint file to use
 MIN_SUBSCRIBERS = 10000
 MIN_VIDEOS = 6
-MAX_VIDEOS = 2500
+MAX_VIDEOS = 2500 # Your filter for news orgs
 VIDEOS_PER_CANDIDATE = 20 # How many videos to fetch for LLM analysis
 
 # --- Rate Limiting ---
@@ -94,7 +97,7 @@ DELAY_BETWEEN_CANDIDATES = 2 # Shorter delay, no LLM call
 DELAY_BETWEEN_SEEDS = 10
 
 
-# === HELPER FUNCTIONS ===
+# === HELPER FUNCTIONS (Unchanged) ===
 
 def load_cached_channels(file_path):
     """Loads the Phase 2 cache and returns a set of processed channel IDs."""
@@ -161,7 +164,7 @@ def _update_status(seen_data, channel_id, status):
             entry["Processing_Status"] = status
             break
 
-# --- Main processing function ---
+# --- Main processing function (UPDATED WITH CACHE) ---
 def process_seed_channel(
     seed_channel,
     seed_channel_id,
@@ -169,17 +172,12 @@ def process_seed_channel(
     seen_channels_data,
     seen_ids,
     cached_ids,     # Set of already cached IDs
-    cache_file_path # Path to save data
+    cache_file_path, # Path to save data
+    search_cache_path: Path # <-- NEW: Path for the search cache
 ):
     """
-    Process a single seed channel:
-    1. Search YouTube using seed keywords.
-    2. Filter out seen/cached channels.
-    3. Get metadata for new channels.
-    4. Filter by subs/videos/country.
-    5. Fetch video data for qualified channels.
-    6. Save all raw data to the Phase 2 cache file.
-    Returns: (number_of_new_channels_cached)
+    Process a single seed channel.
+    NOW INCLUDES a cache for Step 1 (the expensive search).
     """
 
     print("\n" + "=" * 70)
@@ -203,17 +201,49 @@ def process_seed_channel(
         print(f"❌ No seed keywords found for {seed_channel}. Skipping seed.")
         return 0
 
-    # --- STEP 1: Multi-Focused Search ---
-    print(f"\n🔍 STEP 1: Searching YouTube with {len(seed_keywords_list)} keywords...")
-    try:
-        candidate_ids = search_videos_multi_focused(
-            seed_keywords_list,
-            max_results_per_search=30,
-            max_keywords=len(seed_keywords_list)
-        )
-    except Exception as e:
-        print(f"❌ Search failed: {e}")
-        return 0
+    # --- STEP 1: Multi-Focused Search (NOW WITH CACHING) ---
+    print(f"\n🔍 STEP 1: Finding candidate channels...")
+
+    # Check if a search cache for this fingerprint already exists
+    if search_cache_path.exists():
+        print(f"  ✅ Found existing search cache: {search_cache_path.name}")
+        try:
+            with open(search_cache_path, 'r') as f:
+                # Load the list of IDs and convert to a set
+                candidate_ids = set(json.load(f))
+            print(f"  Loaded {len(candidate_ids)} candidates from cache. (0 quota units used)")
+        except Exception as e:
+            print(f"  ⚠️ Error loading cache: {e}. Forcing a new search.")
+            candidate_ids = None # Set to None to trigger search
+    else:
+        print(f"  ℹ️ No search cache found. Running new search (This will use quota)...")
+        candidate_ids = None # Set to None to trigger search
+
+    if candidate_ids is None:
+        # This is the "run the search" block
+        print(f"   Searching YouTube with {len(seed_keywords_list)} keywords...")
+        try:
+            candidate_ids = search_videos_multi_focused(
+                seed_keywords_list,
+                max_results_per_search=50,
+                max_keywords=len(seed_keywords_list)
+            )
+            # --- SAVE TO CACHE ---
+            try:
+                with open(search_cache_path, 'w') as f:
+                    # Convert set to list for JSON serialization
+                    json.dump(list(candidate_ids), f)
+                print(f"  ✅ Saved {len(candidate_ids)} found candidates to cache: {search_cache_path.name}")
+            except Exception as e:
+                print(f"  ⚠️ Error saving to search cache: {e}")
+            # --- END SAVE ---
+        except Exception as e:
+            print(f"❌ Search failed: {e}")
+            # If we fail the search (e.g., quota), we must stop.
+            # Raise the exception to be caught by main()
+            raise e 
+    
+    # --- (Rest of the function is identical) ---
 
     candidate_ids = candidate_ids - seen_ids - {seed_channel_id}
     if not candidate_ids:
@@ -249,10 +279,12 @@ def process_seed_channel(
             print(f"  - Filtering {meta['name']} (videos: {meta['video_count']})")
             _update_status(seen_channels_data, meta["id"], "filtered_videos")
             continue
+        # --- Your Max Video Count Filter ---
         if meta["video_count"] > MAX_VIDEOS:
             print(f"  - Filtering {meta['name']} (videos: {meta['video_count']:,}) - LIKELY A NEWS ORG")
             _update_status(seen_channels_data, meta["id"], "filtered_max_videos")
             continue
+        # --- End Filter ---
         country = meta.get('country', 'Unknown')
         if country not in AUTO_KEEP_COUNTRIES:
             print(f"  - Filtering {meta['name']} (Country: {country})")
@@ -275,7 +307,6 @@ def process_seed_channel(
 
     # --- STEP 5: Fetch Video Data & Cache (Save-as-you-go) ---
     print(f"\n🎯 STEP 5: Fetching and Caching {len(candidates_to_process)} candidates...")
-
     for i, candidate in enumerate(candidates_to_process, 1):
         print(f"\n  [{i}/{len(candidates_to_process)}] {candidate['name']}")
         print(f"     Subs: {candidate['subscribers']:,} | Videos: {candidate['video_count']:,}")
@@ -303,7 +334,7 @@ def process_seed_channel(
                 "Discovered_Video_Count": candidate["video_count"],
                 "Discovered_Country": candidate.get("country", "Unknown"),
                 "Discovered_Channel_Description": cand_desc,
-                "Discovered_Videos_JSON": json.dumps(videos), # <-- Save video list as JSON string
+                "Discovered_Videos_JSON": json.dumps(videos),
                 "Discovery_Level": 1,
                 "Timestamp": datetime.now().isoformat(),
             }
@@ -320,13 +351,27 @@ def process_seed_channel(
             time.sleep(DELAY_BETWEEN_CANDIDATES)
 
         except Exception as e:
-            print(f"     ❌ Error on {candidate['name']}: {str(e)[:100]}")
+            error_str = str(e)
+            print(f"     ❌ Error on {candidate['name']}: {error_str[:150]}")
+            
+            # --- This is the quota fix from last time ---
+            if "quotaExceeded" in error_str or "403" in error_str:
+                print("\n" + "="*50)
+                print("     🛑 QUOTA EXCEEDED. Stopping gracefully.")
+                print("     All data saved so far is safe in the CSV.")
+                print("     Re-run this script tomorrow to continue.")
+                print("="*50 + "\n")
+                _update_status(seen_channels_data, candidate["id"], "error_quota_limit")
+                save_seen_channels(seen_channels_data, SEEN_CHANNELS_PATH) # Save log one last time
+                break # <-- This exits the loop
+            # --- END FIX ---
+            
             _update_status(seen_channels_data, candidate["id"], "error_caching")
 
     return new_channels_cached_count
 
 
-# === MAIN FUNCTION ===
+# === MAIN FUNCTION (UPDATED WITH CACHE) ===
 def main():
     start_time = time.time()
     print("=" * 70)
@@ -342,16 +387,16 @@ def main():
     try:
         with open(latest_fingerprint_file, "r", encoding="utf-8") as f:
             data = json.load(f)
-            # Find the keywords for the channels we care about
-            for channel_id, details in data.get("channels", {}).items():
-                channel_name = details.get("channel_name")
-                if channel_name in SEED_CHANNELS:
-                    keywords_data = details.get("fingerprint", {}).get("keywords", {})
-                    if keywords_data:
-                        seed_keywords_map[channel_name] = keywords_data
-                        print(f"  📌 Found keywords for seed: {channel_name}")
-                    else:
-                        print(f"  ⚠️  No keywords found in fingerprint for {channel_name}")
+        # Find the keywords for the channels we care about
+        for channel_id, details in data.get("channels", {}).items():
+            channel_name = details.get("channel_name")
+            if channel_name in SEED_CHANNELS:
+                keywords_data = details.get("fingerprint", {}).get("keywords", {})
+                if keywords_data:
+                    seed_keywords_map[channel_name] = keywords_data
+                    print(f"  📌 Found keywords for seed: {channel_name}")
+                else:
+                    print(f"  ⚠️  No keywords found in fingerprint for {channel_name}")
 
         if not seed_keywords_map:
             print(f"❌ ERROR: Could not find keywords for any seeds in {SEED_CHANNELS}.")
@@ -411,18 +456,38 @@ def main():
         if not seed_keywords or not seed_channel_id:
             print(f"⚠️  WARNING: Missing data for '{seed_channel}', skipping")
             continue
+            
+        try:
+            # --- NEW: Define the cache path based on the fingerprint file ---
+            fingerprint_filename = latest_fingerprint_file.stem # Gets name without .json
+            # Creates a cache name like: search_cache_vox_20251101_192102.json
+            search_cache_filename = f"search_cache_{fingerprint_filename.replace('fingerprints_oneshot_', '')}.json"
+            search_cache_path = OUTPUT_SEARCH_CACHE_DIR / search_cache_filename
 
-        new_channels_this_seed = process_seed_channel(
-            seed_channel,
-            seed_channel_id,
-            seed_keywords, # Pass the DICT
-            seen_channels_data,
-            seen_ids,
-            cached_channel_ids,  # <-- PASS THE SET
-            CACHE_DATA_PATH      # <-- PASS THE PATH
-        )
+            new_channels_this_seed = process_seed_channel(
+                seed_channel,
+                seed_channel_id,
+                seed_keywords, # Pass the DICT
+                seen_channels_data,
+                seen_ids,
+                cached_channel_ids,  # <-- PASS THE SET
+                CACHE_DATA_PATH,     # <-- PASS THE PATH
+                search_cache_path    # <-- NEW: PASS THE SEARCH CACHE PATH
+            )
+            
+            total_new_channels_cached += new_channels_this_seed
 
-        total_new_channels_cached += new_channels_this_seed
+        except Exception as e:
+            # This will catch the "quotaExceeded" error from Step 1
+            if "quotaExceeded" in str(e) or "403" in str(e):
+                print(f"\n🛑 CRITICAL: Quota exceeded during search for seed '{seed_channel}'.")
+                print("   Stopping the entire script. Please re-run tomorrow.")
+                break # Exit the loop over seeds
+            else:
+                print(f"\n❌ UNEXPECTED ERROR processing seed '{seed_channel}': {e}")
+                print("   Skipping this seed and continuing...")
+                continue # Go to the next seed
+
         print(f"\n✅ Seed '{seed_channel}' complete:")
         print(f"   Cached {new_channels_this_seed} new channels this run.")
 
@@ -439,7 +504,7 @@ def main():
     print(f"Total new channels cached this run: {total_new_channels_cached}")
     print(f"Total channels in cache: {len(cached_channel_ids) + total_new_channels_cached}")
     print(f"⏱️  Total runtime: {elapsed / 60:.1f} minutes")
-    print(f"\n✅ Next step: Run 'phase3_llm_scoring.py' (or similar) to process:")
+    print(f"\n✅ Next step: Run 'phase2_5_embedding_triage.py' to process:")
     print(f"   {CACHE_DATA_PATH.name}")
     print("=" * 70)
 
