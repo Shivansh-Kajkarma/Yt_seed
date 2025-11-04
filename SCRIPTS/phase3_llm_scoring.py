@@ -54,7 +54,7 @@ def main(run_tag: str):
     
     # --- Define file paths based on our new structure ---
     FINGERPRINT_DIR = BASE_DIR / "FINGERPRINTS_ONESHOT"
-    DISCOVERY_CACHE_DIR = BASE_DIR / "PHASE_2_DISCOVERY_CACHE"
+    DISCOVERY_CACHE_DIR = BASE_DIR / "PHASE_2_5_TRIAGE_REPORTS"
     REPORT_DIR = BASE_DIR / "PHASE_3_REPORTS"
     
     os.makedirs(REPORT_DIR, exist_ok=True) # Create final report dir
@@ -104,7 +104,8 @@ def main(run_tag: str):
 
     # --- B. Load Discovered Candidate Data (from Phase 2) ---
     print(f"\n[STEP 2/4] Loading Discovered Candidates...")
-    DISCOVERY_CACHE_FILE = DISCOVERY_CACHE_DIR / f"phase2_discovered_raw_data_{run_tag}.csv"
+
+    DISCOVERY_CACHE_FILE = DISCOVERY_CACHE_DIR / f"phase2_5_triage_report_{run_tag}_filtered.csv"
 
     if not DISCOVERY_CACHE_FILE.exists():
         print(f"❌ ERROR: Phase 2 cache file not found: {DISCOVERY_CACHE_FILE.name}")
@@ -167,7 +168,7 @@ def main(run_tag: str):
                 channel_name=cand_name,
                 channel_description=cand_desc,
                 video_df=df_cand_videos,
-                model_provider="gpt"
+                model_provider="gpt-4o-mini"
             )
             
             if not cand_fingerprint:
@@ -303,5 +304,5 @@ if __name__ == "__main__":
     # # Use the CLI argument as the run_tag
     # run_tag_arg = sys.argv[1].lower().strip()
     # print(run_tag_arg)
-    run_tag_arg = "moon"
+    run_tag_arg = "vox"
     main(run_tag_arg)
