@@ -229,14 +229,14 @@ def main(run_tag: str):
     print(f"\n✅ Full Triage Report saved to {FINAL_TRIAGE_FILE.name}")
     print(f"   Total channels: {len(df_report)}")
 
-    # 2. Save FILTERED report (Score_Emb_Titles_AvgVec >= 0.5)
-    df_filtered = df_report[df_report["Score_Emb_Combined_AvgVec"] >= 0.5].copy()
+    # 2. Save FILTERED report (Score_Emb_Titles_AvgVec >= 0.45)
+    df_filtered = df_report[df_report["Score_Emb_Combined_AvgVec"] >= 0.45].copy()
     FILTERED_TRIAGE_FILE = (
         TRIAGE_REPORT_DIR / f"phase2_5_triage_report_{run_tag}_filtered_{timestamp}.csv"
     )
     df_filtered.to_csv(FILTERED_TRIAGE_FILE, index=False, encoding="utf-8-sig")
     print(f"\n✅ Filtered Triage Report saved to {FILTERED_TRIAGE_FILE.name}")
-    print(f"   Filtered channels (Score_Emb_Titles_AvgVec >= 0.5): {len(df_filtered)}")
+    print(f"   Filtered channels (Score_Emb_Titles_AvgVec >= 0.45): {len(df_filtered)}")
     print(f"   Channels removed: {len(df_report) - len(df_filtered)}")
 
     try:
