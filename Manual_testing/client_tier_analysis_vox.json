@@ -1,0 +1,50 @@
+{
+  "J.J. McCullough": {
+    "tier": -1,
+    "reason": "ERROR: 429 Resource exhausted. Please try again later. Please refer to https://cloud.google.com/vertex-ai/g"
+  },
+  "Freethink": {
+    "tier": 1,
+    "reason": "Format matches: The titles ('Why the current moment is bigger...', 'Could cloning and gene editing save biodiversity?') suggest documentary-style video essays with in-depth analysis. Topic matches: The titles cover 3 of the seed's pillars: 'Science & Technology Explained' ('If aging is a disease...', 'The future of flight is powered by this Mach-5 engine'), 'Societal Issues & Current Events Analysis' ('COVID broke the global supply chain...', 'Chip Wars: Why Taiwan is the most important country in the world'), and 'Political & Economic Commentary' ('What’s killing the clean energy revolution?')."
+  },
+  "Democracy At Work": {
+    "tier": 1,
+    "reason": "Format matches: The titles ('Capitalism Hits Home: Today’s Family Structure Extolled and Endangered', 'Economic Update: Union Organizing In Today's U.S.') suggest documentary-style video essays with in-depth analysis. Topic matches: The titles cover 3 of the seed's pillars: 'Societal Issues & Current Events Analysis' (e.g., 'Capitalism Hits Home: If Children Are Our Future, Americans Are out of Luck'), 'Political & Economic Commentary' (e.g., 'Economic Update: Union Organizing In Today's U.S.'), and 'Cultural Trends & Analysis' (e.g., 'Redneck Gone Green with special guest Dr. Nicole Rousseau')."
+  },
+  "Visual Venture": {
+    "tier": 3,
+    "reason": "Format does not match: The titles ('The Most Disturbing Reddit Communities', 'Horrible Internet Crimes...') suggest sensationalized, clickbait-driven content, not in-depth documentary-style video essays. Topic match: 0. While some titles touch on societal issues, they do so in a sensationalized way that doesn't align with Vox's analytical and nuanced approach to 'Societal Issues & Current Events Analysis'."
+  },
+  "WWEMusic": {
+    "tier": 3,
+    "reason": "Format does not match: The titles ('Asuka – The Future (2025) [Entrance Theme]') suggest music tracks or themes, not documentary-style video essays. Topic match: 0. The topics are related to professional wrestling entrance themes, which do not align with any of the seed's content pillars."
+  },
+  "Alex O'Connor": {
+    "tier": 1,
+    "reason": "Format matches: The titles ('Why Materialism is Complete Nonsense', 'Does Quantum Physics Make Sense Yet?') suggest documentary-style video essays with in-depth explanations. Topic matches: The titles cover 2+ of the seed's pillars: 'Science & Technology Explained' (Quantum Physics, ChatGPT) and 'Societal Issues & Current Events Analysis' (Religion, Philosophy, Consciousness, AI Ethics)."
+  },
+  "Bernie Sanders": {
+    "tier": 3,
+    "reason": "Format does not match: The titles ('Bernie's Full Speech...', 'NYC Rally...') suggest news clips, live streams, and recordings of speeches/rallies, not documentary-style explainer videos. Topic matches: While the titles touch on 'Political & Economic Commentary', the format mismatch is the primary reason for the Tier 3 assignment."
+  },
+  "Queen": {
+    "tier": 2,
+    "reason": "Format matches: The titles ('The Psychology of...', 'How To Get Ahead...') suggest analytical video essays, exploring 'why' and 'how' questions. Topic matches: 1. The candidate's focus on 'Psychology' and 'Self-Improvement' touches on 'Societal Issues & Current Events Analysis' (specifically, understanding human behavior and its impact on society), but does not meaningfully cover the other pillars."
+  },
+  "Moon": {
+    "tier": 2,
+    "reason": "Format matches: The titles ('Why Britain Is On the Edge of Revolution', 'Jeffrey Epstein: How a Government Spy Blackmailed America') suggest documentary-style video essays with analytical 'why' and 'how' questions. Topic matches: The titles cover at least 1 of the seed's pillars: 'Societal Issues & Current Events Analysis' (e.g., 'Why Britain Is On the Edge of Revolution', 'Jeffrey Epstein: How a Government Spy Blackmailed America'). While some titles touch on cultural trends, they are often framed in a negative or critical way, which is a slightly different approach than Vox's typical analysis. Other topics like 'AI' and 'Apple' could arguably fall under 'Science & Technology Explained', but the framing is more sensationalist than explanatory."
+  },
+  "Mr. Beat": {
+    "tier": 1,
+    "reason": "Format matches: The titles ('Why does the internet hate Woodrow Wilson?', 'Democracy Is More Rare Than You Probably Think') suggest documentary-style video essays with analytical and explanatory intent. Topic matches: The titles cover 2 or more of the seed's pillars: 'Societal Issues & Current Events Analysis' (e.g., 'The Truth About Christian Nationalism', 'Taking a Jim Crow-Era Literacy Test') and 'Political & Economic Commentary' (e.g., 'Have Mr. Beat's Political Views Changed?', 'Every U.S. Territory Explained')."
+  },
+  "Spreadsheet Nation": {
+    "tier": 3,
+    "reason": "Format does not match: The titles ('Extract Data in Excel...', 'VLOOKUP Tricks...') suggest tutorial-style videos, not documentary/essay format. Topic match: 0. The topics are about 'Excel' and 'Spreadsheets', which do not align with any of the seed's pillars."
+  },
+  "Johnny Harris": {
+    "tier": 1,
+    "reason": "Format matches: The titles ('Why the US is deporting so many people', 'Gold Explained, Finally') indicate documentary-style video essays with in-depth explanations. Topic matches: The titles cover 2 or more of the seed's pillars: 'Societal Issues & Current Events Analysis' (e.g., 'Why the US is deporting so many people', 'What’s ACTUALLY Happening in North Korea'), 'Political & Economic Commentary' (e.g., 'How the Mormon Church Made $293 Billion', 'Why Groceries Are SO Expensive Now'), and 'Science & Technology Explained' (e.g., 'This Is How AI Is Rewriting the Rules of War', 'Space WAR Has Already Begun')."
+  }
+}

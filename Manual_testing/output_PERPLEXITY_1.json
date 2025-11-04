@@ -1,0 +1,46 @@
+{
+  "profile": {
+    "channel_name": "Vox",
+    "description": "Vox is a channel producing in-depth video essays and explainers on a wide range of topics, including politics, economics, science, and culture. The channel aims to provide context and analysis on current events and complex issues, often exploring different perspectives and underlying causes.",
+    "likely_niche": "Explanatory Journalism & Current Events Analysis",
+    "target_audience": "Intellectually curious adults (25-55) interested in understanding complex issues and current events through in-depth analysis and diverse perspectives.",
+    "video_style": "Documentary-style with a mix of graphics, archival footage, and expert interviews.",
+    "format": "Video Essay / Explanatory Journalism",
+    "perspective": "Generally balanced and analytical, aiming to present multiple sides of an issue, with a focus on understanding underlying causes and complexities.",
+    "intent": "To inform and educate viewers on a wide range of topics, promoting critical thinking and a deeper understanding of the world."
+  },
+  "keywords": {
+    "Politics & Policy Analysis": [
+      "US politics explained",
+      "political polarization analysis",
+      "free speech debate",
+      "election analysis",
+      "government policy explained",
+      "civil conflict analysis"
+    ],
+    "Economics & Business": [
+      "economic inequality explained",
+      "business model analysis",
+      "market trends analysis",
+      "future of work",
+      "economic theory explained",
+      "sports betting industry"
+    ],
+    "Science & Technology": [
+      "climate change solutions",
+      "artificial intelligence ethics",
+      "future of technology",
+      "public health crisis",
+      "vaccine science",
+      "telehealth industry"
+    ],
+    "Society & Culture": [
+      "rural america problems",
+      "american healthcare system",
+      "higher education crisis",
+      "social trends analysis",
+      "cultural commentary",
+      "urban planning explained"
+    ]
+  }
+}

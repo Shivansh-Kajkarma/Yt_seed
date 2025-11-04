@@ -1,0 +1,46 @@
+{
+  "profile": {
+    "channel_name": "Moon",
+    "description": "A commentary channel focusing on societal issues, celebrity controversies, and internet culture, often with a critical and sometimes cynical perspective. The channel employs sensational titles to attract viewers while delving into deeper analyses of the chosen topics.",
+    "niche": "Cultural commentary and critique",
+    "intent": "To analyze and critique various aspects of society, including entertainment, technology, and politics, often highlighting perceived negative trends and controversies."
+  },
+  "keywords": {
+    "Celebrity & Entertainment Industry Critique": [
+      "celebrity scandal analysis",
+      "entertainment industry critique",
+      "hollywood industry analysis",
+      "celebrity controversy explained",
+      "late night show analysis",
+      "movie industry trends",
+      "celebrity comeback analysis"
+    ],
+    "Societal & Political Commentary": [
+      "social commentary",
+      "political analysis",
+      "economic inequality explained",
+      "government policy critique",
+      "social issues analysis",
+      "cultural trends analysis",
+      "future of society analysis"
+    ],
+    "Internet Culture & Technology Critique": [
+      "internet culture analysis",
+      "social media trends",
+      "technology industry critique",
+      "online community analysis",
+      "artificial intelligence impact",
+      "streaming service analysis",
+      "reddit community analysis"
+    ],
+    "Creator & Influencer Commentary": [
+      "youtube creator drama",
+      "influencer controversy analysis",
+      "podcast analysis",
+      "internet personality critique",
+      "social media influencer trends",
+      "online content creator analysis",
+      "creator community drama"
+    ]
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "profile": {
+    "niche": "Explanatory Journalism and Current Events",
+    "format": "Documentary-style videos with analysis and commentary",
+    "intent": "To inform and educate viewers on complex issues, providing context and different perspectives.",
+    "speaker": "Objective, research-driven narration with expert interviews and diverse viewpoints.",
+    "ideology": "Generally progressive, with a focus on social and economic justice, but aims to present multiple sides of an issue.",
+    "target_audience": "Educated, curious individuals interested in understanding current events, policy, and social issues."
+  },
+  "keywords": {
+    "Politics and Current Events": [
+      "analysis of current political climate",
+      "understanding the new right",
+      "america civil conflict explained",
+      "trump winning 2024 analysis",
+      "free speech debate explained",
+      "impact of trump on colleges",
+      "economic theory behind trumpism",
+      "america losing sports betting explained"
+    ],
+    "Social Issues and Trends": [
+      "problems with the internet today",
+      "future of thrifting explained",
+      "rural america telehealth access",
+      "volunteer ems crisis",
+      "rural hospital crisis explained",
+      "ambulance crisis in america",
+      "vaccine schedule for children explained"
+    ],
+    "Economics and Business": [
+      "what if there were no billionaires",
+      "independent movie theaters business model",
+      "who controls tiktok data",
+      "lawyers vs engineers china america",
+      "ai replacing college education",
+      "future of work ai",
+      "probiotics in yogurt benefits"
+    ]
+  }
+}

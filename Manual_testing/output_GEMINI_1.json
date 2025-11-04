@@ -1,0 +1,48 @@
+{
+  "profile": {
+    "niche": "In-depth explorations of complex societal, political, and economic issues with a focus on understanding different perspectives.",
+    "format": "Well-produced explainer videos and interview-based discussions, often featuring 'The Gray Area' segment.",
+    "intent": "To provide context and analysis on current events and complex topics, encouraging viewers to think critically.",
+    "speaker": "A media company with various hosts and guest experts.",
+    "ideology": "Generally progressive and analytical, aiming for nuanced understanding rather than strict advocacy.",
+    "target_audience": "Inquisitive individuals interested in understanding complex issues and diverse perspectives."
+  },
+  "keywords": {
+    "Politics and Governance": [
+      "political analysis",
+      "US politics explained",
+      "free speech debate",
+      "civil conflict risk",
+      "new right movement",
+      "trumpism explained",
+      "election analysis"
+    ],
+    "Economics and Business": [
+      "economic inequality",
+      "billionaire wealth",
+      "sports betting industry",
+      "independent movie theaters",
+      "thrifting business model",
+      "lawyers vs engineers",
+      "rural economics"
+    ],
+    "Science and Technology": [
+      "climate change solutions",
+      "telehealth access",
+      "fire ecology",
+      "vaccine science",
+      "probiotics effectiveness",
+      "artificial intelligence in education",
+      "memory science"
+    ],
+    "Social Issues and Policy": [
+      "rural healthcare crisis",
+      "ambulance services",
+      "volunteer EMS",
+      "ghost towns",
+      "rural america",
+      "college education",
+      "end of life experience"
+    ]
+  }
+}

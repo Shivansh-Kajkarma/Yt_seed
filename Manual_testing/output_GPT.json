@@ -1,0 +1,48 @@
+{
+  "profile": {
+    "channel_name": "Vox",
+    "description": "Making sense of it all.",
+    "likely_niche": "Explanatory journalism and in-depth analysis of current events, societal issues, and complex topics across various domains.",
+    "target_audience": "Individuals seeking informed perspectives and comprehensive explanations of complex issues, including current events, politics, economics, science, and culture. The audience likely values critical thinking and nuanced analysis.",
+    "video_style": "Documentary-style videos featuring a mix of visuals, data, and expert interviews, often incorporating animation and graphics to enhance understanding. The channel is known for its in-depth reporting and analytical approach.",
+    "intent": "To provide viewers with comprehensive and accessible explanations of complex issues, fostering a deeper understanding of the world and encouraging informed discussion and critical thinking."
+  },
+  "keywords": {
+    "Societal Issues & Current Events Analysis": [
+      "current events analysis",
+      "social issues explained",
+      "contemporary issues analysis",
+      "modern society problems",
+      "challenges facing society",
+      "in-depth report [topic]",
+      "the problem with [issue]"
+    ],
+    "Political & Economic Commentary": [
+      "political commentary",
+      "economic analysis",
+      "political news analysis",
+      "economic trends explained",
+      "government policy analysis",
+      "political theory explained",
+      "economic systems explained"
+    ],
+    "Science & Technology Explained": [
+      "science explained",
+      "technology explained",
+      "future of technology",
+      "scientific breakthroughs explained",
+      "environmental science",
+      "climate change explained",
+      "medical science explained"
+    ],
+    "Cultural Trends & Analysis": [
+      "cultural trends analysis",
+      "internet culture explained",
+      "social media trends",
+      "cultural phenomena explained",
+      "history and culture",
+      "media analysis",
+      "the future of [topic]"
+    ]
+  }
+}

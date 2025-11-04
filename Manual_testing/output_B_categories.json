@@ -1,0 +1,47 @@
+{
+  "profile": {
+    "niche": "Current Events and Social Issues",
+    "format": "Video Essay / Documentary",
+    "intent": "To Inform and Analyze",
+    "speaker": "Multiple Hosts / Experts",
+    "ideology": "Progressive / Left-leaning",
+    "target_audience": "Educated, Politically Aware Viewers"
+  },
+  "keywords": {
+    "Politics & Policy": [
+      "Free Speech",
+      "Civil Conflict",
+      "Trumpism",
+      "New Right",
+      "American Politics",
+      "US Policy",
+      "Billionaires",
+      "Rural America"
+    ],
+    "Economics & Business": [
+      "Telehealth",
+      "Sports Betting",
+      "Independent Movie Theaters",
+      "Thrifting",
+      "Rural Hospitals",
+      "Ambulance Crisis",
+      "Economic Theory"
+    ],
+    "Science & Technology": [
+      "Climate Change",
+      "Internet Culture",
+      "TikTok",
+      "AI",
+      "Vaccines",
+      "Probiotics",
+      "Memory"
+    ],
+    "Society & Culture": [
+      "Ghost Towns",
+      "Extinction",
+      "Death",
+      "Colleges",
+      "Volunteer EMS"
+    ]
+  }
+}
