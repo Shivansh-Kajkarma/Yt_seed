@@ -135,7 +135,7 @@ def main():
                 channel_name=channel_name,
                 channel_description=channel_desc,
                 video_df=channel_video_df,
-                model_provider="gpt"
+                model_provider="gpt-4o"
             )
 
             if not fingerprint_data:
