@@ -3,6 +3,7 @@ import time
 import requests
 import html
 import re
+import pandas as pd
 from dotenv import load_dotenv
 from datetime import datetime, timedelta
 from typing import List, Dict, Optional, Tuple, Counter
@@ -662,3 +663,58 @@ def filter_by_frequency_threshold(
     print(f"✅ Found {len(candidates)} candidates above threshold")
     
     return candidates
+
+
+# --- YOUR GOOGLE SHEET LOADER FUNCTION ---
+def _load_from_google_sheet(sheet_url: str) -> Optional[pd.DataFrame]:
+    """
+    Internal function to load seed channels from a PUBLIC Google Sheet URL.
+    
+    Note: The Google Sheet must be "Published to the web" as a CSV.
+    (File -> Share -> Publish to web -> Select sheet -> Select CSV)
+    
+    Args:
+        sheet_url: The public URL of the Google Sheet (must be a CSV export link).
+        
+    Returns:
+        A DataFrame with 'Channel_Name' and 'Channel_URL', or None if loading fails.
+    """
+    try:
+        # Check if it's a direct CSV export link (from "publish" or "export")
+        if 'output=csv' in sheet_url or 'export?format=csv' in sheet_url:
+            csv_export_url = sheet_url
+            print(f"Using direct CSV URL: {csv_export_url}")
+        else:
+            # Try to construct the export link from a standard /edit URL
+            match = re.search(r'/spreadsheets/d/([a-zA-Z0-9_-]+)', sheet_url)
+            if not match:
+                print("Error: Invalid Google Sheet URL. Must be a standard /edit link or a public 'output=csv' link.")
+                return None
+            
+            sheet_id = match.group(1)
+            gid_match = re.search(r'gid=([0-9]+)', sheet_url)
+            gid = gid_match.group(1) if gid_match else '0'
+            
+            csv_export_url = f"https://docs.google.com/spreadsheets/d/{sheet_id}/export?format=csv&gid={gid}"
+            print(f"Constructed CSV export URL: {csv_export_url}")
+
+        df = pd.read_csv(csv_export_url, encoding='utf-8-sig')
+        
+        # print(f"[Debug] Columns found by pandas: {list(df.columns)}")
+        
+        # Sanitize column names
+        df.columns = df.columns.str.strip()
+
+        if 'Channel_Name' not in df.columns or 'Channel_URL' not in df.columns:
+            print("Error: Google Sheet must contain 'Channel_Name' and 'Channel_URL' columns.")
+            print(f"[Debug] Sanitized columns: {list(df.columns)}") # More debug
+            return None
+            
+        print(f"Successfully loaded {len(df)} channels from Google Sheet.")
+        return df[['Channel_Name', 'Channel_URL']]
+        
+    except Exception as e:
+        print(f"Error loading Google Sheet from '{sheet_url}': {e}")
+        print("Please ensure the URL is correct and the sheet is 'Published to the web' as a CSV.")
+        return None
+# --- END OF YOUR FUNCTION ---
