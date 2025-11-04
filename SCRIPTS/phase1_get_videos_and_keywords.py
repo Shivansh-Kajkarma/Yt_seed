@@ -4,6 +4,8 @@ import json
 import time
 from pathlib import Path
 from datetime import datetime
+import re  # <-- ADDED for your new function
+from typing import Optional  # <-- ADDED for your new function
 
 # --- Make sure utils are importable ---
 # This assumes your 'utils' folder is in the parent directory of 'SCRIPTS'
@@ -11,9 +13,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 sys.path.append(str(BASE_DIR))
 
 try:
-    from utils.youtube_utils import fetch_for_seed_channels
+    from utils.youtube_utils import fetch_for_seed_channels, _load_from_google_sheet
     from utils.fingerprint_llm_utils import (
-        get_channel_fingerprint_oneshot # <-- This is 'gpt' in your util file
+        get_channel_fingerprint_oneshot
     )
 except ImportError:
     print("Error: Could not import from 'utils' directory.")
@@ -24,15 +26,19 @@ except ImportError:
 # 1. CONFIGURATION
 # ==================================================
 #
-# --- EDIT THIS TAG ---
-# Set a memorable name for this run (e.g., "moon", "vox_analysis", "test_run")
-# This will be part of the output filenames.
+# --- CHOOSE YOUR INPUT SOURCE ---
+# Set this to "csv" or "sheet"
+SEED_INPUT_SOURCE = "csv" 
+#
+# --- Set a memorable name for this run (e.g., "moon", "vox_analysis")
 RUN_TAG = "moon"
 #
 # ==================================================
 
 # --- Input/Output Directories ---
 SEED_CSV = BASE_DIR / "seed_channels.csv"
+SEED_GOOGLE_SHEET_URL = "YOUR_PUBLIC_GOOGLE_SHEET_URL_HERE" # <-- ADD YOUR URL
+
 OUTPUT_DIR_VIDEOS = BASE_DIR / "PHASE_1_OUTPUTS"
 OUTPUT_DIR_FINGERPRINTS = BASE_DIR / "FINGERPRINTS_ONESHOT"
 
@@ -65,20 +71,43 @@ def main():
         print(f"❌ CRITICAL ERROR: Could not create output directories: {e}")
         return
 
-    # --- 1. Load Seed Channels ---
+    # --- 1. Load Seed Channels (NEW DYNAMIC LOGIC) ---
     print(f"\n--- [PHASE 1/3] Loading Seed Channels ---")
-    try:
-        seed_df = pd.read_csv(SEED_CSV)
-        if 'Channel_Name' not in seed_df.columns or 'Channel_URL' not in seed_df.columns:
-            print(f"❌ ERROR: '{SEED_CSV}' must have 'Channel_Name' and 'Channel_URL' columns.")
+    
+    seed_df = None # Initialize
+    
+    if SEED_INPUT_SOURCE.lower() == "csv":
+        print(f"Loading from local CSV: {SEED_CSV.name}")
+        try:
+            seed_df = pd.read_csv(SEED_CSV)
+        except FileNotFoundError:
+            print(f"❌ ERROR: '{SEED_CSV.name}' not found in root directory.")
             return
-        print(f"✅ Loaded {len(seed_df)} seed channels from '{SEED_CSV.name}'.")
-    except FileNotFoundError:
-        print(f"❌ ERROR: '{SEED_CSV.name}' not found in root directory.")
+        except Exception as e:
+            print(f"❌ ERROR: Could not read seed CSV: {e}")
+            return
+            
+    elif SEED_INPUT_SOURCE.lower() == "sheet":
+        print(f"Loading from Google Sheet...")
+        seed_df = _load_from_google_sheet(SEED_GOOGLE_SHEET_URL)
+        
+    else:
+        print(f"❌ ERROR: Invalid SEED_INPUT_SOURCE: '{SEED_INPUT_SOURCE}'")
+        print("   Please set it to 'csv' or 'sheet' at the top of the script.")
         return
-    except Exception as e:
-        print(f"❌ ERROR: Could not read seed CSV: {e}")
+
+    # --- Validation for the loaded DataFrame ---
+    if seed_df is None or seed_df.empty:
+        print(f"❌ FAILED to load any seed channels. Exiting.")
         return
+        
+    if 'Channel_Name' not in seed_df.columns or 'Channel_URL' not in seed_df.columns:
+        print(f"❌ ERROR: Loaded data must have 'Channel_Name' and 'Channel_URL' columns.")
+        return
+        
+    print(f"✅ Loaded {len(seed_df)} seed channels.")
+    # --- END OF NEW LOADING LOGIC ---
+
 
     # --- 2. Fetch Video Data (from youtube_utils) ---
     print(f"\n--- [PHASE 2/3] Fetching Videos from YouTube API ---")
@@ -110,20 +139,17 @@ def main():
             "run_id": RUN_ID,
             "run_tag": RUN_TAG,
             "created_at": datetime.now().isoformat(),
-            "model_provider": "gpt",
+            "model_provider": "gpt", # You can hardcode this as per our last chat
             "video_data_source": str(FINAL_VIDEO_CSV_PATH.name)
         },
         "channels": {}
     }
     
-    # Group by Channel_ID to process each channel
-    # Grouping by ID is safer than grouping by name
     grouped_channels = df_videos.groupby('Channel_ID')
     total_channels = len(grouped_channels)
     
     for i, (channel_id, channel_video_df) in enumerate(grouped_channels, 1):
         
-        # Get consistent channel info from the first row
         channel_name = channel_video_df['Channel_Name'].iloc[0]
         channel_desc = channel_video_df['channel_description'].iloc[0]
         
@@ -135,7 +161,7 @@ def main():
                 channel_name=channel_name,
                 channel_description=channel_desc,
                 video_df=channel_video_df,
-                model_provider="gpt-4o"
+                model_provider="gpt" # Using gpt as default
             )
 
             if not fingerprint_data:
@@ -147,7 +173,6 @@ def main():
                  }
                  continue
 
-            # Store the full JSON (profile + keywords)
             all_fingerprints["channels"][channel_id] = {
                 "channel_name": channel_name,
                 "status": "success",
@@ -155,7 +180,6 @@ def main():
             }
             print(f"  ✅ Success for {channel_name}.")
             
-            # Optional: Pretty print the profile for logging
             if "profile" in fingerprint_data:
                 print(f"     -> Profile: {fingerprint_data.get('profile')}")
 
@@ -168,8 +192,7 @@ def main():
                 "fingerprint": {}
             }
         
-        # Add a small delay to be kind to the LLM API
-        time.sleep(1) 
+        time.sleep(1) # Be kind to the LLM API
 
     # --- Save Final Fingerprint JSON ---
     print("\n--- Pipeline Complete. Saving final JSON. ---")
