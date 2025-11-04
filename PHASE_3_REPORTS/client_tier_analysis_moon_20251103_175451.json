@@ -1,0 +1,922 @@
+{
+  "Philip DeFranco": {
+    "tier": 1,
+    "reason": "Niche & Intent Match. Seed's niche is 'Societal and Cultural Critique'. Candidate's inferred niche is 'Political Commentary & Analysis', and their intent to 'expose and critique' aligns. This is a direct competitor."
+  },
+  "Patrick Cc:": {
+    "tier": 1,
+    "reason": "Niche & Intent Match. Seed's niche is 'Societal and Cultural Critique'. Candidate's inferred niche is also 'Societal and Cultural Critique', and both aim to 'expose and critique'. Their formats align as both are narrative commentary."
+  },
+  "j aubrey": {
+    "tier": 1,
+    "reason": "Niche & Intent Match. Seed's niche is 'Societal and Cultural Critique', and Candidate's inferred niche is also 'Societal and Cultural Critique'. Both channels aim to 'expose and critique', making them direct competitors."
+  },
+  "Casey Aonso": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles ('The Harry Styles Fanfic Cinematic Universe', 'Exploring Celebrity Flop Eras') infer a focus on 'Celebrity and Entertainment Critique'. The intent is more about entertainment analysis rather than societal critique, making it irrelevant."
+  },
+  "ColdFusion": {
+    "tier": 2,
+    "reason": "Niche is Related. Seed's niche is 'Societal and Cultural Critique', while Candidate's inferred niche is 'Technology and Business Critique'. Both channels aim to 'expose and critique', and their formats are similar in narrative commentary style, making them niche competitors."
+  },
+  "The Movie Cynic": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles ('When Nepo-Babies Self-Destruct', 'Ironheart Was A Piece Of S***') infer a 'Movie Review' niche focused on entertainment critique. The intent is to review films and celebrities, not to critique societal issues. This is irrelevant."
+  },
+  "SWOOP": {
+    "tier": 1,
+    "reason": "Niche & Intent Match. Seed's niche is 'Societal and Cultural Critique'. Candidate's inferred niche is also 'Societal and Cultural Critique', and both channels aim to 'expose and critique'. This makes them direct competitors."
+  },
+  "Cruel World Happy Mind": {
+    "tier": 1,
+    "reason": "Niche & Intent Match. Seed's niche is 'Societal and Cultural Critique'. Candidate's inferred niche is also 'Societal and Cultural Critique', and their intent to 'expose and critique' aligns perfectly. This makes them a direct competitor."
+  },
+  "The Iced Coffee Hour": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles focus on financial advice, celebrity controversies, and market predictions, indicating a niche centered around financial commentary and entertainment news rather than societal critique. The intent is to inform or advise rather than to critique society, making this irrelevant."
+  },
+  "Coffeezilla": {
+    "tier": 1,
+    "reason": "Niche & Intent Match. Seed's niche is 'Societal and Cultural Critique', and Candidate's inferred niche is 'Societal Critique' with a focus on exposing and critiquing various societal issues. Both channels aim to critique and expose, making them direct competitors."
+  },
+  "Henry Belcaster": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles ('The History of Steve Jobs', 'Coca-Cola’s Darkest Secrets, Revealed') infer a focus on general knowledge and curiosity-driven content rather than societal critique. The intent is more about exploration and explanation, not critique, making this irrelevant."
+  },
+  "Alex O'Connor": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles focus on philosophical discussions and religious inquiries, which infer a niche centered around 'Philosophy and Religion'. The intent is to explore and analyze philosophical concepts, not to critique societal issues, making this irrelevant."
+  },
+  "Ashley Norton": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles ('i read every bethenny frankel book and lost my mind', 'the crimes of ryan murphy') infer a focus on entertainment and celebrity culture analysis. The intent is more about entertainment critique rather than societal critique, making it irrelevant."
+  },
+  "Joma Tech": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles ('life of an AI startup founder/CEO', 'how the FTX collapse ACTUALLY happened...') infer a focus on technology and business commentary. The intent is to analyze and entertain rather than critique societal issues, making it irrelevant."
+  },
+  "oompaville": {
+    "tier": 2,
+    "reason": "Niche is Related. Seed's niche is 'Societal and Cultural Critique', while Candidate's inferred niche is 'Cultural Commentary and Analysis'. Both channels aim to 'expose and critique', and their formats are similar in narrative commentary style, making them niche competitors."
+  },
+  "FunkyFrogBait": {
+    "tier": 1,
+    "reason": "Niche & Intent Match. Seed's niche is 'Societal and Cultural Critique', and Candidate's inferred niche is also 'Societal Critique'. Both channels aim to 'expose and critique', making them direct competitors."
+  },
+  "tiffanyferg": {
+    "tier": 1,
+    "reason": "Niche & Intent Match. Seed's niche is 'Societal and Cultural Critique', and Candidate's inferred niche is also 'Societal and Cultural Critique'. Both channels aim to 'expose and critique', making them direct competitors."
+  },
+  "Sydney Watson": {
+    "tier": 1,
+    "reason": "Niche & Intent Match. Seed's niche is 'Societal and Cultural Critique', and Candidate's inferred niche is also 'Societal and Cultural Critique'. Both channels aim to 'expose and critique', making them direct competitors."
+  },
+  "Matt Walsh": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles suggest a focus on 'Political Commentary' with a strong partisan slant, which does not align with the broader societal critique intent of the seed channel."
+  },
+  "Messy Michon Live": {
+    "tier": 2,
+    "reason": "Niche is Related. Seed's niche is 'Societal and Cultural Critique', while Candidate's inferred niche is 'Political and Social Commentary'. Both channels aim to critique societal issues, but the Candidate's focus is more on political and social issues rather than a broader cultural critique."
+  },
+  "It's Blanko": {
+    "tier": 1,
+    "reason": "Niche & Intent Match. Seed's niche is 'Societal and Cultural Critique'. Candidate's inferred niche is also 'Societal and Cultural Critique', and both channels aim to 'expose and critique'. This makes them direct competitors."
+  },
+  "GaryVee": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles focus on 'Entrepreneurship' and 'Social Media Trends', indicating a niche centered around business and marketing rather than societal critique. The intent is to promote and advise, not to critique society, making this irrelevant."
+  },
+  "Blaire White": {
+    "tier": 1,
+    "reason": "Niche & Intent Match. Seed's niche is 'Societal and Cultural Critique', and Candidate's inferred niche is also 'Societal and Cultural Critique'. Both channels aim to 'expose and critique', making them direct competitors."
+  },
+  "All-In Podcast": {
+    "tier": 2,
+    "reason": "Niche is Related. Seed's niche is 'Societal and Cultural Critique', while Candidate's inferred niche is 'Political and Economic Commentary'. Both channels aim to 'expose and critique', and their formats are similar in narrative commentary style, making them niche competitors."
+  },
+  "Wall Street Millennial": {
+    "tier": 2,
+    "reason": "Niche is Related. Seed's niche is 'Societal and Cultural Critique', while Candidate's inferred niche is 'Business and Financial Analysis'. Both channels aim to critique and analyze, and they share a similar format of narrative commentary, making them niche competitors."
+  },
+  "Nas Daily": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles focus on personal experiences, business ventures, and lifestyle topics, indicating a 'Vlog' or 'Personal Development' niche. The intent is more about sharing experiences rather than critiquing society, making it irrelevant."
+  },
+  "Cam Kirkham Reacts": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles ('The Downfall of James Corden is insane', 'YouTube's Worst Chef is taking years off her life..') infer a focus on entertainment and reaction commentary. The intent is to react and entertain, not to critique society, making this irrelevant."
+  },
+  "10g Colin": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles ('Jeff Bezos Just Created A New Brand', 'Diddy Lawyers Smell Victory') suggest a focus on celebrity and entertainment news rather than societal critique. The intent is to report or comment on celebrity culture, not to critique societal issues, making this irrelevant."
+  },
+  "King Exbee": {
+    "tier": 2,
+    "reason": "Niche is Related. Seed's niche is 'Societal and Cultural Critique', while Candidate's inferred niche includes 'Entertainment and Internet Culture Critique'. Both channels aim to critique and analyze, but their core niches are adjacent, not identical."
+  },
+  "BlackWolfCompany": {
+    "tier": 1,
+    "reason": "Niche & Intent Match. Seed's niche is 'Societal and Cultural Critique', and Candidate's inferred niche is 'Societal and Cultural Critique' as well, with both channels aiming to 'expose and critique' societal issues. Their formats are similar as both utilize narrative commentary."
+  },
+  "Kidology": {
+    "tier": 1,
+    "reason": "Niche & Intent Match. Seed's niche is 'Societal and Cultural Critique', and Candidate's inferred niche is also 'Societal and Cultural Critique'. Both channels aim to 'expose and critique', making them direct competitors."
+  },
+  "State of Kait": {
+    "tier": 2,
+    "reason": "Niche is Related. Seed's niche is 'Societal and Cultural Critique', while Candidate's inferred niche is 'Internet and Celebrity Culture Commentary'. Both channels aim to critique and analyze, and they share a similar format of narrative commentary, making them niche competitors."
+  },
+  "Deep Dive": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles focus on 'Celebrity & Entertainment Critique', which is fundamentally different in intent and scope. The intent is to analyze celebrity scandals rather than critique societal issues."
+  },
+  "Mujin": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles focus on 'Vtuber Drama' and 'Gaming Scandals', which indicate a niche centered around 'Entertainment Commentary'. The intent is to expose and critique specific incidents in entertainment, not broader societal issues."
+  },
+  "SunnyV2": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles ('How Micro-Transactions Destroyed Plants vs. Zombies', 'The Unexpected Flop Of Lazarbeam’s Video Game') infer a focus on entertainment and gaming critique rather than societal critique. The intent is to analyze entertainment phenomena, not to critique societal issues, making this irrelevant."
+  },
+  "Internet Anarchist": {
+    "tier": 1,
+    "reason": "Niche & Intent Match. Seed's niche is 'Societal and Cultural Critique'. Candidate's inferred niche is also 'Societal and Cultural Critique', and their intent to 'expose and critique' aligns perfectly. This is a direct competitor."
+  },
+  "CNN Business": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles ('Could this be the cure to our plastic problem?', 'Escaping QAnon: How he left the virtual cult after two years') infer a 'Business and News Analysis' niche. The intent is to report and analyze news rather than critique societal issues, making this irrelevant."
+  },
+  "Edvasian": {
+    "tier": 2,
+    "reason": "Niche is Related. Seed's niche is 'Societal and Cultural Critique', while Candidate's inferred niche is 'Cultural Commentary'. Both channels aim to critique societal issues, and their formats are similar in narrative commentary style, making them niche competitors."
+  },
+  "JAMARI": {
+    "tier": 1,
+    "reason": "Niche & Intent Match. Seed's niche is 'Societal and Cultural Critique'. Candidate's inferred niche is also 'Societal and Cultural Critique', and their intent to 'expose and critique' aligns perfectly. This is a direct competitor."
+  },
+  "Rotten Mango": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles suggest a focus on sensational crime and celebrity scandals, which aligns more with 'True Crime Commentary' rather than a critique of societal issues. The intent is to sensationalize rather than critique society, making it irrelevant."
+  },
+  "Matthew Cox | Inside True Crime": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles ('FBI AGENT EXPOSES LAS VEGAS SCAMS', 'Credit Card Scammer Reveals His Secrets!') infer a 'True Crime' niche focused on crime and criminal behavior. The intent is to expose crime stories, not to critique societal issues, making this irrelevant."
+  },
+  "FoxAkimbo": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles ('When The Enemies Of JaidenAnimations Get Exposed...', 'When Minecraft YouTubers Get Exposed...') infer a focus on 'Internet Culture & Creator Commentary', which does not align with the broader societal critique intent of the seed channel."
+  },
+  "Anik Singal": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles focus on 'Business and AI Strategies', which indicates a niche centered around entrepreneurship and technology. The intent is to teach and promote business tactics, not to critique societal issues, making this irrelevant."
+  },
+  "Gal": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles ('The JoJo Siwa Situation Is Insane...', 'Roblox Is Genuinely Disgusting...') infer a focus on 'Celebrity and Internet Culture Commentary'. The intent is more about sensational commentary rather than a critical societal critique, making it irrelevant."
+  },
+  "What's Trending": {
+    "tier": 3,
+    "reason": "Format Mismatch. Seed's format is 'Narrative Commentary', while Candidate's titles suggest a 'Trending News Commentary' format. Although both cover societal topics, the formats differ significantly."
+  },
+  "fantano": {
+    "tier": 2,
+    "reason": "Niche is Related. Seed's niche is 'Societal and Cultural Critique', while Candidate's inferred niche is 'Entertainment and Cultural Commentary'. Both channels aim to critique and analyze, but their core niches are adjacent, focusing on different aspects of culture."
+  },
+  "Danny Rayes": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles ('Why Are People Still Climbing Mount Everest', 'The Most HATED Teacher on TikTok') infer a focus on sensational commentary and trending topics rather than a critical examination of societal issues. The intent is more about entertainment and commentary rather than a structured critique of society."
+  },
+  "The Verge": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles ('ChatGPT enters the browser wars', 'Samsung’s Galaxy XR hands-on') infer a 'Technology and Gadget Review' niche. The intent is to analyze technology, not to critique societal issues, making this irrelevant."
+  },
+  "Vox": {
+    "tier": 1,
+    "reason": "Niche & Intent Match. Seed's niche is 'Societal and Cultural Critique', and Candidate's inferred niche is also 'Societal and Cultural Critique'. Both channels aim to 'expose and critique', making them direct competitors."
+  },
+  "Turkey Tom": {
+    "tier": 1,
+    "reason": "Niche & Intent Match. Seed's niche is 'Societal and Cultural Critique'. Candidate's inferred niche is also 'Societal and Cultural Critique', and their intent to 'expose and critique' aligns. This is a direct competitor."
+  },
+  "kate cassidy": {
+    "tier": 1,
+    "reason": "Niche & Intent Match. Seed's niche is 'Societal and Cultural Critique'. Candidate's inferred niche is also 'Societal and Cultural Critique', and their intent to 'expose and critique' aligns perfectly. This makes them a direct competitor."
+  },
+  "Ouachita Mountain Living ": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles suggest a focus on personal experiences and lifestyle commentary, which does not align with the intent to critique societal issues. This is irrelevant."
+  },
+  "Graham Stephan": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles ('BREAKING: Federal Reserve Just SLASHED Rates', 'Trump vs China - America’s $37 Trillion Reset Is Coming') infer a 'Financial and Economic Commentary' niche. The intent is to analyze economic events, not to critique societal issues, making this irrelevant."
+  },
+  "Tinysey": {
+    "tier": 1,
+    "reason": "Niche & Intent Match. Seed's niche is 'Societal and Cultural Critique', and Candidate's inferred niche is also 'Societal Critique'. Both channels aim to 'expose and critique', making them direct competitors."
+  },
+  "Sky Jack Morgan": {
+    "tier": 1,
+    "reason": "Niche & Intent Match. Seed's niche is 'Societal and Cultural Critique'. Candidate's inferred niche is 'Political Commentary & Analysis', and their intent to 'expose and critique' aligns. This is a direct competitor."
+  },
+  "Bloomberg Originals": {
+    "tier": 2,
+    "reason": "Niche is Related. Seed's niche is 'Societal and Cultural Critique', while Candidate's inferred niche is 'Business and Economic Analysis'. Both channels aim to 'expose and critique', and share a similar format of narrative commentary, making them niche competitors."
+  },
+  "Fosterfy": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles suggest a focus on 'Entrepreneurship and Technology Interviews', which does not align with the intent to critique societal issues. This is irrelevant."
+  },
+  "How It Happened": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles focus on 'Technology and Business Analysis', which does not align with the intent to critique societal issues. This is irrelevant."
+  },
+  "The Comments Section": {
+    "tier": 1,
+    "reason": "Niche & Intent Match. Seed's niche is 'Societal and Cultural Critique', and Candidate's inferred niche is also 'Societal and Cultural Critique'. Both channels aim to 'expose and critique', making them direct competitors."
+  },
+  "More Perfect Union": {
+    "tier": 1,
+    "reason": "Niche & Intent Match. Seed's niche is 'Societal and Cultural Critique'. Candidate's inferred niche is also 'Societal and Cultural Critique', and both channels aim to 'expose and critique'. Their formats align as both utilize narrative commentary."
+  },
+  "AFRO": {
+    "tier": 2,
+    "reason": "Niche is Related. Seed's niche is 'Societal and Cultural Critique', while Candidate's inferred niche is 'Political and Cultural Commentary'. Both channels aim to critique and analyze societal issues, but their core niches are adjacent, not identical."
+  },
+  "Nathan": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles ('Do kids still like video games?', 'Night Mind cleanses my cursed fiancé') infer a focus on entertainment and gaming commentary. The intent is to entertain and discuss pop culture, not to critique society, making this irrelevant."
+  },
+  "ABC News": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles ('Christian singer Megan Woods talks new EP', 'The Murdaugh Family Murders') infer a 'News and Entertainment' niche. The intent is to report and inform, not to critique society. This is irrelevant."
+  },
+  "Chris Portal": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles focus on 'Gaming Commentary' and 'Game Reviews', which do not align with the intent to critique societal issues. This is irrelevant."
+  },
+  "Valuetainment Short Clips": {
+    "tier": 1,
+    "reason": "Niche & Intent Match. Seed's niche is 'Societal and Cultural Critique', and Candidate's inferred niche is 'Political Commentary & Analysis'. Both channels aim to 'expose and critique', making them direct competitors."
+  },
+  "Visual Venture": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles ('The Most Disturbing Reddit Communities', 'Horrible Internet Crimes with INSANE Twists') suggest a focus on sensationalized internet culture and crime stories, which does not align with the intent to critique societal issues."
+  },
+  "Fleshcore AI": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles focus on 'AI and Faceless YouTube Channels', which indicates a niche centered around technology and monetization strategies rather than societal critique. The intent is to teach and promote, not to critique society."
+  },
+  "Haley Kalil": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles ('Let’s talk toxic exes', 'Behind the Scenes at the Golden Globes') infer a 'Lifestyle and Personal Vlog' niche. The intent is more personal and entertainment-focused, not societal critique, making this irrelevant."
+  },
+  "PyroLIVE": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles ('These Twitch Girls Are Disgusting', 'Everyone On Twitch Is Fighting') infer a focus on 'Gaming and Streaming Commentary'. The intent is to critique specific individuals or situations within the gaming community, not to critique society as a whole."
+  },
+  "Mina Le": {
+    "tier": 1,
+    "reason": "Niche & Intent Match. Seed's niche is 'Societal and Cultural Critique'. Candidate's inferred niche is also 'Societal and Cultural Critique', and their intent to 'expose and critique' aligns. This is a direct competitor."
+  },
+  "Celebified": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles focus on 'Celebrity & Entertainment Critique' and 'Political Commentary', which do not align with the intent to critique societal issues. This is irrelevant."
+  },
+  "Misha Petrov": {
+    "tier": 1,
+    "reason": "Niche & Intent Match. Seed's niche is 'Societal and Cultural Critique', and Candidate's inferred niche is also 'Societal and Cultural Critique'. Both channels aim to 'expose and critique', making them direct competitors."
+  },
+  "Valuetainment": {
+    "tier": 1,
+    "reason": "Niche & Intent Match. Seed's niche is 'Societal and Cultural Critique', and Candidate's inferred niche is also 'Political Commentary & Analysis'. Both channels aim to 'expose and critique', making them direct competitors."
+  },
+  "Blooms": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles focus on 'South Park' and entertainment commentary, which indicates a niche centered around 'Entertainment Critique'. The intent is to analyze and critique entertainment rather than societal issues, making it irrelevant."
+  },
+  "Louis Levanti": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles ('Will Taylor Swift buy back her masters', 'Everything you missed in pop culture this weekend') infer a focus on 'Pop Culture Commentary'. The intent is to recap and entertain, not to critique society, making this irrelevant."
+  },
+  "Chris Williamson": {
+    "tier": 2,
+    "reason": "Niche is Related. Seed's niche is 'Societal and Cultural Critique', while Candidate's inferred niche is 'Philosophical and Psychological Commentary'. Both channels aim to 'expose and critique', and their formats are similar in narrative commentary style, making them niche competitors."
+  },
+  "iNabber": {
+    "tier": 1,
+    "reason": "Niche & Intent Match. Seed's niche is 'Societal and Cultural Critique'. Candidate's inferred niche is 'Societal and Cultural Critique' as well, focusing on internet culture and celebrity controversies. Both channels aim to expose and critique societal issues, making them direct competitors."
+  },
+  "First Things THRST": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles ('Muscle Expert', 'Inside The Mafia', 'Meet The CEO Who Built A $1BN Empire') infer a focus on personal development, business success, and lifestyle rather than societal critique. The intent is to inspire or inform rather than to critique society, making this irrelevant."
+  },
+  "Bloomberg Technology": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles focus on 'Technology Analysis' and 'Business News', which do not align with the intent to critique societal issues. This is irrelevant."
+  },
+  "Neil Patel": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles focus on 'Digital Marketing' and 'SEO', which indicates a niche centered around business and technology rather than societal critique. The intent is to inform and promote strategies, not to critique societal issues."
+  },
+  "BBC Global": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles ('The Japanese secret to being calmer and happier', 'People Are Partying Less. Here’s Why That’s Worrying.') infer a 'General Interest Documentary' niche. The intent is to inform and explore, not to critique society, making this irrelevant."
+  },
+  "Yahoo Finance": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles focus on 'Financial Analysis' and 'Market Trends', indicating a niche centered around finance and business rather than societal critique. The intent is to analyze financial data, not to critique societal issues, making this irrelevant."
+  },
+  "CNBC Television": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles infer a 'Financial News and Analysis' niche. The intent is to analyze market trends and financial news, not to critique society or culture, making this irrelevant."
+  },
+  "TED": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles ('Why Good People Become Bad Bosses', 'The Hidden Cost of Buying Gold') infer a 'TED Talk' niche focused on ideas and innovations rather than societal critique. The intent is to share insights, not to critique society, making this irrelevant."
+  },
+  "Think Media": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles focus on 'YouTube Growth Strategies' and 'Tech Reviews', which indicate a niche centered around 'Content Creation and Technology'. The intent is to provide guidance and reviews, not to critique societal issues, making this irrelevant."
+  },
+  "Hamish Hodder": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles focus on 'Stock Market Analysis' and 'Business Scandals', which indicate a niche centered around financial commentary rather than societal critique. The intent is also different, focusing on financial explanations rather than societal critique."
+  },
+  "Coding with Lewis": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles ('8 Tools You Need for EVERY Python Project in 2025', 'Human Developer vs AI Agent') infer a 'Tech and Programming' niche. The intent is to educate and entertain about technology, not to critique societal issues. This is irrelevant."
+  },
+  "Kiki Chanel": {
+    "tier": 1,
+    "reason": "Niche & Intent Match. Seed's niche is 'Societal and Cultural Critique'. Candidate's inferred niche is also 'Societal and Cultural Critique', and their intent to 'expose and critique' aligns perfectly. This makes them a direct competitor."
+  },
+  "The Will Spencer Podcast": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles suggest a focus on 'Christian Commentary' and 'Cultural Issues' with a specific ideological slant. The intent is more about promoting a particular viewpoint rather than critiquing society broadly, making it irrelevant."
+  },
+  "Mark Tilbury": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles ('It's Happening Again and Nobody’s Talking About It', 'How To Manage Your Money Like The 1%') infer a focus on personal finance and wealth-building strategies. The intent is to provide financial advice, not to critique societal issues, making this irrelevant."
+  },
+  "BJ Investigates": {
+    "tier": 2,
+    "reason": "Niche is Related. Seed's niche is 'Societal and Cultural Critique', while Candidate's inferred niche is 'Entertainment and Internet Culture Commentary'. Both channels aim to critique and analyze, and they share a similar format of narrative commentary, making them adjacent competitors."
+  },
+  "Knowledge at Wharton": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles infer a focus on 'Business Analysis' and 'Market Insights', which do not align with the intent to critique societal issues. This is irrelevant."
+  },
+  "Crypto Mason 2": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles focus on 'Crypto' and 'A.I.', indicating a niche centered around cryptocurrency and technology rather than societal critique. The intent is also different, focusing on investment and technology rather than exposing and critiquing societal issues."
+  },
+  "CircleToonsHD": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles ('How AI Killed the Internet', 'How Good Graphics Killed Video Games') infer a 'Gaming and Technology Commentary' niche. The intent is to critique gaming culture and technology, not societal issues, making this irrelevant."
+  },
+  "Investing Basics": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles focus on financial advice and market predictions, indicating a 'Financial Commentary' niche. The intent is to inform about investments, not to critique societal issues, making this irrelevant."
+  },
+  "Real Stories": {
+    "tier": 2,
+    "reason": "Niche is Related. Seed's niche is 'Societal and Cultural Critique', while Candidate's inferred niche is 'In-depth Analysis of Societal Issues'. Both channels aim to 'expose and critique', and their formats are similar in narrative commentary style, making them niche competitors."
+  },
+  "Financial Times": {
+    "tier": 2,
+    "reason": "Niche is Related. Seed's niche is 'Societal and Cultural Critique', while Candidate's inferred niche is 'Economic and Political Analysis'. Both channels aim to 'expose and critique', and their formats are similar in narrative commentary style, but their core niches are adjacent, not identical."
+  },
+  "SiliconANGLE theCUBE": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles focus on 'Tech Industry Analysis' and 'Crypto Trailblazers', indicating a niche centered around technology and business rather than societal critique. The intent is to analyze and discuss technology, which is fundamentally different from critiquing societal issues."
+  },
+  "Liam Donovan": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles ('The Cringiest 'Cancel Culture' Songs', 'Why is Everyone Mad at Tyler, The Creator?') infer a focus on 'Celebrity & Entertainment Critique'. The intent is to critique entertainment rather than societal issues, making this irrelevant."
+  },
+  "Brandon Conner": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles suggest a focus on personal challenges, pranks, and viral trends, indicating a 'Entertainment and Vlogging' niche. The intent is to entertain rather than critique society, making this irrelevant."
+  },
+  "Learn Liberty": {
+    "tier": 2,
+    "reason": "Niche is Related. Seed's niche is 'Societal and Cultural Critique', while Candidate's inferred niche is 'Political Commentary and Analysis'. Both channels aim to critique and analyze societal issues, but their core focuses differ slightly, making them niche competitors."
+  },
+  "The Plain Bagel": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles focus on 'Investment Analysis' and 'Economic Commentary', which do not align with the intent to critique societal issues. This is irrelevant."
+  },
+  "TLDR News Global": {
+    "tier": 2,
+    "reason": "Niche is Related. Seed's niche is 'Societal and Cultural Critique', while Candidate's inferred niche is 'Political Commentary & Analysis'. Both channels aim to 'expose and critique', and their formats are similar in narrative style, making them niche competitors."
+  },
+  "T3Media Studios": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles ('Scream 7 Trailer Reaction', 'Gen V Season 2 Review') infer a 'Celebrity & Entertainment Critique' niche. The intent is to review and react, not to critique society. This is irrelevant."
+  },
+  "The Late Show with Stephen Colbert": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles suggest a focus on 'Entertainment and Celebrity Commentary', which does not align with the intent to critique societal issues. This is irrelevant."
+  },
+  "Jaydone History": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles ('The Most Notorious Gangsters Explained', 'The Most Tragic Celebrity Breakdowns Explained') infer a focus on historical and crime-related content rather than societal critique. The intent is to explain historical events and controversies, not to critique societal issues, making this irrelevant."
+  },
+  "Matteo Turi": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles ('Why Most Entrepreneurs Never Hit $5 Million', 'The Secret Formula For Private Markets Revealed!') infer a 'Business and Finance' niche. The intent is to analyze business opportunities, not to critique societal issues, making this irrelevant."
+  },
+  "ButterFaces": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles ('every TWILIGHT movie', 'every episode of the office') infer a 'Pop Culture Commentary' niche focused on entertainment and media reviews. The intent is to summarize or review content, not to critique societal issues, making this irrelevant."
+  },
+  "Have You Met Thomas": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles infer a focus on 'Self-Improvement and Productivity', which does not align with the intent to critique societal issues. This is irrelevant."
+  },
+  "Clara Dao": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles focus on personal experiences and lifestyle content, indicating a 'Vlog' or 'Personal Development' niche. The intent is to share personal stories and experiences, not to critique society, making this irrelevant."
+  },
+  "Salesforce Ben": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles ('New Amazon Layoffs in 2025', 'What's Next for Salesforce Flow?') infer a 'Tech and Business Analysis' niche. The intent is to analyze and inform about business and technology, not to critique societal issues."
+  },
+  "The Critical Drinker": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles ('Disney Killed The Kylo Ren Movie', 'Crash And Burn - The Taika Waititi Story') infer a 'Movie Review' niche. The intent is to critique films and entertainment, not to critique society or culture broadly. This is irrelevant."
+  },
+  "Bloomberg Television": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles focus on 'Financial News' and 'Market Analysis', which indicates a 'Business News' niche. The intent is to report and analyze market trends, not to critique societal issues, making this irrelevant."
+  },
+  "WIRED": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles ('The Future of Death', 'EJAE on KPop Demon Hunters', 'Why Conspiracy Theories Took Hold') suggest a focus on technology, interviews, and general knowledge rather than a critical societal perspective. The intent is more about exploration and information rather than critique, making it irrelevant."
+  },
+  "Hugo Henderson": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles focus on 'Celebrity & Entertainment Critique', which is primarily about entertainment and celebrity culture rather than societal critique. The intent is to analyze entertainment rather than critique societal issues, making this irrelevant."
+  },
+  "David Pakman Show": {
+    "tier": 1,
+    "reason": "Niche & Intent Match. Seed's niche is 'Societal and Cultural Critique'. Candidate's inferred niche is 'Political Commentary & Analysis', and their intent to 'expose and critique' aligns. This is a direct competitor."
+  },
+  "Rebel HQ": {
+    "tier": 1,
+    "reason": "Niche & Intent Match. Seed's niche is 'Societal and Cultural Critique', and Candidate's inferred niche is 'Political Commentary & Analysis'. Both channels aim to expose and critique societal issues, making them direct competitors."
+  },
+  "MicroConf": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles focus on 'SaaS Business Strategies' and 'Startup Advice', which indicates a 'Business and Technology' niche. The intent is to provide business insights, not societal critique, making this irrelevant."
+  },
+  "Not Malcolm": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles ('the Sims influencer situation is messy', 'the Enshittification of Cozy Games') infer a 'Gaming Commentary' niche. The intent is focused on critiquing gaming culture, not broader societal issues, making it irrelevant."
+  },
+  "Noah Kagan": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles focus on 'Business Success Stories' and 'Entrepreneurial Advice', which do not align with the intent to critique societal issues. This is irrelevant."
+  },
+  "KreekCraft": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles ('grow a garden admin abuse', 'HAPPY HALLOWEEN', 'KreekCraft Reacts to Poppy Playtime Chapter 5 Trailer') infer a 'Gaming Commentary' niche. The intent is to entertain and react, not to critique society or culture. This is irrelevant."
+  },
+  "TMR": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles primarily focus on 'Feedback' and 'Music Videos', indicating a niche centered around entertainment and commentary rather than societal critique. The intent is also different, focusing on entertainment rather than critical analysis."
+  },
+  "mattyballz": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles ('The 5 Levels of Coworker Music', 'Music’s Most Disturbing Urban Legends') infer a focus on music and entertainment commentary. The intent is to analyze and critique entertainment rather than societal issues, making it irrelevant."
+  },
+  "Newsweek": {
+    "tier": 3,
+    "reason": "Format Mismatch. Seed's format is 'Narrative Commentary'. Candidate's titles suggest a 'News Commentary' format. While both cover 'Political Commentary', the formats differ significantly, making them non-competitors."
+  },
+  "Pop Culture Brain": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles ('COLBERT thought his show would FAIL', 'The downfall of MAD TV') infer a 'Pop Culture Analysis' niche focused on entertainment rather than societal critique. The intent is to analyze entertainment history, not to critique societal issues, making this irrelevant."
+  },
+  "MSP Radio": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles focus on 'Managed Services' and 'AI Technology', which indicates a niche centered around technology and business rather than societal critique. The intent is also different, as it focuses on industry insights rather than societal critique."
+  },
+  "NewsNation": {
+    "tier": 3,
+    "reason": "Format Mismatch. Seed's format is 'Narrative Commentary'. Candidate's titles suggest a 'Daily News Clip' format focused on current events and political news. While both cover 'Politics', the format is not a direct competitor."
+  },
+  "Patty Pop Culture": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles ('The Media is AFRAID of Gen Z', 'The FULL HISTORY of Taylor Swift and Olivia Rodrigo’s feud') infer a focus on 'Pop Culture Commentary'. The intent is to analyze and comment on celebrity culture, not to critique societal issues, making it irrelevant."
+  },
+  "Sundas Khalid": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles focus on 'Tech Career Advice' and 'Data Science', which do not align with societal critique or commentary. The intent is to inform and guide on career paths, not to critique societal issues."
+  },
+  "Big Think": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles suggest a focus on 'Educational Interviews and Discussions' rather than societal critique. The intent is to inform and explore ideas, not to critique society directly, making this irrelevant."
+  },
+  "Daily Dose of Dana": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles focus on 'Celebrity & Entertainment Critique', which is primarily about entertainment news and celebrity drama rather than societal critique. The intent is to comment on celebrity culture, not to critique broader societal issues."
+  },
+  "Japanalysis": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles ('Professionally Annoying Man Tries To Kick All Tourists From Japan', 'The Billionaire CEO Who Escaped Arrest and Fled Japan in a Box') infer a focus on Japanese culture and humor rather than a broader societal critique. The intent is more about entertainment and commentary on specific incidents rather than critiquing societal structures."
+  },
+  "Aishah Jenmi": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles focus on 'Celebrity & Entertainment Critique', which is primarily about analyzing celebrity culture and entertainment scandals. The intent is to critique entertainment rather than societal issues, making it irrelevant."
+  },
+  "It's Something": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles suggest a focus on 'Gaming Commentary' and 'Internet Culture', which do not align with the intent to critique societal issues. This is irrelevant."
+  },
+  "Peter H. Diamandis": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles focus on 'AI and Technology Analysis', which does not align with the intent to critique societal issues. This is irrelevant."
+  },
+  "Jack LIVE": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles ('How I Turned $100 Into $10,000 in Vegas!', 'I Got Back With My Ex-Girlfriend...') infer a 'Personal Vlog' or 'Entertainment Commentary' niche. The intent is to entertain and share personal experiences, not to critique society or culture."
+  },
+  "Parkev Tatevosian, CFA": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles focus on 'Stock Analysis' and 'Investment Commentary', which is fundamentally different in intent and subject matter. This is irrelevant."
+  },
+  "Craig Chamberlin": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles primarily focus on 'Windows 10 tips and tech advice', which indicates a 'Technology Tutorial' niche. The intent is to instruct rather than critique society, making this irrelevant."
+  },
+  "Community": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles ('Community but we're in the darkest timeline', 'A Zombie Infestation') infer a focus on entertainment and specific TV show commentary. The intent is to analyze and discuss a fictional series, not to critique societal issues, making it irrelevant."
+  },
+  "Investing Simplified - Professor G": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles focus on 'Investing' and 'Financial Analysis', which do not align with the intent to critique societal issues. This is irrelevant."
+  },
+  "Sambucha": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles ('I Investigated Abandoned Prisons', 'I Tested Airports After Midnight') infer a niche focused on exploration and investigation rather than societal critique. The intent is to explore and entertain, not to critique society, making this irrelevant."
+  },
+  "Company Man": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles ('KFC vs. Popeyes', 'The Decline of Jaguar...What Happened?') infer a 'Business Case Studies' niche focused on corporate success and failure. The intent is to analyze business performance, not to critique societal issues, making this irrelevant."
+  },
+  "The Daily Show": {
+    "tier": 1,
+    "reason": "Niche & Intent Match. Seed's niche is 'Societal and Cultural Critique', and Candidate's inferred niche is 'Political Commentary & Analysis'. Both channels aim to critique societal issues, making them direct competitors."
+  },
+  "Techquickie": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles ('Is Intel For Sale?', 'What is YouTube 1080p Premium?') infer a 'Technology Analysis' niche. The intent is to analyze technology, not to critique societal issues, making this irrelevant."
+  },
+  "BlackySpeakz": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles focus on 'Celebrity & Entertainment Critique', which is primarily about individual celebrities and their controversies rather than a broader societal critique. The intent is also different, focusing on entertainment rather than societal issues."
+  },
+  "hxsain": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles ('ranking my subscribers worst confessions', 'worst tiktok confessions i’ve ever seen') infer a 'Gaming and Entertainment Commentary' niche. The intent is to entertain and engage, not to critique society. This is irrelevant."
+  },
+  "Everything Money Plus": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles focus on 'Stock Market Analysis' and 'Financial Commentary', which do not align with the intent to critique societal issues. This is irrelevant."
+  },
+  "Complex": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles ('The Shoes That Didn't Make the Sneaker of the Year List', 'Apple Music and Complex Present Verzuz') infer a focus on entertainment and lifestyle commentary rather than societal critique. The intent is to entertain and inform about pop culture, not to critique society."
+  },
+  "Lenny's Podcast": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles focus on 'AI and Technology Analysis', which does not align with the intent to critique societal issues. This is irrelevant."
+  },
+  "Fox News Clips": {
+    "tier": 3,
+    "reason": "Format Mismatch. Seed's format is 'Narrative Commentary'. Candidate's titles suggest a 'Daily News Clip' format focused on political commentary. While both cover 'Politics', the format is not a direct competitor."
+  },
+  "SWErikCodes": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles focus on 'Software Engineering' and 'Tech Entrepreneurship', which do not align with the intent to critique societal issues. This is irrelevant."
+  },
+  "news.com.au": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles ('The tiny island living in fear as it stands between China and the US', 'Australia's huge road rage problem') infer a 'News Reporting' niche. The intent is to report news, not to critique society or culture. This is irrelevant."
+  },
+  "Brian Tyler Cohen": {
+    "tier": 1,
+    "reason": "Niche & Intent Match. Seed's niche is 'Societal and Cultural Critique', and Candidate's inferred niche is 'Political Commentary'. Both channels aim to expose and critique societal issues, making them direct competitors."
+  },
+  "Danno Cal Drawings": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles ('Let's Talk :)', 'PLAYING MARIO BROS WITH A PORTAL GUN!') infer a 'Gaming and Just Chatting' niche. The intent is to entertain and engage in casual conversation, not to critique society."
+  },
+  "Jeff Geerling": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles ('Arduino made a weird SBC', 'We used to actually own our computers') infer a 'Technology and Hardware Review' niche. The intent is to analyze technology, not to critique societal issues, making this irrelevant."
+  },
+  "Xevi": {
+    "tier": 2,
+    "reason": "Niche is Related. Seed's niche is 'Societal and Cultural Critique', while Candidate's inferred niche is 'Cultural Commentary and Analysis'. Both channels aim to 'expose and critique', and their formats are similar in narrative commentary style, making them niche competitors."
+  },
+  "NBC 15": {
+    "tier": 3,
+    "reason": "Format Mismatch. Seed's format is 'Narrative Commentary'. Candidate's titles suggest a 'News Clip' format focused on political events and updates. While both cover 'Political Commentary', the formats are not directly competitive."
+  },
+  "MsMojo": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles focus on 'Entertainment and Pop Culture Lists', which indicates a niche centered around entertainment rather than societal critique. The intent is to entertain and inform about pop culture, not to critique societal issues."
+  },
+  "Economics Explained": {
+    "tier": 2,
+    "reason": "Niche is Related. Seed's niche is 'Societal and Cultural Critique', while Candidate's inferred niche is 'Economic Analysis'. Both channels aim to 'expose and critique', and their formats are similar as both provide narrative commentary, but the core niches are adjacent, not identical."
+  },
+  "Ray William Johnson": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles suggest a focus on sensationalized commentary and drama surrounding individuals, which aligns more with entertainment commentary rather than a critical societal analysis. The intent is more about sensationalism than critique, making it irrelevant."
+  },
+  "Mrwhosetheboss": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles ('I Tested Nike’s Top Secret Shoe', 'I tested $273,000 of LUXURY TECH') infer a 'Tech Review' niche. The intent is to review and test products, not to critique societal issues, making this irrelevant."
+  },
+  "CBS Sunday Morning": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles suggest a focus on 'General News and Human Interest Stories', which does not align with the intent to critique societal issues. This is irrelevant."
+  },
+  "Clarissa.C ": {
+    "tier": 1,
+    "reason": "Niche & Intent Match. Seed's niche is 'Societal and Cultural Critique'. Candidate's inferred niche is also 'Societal and Cultural Critique', and their intent to 'expose and critique' aligns. This is a direct competitor."
+  },
+  "Tim Todd": {
+    "tier": 2,
+    "reason": "Niche is Related. Seed's niche is 'Societal and Cultural Critique', while Candidate's inferred niche is 'Political Commentary'. Both channels aim to 'expose and critique', and their formats are similar in narrative commentary style, making them niche competitors."
+  },
+  "Abbie Ree": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles ('We NEED To Talk About BookTok Movies', 'He’s NOT Hot, He’s a Murderer') infer a focus on 'Entertainment Commentary'. The intent is to critique entertainment rather than societal issues, making this irrelevant."
+  },
+  "The Hollywood Reporter": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles focus on 'Entertainment Industry Analysis' and 'Celebrity Commentary', which do not align with the intent to critique societal issues. This is irrelevant."
+  },
+  "Jarrett Moore": {
+    "tier": 2,
+    "reason": "Niche is Related. Seed's niche is 'Societal and Cultural Critique', while Candidate's inferred niche is 'Cultural Commentary'. Both channels aim to critique and analyze, and their formats are similar, making them niche competitors."
+  },
+  "IGN": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles focus on 'Gaming News and Reviews', which does not align with the intent to critique societal issues. This is irrelevant."
+  },
+  "CNBC": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles focus on 'Business and Economic Analysis', which does not align with the intent to critique societal issues. This is irrelevant."
+  },
+  "GossipHerald": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles focus on 'Entertainment News' and celebrity gossip, which do not align with the intent to critique societal issues. This is irrelevant."
+  },
+  "IBM Technology": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles focus on 'Technology Analysis' and 'AI Development', which do not align with the intent to critique societal issues. This is irrelevant."
+  },
+  "Lael Hansen": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles focus on beauty standards and celebrity culture, which infer a 'Celebrity and Beauty Commentary' niche. The intent is to critique beauty trends rather than societal issues, making this irrelevant."
+  },
+  "Robert Benjamin": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles focus on 'YouTube Growth Strategies' and 'Social Media Algorithms', which indicate a niche centered around social media optimization rather than societal critique. The intent is to provide growth tips, not to critique societal issues, making this irrelevant."
+  },
+  "Content Machine": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles ('The side chick Olympics', 'How girls think their boyfriends talk') infer a 'Comedy and Entertainment Commentary' niche. The intent is to entertain rather than critique society, making this irrelevant."
+  },
+  "ShawnCeeLIVE": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles ('Drake Fans Are CRASHING Out', 'Hip Hop is OVER') infer a 'Gaming and Entertainment Commentary' niche. The intent is to critique entertainment and gaming, not societal issues, making this irrelevant."
+  },
+  "MSNBC": {
+    "tier": 3,
+    "reason": "Format Mismatch. Seed's format is 'Narrative Commentary'. Candidate's titles suggest a 'News Commentary' format. While both cover 'Political Commentary', the formats differ significantly, making them non-competitors."
+  },
+  "Megyn Kelly": {
+    "tier": 1,
+    "reason": "Niche & Intent Match. Seed's niche is 'Societal and Cultural Critique'. Candidate's inferred niche is also 'Societal and Cultural Critique', and both channels aim to 'expose and critique'. Their formats align as both are narrative commentary."
+  },
+  "Real Alex Clark": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles suggest a focus on health, personal development, and specific individuals like Charlie Kirk, which indicates a niche centered around personal stories and health advice rather than societal critique. The intent is also different, focusing on personal narratives and health rather than critiquing societal issues."
+  },
+  "Copper Digital": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles focus on 'Healthcare Technology' and 'AI in Healthcare', which indicates a niche centered around health tech and business solutions. The intent is to inform and analyze technology in healthcare, not to critique societal issues."
+  },
+  "TMZ": {
+    "tier": 3,
+    "reason": "Format Mismatch. Seed's format is 'Narrative Commentary'. Candidate's titles suggest a 'Live News Clip' format. Although both channels cover topics related to 'Celebrity & Entertainment Critique' and 'Political Commentary', the formats are not directly comparable."
+  },
+  "Jarred Jermaine": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles ('What Is Country Music?', 'Ai & How It Affects Music') infer a focus on music commentary and entertainment analysis. The intent is to discuss and analyze music culture, not to critique societal issues, making this irrelevant."
+  },
+  "CBS News": {
+    "tier": 3,
+    "reason": "Format Mismatch. Seed's format is 'Narrative Commentary'. Candidate's titles suggest a 'Daily News Clip' format. Although the *topic* includes 'Political Commentary', the format does not align as a competitor."
+  },
+  "The Critical Analyst": {
+    "tier": 1,
+    "reason": "Niche & Intent Match. Seed's niche is 'Societal and Cultural Critique', and Candidate's inferred niche is 'Political Commentary & Analysis'. Both channels aim to 'expose and critique', making them direct competitors."
+  },
+  "Brut America": {
+    "tier": 3,
+    "reason": "Format Mismatch. Seed's format is 'Narrative Commentary'. Candidate's titles suggest a 'Live News Coverage' format. While both cover political topics, the format difference means they are not direct competitors."
+  },
+  "Olive's Closet": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles ('I saw Conan Gray on the Today Show!', 'The Best Valentines Day Ring', 'How Much Can You Get From Temu With $200?') infer a 'Lifestyle and Vlog' niche. The intent is to entertain and showcase personal experiences, not to critique society."
+  },
+  "Nicholas Renotte": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles focus on 'AI and Technology Development', which does not align with the intent to critique societal issues. This is irrelevant."
+  },
+  "Catfished": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles focus on 'Romance Scams' and 'Catfishing', which infer a niche centered around 'Scam Awareness' or 'True Crime'. The intent is to expose scams, not to critique societal issues, making this irrelevant."
+  },
+  "Data Orbit": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles ('A Call for Unity and Faith in America!', 'Uncover the Unexpected Love Story Behind Genghis Khan’s Rise to Power!') suggest a focus on broad historical and motivational themes rather than a critical examination of societal issues. The intent is more about exploration and storytelling, not societal critique."
+  },
+  "Breaking View USA": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles suggest a focus on 'Political Commentary' and 'Entertainment News', which do not align with the intent to critique societal issues. This is irrelevant."
+  },
+  "Observe": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles ('Halloween Mask Murderer EXPOSES Himself Through Body Language', 'Are Ed and Lorraine Warren FRAUDS?') infer a focus on body language analysis and entertainment critique, which does not align with the intent to critique societal issues."
+  },
+  "Offensive Tea": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles ('Wendy Williams CLOCKING The Gays', 'No One Out-Memes Demi Lovato') infer a focus on celebrity and entertainment commentary. The intent is to entertain and critique pop culture, not to critique society or culture at a broader level."
+  },
+  "Kelly Scholas ": {
+    "tier": 1,
+    "reason": "Niche & Intent Match. Seed's niche is 'Societal and Cultural Critique'. Candidate's inferred niche is also 'Societal and Cultural Critique', and their intent to 'expose and critique' aligns perfectly. This makes them a direct competitor."
+  },
+  "WatchMojo.com": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles ('Top 10 Songs Made Famous by Horror Movies', 'Top 10 Iconic Joker Moments') infer a 'Entertainment and Pop Culture Listicle' niche. The intent is to entertain and inform about pop culture, not to critique society or culture."
+  },
+  "Musk Munition": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles focus on 'Elon Musk' and 'Tesla', indicating a niche centered around 'Tech and Business Commentary'. The intent is to analyze and report on technology and business developments, not to critique societal issues."
+  },
+  "Learn With Shopify": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles focus on 'Business Tutorials' and 'AI Tools', indicating a niche centered around entrepreneurship and technology rather than societal critique. The intent is to educate on business practices, not to critique societal issues."
+  },
+  "NowThis Impact": {
+    "tier": 1,
+    "reason": "Niche & Intent Match. Seed's niche is 'Societal and Cultural Critique'. Candidate's inferred niche is also 'Societal and Cultural Critique', and both aim to 'expose and critique'. Their formats align as both channels utilize narrative commentary."
+  },
+  "RKH Media": {
+    "tier": 2,
+    "reason": "Niche is Related. Seed's niche is 'Societal and Cultural Critique', while Candidate's inferred niche is 'Influencer and Internet Culture Critique'. Both channels aim to critique societal issues, but their core focuses differ slightly, making them niche competitors."
+  },
+  "Mr. Beat": {
+    "tier": 1,
+    "reason": "Niche & Intent Match. Seed's niche is 'Societal and Cultural Critique', and Candidate's inferred niche is 'Political Commentary'. Both channels aim to 'expose and critique', making them direct competitors."
+  },
+  "katie robinson": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles ('the hot skinny cigarette smoking girl is BACK in fashion', 'AI is making fast fashion even faster') infer a focus on 'Fashion Commentary'. The intent is to critique fashion trends, not societal issues, making this irrelevant."
+  },
+  "Mike the Credit Guy ": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles focus on 'Credit Repair' and 'Financial Advice', which indicates a niche centered around personal finance rather than societal critique. The intent is to provide financial solutions, not to critique societal issues."
+  },
+  "The Moving Average": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles ('The Best Fibonacci Trading Strategy', 'Why 95% of Day Traders Fail') infer a 'Trading and Financial Education' niche. The intent is to educate on trading strategies, not to critique society or culture. This is irrelevant."
+  },
+  "Storm Monroe": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles focus on celebrity scandals and entertainment news, which infer a 'Celebrity Gossip' niche. The intent is to entertain and sensationalize rather than critique societal issues, making this irrelevant."
+  },
+  "CNN": {
+    "tier": 3,
+    "reason": "Format Mismatch. Seed's format is 'Narrative Commentary'. Candidate's titles suggest a 'News Clip' format focused on political and social issues. While both cover similar topics like politics and societal issues, the formats are not directly competitive."
+  },
+  "The Skinny Confidential": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles focus on 'Celebrity and Wellness Interviews', which infer a niche centered around personal branding and health rather than societal critique. The intent is to promote and inform rather than to critique society, making this irrelevant."
+  },
+  "Rap Lore": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles focus on 'Celebrity & Entertainment Critique', specifically within the hip-hop genre. The intent is to critique individual careers rather than broader societal issues, making it irrelevant."
+  },
+  "JeGaysus - THE Gay Jesus": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles suggest a focus on 'LGBTQ+ Commentary and Personal Experiences', which does not align with the broader societal critique intent of the seed channel."
+  },
+  "FORGOTTEN HISTORY": {
+    "tier": 2,
+    "reason": "Niche is Related. Seed's niche is 'Societal and Cultural Critique', while Candidate's inferred niche is 'Historical and Political Commentary'. Both channels aim to 'expose and critique', and their formats are similar in narrative commentary style, making them niche competitors."
+  },
+  "Larry King": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles focus on interviews and discussions with celebrities and public figures, indicating a 'Celebrity Interview' niche. The intent is to engage rather than critique society, making this irrelevant."
+  },
+  "Social Society w/ Brandon Clark": {
+    "tier": 1,
+    "reason": "Niche & Intent Match. Seed's niche is 'Societal and Cultural Critique', and Candidate's inferred niche is 'Political Commentary'. Both channels aim to critique societal issues, making them direct competitors."
+  },
+  "Dexerto": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles focus on individual personalities and entertainment industry insights, indicating a 'Celebrity & Entertainment Commentary' niche. The intent is to entertain and inform about personalities, not to critique societal issues, making this irrelevant."
+  },
+  "E! News": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles focus on 'Entertainment News' and 'Celebrity Commentary', which do not align with the intent to critique societal issues. This is irrelevant."
+  },
+  "CouRage Gaming": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles focus on 'Gaming Challenges' and 'Streamer Content', which indicates a 'Gaming Entertainment' niche. The intent is to entertain and engage with gaming content, not to critique societal issues."
+  },
+  "SPEAKING OUT EXPOSING CORRUPTION AND INCOMPETENCE": {
+    "tier": 1,
+    "reason": "Niche & Intent Match. Seed's niche is 'Societal and Cultural Critique', and Candidate's inferred niche is 'Corruption and Incompetence Exposition'. Both channels aim to expose and critique societal issues, making them direct competitors."
+  },
+  "Inanimate Person": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles focus on 'Object Shows' and related content, which indicates a niche centered around animated series and entertainment rather than societal critique. The intent is also different, focusing on entertainment rather than critique."
+  },
+  "Vtubing Explained": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles focus on 'VTuber Controversies', which indicates a niche centered around internet culture and entertainment rather than a broader societal critique. The intent is also different, focusing on specific controversies rather than societal critique."
+  },
+  "Zack D. Films": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles ('Ohio's 1986 Balloon Disaster', 'The Pepsi Contest That Killed 5 People') infer a focus on specific historical events and corporate failures, which does not align with the intent to critique societal issues."
+  },
+  "Fox News": {
+    "tier": 3,
+    "reason": "Format Mismatch. Seed's format is 'Narrative Commentary'. Candidate's titles suggest a 'Daily News Clip' format focused on political commentary. While both cover 'Politics', the format is not a direct competitor."
+  },
+  "Independent Institute": {
+    "tier": 2,
+    "reason": "Niche is Related. Seed's niche is 'Societal and Cultural Critique', while Candidate's inferred niche is 'Political Commentary and Analysis'. Both channels aim to critique and analyze societal issues, but their core niches are adjacent, not identical."
+  },
+  "Neuro-sama": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles ('Trying Weird Foods from Trader Joe's', 'Evil AI makes Morally Questionable Decisions In Rimworld') infer a 'Gaming and Entertainment Vlog' niche. The intent is to entertain and explore, not to critique society or culture. This is irrelevant."
+  },
+  "KARE 11": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles ('Jax Café named Minnesota Monthly's Ultimate Dining Legend', 'Laundry Evangelist offers tips on thrifting') suggest a focus on local news and lifestyle features, which does not align with the intent to critique societal issues."
+  },
+  "List 25": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles ('Common Myths You Should Know the Truth About', '25 Things You Didn’t Know Could Survive Extreme Conditions') infer a 'Listicle and Fact-Based Entertainment' niche. The intent is to entertain and inform, not to critique society or culture, making this irrelevant."
+  },
+  "BakerInstitute": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles suggest a focus on 'Policy Analysis and Academic Discussions', which does not align with the intent to critique societal issues. This is irrelevant."
+  },
+  "Lynn Odhiambo ": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles ('Ninja never stick waffle maker', 'WHAT I ATE AT AN ALL YOU CAN EAT BUFFET') infer a lifestyle and entertainment niche. The intent is to entertain and share experiences, not to critique society or culture. This is irrelevant."
+  },
+  "The Hill": {
+    "tier": 3,
+    "reason": "Format Mismatch. Seed's format is 'Narrative Commentary'. Candidate's titles suggest a 'Daily News Clip' format with a focus on political commentary. While both cover 'Politics', the formats are not directly comparable."
+  },
+  "MoreMojo": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles focus on 'Entertainment Commentary' and 'Celebrity Analysis', which do not align with the intent to critique societal issues. This is irrelevant."
+  },
+  "Bree Lenehan": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles focus on personal vlogs, lifestyle content, and fitness journeys, which do not align with the intent to critique societal issues. This is irrelevant."
+  },
+  "Miraenda": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles ('Robot Party', 'LOOI & Friends') suggest a focus on entertainment and technology with a playful or humorous intent, which does not align with the critical and skeptical approach of the seed channel."
+  },
+  "OnThatNote": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles focus on 'Celebrity & Entertainment Critique', which is primarily about music and celebrity culture rather than societal critique. The intent is to analyze entertainment rather than critique societal issues, making it irrelevant."
+  },
+  "Roland S. Martin": {
+    "tier": 1,
+    "reason": "Niche & Intent Match. Seed's niche is 'Societal and Cultural Critique', and Candidate's inferred niche is 'Political Commentary & Analysis'. Both channels aim to 'expose and critique' societal issues, making them direct competitors."
+  },
+  "CodeHead": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Societal and Cultural Critique'. Candidate's titles ('99% Of Devs Don't Understand Spring Boot', 'The REAL Reasons Developers Hate Their Jobs') infer a 'Software Development' niche. The intent is to discuss and critique developer experiences, not societal issues, making this irrelevant."
+  }
+}

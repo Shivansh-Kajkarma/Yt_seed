@@ -1,0 +1,302 @@
+{
+  "Democracy At Work": {
+    "tier": 2,
+    "reason": "Format matches: The titles suggest a documentary or video essay style, focusing on in-depth analysis and commentary. Topic matches: The candidate covers 2 of the seed's pillars: 'Societal Issues & Current Events Analysis' (e.g., 'Economic Update: The Global Housing Crisis') and 'Political & Economic Commentary' (e.g., 'Unredacted Tonight: The Hidden Truth About Trump's War on Venezuela!')."
+  },
+  "Freethink": {
+    "tier": 2,
+    "reason": "Format matches: The titles suggest a documentary or video essay style, focusing on in-depth discussions and analyses. Topic matches: The candidate covers 2 of the seed's pillars: 'Science & Technology Explained' (e.g., AI, gene editing) and 'Societal Issues & Current Events Analysis' (e.g., the future of energy, COVID's impact on supply chains)."
+  },
+  "The Elsa Kurt Show": {
+    "tier": 3,
+    "reason": "Format does not match: The titles suggest a mix of commentary and opinion pieces rather than analytical video essays or documentaries. Topic match: 1. The candidate covers 'Political & Economic Commentary', but does not address the other seed pillars such as 'Societal Issues & Current Events Analysis', 'Science & Technology Explained', or 'Cultural Trends & Analysis'."
+  },
+  "The Functional Melancholic": {
+    "tier": 2,
+    "reason": "Format matches: The titles are analytical and resemble video essays, focusing on deep explorations of complex topics. Topic matches: The candidate covers 1 of the seed's pillars, specifically 'Societal Issues & Current Events Analysis', through titles like 'The Life and Death of the American Dream' and 'How Wealth Inequality Broke the Soul of Humanity'."
+  },
+  "vlogbrothers": {
+    "tier": 3,
+    "reason": "Format does not match: The titles suggest a mix of personal reflections and informal discussions rather than analytical video essays or documentaries. Topic match: 0. The topics primarily focus on personal experiences, literature, and general musings, which do not align with the seed's pillars of societal issues, political/economic commentary, science/technology, or cultural trends."
+  },
+  "Johnny Harris": {
+    "tier": 1,
+    "reason": "Format matches: The titles are analytical video essays that explore complex topics in depth. Topic matches: The titles cover 3 of the seed's pillars: 'Societal Issues & Current Events Analysis' (e.g., 'Why the US is deporting so many people'), 'Political & Economic Commentary' (e.g., 'How the Mormon Church Made $293 Billion'), and 'Science & Technology Explained' (e.g., 'Nukes are way scarier than you think')."
+  },
+  "The Economist": {
+    "tier": 2,
+    "reason": "Format matches: The titles suggest a documentary-style format, particularly with the use of in-depth analysis and expert interviews in podcasts. Topic matches: The titles cover 2 of the seed's pillars: 'Political & Economic Commentary' and 'Societal Issues & Current Events Analysis'."
+  },
+  "Sargon of Akkad": {
+    "tier": 3,
+    "reason": "Format does not match: The titles suggest a focus on opinionated commentary and political discourse rather than documentary-style analysis. Topic match: 0. The topics primarily revolve around political commentary and personal opinions, which do not align with the seed's pillars of societal issues, political/economic commentary, science/technology, or cultural trends."
+  },
+  "CatholicVote Education": {
+    "tier": 2,
+    "reason": "Format matches: The titles suggest a documentary or video essay style, focusing on in-depth discussions and personal narratives. Topic matches: The candidate covers 2 of the seed's pillars: 'Societal Issues & Current Events Analysis' (e.g., 'Gender Ideology and Protests', 'Anti-Catholicism is on the Rise') and 'Political & Economic Commentary' (e.g., 'Why is everything costing more?!', 'Who’s Running Our Country and What Hope is There Left for Us?')."
+  },
+  "Aperture": {
+    "tier": 2,
+    "reason": "Format matches: The titles suggest analytical video essays, exploring complex ideas and philosophical concepts. Topic matches: The titles cover 1 of the seed's pillars: 'Societal Issues & Current Events Analysis' through discussions on nihilism, critical thinking, and societal commentary, but do not directly address the other pillars like political commentary or science/technology."
+  },
+  "Then & Now": {
+    "tier": 2,
+    "reason": "Format matches: The titles are analytical and suggest a documentary/video essay style. Topic matches: The candidate covers 2 of the seed's pillars: 'Societal Issues & Current Events Analysis' (e.g., 'The Rise of Global Populism', 'The Origins of the Israel/Palestine Conflict') and 'Political & Economic Commentary' (e.g., 'How Capitalists Conquered the World', 'Monopoly World: Oligarchy & Authoritarianism')."
+  },
+  "Vusi Thembekwayo": {
+    "tier": 3,
+    "reason": "Format does not match: The titles ('Why black businesses die...', 'How I Sold My Company for $7 Billion...') suggest motivational talks and business advice rather than documentary-style video essays. Topic match: 0. The topics primarily focus on personal development, entrepreneurship, and business strategies, which do not align with the seed's pillars of societal issues, political/economic commentary, science/technology, or cultural trends."
+  },
+  "The Rest Is Politics US": {
+    "tier": 3,
+    "reason": "Format does not match: The titles suggest a focus on reactive political commentary and news analysis rather than documentary-style video essays. Topic match: 1. The titles primarily cover political commentary, which aligns with the seed's pillar of 'Political & Economic Commentary', but do not address the other pillars such as societal issues, science, or cultural trends."
+  },
+  "Cole Hastings": {
+    "tier": 2,
+    "reason": "Format matches: The titles are analytical and resemble video essays, focusing on in-depth exploration of societal issues. Topic matches: The candidate covers 1 of the seed's pillars, specifically 'Societal Issues & Current Events Analysis', with titles addressing topics like 'The AI Psychosis Epidemic' and 'The Death Of American Community'."
+  },
+  "1Dime": {
+    "tier": 2,
+    "reason": "Format matches: The titles are primarily analytical video essays and documentaries, focusing on in-depth exploration of complex topics. Topic matches: The candidate covers 2 of the seed's pillars: 'Political & Economic Commentary' (e.g., 'Inverted Totalitarianism: The Slow Death of American Democracy', 'The Deficit Myth: The Biggest Lie In Politics') and 'Societal Issues & Current Events Analysis' (e.g., 'Lessons From The Cultural Revolution', 'The Politics of Tupac Shakur')."
+  },
+  "Garys Economics": {
+    "tier": 2,
+    "reason": "Format matches: The titles suggest an analytical video essay style, focusing on in-depth discussions rather than quick news clips. Topic matches: The candidate covers 2 of the seed's pillars: 'Political & Economic Commentary' (e.g., 'Will Reform win the next UK election?', 'Is a wealth tax actually possible?') and 'Societal Issues & Current Events Analysis' (e.g., 'Is the economy causing a mental health crisis?')."
+  },
+  "Economics Explained": {
+    "tier": 2,
+    "reason": "Format matches: The titles are analytical and resemble video essays, focusing on in-depth explanations. Topic matches: The candidate covers 2 of the seed's pillars: 'Political & Economic Commentary' and 'Societal Issues & Current Events Analysis'."
+  },
+  "Unsolicited advice": {
+    "tier": 2,
+    "reason": "Format matches: The titles suggest a documentary/video essay style, focusing on in-depth analysis and philosophical discussions. Topic matches: The candidate covers 2 of the seed's pillars: 'Societal Issues & Current Events Analysis' (e.g., 'You Have No Privacy Anymore. Here's Why', 'Why We're Living in the Age of Bulls**t') and 'Political & Economic Commentary' (e.g., 'You're Being Lied to About Machiavelli')."
+  },
+  "JREG": {
+    "tier": 3,
+    "reason": "Format does not match: The titles suggest a mix of commentary and reactionary content rather than analytical video essays or documentaries. Topic match: 0. The topics primarily focus on political commentary and niche cultural discussions, which do not align with the seed's pillars of societal issues, political/economic commentary, science/technology, or cultural trends in a comprehensive manner."
+  },
+  "Jack Chapple": {
+    "tier": 3,
+    "reason": "Format does not match: The titles suggest a focus on sensationalized news and reactive commentary rather than analytical video essays or documentaries. Topic match: 0. The topics primarily revolve around economic crises and market speculation, which do not align with the seed's pillars of societal issues, political commentary, science, and cultural analysis."
+  },
+  "Jordan B Peterson": {
+    "tier": 3,
+    "reason": "Format does not match: The titles suggest a focus on personal development and interviews rather than documentary-style analysis. Topic match: 0. The topics primarily revolve around personal relationships, stress management, and individual experiences, which do not align with the seed's pillars of societal issues, political/economic commentary, science/technology, or cultural trends."
+  },
+  "Bernie Sanders": {
+    "tier": 3,
+    "reason": "Format does not match: The titles are primarily live event broadcasts and speeches, indicating a focus on real-time political commentary rather than documentary-style analysis. Topic match: 1. The candidate covers 'Political & Economic Commentary', but does not address the other seed pillars such as 'Societal Issues & Current Events Analysis', 'Science & Technology Explained', or 'Cultural Trends & Analysis'."
+  },
+  "tiffanyferg": {
+    "tier": 2,
+    "reason": "Format matches: The titles are analytical and resemble video essays, focusing on in-depth analysis of societal trends and issues. Topic matches: The candidate covers 1 of the seed's pillars, specifically 'Societal Issues & Current Events Analysis', through discussions on topics like family vlogging, influencer culture, and social media dynamics."
+  },
+  "Moon": {
+    "tier": 3,
+    "reason": "Format does not match: The titles suggest a focus on sensationalist commentary and reactive content rather than analytical video essays or documentaries. Topic match: 0. The topics primarily revolve around celebrity culture, entertainment, and conspiracy theories, which do not align with the seed's pillars of societal issues, political commentary, science, and cultural analysis."
+  },
+  "FaceTatt Philosophy ": {
+    "tier": 2,
+    "reason": "Format matches: The titles are primarily analytical video essays and deep dives, which align with the documentary style. Topic matches: The candidate covers 1 of the seed's pillars, specifically 'Cultural Trends & Analysis' through titles like 'Is Ethel Cain The NEW Lana Del Rey?' and 'Why is Modern Music SO Obsessed With Nostalgia?'. However, there is no coverage of the other pillars such as societal issues or political commentary."
+  },
+  "New Money": {
+    "tier": 2,
+    "reason": "Format matches: The titles suggest an analytical video essay style, focusing on in-depth explanations of economic and financial topics. Topic matches: The candidate covers 2 of the seed's pillars: 'Political & Economic Commentary' and 'Societal Issues & Current Events Analysis'."
+  },
+  "Investing Basics": {
+    "tier": 3,
+    "reason": "Format does not match: The titles suggest a focus on urgent financial warnings and market predictions, which are more aligned with news or reactive content rather than documentary-style analysis. Topic match: 0. The topics primarily revolve around investment strategies and market forecasts, which do not align with the seed's pillars of societal issues, political commentary, science, or cultural analysis."
+  },
+  "Uneducated Economist": {
+    "tier": 3,
+    "reason": "Format does not match: The titles suggest a focus on economic commentary and analysis, but they are more reactive and news-oriented rather than documentary-style. Topic match: 1. The candidate covers 'Political & Economic Commentary', but does not address the other seed pillars such as 'Societal Issues', 'Science & Technology', or 'Cultural Trends'."
+  },
+  "Ed Post": {
+    "tier": 2,
+    "reason": "Format matches: The titles suggest a documentary or video essay style, focusing on in-depth analysis and commentary. Topic matches: The candidate covers 2 of the seed's pillars: 'Societal Issues & Current Events Analysis' (e.g., 'Why Fascists Fear Teachers', 'America Wants To Keep You Stupid') and 'Political & Economic Commentary' (e.g., 'Trump, American Collapse, and Protecting Our Young People')."
+  },
+  "Museum of Science": {
+    "tier": 2,
+    "reason": "Format matches: The titles are primarily documentary-style and analytical, focusing on in-depth exploration of topics. Topic matches: The titles cover 2 of the seed's pillars: 'Science & Technology Explained' (e.g., 'Can AI Learn Empathy?', 'How Generative AI Is Reinventing Global Healthcare') and 'Societal Issues & Current Events Analysis' (e.g., 'The Aging Society Crisis & How We Can Fix It')."
+  },
+  "Institute of Development Studies": {
+    "tier": 2,
+    "reason": "Format matches: The titles suggest a documentary or analytical video essay style, focusing on in-depth discussions. Topic matches: The titles cover 2 of the seed's pillars: 'Societal Issues & Current Events Analysis' (e.g., 'Democracy Contested: Why are governments becoming more autocratic?') and 'Political & Economic Commentary' (e.g., 'Sovereign default, IMF stabilisation and trade: Lessons from Sri Lanka')."
+  },
+  "Common Knowledge": {
+    "tier": 2,
+    "reason": "Format matches: The titles suggest a documentary or video essay style, focusing on analytical content. Topic matches: The candidate covers 1 of the seed's pillars: 'Societal Issues & Current Events Analysis' with titles like 'How Social Media is Destroying Society'. However, the other topics primarily focus on personal development and historical anecdotes, which do not align with the seed's pillars."
+  },
+  "Principles by Ray Dalio": {
+    "tier": 2,
+    "reason": "Format matches: The titles ('How the Economic Machine Works', 'Ray Dalio Explains Debt Cycles') are analytical video essays that delve into complex topics. Topic matches: The titles cover 1 of the seed's pillars: 'Political & Economic Commentary', focusing on economic cycles and global crises, but do not address the other pillars such as societal issues or cultural trends."
+  },
+  "J.J. McCullough": {
+    "tier": -1,
+    "reason": "ERROR: Expecting value: line 3 column 987 (char 1003)"
+  },
+  "Solar Sands": {
+    "tier": 3,
+    "reason": "Format does not match: The titles ('Food Horror', 'Humanity's Greatest Sin', 'The Most Hated Sculptor You Probably Recognize') suggest a focus on commentary and cultural critique rather than documentary-style analysis. Topic match: 0. The topics primarily revolve around art, culture, and personal commentary, which do not align with the seed's pillars of societal issues, political/economic commentary, science/technology, or cultural trends in a meaningful way."
+  },
+  "Hot Mess": {
+    "tier": 2,
+    "reason": "Format matches: The titles are primarily analytical and documentary-style, focusing on in-depth explanations of climate change and environmental issues. Topic matches: The candidate covers 2 of the seed's pillars: 'Societal Issues & Current Events Analysis' (e.g., climate change discussions) and 'Science & Technology Explained' (e.g., environmental science topics)."
+  },
+  "TDC": {
+    "tier": 2,
+    "reason": "Format matches: The titles are primarily analytical and documentary-style, focusing on in-depth exploration of various topics. Topic matches: The candidate covers 2 of the seed's pillars: 'Societal Issues & Current Events Analysis' (e.g., 'Charlottesville: Confronting White Supremacy') and 'Science & Technology Explained' (e.g., 'The Massive Radio Telescope Searching for E.T.s')."
+  },
+  "Washington Policy Center": {
+    "tier": 3,
+    "reason": "Format does not match: The titles suggest a focus on specific political and economic commentary rather than documentary-style analysis. The content appears to be more reactive and opinion-based rather than in-depth explorations typical of documentaries. Topic match: 1. The titles cover 'Political & Economic Commentary', but do not address the other seed pillars such as 'Societal Issues & Current Events Analysis', 'Science & Technology Explained', or 'Cultural Trends & Analysis'."
+  },
+  "Blair (Whatitis)": {
+    "tier": 3,
+    "reason": "Format does not match: The titles suggest a mix of commentary and personal vlogs rather than analytical video essays or documentaries. Topic match: 0. The topics primarily focus on social media trends, personal experiences, and pop culture, which do not align with the seed's pillars of societal issues, political/economic commentary, science/technology, or cultural trends."
+  },
+  "Olurinatti ": {
+    "tier": 2,
+    "reason": "Format matches: The titles suggest an analytical video essay style, particularly with titles like 'How Andrew Cuomo Lost New York' and 'What Should we Do with Killer Cops?'. Topic matches: The candidate covers 1 of the seed's pillars, specifically 'Societal Issues & Current Events Analysis', as many titles address current events and societal commentary, but does not cover the other pillars in a meaningful way."
+  },
+  "Mr. Beat": {
+    "tier": 2,
+    "reason": "Format matches: The titles suggest a documentary/video essay style, focusing on in-depth analysis and storytelling. Topic matches: The candidate covers 2 of the seed's pillars: 'Political & Economic Commentary' (e.g., titles about presidents and political views) and 'Societal Issues & Current Events Analysis' (e.g., discussions on civil rights and historical events)."
+  },
+  "Sprouts": {
+    "tier": 2,
+    "reason": "Format matches: The titles suggest analytical video essays, which align with the documentary style. Topic matches: The candidate covers 2 of the seed's pillars: 'Societal Issues & Current Events Analysis' (e.g., 'Inherited Pain: The Science of Generational Trauma', 'Eating Disorders: Anorexia, Bulimia, and Binge Eating') and 'Political & Economic Commentary' (e.g., 'Capitalism vs. Socialism: Which Works Better?')."
+  },
+  "Alex O'Connor": {
+    "tier": 2,
+    "reason": "Format matches: The titles suggest a documentary or video essay style, focusing on in-depth analysis and philosophical discussions. Topic matches: The candidate covers 1 of the seed's pillars, specifically 'Societal Issues & Current Events Analysis' through discussions on religion, existentialism, and consciousness, but does not address the other pillars like political/economic commentary or science/technology explained."
+  },
+  "State of Kait": {
+    "tier": 3,
+    "reason": "Format does not match: The titles suggest a focus on trends and commentary rather than in-depth documentary-style analysis. The content appears to be more reactive and opinion-based rather than analytical. Topic match: 0. The topics primarily revolve around social media trends and influencer culture, which do not align with the seed's pillars of societal issues, political/economic commentary, science/technology, or cultural trends in a meaningful way."
+  },
+  "Know Your Meme": {
+    "tier": 3,
+    "reason": "Format does not match: The titles suggest a focus on meme culture and viral internet phenomena, which are more aligned with news or commentary rather than documentary-style analysis. Topic match: 0. The topics primarily revolve around memes and internet trends, which do not align with the seed's pillars of societal issues, political/economic commentary, science/technology, or cultural trends in a meaningful way."
+  },
+  "PBS Terra": {
+    "tier": 2,
+    "reason": "Format matches: The titles are documentary-style and analytical, focusing on in-depth exploration of topics. Topic matches: The titles cover 2 of the seed's pillars: 'Societal Issues & Current Events Analysis' (e.g., 'When Will The World Run Out of Water?') and 'Science & Technology Explained' (e.g., 'How Microplastics Infiltrated Our Food')."
+  },
+  "RoyaltyIsHere": {
+    "tier": 3,
+    "reason": "Format does not match: The titles suggest a focus on specific controversies and personalities, indicative of commentary or critique rather than in-depth documentary-style analysis. Topic match: 0. The topics primarily revolve around internet culture, gaming, and controversies, which do not align with the seed's pillars of societal issues, political/economic commentary, science/technology, or cultural trends."
+  },
+  "Visual Venture": {
+    "tier": 3,
+    "reason": "Format does not match: The titles suggest a focus on sensational and disturbing content rather than analytical video essays or documentaries. The topics primarily revolve around internet culture, crime, and entertainment, which do not align with the seed's pillars of societal issues, political/economic commentary, science/technology, or cultural trends in a meaningful way."
+  },
+  "The Paint Explainer": {
+    "tier": 3,
+    "reason": "Format does not match: The titles suggest a focus on sensationalized historical events and true crime, which are more aligned with entertainment rather than analytical documentaries. Topic match: 0. The topics primarily revolve around crime, mysteries, and historical anecdotes, which do not align with the seed's pillars of societal issues, political/economic commentary, science/technology, or cultural trends."
+  },
+  "Mike Winger": {
+    "tier": 3,
+    "reason": "Format does not match: The titles suggest a focus on personal commentary and reactionary content rather than documentary-style analysis. Topic match: 0. The topics primarily revolve around religious commentary and personal experiences, which do not align with the seed's pillars of societal issues, political/economic commentary, science/technology, or cultural trends."
+  },
+  "Students for Life of America": {
+    "tier": 3,
+    "reason": "Format does not match: The titles suggest a focus on news clips and reactive commentary rather than documentary-style videos. Topic match: 0. The topics primarily revolve around pro-life activism and abortion debates, which do not align with the seed's pillars of societal issues, political commentary, science, and cultural trends."
+  },
+  "MindScope": {
+    "tier": 3,
+    "reason": "Format does not match: The titles suggest a focus on personal development and mental health rather than documentary-style analysis. The content is more self-help and lifestyle oriented, which does not align with the analytical and explanatory journalism style of Vox. Topic match: 0. The topics primarily revolve around mental health and personal well-being, which do not align with the seed's pillars of societal issues, political/economic commentary, science/technology, or cultural trends."
+  },
+  "IMF": {
+    "tier": 3,
+    "reason": "Format does not match: The titles ('Press Briefing', 'Governor Talks', 'Debate on the Global Economy') suggest a focus on briefings and discussions rather than documentary-style explorations. Topic match: 1. The candidate covers 'Political & Economic Commentary', but does not address the other seed pillars such as 'Societal Issues', 'Science & Technology', or 'Cultural Trends'."
+  },
+  "CBC Kids News": {
+    "tier": 3,
+    "reason": "Format does not match: The titles suggest a focus on short news segments and educational clips aimed at children, rather than in-depth documentary-style videos. Topic match: 1. The candidate covers 'Societal Issues & Current Events Analysis' with titles like 'Interviews with Palestinian children in Gaza City' and 'Kids want politicians to tackle these issues', but does not cover 2 or more of the seed's pillars."
+  },
+  "StarTalk": {
+    "tier": 2,
+    "reason": "Format matches: The titles are primarily analytical and resemble documentary-style video essays. Topic matches: The candidate covers 2 of the seed's pillars: 'Science & Technology Explained' (e.g., 'The Physics of Sci-Fi Monsters', 'What We Just Found on Mars') and 'Societal Issues & Current Events Analysis' (e.g., 'What Social Media Is Doing To Gen Alpha')."
+  },
+  "Strong Medicine": {
+    "tier": 3,
+    "reason": "Format does not match: The titles suggest a focus on medical commentary and personal anecdotes rather than documentary-style analysis. Topic match: 0. The topics primarily revolve around health, medicine, and personal experiences, which do not align with the seed's pillars of societal issues, political commentary, science and technology explained, or cultural trends."
+  },
+  "YaleCourses": {
+    "tier": 3,
+    "reason": "Format does not match: The titles suggest a focus on academic lectures and podcasts rather than documentary-style video essays. Topic match: 0. The topics primarily revolve around historical events and job searching, which do not align with the seed's pillars of societal issues, political commentary, science, and cultural analysis."
+  },
+  "Queen": {
+    "tier": 3,
+    "reason": "Format does not match: The titles suggest a focus on psychological insights and personal development rather than documentary-style analysis. Topic match: 0. The topics primarily revolve around psychology and self-help, which do not align with the seed's pillars of societal issues, political commentary, science, and cultural trends."
+  },
+  "Be Smart": {
+    "tier": 2,
+    "reason": "Format matches: The titles are analytical and resemble documentary-style video essays. Topic matches: The titles cover 1 of the seed's pillars: 'Science & Technology Explained', with several titles focusing on scientific concepts and phenomena."
+  },
+  "threadbare": {
+    "tier": 3,
+    "reason": "Format does not match: The titles suggest a focus on internet mysteries and cults, which are more aligned with entertainment and horror rather than documentary-style analysis. Topic match: 0. The topics covered do not align with the seed's pillars of societal issues, political commentary, science, or cultural trends."
+  },
+  "Future Business Tech": {
+    "tier": 2,
+    "reason": "Format matches: The titles are primarily documentary-style and analytical, focusing on future technologies and societal implications. Topic matches: The candidate covers 1 of the seed's pillars: 'Science & Technology Explained' through titles like 'The Future of AI' and 'The Future of Quantum Computing'. However, they do not significantly address the other pillars such as 'Societal Issues & Current Events Analysis' or 'Political & Economic Commentary'."
+  },
+  "BBC World Service": {
+    "tier": 3,
+    "reason": "Format does not match: The titles suggest a mix of podcasts and news segments rather than documentary-style videos. While some topics like 'Political & Economic Commentary' and 'Societal Issues & Current Events Analysis' are covered, the overall format is more aligned with news and clips rather than in-depth documentaries or video essays."
+  },
+  "meg": {
+    "tier": 2,
+    "reason": "Format matches: The titles are primarily video essays, which align with the documentary style. Topic matches: The candidate covers 1 of the seed's pillars, specifically 'Societal Issues & Current Events Analysis' through discussions on social media, culture, and identity, but does not cover the other pillars in a meaningful way."
+  },
+  "Jasmine Star": {
+    "tier": 3,
+    "reason": "Format does not match: The titles suggest a focus on personal branding, entrepreneurship, and business strategies, which are more aligned with motivational and instructional content rather than documentary-style analysis. Topic match: 0. The topics do not align with the seed's pillars of societal issues, political/economic commentary, science/technology, or cultural trends."
+  },
+  "Meditations for the anxious mind": {
+    "tier": 2,
+    "reason": "Format matches: The titles suggest a documentary or video essay style, focusing on cultural analysis and societal observations. Topic matches: The candidate covers 2 of the seed's pillars: 'Cultural Trends & Analysis' and 'Societal Issues & Current Events Analysis', with titles addressing therapy culture, gig economy exploitation, and cultural observations."
+  },
+  "Jarrett Moore": {
+    "tier": 2,
+    "reason": "Format matches: The titles suggest an analytical video essay style, focusing on in-depth exploration of topics. Topic matches: The titles cover 1 of the seed's pillars: 'Cultural Trends & Analysis' through discussions on cultural nihilism and comedy, but do not address the other pillars like societal issues or political commentary."
+  },
+  "The Deep End w/Taylor Welch": {
+    "tier": 3,
+    "reason": "Format does not match: The titles suggest a focus on spiritual and religious themes rather than documentary-style analysis. The content appears to be more opinion-based and esoteric rather than analytical or explanatory journalism. Topic match: 0. The topics primarily revolve around spirituality, occult doctrines, and personal beliefs, which do not align with the seed's pillars of societal issues, political/economic commentary, science/technology, or cultural trends."
+  },
+  "Tiff In Tech": {
+    "tier": 3,
+    "reason": "Format does not match: The titles suggest a focus on technology and skills, which are more aligned with news and updates rather than documentary-style analysis. Topic match: 0. The topics primarily revolve around technology and AI, which do not align with the seed's pillars of societal issues, political commentary, or cultural trends."
+  },
+  "PragerU Kids": {
+    "tier": 3,
+    "reason": "Format does not match: The titles ('Rise and Grind: Cozy Coffee', 'Lewis & Clark | Trailblazers of America') suggest educational content aimed at children, focusing on historical figures and basic economic concepts, rather than in-depth documentary-style analysis. Topic match: 0. The topics primarily revolve around basic economics and American history, which do not align with the seed's pillars of societal issues, political commentary, science, and cultural trends."
+  },
+  "Motivation Core": {
+    "tier": 3,
+    "reason": "Format does not match: The titles suggest a focus on reactive commentary and opinion pieces rather than documentary-style analysis. Topic match: 0. The topics primarily revolve around political commentary and personal motivation, which do not align with the seed's pillars of societal issues, political/economic commentary, science/technology, or cultural trends."
+  },
+  "Sociology Live!": {
+    "tier": 2,
+    "reason": "Format matches: The titles suggest a documentary or video essay style, focusing on analytical content. Topic matches: The candidate covers 2 of the seed's pillars: 'Societal Issues & Current Events Analysis' (e.g., 'Environmental Racism', 'White Privilege') and 'Cultural Trends & Analysis' (e.g., 'Cultural Capital', 'McDonaldization')."
+  },
+  "The Body Language Guy": {
+    "tier": 3,
+    "reason": "Format does not match: The titles suggest a focus on sensationalized news and body language analysis rather than documentary-style video essays. Topic match: 0. The topics primarily revolve around current events and personal commentary, which do not align with the seed's pillars of societal issues, political/economic commentary, science/technology, or cultural trends."
+  },
+  "Business Upside": {
+    "tier": 3,
+    "reason": "Format does not match: The titles suggest a focus on financial predictions and market commentary, which are more aligned with news and reactive content rather than documentary-style analysis. Topic match: 0. The topics primarily revolve around gold and silver prices, investment strategies, and economic warnings, which do not align with the seed's pillars of societal issues, political commentary, science, and cultural trends."
+  },
+  "MSL Talk": {
+    "tier": 3,
+    "reason": "Format does not match: The titles suggest a focus on career development and medical science, which are more instructional and practical rather than analytical video essays. Topic match: 0. The topics do not align with the seed's pillars of societal issues, political/economic commentary, science/technology explained, or cultural trends."
+  },
+  "Candace Owens": {
+    "tier": 3,
+    "reason": "Format does not match: The titles suggest a focus on news and commentary rather than documentary-style analysis. The content is reactive and centered around specific events or personalities, which does not align with the documentary format of the seed channel. Topic match: 0. The titles primarily focus on political commentary and personal narratives, which do not align with the seed's pillars of societal issues, political/economic commentary, science/technology, or cultural trends."
+  }
+}
