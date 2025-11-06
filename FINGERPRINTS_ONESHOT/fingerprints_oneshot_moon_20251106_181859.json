@@ -1,0 +1,55 @@
+{
+  "metadata": {
+    "run_id": "moon_20251106_181859",
+    "run_tag": "moon",
+    "created_at": "2025-11-06T18:19:06.757096",
+    "model_provider": "gpt-4o",
+    "video_data_source": "sample_videos_moon_20251106_181859.csv"
+  },
+  "channels": {
+    "UCmFeOdJI3IXgTBDzqBLD8qg": {
+      "channel_name": "Moon",
+      "status": "success",
+      "fingerprint": {
+        "profile": {
+          "channel_name": "Moon",
+          "description": "Videos on what's really happening in the world.",
+          "likely_niche": "Socio-political and technological commentary",
+          "target_audience": "Individuals interested in critical analysis of current events, technology, and societal issues.",
+          "video_style": "The channel employs a video essay format, often focusing on in-depth analysis and critique of contemporary issues.",
+          "intent": "The channel aims to provide viewers with a deeper understanding of global events and technological developments, challenging mainstream narratives."
+        },
+        "keywords": {
+          "Socio-political Commentary": [
+            "political commentary",
+            "current events analysis",
+            "global issues critique",
+            "corporate influence in politics",
+            "media influence on society"
+          ],
+          "Technological Critique": [
+            "tech industry critique",
+            "AI development analysis",
+            "technology impact on society",
+            "future of artificial intelligence",
+            "robotics and society"
+          ],
+          "Corporate and Economic Analysis": [
+            "corporate controversy explained",
+            "economic power dynamics",
+            "financial industry critique",
+            "corporate influence on economy",
+            "business ethics analysis"
+          ],
+          "Media and Entertainment Critique": [
+            "celebrity scandal analysis",
+            "entertainment industry critique",
+            "media personality analysis",
+            "hollywood industry critique",
+            "celebrity behavior analysis"
+          ]
+        }
+      }
+    }
+  }
+}

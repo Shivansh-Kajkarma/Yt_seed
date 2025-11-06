@@ -1,0 +1,63 @@
+{
+  "metadata": {
+    "run_id": "moon_20251106_181535",
+    "run_tag": "moon",
+    "created_at": "2025-11-06T18:15:43.136734",
+    "model_provider": "gpt-4o",
+    "video_data_source": "sample_videos_moon_20251106_181535.csv"
+  },
+  "channels": {
+    "UCmFeOdJI3IXgTBDzqBLD8qg": {
+      "channel_name": "Moon",
+      "status": "success",
+      "fingerprint": {
+        "profile": {
+          "channel_name": "Moon",
+          "description": "Videos on what's really happening in the world.",
+          "likely_niche": "Societal and Technological Commentary",
+          "target_audience": "Individuals interested in critical analysis of current events, technology, and societal issues.",
+          "video_style": "The channel employs a video essay format, often focusing on in-depth analysis and critique of contemporary issues.",
+          "intent": "The channel aims to provide viewers with a deeper understanding of current events and technological trends, challenging mainstream narratives and encouraging critical thinking."
+        },
+        "keywords": {
+          "Societal Commentary & Analysis": [
+            "societal issues analysis",
+            "current events critique",
+            "media influence on society",
+            "cultural impact of technology",
+            "societal trends explained",
+            "critical analysis of news",
+            "social commentary videos"
+          ],
+          "Technological Critique & Analysis": [
+            "AI industry critique",
+            "technology impact on society",
+            "future of AI analysis",
+            "tech industry trends",
+            "AI ethics discussion",
+            "technology bubble analysis",
+            "robotics industry critique"
+          ],
+          "Corporate & Financial Analysis": [
+            "corporate influence on society",
+            "financial industry critique",
+            "corporate power analysis",
+            "investment trends explained",
+            "corporate controversy analysis",
+            "financial market critique",
+            "business ethics discussion"
+          ],
+          "Celebrity & Media Critique": [
+            "celebrity behavior analysis",
+            "media industry critique",
+            "entertainment industry analysis",
+            "celebrity influence on culture",
+            "media portrayal critique",
+            "celebrity scandal analysis",
+            "entertainment trends critique"
+          ]
+        }
+      }
+    }
+  }
+}
