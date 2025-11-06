@@ -116,7 +116,7 @@ def main():
     try:
         df_videos = fetch_for_seed_channels(
             seed_df, 
-            limit_per_channel=4,  # You can adjust this
+            limit_per_channel=30,  # You can adjust this
             filter_shorts=True
         )
 
