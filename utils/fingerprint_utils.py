@@ -62,19 +62,7 @@ def create_fingerprint(video_df: pd.DataFrame, top_n: int = 15) -> list[str]:
         if clean_doc:
             corpus.append(clean_doc)
 
-    # Only title testing
-    # corpus = []
-    # for _, row in video_df.iterrows():
-    #     # ONLY use the title
-    #     title = str(row.get('title', ''))
-    #     doc_text = title 
 
-    #     clean_doc = preprocess_text(doc_text)
-
-    #     if clean_doc:
-    #         corpus.append(clean_doc)
-
-    # We need at least 2 documents for min_df=2 to work
     if len(corpus) < 2:
         print(f"Warning: Only found {len(corpus)} videos. min_df=2 will filter everything.")
         # We can either return [] or rerun with min_df=1

@@ -282,10 +282,6 @@ def fetch_recent_videos(
     print(f"  ✅ Finished fetching for {channel_id}. Found {len(final_results)} valid videos. (Scanned {total_items_scanned} items)")
     return final_results, channel_description
 
-
-# -----------------------------
-# Top-level batch fetch
-# -----------------------------
 def fetch_for_seed_channels(
     seed_df, limit_per_channel: int = 30, filter_shorts: bool = True
 ) -> "pd.DataFrame":
@@ -449,10 +445,6 @@ def search_videos_multi_focused(keywords: List[str], max_results_per_search: int
     print(f"  📊 Total: {len(all_candidate_channel_ids)} unique candidate channels found across {keywords_to_search} video searches.\n")
     return all_candidate_channel_ids # Return the SET of unique channel IDs
 
-# Client approach----
-# ==================================================
-# CLIENT'S FREQUENCY-BASED APPROACH
-# ==================================================
 
 def frequency_search_by_titles(
     titles: List[str],
@@ -665,7 +657,6 @@ def filter_by_frequency_threshold(
     return candidates
 
 
-# --- YOUR GOOGLE SHEET LOADER FUNCTION ---
 def _load_from_google_sheet(sheet_url: str) -> Optional[pd.DataFrame]:
     """
     Internal function to load seed channels from a PUBLIC Google Sheet URL.
@@ -717,4 +708,3 @@ def _load_from_google_sheet(sheet_url: str) -> Optional[pd.DataFrame]:
         print(f"Error loading Google Sheet from '{sheet_url}': {e}")
         print("Please ensure the URL is correct and the sheet is 'Published to the web' as a CSV.")
         return None
-# --- END OF YOUR FUNCTION ---
