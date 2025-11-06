@@ -1039,7 +1039,7 @@ def get_channel_fingerprint_oneshot(
     # --- 2. The New "Master" Prompt (Now with Title-Focus) ---
     prompt = f"""You are an expert YouTube channel analyst.
     Analyze the provided raw data (channel name, description, video titles, video descriptions) 
-    and extract a complete channel profile and its SEO keywords.
+    and extract a complete channel profile and its content themes.
 
     RAW DATA TO ANALYZE:
     \"\"\"
@@ -1051,74 +1051,84 @@ def get_channel_fingerprint_oneshot(
     ---
     PART 1: "profile"
     ---
-    This key must contain an object with these 6 sub-keys:
-    1.  "niche": The channel's primary TOPIC (e.g., "Productivity", "Business Case Studies", "Scam Investigation").
-    2.  "format": The primary STYLE .
-    3.  "intent": The channel's main GOAL.
-    4.  "speaker": The primary point of view.
-    5.  "ideology": The channel's political bias. 
-    6.  "target_audience": The primary demographic (e.g., "Curious Learners", "Political Activists", "Students", "Entrepreneurs").
+    Analyze the provided data and produce a detailed, *holistic channel profile* in this format:
 
-    ### CRITICAL RULE ###
-        - Do NOT default to "N/A" for any of them.
+    {{
+    "channel_name": "...",
+    "description": "...",
+    "likely_niche": "...",
+    "target_audience": "...",
+    "video_style": "...",
+    "intent": "..."
+    }}
+
+    Guidelines:
+    - Be objective and descriptive (avoid emotion or bias).
+    - Reflect the channel's *core identity* and *niche specialization*.
+    - The "intent" must express **why** this channel creates content, not what it posts.
+    - Keep tone like a professional media analyst, not a YouTuber or marketer.
+    - Use complete sentences and 2-3 lines per field.
+
     ---
     PART 2: "keywords"
     ---
-    Generate 2-3 most dominant content categories. Under each category, list 5-10 high-intent YOUTUBE SEARCH QUERIES that would lead a user to this channel and its competitors.
+    Generate 2-4 most dominant content **THEMES** (categories).
+    Under each theme, list 7-10 **analytical keywords and search queries** that describe this topic.
 
     **CRITICAL (THE GOAL):**
-    These are NOT just topics. They MUST be phrases a user would actually type into the YouTube search bar to find this content. The queries should be ACTION-ORIENTED and INVESTIGATIVE.
+    Your goal is to *CATEGORIZE* the content, not to copy its emotional language.
+    The keywords should be the *academic topic* or *niche* of the videos.
+    We are looking for the *literal search queries* a person would use to find *other channels in this same niche*.
 
     **CRITICAL (THE RULES):**
-    1.  **Reflect the Profile:** Analyze the 'intent', 'niche', and 'format' from PART 1. The search queries MUST reflect this. (e.g., if 'intent' is 'Exposé', queries must be investigative, not just simple news).
-    2.  **Use Search Templates:** Include common YouTube search patterns like "the downfall of...", "the problem with...", "everything wrong with...", etc.
+    1.  **Reflect the Profile:** The themes MUST be analytical summaries of the 'niche' and 'intent' from PART 1.
+    2.  **Be Analytical, Not Sensational:** The keywords should describe the *topic*, not the *clickbait*.
+    3.  **IGNORE SPONSORS:** Your code already filters out video descriptions if they are ads. This is just a reminder to focus on the high-signal titles.
 
-    **Examples of GOOD search queries (High-Intent):**
-    ✅ "the downfall of [company/celebrity]"
-    ✅ "everything wrong with [cultural trend]"
-    ✅ "the problem with [person/ideology]"
-    ✅ "[company/person] exposed as fraud"
-    ✅ "[topic] conspiracy explained"
-    ✅ "investigative documentary [topic]"
+    **Examples of GOOD keywords (Analytical & Topical):**
+    ✅ "political commentary"
+    ✅ "celebrity scandal analysis"
+    ✅ "tech industry critique"
+    ✅ "internet culture drama"
+    ✅ "corporate controversy explained"
+    ✅ "video essay [topic]"
+    ✅ "the problem with [company]"
 
-    **Examples of BAD keywords (Too Broad/Academic):**
-    ❌ "political analysis" (Too generic)
-    ❌ "media critique" (This is a CATEGORY, not a search query)
-    ❌ "societal flaws" (Too academic, no one searches this)
-    ❌ "celebrity news" (Wrong intent, not an exposé)
-    ❌ "society destroyed" (Too sensational, poor search results)
+    **Examples of BAD keywords (Too Sensational/Vague):**
+    ❌ "society destroyed" (Too sensational, bad search results)
+    ❌ "celebrity exposed" (Too generic, will return tabloids)
+    ❌ "government conspiracy" (Too broad)
+    ❌ "cultural critique" (Too academic, not a search query)
+    ❌ "company destroyed" (Too emotional)
 
     ---
-    EXAMPLE OUTPUT (Do not copy it, use it to learn.):
+    EXAMPLE OUTPUT (This is the style you must follow):
     {{
-    "profile": {{
-        "niche": "Political & Cultural Commentary",
-        "format": "Talking-Head Analysis (High Production)",
-        "intent": "Controversy & Exposé",
-        "speaker": "Solo Creator",
-        "ideology": "Progressive-leaning",
-        "target_audience": "Young adults (18-35), progressive, internet-native"
-    }},
+    "profile": {{ ... }},
     "keywords": {{
-        "Investigative Exposés": [
-        "the downfall of a celebrity",
-        "exposed as fraud",
-        "everything wrong with hollywood",
-        "the problem with influencer culture",
-        "brutal truth about [topic]",
-        "celebrity lies exposed"
+        "Political Commentary & Analysis": [
+            "political commentary",
+            "political news analysis",
+            "political scandal explained",
+            "controversial political figures",
+            "government failures explained"
         ],
-        "Cultural & Political Critique": [
-        "government conspiracy explained",
-        "the problem with [ideology]",
-        "media manipulation examples",
-        "corporate corruption documentary",
-        "hidden truth about [event]",
-        "political commentary deep dive"
+        "Celebrity & Entertainment Critique": [
+            "celebrity scandal analysis",
+            "entertainment industry critique",
+            "celebrity controversy explained",
+            "hollywood industry analysis",
+            "celebrity downfall analysis"
+        ],
+        "Internet Culture & Creator Commentary": [
+            "youtube creator drama",
+            "influencer controversy analysis",
+            "internet personality critique",
+            "social media culture critique",
+            "creator community drama"
         ]
     }}
     }}
-
     --- (End of Example) ---
 
     OUTPUT:
@@ -1149,35 +1159,23 @@ def get_channel_fingerprint_oneshot(
             # ========== Parse JSON Output ==========
             try:
                 parsed_json = json.loads(result_text)
-
-                # Validate the complex structure
-                if (
-                    "profile" in parsed_json
-                    and "keywords" in parsed_json
-                    and isinstance(parsed_json["profile"], dict)
-                    and isinstance(parsed_json["keywords"], dict)
-                    and "niche" in parsed_json["profile"]
-                ):
+                
+                if "profile" in parsed_json and "keywords" in parsed_json:
                     print(f"✅ One-shot analysis successful for {channel_name}.")
-                    return parsed_json  # Return the full JSON object
+                    return parsed_json
                 else:
-                    print(
-                        f"⚠️ LLM returned invalid JSON structure: {result_text[:100]}... (Attempt {attempt + 1})"
-                    )
+                    print(f"⚠️ LLM returned invalid JSON structure: {result_text[:100]}... (Attempt {attempt+1})")
 
             except json.JSONDecodeError:
-                print(
-                    f"⚠️ LLM output was not valid JSON: {result_text[:100]}... (Attempt {attempt + 1})"
-                )
-
+                print(f"⚠️ LLM output was not valid JSON: {result_text[:100]}... (Attempt {attempt+1})")
+                
         except Exception as e:
-            print(
-                f"❌ LLM One-Shot Error (Attempt {attempt + 1}/{retries}): {str(e)[:100]}"
-            )
+            print(f"❌ LLM One-Shot Error (Attempt {attempt+1}/{retries}): {str(e)[:100]}")
             time.sleep(5 * (attempt + 1))
-
+            
     print(f"❌ All retries failed for {channel_name}.")
-    return {}  # Return empty dict if all retries fail
+    return {}
+
 
 
 
