@@ -116,7 +116,7 @@ def main():
     try:
         df_videos = fetch_for_seed_channels(
             seed_df, 
-            limit_per_channel=30,  # You can adjust this
+            limit_per_channel=4,  # You can adjust this
             filter_shorts=True
         )
 
@@ -174,7 +174,7 @@ def main():
                 channel_name=channel_name,
                 channel_description=channel_desc,
                 video_df=channel_video_df,
-                model_provider="gpt" # Using gpt as default
+                model_provider="gpt-4o" # Using gpt-4o as default
             )
 
             if not fingerprint_data:
