@@ -17,6 +17,7 @@ try:
     from utils.fingerprint_llm_utils import (
         get_channel_fingerprint_oneshot
     )
+    from utils.mongo_utils import save_dataframe_to_mongo, save_json_blob
 except ImportError:
     print("Error: Could not import from 'utils' directory.")
     print(f"Ensure 'utils' is at this path: {BASE_DIR / 'utils'}")
@@ -31,7 +32,8 @@ except ImportError:
 SEED_INPUT_SOURCE = "csv" 
 #
 # --- Set a memorable name for this run (e.g., "moon", "vox_analysis")
-RUN_TAG = "moon"
+RUN_TAG = "moon"  # or dynamically from args/env later
+MONGO_COLLECTION_PREFIX = f"{RUN_TAG.upper()}_phase1"
 #
 # ==================================================
 
@@ -126,6 +128,17 @@ def main():
         df_videos.to_csv(FINAL_VIDEO_CSV_PATH, index=False, encoding="utf-8-sig")
         print(f"\n✅ SUCCESS: Saved {len(df_videos)} videos to:")
         print(f"   {FINAL_VIDEO_CSV_PATH}")
+        try:
+            print(f"\n📦 Pushing Phase 1 videos for '{RUN_TAG}' to MongoDB...")
+            save_dataframe_to_mongo(
+                df_videos,
+                collection_name=f"{MONGO_COLLECTION_PREFIX}",
+                unique_key_column="video_id"  # unique per video
+            )
+            print(f"✅ Mongo: {len(df_videos)} videos upserted to '{MONGO_COLLECTION_PREFIX}'.")
+        except Exception as e:
+            print(f"❌ Mongo push failed for phase1 videos: {e}")
+
 
     except Exception as e:
         print(f"❌ ERROR during video fetching or saving: {e}")
@@ -139,7 +152,7 @@ def main():
             "run_id": RUN_ID,
             "run_tag": RUN_TAG,
             "created_at": datetime.now().isoformat(),
-            "model_provider": "gpt", # You can hardcode this as per our last chat
+            "model_provider": "gpt-4o", # You can hardcode this as per our last chat
             "video_data_source": str(FINAL_VIDEO_CSV_PATH.name)
         },
         "channels": {}
@@ -205,6 +218,18 @@ def main():
         
     except Exception as e:
         print(f"❌ ERROR saving final JSON: {e}")
+
+    try:
+        print(f"\n📦 Pushing fingerprints to MongoDB for '{RUN_TAG}'...")
+        save_json_blob(
+            data=all_fingerprints,
+            collection_name=f"{MONGO_COLLECTION_PREFIX}_fingerprints",
+            unique_key="run_id",
+            key_value=RUN_ID
+        )
+        print(f"✅ Mongo: Fingerprint blob saved to '{MONGO_COLLECTION_PREFIX}_fingerprints' (run_id={RUN_ID})")
+    except Exception as e:
+        print(f"❌ Mongo push failed for fingerprints: {e}")
 
 
 if __name__ == "__main__":
