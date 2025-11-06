@@ -18,6 +18,8 @@ try:
         get_channel_metadata_batch,
         fetch_recent_videos,
     )
+    from utils.mongo_utils import load_collection_as_df, save_dataframe_to_mongo
+
     print("✅ Successfully imported YouTube utils.")
 except ImportError:
     print("Error: Could not import from 'utils' directory.")
@@ -28,7 +30,8 @@ except ImportError:
 # === CONFIGURATION ===
 # --- EDIT THIS TAG ---
 # Set a memorable name for this run (e.g., "moon", "vox")
-RUN_TAG = "vox"
+RUN_TAG = "moon"
+MONGO_COLLECTION_PREFIX = f"{RUN_TAG.upper()}_phase2"
 #
 # ==================================================
 
@@ -86,7 +89,7 @@ AUTO_KEEP_COUNTRIES = [
 ]
 
 # --- Settings ---
-SEED_CHANNELS = ["Vox"] # Which seeds from the fingerprint file to use
+SEED_CHANNELS = ["Moon"] # Which seeds from the fingerprint file to use
 MIN_SUBSCRIBERS = 10000
 MIN_VIDEOS = 6
 MAX_VIDEOS = 2500 # Your filter for news orgs
@@ -225,7 +228,7 @@ def process_seed_channel(
         try:
             candidate_ids = search_videos_multi_focused(
                 seed_keywords_list,
-                max_results_per_search=50,
+                max_results_per_search=30,
                 max_keywords=len(seed_keywords_list)
             )
             # --- SAVE TO CACHE ---
@@ -242,8 +245,7 @@ def process_seed_channel(
             # If we fail the search (e.g., quota), we must stop.
             # Raise the exception to be caught by main()
             raise e 
-    
-    # --- (Rest of the function is identical) ---
+
 
     candidate_ids = candidate_ids - seen_ids - {seed_channel_id}
     if not candidate_ids:
@@ -382,45 +384,56 @@ def main():
     print("=" * 70)
 
     # --- 1. Load Seed Keywords (from Phase 1 JSON) ---
-    print(f"\n📖 Loading seed keywords from {latest_fingerprint_file.name}...")
+    print(f"\n📖 Loading seed keywords for '{RUN_TAG}' from MongoDB...")
     seed_keywords_map = {}
     try:
-        with open(latest_fingerprint_file, "r", encoding="utf-8") as f:
-            data = json.load(f)
-        # Find the keywords for the channels we care about
-        for channel_id, details in data.get("channels", {}).items():
+        # Phase-1 fingerprints are stored in <RUN_TAG>_phase1_fingerprints
+        df_fp = load_collection_as_df(f"{RUN_TAG.upper()}_phase1_fingerprints", {"metadata.run_tag": RUN_TAG})
+        if df_fp.empty:
+            raise ValueError(f"No fingerprints in Mongo for run_tag={RUN_TAG}")
+
+        # The run-level blob is one document; reconstruct dict like the file structure you used before
+        fp_blob = df_fp.iloc[0].to_dict()
+        channels_dict = fp_blob.get("channels", {})
+
+        # Keep using your existing SEED_CHANNELS filter
+        for channel_id, details in channels_dict.items():
             channel_name = details.get("channel_name")
             if channel_name in SEED_CHANNELS:
-                keywords_data = details.get("fingerprint", {}).get("keywords", {})
-                if keywords_data:
-                    seed_keywords_map[channel_name] = keywords_data
+                kws = details.get("fingerprint", {}).get("keywords", {})
+                if kws:
+                    seed_keywords_map[channel_name] = kws
                     print(f"  📌 Found keywords for seed: {channel_name}")
                 else:
-                    print(f"  ⚠️  No keywords found in fingerprint for {channel_name}")
+                    print(f"  ⚠️  No keywords in fingerprint for {channel_name}")
 
         if not seed_keywords_map:
             print(f"❌ ERROR: Could not find keywords for any seeds in {SEED_CHANNELS}.")
             return
-
     except Exception as e:
-        print(f"❌ ERROR loading keywords: {e}")
+        print(f"❌ ERROR loading fingerprints from Mongo: {e}")
         return
 
+
     # --- 2. Load Seed Channel ID Mapping (from Phase 1 CSV) ---
-    print(f"\n🗺️  Loading channel IDs from {latest_seed_video_file.name}...")
+    print(f"\n🗺️  Loading channel IDs for '{RUN_TAG}' from MongoDB...")
     try:
-        df_videos = pd.read_csv(latest_seed_video_file)
+        # Phase-1 videos live in <RUN_TAG>_phase1 (one doc per video)
+        df_videos = load_collection_as_df(f"{RUN_TAG.upper()}_phase1")
+        if df_videos.empty:
+            raise ValueError("Phase-1 videos collection is empty in Mongo")
+
+        # Your original logic, but on df_videos from Mongo
         seed_id_map = (
-            df_videos.drop_duplicates(subset=["Channel_Name"])[
-                ["Channel_Name", "Channel_ID"]
-            ]
+            df_videos.drop_duplicates(subset=["Channel_Name"])[["Channel_Name", "Channel_ID"]]
             .set_index("Channel_Name")["Channel_ID"]
             .to_dict()
         )
         print(f"  ✅ Loaded {len(seed_id_map)} channel mappings")
     except Exception as e:
-        print(f"❌ ERROR loading channel IDs: {e}")
+        print(f"❌ ERROR loading Channel_ID map from Mongo: {e}")
         return
+
 
     # --- 3. Load Seen Channels (High-level log) ---
     print(f"\n📂 Loading seen channels log from {SEEN_CHANNELS_PATH.name}...")
@@ -495,6 +508,32 @@ def main():
             print(f"\n⏸️  Waiting {DELAY_BETWEEN_SEEDS}s before next seed...")
             time.sleep(DELAY_BETWEEN_SEEDS)
 
+    try:
+        if CACHE_DATA_PATH.exists():
+            df_cache_all = pd.read_csv(CACHE_DATA_PATH)
+            if not df_cache_all.empty:
+                # composite unique key so a discovered channel can exist per seed
+                df_cache_all["SeedDiscoveredKey"] = (
+                    df_cache_all["Seed_Channel_ID"].astype(str)
+                    + "::"
+                    + df_cache_all["Discovered_Channel_ID"].astype(str)
+                )
+                # optional audit columns
+                df_cache_all["run_tag"] = RUN_TAG
+                df_cache_all["mirrored_at"] = datetime.now().isoformat()
+
+                save_dataframe_to_mongo(
+                    df_cache_all,
+                    collection_name=f"{RUN_TAG.upper()}_phase2",
+                    unique_key_column="SeedDiscoveredKey"
+                )
+                print(f"✅ Mongo: Upserted {len(df_cache_all)} discovered rows into '{RUN_TAG.upper()}_phase2'.")
+            else:
+                print("⚠️ Cache CSV exists but is empty; nothing to push to Mongo.")
+        else:
+            print("⚠️ No cache CSV found; nothing to push to Mongo.")
+    except Exception as e:
+        print(f"❌ Mongo push failed for Phase 2 final discoveries: {e}")
     # === FINAL SUMMARY ===
     elapsed = time.time() - start_time
     print("\n" + "=" * 70)
