@@ -5,7 +5,9 @@ import time
 from pathlib import Path
 from datetime import datetime
 import re  # <-- ADDED for your new function
-from typing import Optional  # <-- ADDED for your new function
+from typing import Optional
+
+from Manual_testing.manual_keyword_Channel_discovey import RUN_TAG  # <-- ADDED for your new function
 
 # --- Make sure utils are importable ---
 # This assumes your 'utils' folder is in the parent directory of 'SCRIPTS'
@@ -31,9 +33,9 @@ except ImportError:
 # Set this to "csv" or "sheet"
 SEED_INPUT_SOURCE = "csv" 
 #
-# --- Set a memorable name for this run (e.g., "moon", "vox_analysis")
-RUN_TAG = "moon"  # or dynamically from args/env later
-MONGO_COLLECTION_PREFIX = f"{RUN_TAG.upper()}_phase1"
+# # --- Set a memorable name for this run (e.g., "moon", "vox_analysis")
+# RUN_TAG = "moon"  # or dynamically from args/env later
+# MONGO_COLLECTION_PREFIX = f"{RUN_TAG.upper()}_phase1"
 #
 # ==================================================
 
@@ -45,14 +47,14 @@ OUTPUT_DIR_VIDEOS = BASE_DIR / "PHASE_1_OUTPUTS"
 OUTPUT_DIR_FINGERPRINTS = BASE_DIR / "FINGERPRINTS_ONESHOT"
 
 # --- Create a unique ID for this run ---
-RUN_ID = f"{RUN_TAG}_{datetime.now().strftime('%Y%m%d_%H%M%S')}"
+# RUN_ID = f"{RUN_TAG}_{datetime.now().strftime('%Y%m%d_%H%M%S')}"
 
 # --- Define final output paths ---
-FINAL_VIDEO_CSV_PATH = OUTPUT_DIR_VIDEOS / f"sample_videos_{RUN_ID}.csv"
-FINAL_FINGERPRINT_JSON_PATH = OUTPUT_DIR_FINGERPRINTS / f"fingerprints_oneshot_{RUN_ID}.json"
+# FINAL_VIDEO_CSV_PATH = OUTPUT_DIR_VIDEOS / f"sample_videos_{RUN_ID}.csv"
+# FINAL_FINGERPRINT_JSON_PATH = OUTPUT_DIR_FINGERPRINTS / f"fingerprints_oneshot_{RUN_ID}.json"
 
 
-def main():
+def main(run_tag: str):
     """
     Main pipeline script:
     1. Fetches video data from YouTube API.
@@ -60,6 +62,11 @@ def main():
     3. Generates one-shot fingerprints for each channel.
     4. Saves fingerprints to a timestamped JSON.
     """
+    MONGO_COLLECTION_PREFIX = f"{run_tag.upper()}_phase1"
+    RUN_ID = f"{run_tag}_{datetime.now().strftime('%Y%m%d_%H%M%S')}"
+    FINAL_VIDEO_CSV_PATH = OUTPUT_DIR_VIDEOS / f"sample_videos_{RUN_ID}.csv"
+    FINAL_FINGERPRINT_JSON_PATH = OUTPUT_DIR_FINGERPRINTS / f"fingerprints_oneshot_{RUN_ID}.json"
+
     print(f"--- 🚀 Starting New Pipeline Run ---")
     print(f"Run ID: {RUN_ID}")
 
@@ -233,4 +240,5 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    tag = sys.argv[1] if len(sys.argv) > 1 else "DEFAULT"
+    main(tag)
