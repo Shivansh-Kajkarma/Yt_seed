@@ -708,3 +708,24 @@ def _load_from_google_sheet(sheet_url: str) -> Optional[pd.DataFrame]:
         print(f"Error loading Google Sheet from '{sheet_url}': {e}")
         print("Please ensure the URL is correct and the sheet is 'Published to the web' as a CSV.")
         return None
+
+def check_quota_and_pause(e, run_tag: str, seed_name: str | None = None):
+    """Centralized YouTube quotaExceeded handling."""
+    if "quotaExceeded" in str(e):
+        try:
+            from utils.mongo_utils import save_json_blob
+            save_json_blob(
+                {
+                    "run_tag": run_tag,
+                    "seed": seed_name,
+                    "status": "paused_due_to_quota",
+                    "reason": "quotaExceeded",
+                    "timestamp": datetime.now().isoformat()
+                },
+                "run_progress",
+                "run_tag",
+                run_tag
+            )
+        except Exception:
+            pass
+        raise SystemExit("YouTube quota exceeded. Safe exit for now.")
