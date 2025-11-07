@@ -7,7 +7,7 @@ import pandas as pd
 from dotenv import load_dotenv
 from datetime import datetime, timedelta
 from typing import List, Dict, Optional, Tuple, Counter
-
+from utils.mongo_utils import check_quota_and_pause
 load_dotenv()
 API_KEY = os.getenv("YOUTUBE_API_KEY")
 YT_BASE = "https://www.googleapis.com/youtube/v3"
@@ -182,7 +182,7 @@ def fetch_recent_videos(
             print(f"⚠️ No uploads playlist for {channel_id}")
             return [], channel_description
     except Exception as e:
-        from utils.youtube_utils import check_quota_and_pause
+        # from utils.mongo_utils import check_quota_and_pause
         check_quota_and_pause(e, run_tag, seed_name)
         print(f"❌ Error fetching channel details for {channel_id}: {e}")
         return [], ""
@@ -222,7 +222,7 @@ def fetch_recent_videos(
                 continue
 
         except Exception as e:
-            from utils.youtube_utils import check_quota_and_pause
+            # from utils.mongo_utils import check_quota_and_pause
             check_quota_and_pause(e, run_tag, seed_name)
             print(f"❌ Playlist fetch error: {e}")
             break
@@ -238,7 +238,7 @@ def fetch_recent_videos(
             resp_v.raise_for_status()
             vids = resp_v.json().get("items", [])
         except Exception as e:
-            from utils.youtube_utils import check_quota_and_pause
+            # from utils.mongo_utils import check_quota_and_pause
             check_quota_and_pause(e, run_tag, seed_name)
             print(f"❌ Video details fetch error: {e}")
             break
@@ -388,7 +388,7 @@ def get_channel_metadata_batch(channel_ids: List[str], run_tag: str = "default",
                 })
 
         except Exception as e:
-            from utils.youtube_utils import check_quota_and_pause
+            # from utils.mongo_utils import check_quota_and_pause
             check_quota_and_pause(e, run_tag, seed_name)
             print(f"   ❌ ERROR fetching metadata batch {batch_num}: {e}")
             continue
@@ -464,7 +464,7 @@ def search_videos_multi_focused(
             print(f"        ✅ Found videos from {len(found_channels_in_batch)} unique channels")
 
         except Exception as e:
-            from utils.youtube_utils import check_quota_and_pause
+            # from utils.mongo_utils import check_quota_and_pause
             check_quota_and_pause(e, run_tag, seed_name)
             print(f"        ❌ Search Error: {str(e)[:100]}")
             continue
@@ -735,24 +735,3 @@ def _load_from_google_sheet(sheet_url: str) -> Optional[pd.DataFrame]:
         print(f"Error loading Google Sheet from '{sheet_url}': {e}")
         print("Please ensure the URL is correct and the sheet is 'Published to the web' as a CSV.")
         return None
-
-def check_quota_and_pause(e, run_tag: str, seed_name: str | None = None):
-    """Centralized YouTube quotaExceeded handling."""
-    if "quotaExceeded" in str(e):
-        try:
-            from utils.mongo_utils import save_json_blob
-            save_json_blob(
-                {
-                    "run_tag": run_tag,
-                    "seed": seed_name,
-                    "status": "paused_due_to_quota",
-                    "reason": "quotaExceeded",
-                    "timestamp": datetime.now().isoformat()
-                },
-                "run_progress",
-                "run_tag",
-                run_tag
-            )
-        except Exception:
-            pass
-        raise SystemExit("YouTube quota exceeded. Safe exit for now.")
