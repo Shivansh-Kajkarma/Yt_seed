@@ -1,8 +1,9 @@
 import sys, subprocess, os
 from datetime import datetime
-from utils.mongo_utils import save_json_blob
+from utils.mongo_utils import save_json_blob, check_quota_and_pause
 
 def record_run_status(run_tag: str, status: str, extra: dict | None = None):
+    # ... (this function is unchanged) ...
     payload = {
         "run_tag": run_tag,
         "status": status,
@@ -15,15 +16,12 @@ def record_run_status(run_tag: str, status: str, extra: dict | None = None):
 def run_all_phases_for_seed(seed_channel_name: str):
     """
     Hybrid Orchestrator for full pipeline.
-    ✅ Uses subprocess isolation (safe for Celery, memory)
-    ✅ Logs Mongo progress after each phase
-    ✅ Handles quota & crash pauses
+     Passes the simple 'run_tag' (e.g., 'moon') to all scripts.
+     CORRECTLY handles Quota Pauses.
     """
     run_tag = seed_channel_name.lower().replace(" ", "_")
-    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    full_run_tag = f"{run_tag}_{timestamp}"
 
-    record_run_status(full_run_tag, "started", {"seed_name": seed_channel_name})
+    record_run_status(run_tag, "started", {"seed_name": seed_channel_name})
 
     scripts = [
         ("phase1", "SCRIPTS/phase1_get_videos_and_keywords.py"),
@@ -34,21 +32,37 @@ def run_all_phases_for_seed(seed_channel_name: str):
 
     try:
         for label, script in scripts:
-            print(f"\n🚀 Running {label.upper()} for {full_run_tag}...")
-            subprocess.run([sys.executable, script, full_run_tag], check=True)
-            record_run_status(full_run_tag, f"{label}_done")
+            print(f"\n🚀 Running {label.upper()} for {run_tag}...")
+            # --- THIS IS THE KEY ---
+            # We add capture_output=True to read the error message
+            subprocess.run(
+                [sys.executable, script, run_tag], 
+                check=True, 
+                capture_output=True, # <-- SOTA FIX 1
+                text=True
+            )
+            record_run_status(run_tag, f"{label}_done")
 
-        record_run_status(full_run_tag, "completed")
-        return {"ok": True, "run_tag": full_run_tag, "status": "completed"}
+        record_run_status(run_tag, "completed")
+        return {"ok": True, "run_tag": run_tag, "status": "completed"}
 
     except subprocess.CalledProcessError as e:
-        record_run_status(full_run_tag, "failed", {"error": str(e)})
-        return {"ok": False, "error": str(e)}
-
-    except SystemExit as e:
-        record_run_status(full_run_tag, "paused_due_to_quota", {"reason": str(e)})
-        return {"ok": False, "paused": True, "message": str(e)}
-
+        # --- SOTA FIX 2 ---
+        # The script failed. NOW we check if it was our quota error.
+        # The "SystemExit" message gets printed to stderr.
+        if "YouTube quota exceeded" in e.stderr:
+            print(f"🛑 PAUSE DETECTED: Quota limit hit during {label}.")
+            # The check_quota_and_pause() function already logged to Mongo.
+            # We just return the "paused" status to Celery.
+            record_run_status(run_tag, "paused_due_to_quota", {"reason": "quotaExceeded"})
+            return {"ok": False, "paused": True, "message": "YouTube quota exceeded."}
+        else:
+            # It was a *different* crash (a real Python error)
+            print(f"❌ SCRIPT FAILED: A non-quota error occurred in {label}.")
+            record_run_status(run_tag, "failed", {"error": str(e.stderr)})
+            return {"ok": False, "error": str(e.stderr)}
+    
     except Exception as e:
-        record_run_status(full_run_tag, "failed", {"error": str(e)})
+        # Catch any other weird errors
+        record_run_status(run_tag, "failed", {"error": str(e)})
         raise
