@@ -128,59 +128,72 @@ def extract_channel_id(channel_url: str) -> str:
         return ""
 
 def fetch_recent_videos(
-    channel_id: str, 
-    max_results: int = 30, 
+    channel_id: str,
+    max_results: int = 30,
     filter_shorts: bool = True,
-    max_items_to_scan: int = 500,  # <-- OLD safety break (long-stop)
-    min_videos_in_first_batch: int = 5 # <-- YOUR NEW HEURISTIC (fast-fail)
+    max_items_to_scan: int = 500,
+    min_videos_in_first_batch: int = 5,
+    run_tag: str = "default",
+    seed_name: str = ""
 ) -> Tuple[List[Dict], str]:
     """
-    Fetch up to max_results recent videos (filtering shorts *during* fetch)
-    and channel description.
+    Fetch recent non-shorts videos and the channel description for a given channel.
+    Includes quota-safe handling.
     
-    Includes TWO safety breaks:
-    1. min_videos_in_first_batch: Skips channel if first 50 uploads are mostly shorts.
-    2. max_items_to_scan: Long-stop safety for weird channels.
-    """
-    if not channel_id: return [], ""
-    if not API_KEY: print("❌ ERROR: API key missing."); return [], ""
+    Args:
+        channel_id: YouTube channel ID.
+        max_results: Max videos to fetch.
+        filter_shorts: Whether to exclude shorts.
+        max_items_to_scan: Total playlist items to check (safety break).
+        min_videos_in_first_batch: If first page yields too few valid videos, skip channel.
+        run_tag: Run ID for Mongo checkpoint logging.
+        seed_name: Optional seed name.
 
-    channel_description = ""
-    uploads_playlist = None
+    Returns:
+        Tuple: (List of video dictionaries, Channel description)
+    """
+    if not channel_id:
+        return [], ""
+    if not API_KEY:
+        print("❌ ERROR: API key missing.")
+        return [], ""
+
     results: List[Dict] = []
-    
     total_items_scanned = 0
-    is_first_batch = True # <-- NEW FLAG to track the first loop
-    
-    # 1) Get channel details (snippet + contentDetails)
+    is_first_batch = True
+    channel_description = ""
+
+    # 1️⃣ Fetch channel uploads playlist
     url = f"{YT_BASE}/channels"
     params = {"part": "contentDetails,snippet", "id": channel_id, "key": API_KEY}
+
     try:
-        data = _safe_get_json(url, params)
+        response = requests.get(url, params=params, timeout=30)
+        response.raise_for_status()
+        data = response.json()
         items = data.get("items", [])
-        if not items: print(f"⚠️ No channel data for ID {channel_id}"); return [], ""
+        if not items:
+            print(f"⚠️ No channel data for ID {channel_id}")
+            return [], ""
         item = items[0]
         channel_description = item.get("snippet", {}).get("description", "")
         uploads_playlist = item.get("contentDetails", {}).get("relatedPlaylists", {}).get("uploads")
-        if not uploads_playlist: print(f"⚠️ No uploads playlist for {channel_id}"); return [], channel_description
-    except Exception as e: print(f"❌ Error fetching channel details for {channel_id}: {e}"); return [], ""
+        if not uploads_playlist:
+            print(f"⚠️ No uploads playlist for {channel_id}")
+            return [], channel_description
+    except Exception as e:
+        from utils.youtube_utils import check_quota_and_pause
+        check_quota_and_pause(e, run_tag, seed_name)
+        print(f"❌ Error fetching channel details for {channel_id}: {e}")
+        return [], ""
 
-    # 2) Iterate through playlist pages...
-    playlist_url = f"{YT_BASE}/playlistItems"
-    vids_url = f"{YT_BASE}/videos"
+    # 2️⃣ Loop through playlist pages
     next_page = None
-    fetched_ids_in_batch = []
-    
-    print(f"  Fetching videos for {channel_id} (target: {max_results}, first batch min: {min_videos_in_first_batch})...")
-
     while len(results) < max_results:
-        
-        # OLD safety break (long-stop)
         if total_items_scanned >= max_items_to_scan:
-            print(f"    ⚠️  Hit scan limit ({max_items_to_scan} videos). Stopping search.")
+            print(f"⚠️ Hit scan limit ({max_items_to_scan} videos). Stopping.")
             break
-            
-        print(f"    Fetching playlist batch (found {len(results)}/{max_results} valid videos so far)...")
+
         try:
             params_pl = {
                 "part": "contentDetails",
@@ -191,96 +204,76 @@ def fetch_recent_videos(
             if next_page:
                 params_pl["pageToken"] = next_page
 
-            page = _safe_get_json(playlist_url, params_pl)
-            fetched_ids_in_batch = [
+            resp = requests.get(f"{YT_BASE}/playlistItems", params=params_pl, timeout=30)
+            resp.raise_for_status()
+            page = resp.json()
+            next_page = page.get("nextPageToken")
+
+            video_ids = [
                 it.get("contentDetails", {}).get("videoId")
                 for it in page.get("items", [])
                 if it.get("contentDetails", {}).get("videoId")
             ]
-            total_items_scanned += len(page.get("items", []))
-            next_page = page.get("nextPageToken")
+            total_items_scanned += len(video_ids)
 
-            if not fetched_ids_in_batch and not next_page:
-                 print(f"    No more video IDs found in playlist (end reached).")
-                 break
-            if not fetched_ids_in_batch and next_page:
-                 print(f"    Empty batch but next page exists, continuing...")
-                 continue
+            if not video_ids:
+                if not next_page:
+                    break
+                continue
 
         except Exception as e:
-            print(f"    ❌ Error fetching playlist batch: {e}")
+            from utils.youtube_utils import check_quota_and_pause
+            check_quota_and_pause(e, run_tag, seed_name)
+            print(f"❌ Playlist fetch error: {e}")
             break
 
-        print(f"    Fetching details for {len(fetched_ids_in_batch)} videos...")
-        batch_results_unfiltered = []
+        # 3️⃣ Fetch each video’s metadata
         try:
-            if not fetched_ids_in_batch: continue
             params_vid = {
                 "part": "snippet,contentDetails",
-                "id": ",".join(fetched_ids_in_batch),
-                "maxResults": 50,
+                "id": ",".join(video_ids),
                 "key": API_KEY,
             }
-            vdata = _safe_get_json(vids_url, params_vid)
-            batch_results_unfiltered = vdata.get("items", [])
+            resp_v = requests.get(f"{YT_BASE}/videos", params=params_vid, timeout=30)
+            resp_v.raise_for_status()
+            vids = resp_v.json().get("items", [])
         except Exception as e:
-            print(f"    ❌ Error fetching video details batch: {e}")
+            from utils.youtube_utils import check_quota_and_pause
+            check_quota_and_pause(e, run_tag, seed_name)
+            print(f"❌ Video details fetch error: {e}")
             break
 
-        print(f"    Filtering batch...")
-        filtered_count_in_batch = 0
-        for item in batch_results_unfiltered:
-            if len(results) >= max_results: break
-            vid = item.get("id")
+        for item in vids:
+            if len(results) >= max_results:
+                break
+            vid_id = item.get("id")
             snippet = item.get("snippet", {})
-            content = item.get("contentDetails", {})
-            raw_title = snippet.get("title", "")
-            duration_iso = content.get("duration", None)
-            duration_seconds = parse_iso8601_duration(duration_iso) if duration_iso else None
-            is_short = is_short_video(raw_title, duration_seconds)
-
-            if filter_shorts and is_short:
-                 continue
-
-            # ... (Video formatting and results.append logic) ...
-            raw_desc = snippet.get("description", "") or ""
-            raw_published = snippet.get("publishedAt", None)
-            clean_desc = html.unescape(raw_desc).replace("\n", " ").replace("\r", " ").strip()
-            published_at = ""
-            if raw_published:
-                try:
-                    dt_obj = datetime.fromisoformat(raw_published.replace("Z", "+00:00"))
-                    published_at = dt_obj.strftime("%Y-%m-%d %H%M:%S")
-                except Exception: published_at = raw_published
-
+            desc = snippet.get("description", "") or ""
+            title = html.unescape(snippet.get("title", ""))
+            duration = item.get("contentDetails", {}).get("duration", None)
+            duration_seconds = parse_iso8601_duration(duration) if duration else 0
+            if filter_shorts and is_short_video(title, duration_seconds):
+                continue
             results.append({
-                "video_id": vid,
-                "title": html.unescape(raw_title),
-                "description": clean_desc,
-                "published_at": published_at,
-                "duration_seconds": duration_seconds if duration_seconds is not None else 0,
-                "is_short": is_short,
+                "video_id": vid_id,
+                "title": title,
+                "description": desc.replace("\n", " ").strip(),
+                "duration_seconds": duration_seconds,
+                "is_short": is_short_video(title, duration_seconds)
             })
-            filtered_count_in_batch += 1
 
-        print(f"    Added {filtered_count_in_batch} valid videos from this batch.")
-
-        # --- YOUR NEW HEURISTIC (FAST-FAIL) ---
         if is_first_batch:
-            is_first_batch = False # Only run this check once
-            if filtered_count_in_batch < min_videos_in_first_batch:
-                print(f"    ⚠️  HEURISTIC: Found only {filtered_count_in_batch} valid videos in first batch.")
-                print(f"    Skipping channel, fails min threshold of {min_videos_in_first_batch}.")
-                break # Stop processing this channel entirely
-        # --- END NEW HEURISTIC ---
+            is_first_batch = False
+            if len(results) < min_videos_in_first_batch:
+                print(f"⚠️ Skipping {channel_id}: too few long videos.")
+                break
 
         if not next_page:
-            print("    Reached end of playlist.")
             break
 
-    final_results = results[:max_results]
-    print(f"  ✅ Finished fetching for {channel_id}. Found {len(final_results)} valid videos. (Scanned {total_items_scanned} items)")
-    return final_results, channel_description
+    print(f"✅ Finished fetching for {channel_id}. Found {len(results)} valid videos.")
+    return results[:max_results], channel_description
+
 
 def fetch_for_seed_channels(
     seed_df, limit_per_channel: int = 30, filter_shorts: bool = True
@@ -330,11 +323,23 @@ def fetch_for_seed_channels(
     return df_videos
 
 
-# --- Batch Channel Metadata Fetch ---
-def get_channel_metadata_batch(channel_ids: List[str]) -> List[Dict]:
-    """ Fetches metadata for multiple channel IDs """
-    if not API_KEY: print("❌ ERROR: API key missing."); return []
-    if not channel_ids: return []
+def get_channel_metadata_batch(channel_ids: List[str], run_tag: str = "default", seed_name: str = "") -> List[Dict]:
+    """
+    Fetches channel metadata (title, description, subs, country, etc.) for multiple YouTube channels.
+    
+    Args:
+        channel_ids: List of YouTube channel IDs.
+        run_tag: Current pipeline run ID (for Mongo checkpoint).
+        seed_name: Optional seed name for clear run tracking.
+
+    Returns:
+        A list of dictionaries containing channel metadata.
+    """
+    if not API_KEY:
+        print("❌ ERROR: API key missing.")
+        return []
+    if not channel_ids:
+        return []
 
     print(f"  Fetching metadata for {len(channel_ids)} channels...")
     channel_data = []
@@ -342,108 +347,130 @@ def get_channel_metadata_batch(channel_ids: List[str]) -> List[Dict]:
     url = f"{YT_BASE}/channels"
 
     for i in range(0, len(channel_ids), 50):
-        batch_ids = channel_ids[i : i + 50]
+        batch_ids = channel_ids[i:i + 50]
         batch_num = (i // 50) + 1
-        # print(f"     Fetching batch {batch_num} ({len(batch_ids)} IDs)...") # Less verbose
-
         params = {
             "part": "snippet,statistics",
             "id": ",".join(batch_ids),
             "maxResults": 50,
-            "key": API_KEY
+            "key": API_KEY,
         }
 
         try:
-            response = _safe_get_json(url, params)
-            items = response.get("items", [])
-            # print(f"     Batch {batch_num}: Got {len(items)} channels.") # Less verbose
+            response = requests.get(url, params=params, timeout=30)
+            response.raise_for_status()
+            data = response.json()
+            items = data.get("items", [])
             processed_count += len(items)
 
             for item in items:
                 snippet = item.get("snippet", {})
                 stats = item.get("statistics", {})
                 channel_id = item.get("id")
-                channel_name = snippet.get("title")
+                channel_name = snippet.get("title", "")
                 custom_url_handle = snippet.get("customUrl")
-                channel_url = f"https://www.youtube.com/{custom_url_handle}" if custom_url_handle and custom_url_handle.startswith('@') else f"https://www.youtube.com/channel/{channel_id}"
+                channel_url = (
+                    f"https://www.youtube.com/{custom_url_handle}"
+                    if custom_url_handle and custom_url_handle.startswith("@")
+                    else f"https://www.youtube.com/channel/{channel_id}"
+                )
 
                 channel_data.append({
                     "id": channel_id,
                     "name": channel_name,
                     "url": channel_url,
                     "description": snippet.get("description", ""),
-                    "subscribers": int(stats.get("subscriberCount", 0)) if not stats.get("hiddenSubscriberCount", False) else -1,
+                    "subscribers": int(stats.get("subscriberCount", 0))
+                    if not stats.get("hiddenSubscriberCount", False)
+                    else -1,
                     "video_count": int(stats.get("videoCount", 0)),
-                    "country": snippet.get("country", "Unknown")
+                    "country": snippet.get("country", "Unknown"),
                 })
-        except Exception as e:
-            print(f"   ❌ ERROR fetching metadata batch {batch_num}: {e}")
 
-    print(f"  Finished fetching metadata. Got details for {processed_count} channels.")
+        except Exception as e:
+            from utils.youtube_utils import check_quota_and_pause
+            check_quota_and_pause(e, run_tag, seed_name)
+            print(f"   ❌ ERROR fetching metadata batch {batch_num}: {e}")
+            continue
+
+    print(f"  ✅ Finished fetching metadata. Got details for {processed_count} channels.")
     return channel_data
 
 
+def search_videos_multi_focused(
+    keywords: List[str],
+    max_results_per_search: int = 10,
+    max_keywords: int = 7,
+    run_tag: str = "default",
+    seed_name: str = ""
+) -> set[str]:
+    """
+    Performs multiple focused YouTube searches (biased to English) using VIDEO search type.
+    Extracts **unique channel IDs** from the returned video results.
+    
+    Args:
+        keywords: List of search phrases/keywords.
+        max_results_per_search: Number of video results per keyword.
+        max_keywords: Limit how many keywords to use per run.
+        run_tag: Used for logging and Mongo checkpoint (if quota hits).
+        seed_name: Optional seed channel name (for clearer logging in Mongo).
 
-# For video extraction
-def search_videos_multi_focused(keywords: List[str], max_results_per_search: int = 10, max_keywords: int = 7) -> set[str]:
+    Returns:
+        A set of **unique channel IDs** discovered across all keyword searches.
     """
-    Performs multiple searches biased towards English.
-    *** MODIFIED TO SEARCH FOR VIDEOS and extract Channel IDs from them ***
-    """
-    if not API_KEY: print("❌ ERROR: API key missing."); return set()
-    if not keywords: print("⚠️ WARNING: No keywords provided."); return set()
+    if not API_KEY:
+        print("❌ ERROR: API key missing.")
+        return set()
+    if not keywords:
+        print("⚠️ WARNING: No keywords provided.")
+        return set()
 
     keywords_to_search = min(len(keywords), max_keywords)
-    all_candidate_channel_ids = set() # Renamed variable for clarity
+    all_candidate_channel_ids = set()
 
-    print(f"  🔎 Performing {keywords_to_search} focused VIDEO searches (biased to English)...") # Modified print
+    print(f"  🔎 Performing {keywords_to_search} focused VIDEO searches (biased to English)...")
 
-    for i in range(keywords_to_search):
-        keyword = keywords[i]
+    for i, keyword in enumerate(keywords[:keywords_to_search]):
         search_query = keyword
-
         print(f"     Search {i+1}/{keywords_to_search}: '{search_query}'")
 
         url = f"{YT_BASE}/search"
         params = {
             "part": "snippet",
             "q": search_query,
-            "type": "video",  # <-- CHANGED TO VIDEO
+            "type": "video",
             "order": "relevance",
-            "maxResults": max_results_per_search, # This now means max *videos* per keyword
+            "maxResults": max_results_per_search,
             "key": API_KEY,
             "relevanceLanguage": "en",
-            "regionCode": "US"
+            "regionCode": "US",
         }
 
         try:
-            response = _safe_get_json(url, params)
-            items = response.get("items", []) # These items are now VIDEO search results
-            found_channels_in_batch = set() # Track channels found in this specific search
+            response = requests.get(url, params=params, timeout=30)
+            response.raise_for_status()
+            data = response.json()
+
+            items = data.get("items", [])
+            found_channels_in_batch = set()
 
             for item in items:
-                # Ensure it's a video result and has snippet + channelId
                 if item.get("id", {}).get("kind") == "youtube#video" and "snippet" in item:
-                    # --- THIS IS THE KEY CHANGE ---
-                    # For video results, channel ID is inside the snippet
                     ch_id = item.get("snippet", {}).get("channelId")
-                    # --- END KEY CHANGE ---
-
                     if ch_id:
-                         # Add the channel ID to the overall set
-                         all_candidate_channel_ids.add(ch_id)
-                         # Add to batch set for printing count
-                         found_channels_in_batch.add(ch_id)
+                        all_candidate_channel_ids.add(ch_id)
+                        found_channels_in_batch.add(ch_id)
 
-            # Print how many unique channels were found from this specific keyword's video results
             print(f"        ✅ Found videos from {len(found_channels_in_batch)} unique channels")
 
         except Exception as e:
+            from utils.youtube_utils import check_quota_and_pause
+            check_quota_and_pause(e, run_tag, seed_name)
             print(f"        ❌ Search Error: {str(e)[:100]}")
             continue
 
-    print(f"  📊 Total: {len(all_candidate_channel_ids)} unique candidate channels found across {keywords_to_search} video searches.\n")
-    return all_candidate_channel_ids # Return the SET of unique channel IDs
+    print(f"  📊 Total: {len(all_candidate_channel_ids)} unique candidate channels found.\n")
+    return all_candidate_channel_ids
 
 
 def frequency_search_by_titles(
