@@ -4,6 +4,7 @@ from pymongo import MongoClient, UpdateOne
 from pymongo.errors import ConnectionFailure, BulkWriteError
 from dotenv import load_dotenv
 from typing import List, Dict, Any
+from datetime import datetime
 
 # --- 1. Load Config ---
 load_dotenv()
@@ -144,3 +145,34 @@ def load_collection_as_df(collection_name: str, query_filter: Dict = None) -> pd
     except Exception as e:
         print(f"  ❌ UNEXPECTED ERROR loading collection '{collection_name}': {e}")
         raise # <-- ADDED
+
+
+def check_quota_and_pause(e, run_tag: str, seed_name: str | None = None):
+    """
+    Centralized YouTube quotaExceeded handling.
+    This function now lives in mongo_utils.
+    """
+    # Check for quota error in the exception message
+    if "quotaExceeded" in str(e):
+        print("--- 🛑 YOUTUBE QUOTA EXCEEDED ---")
+        try:
+            # We are already in mongo_utils, so we can call save_json_blob
+            save_json_blob(
+                {
+                    "run_tag": run_tag,
+                    "seed": seed_name,
+                    "status": "paused_due_to_quota",
+                    "reason": "quotaExceeded",
+                    "timestamp": datetime.now().isoformat()
+                },
+                "run_progress",
+                "run_tag",
+                run_tag
+            )
+            print("--- ✅ Paused status saved to MongoDB ---")
+        except Exception as mongo_e:
+            print(f"--- ❌ FAILED to save paused status to MongoDB: {mongo_e} ---")
+            pass # We still want to exit even if Mongo save fails
+            
+        # This raises a SystemExit, which will stop the subprocess
+        raise SystemExit("YouTube quota exceeded. Safe exit for now.")
