@@ -18,17 +18,17 @@ if not gpt_client:
     print("❌ CRITICAL: GPT client not initialized.")
     sys.exit(1)
 
-# ---------------- CONFIG ----------------
-run_tag = "moon"
-MONGO_COLLECTION_PHASE1_FP = f"{run_tag.upper()}_phase1_fingerprints"
-MONGO_COLLECTION_PHASE2_5 = f"{run_tag.upper()}_phase2_5"
-MONGO_COLLECTION_PHASE3 = f"{run_tag.upper()}_phase3"
-FINAL_REPORT_DIR = BASE_DIR / "PHASE_3_REPORTS"
-FINAL_REPORT_DIR.mkdir(exist_ok=True)
-# ----------------------------------------
 
-def main():
+def main(run_tag: str):
     print(f"\n🚀 Starting Phase 3 (GPT Tier Scoring) for '{run_tag}'")
+    # ---------------- CONFIG ----------------
+
+    MONGO_COLLECTION_PHASE1_FP = f"{run_tag.upper()}_phase1_fingerprints"
+    MONGO_COLLECTION_PHASE2_5 = f"{run_tag.upper()}_phase2_5"
+    MONGO_COLLECTION_PHASE3 = f"{run_tag.upper()}_phase3"
+    FINAL_REPORT_DIR = BASE_DIR / "PHASE_3_REPORTS"
+    FINAL_REPORT_DIR.mkdir(exist_ok=True)
+    # ----------------------------------------
 
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
     JSON_OUTPUT_FILE = FINAL_REPORT_DIR / f"client_tier_analysis_{run_tag}_{timestamp}.json"
@@ -148,4 +148,5 @@ def main():
 
 # -----------------
 if __name__ == "__main__":
-    main()
+    tag = sys.argv[1] if len(sys.argv) > 1 else "DEFAULT"
+    main(tag)

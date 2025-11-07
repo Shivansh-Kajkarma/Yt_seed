@@ -26,56 +26,6 @@ except ImportError:
     print(f"Ensure 'utils' is at this path: {BASE_DIR / 'utils'}")
     sys.exit(1)
 
-
-# === CONFIGURATION ===
-# --- EDIT THIS TAG ---
-# Set a memorable name for this run (e.g., "moon", "vox")
-RUN_TAG = "moon"
-MONGO_COLLECTION_PREFIX = f"{RUN_TAG.upper()}_phase2"
-#
-# ==================================================
-
-# --- Input Files (from Phase 1) ---
-# We need to find the LATEST Phase 1 files to use as our input
-try:
-    FINGERPRINTS_DIR = BASE_DIR / "FINGERPRINTS_ONESHOT"
-    SEED_VIDEOS_DIR = BASE_DIR / "PHASE_1_OUTPUTS"
-    
-    # Find the most recent fingerprint file for our run_tag
-    latest_fingerprint_file = max(
-        FINGERPRINTS_DIR.glob(f"fingerprints_oneshot_{RUN_TAG}*.json"), 
-        key=os.path.getctime
-    )
-    # Find the most recent video file for our run_tag
-    latest_seed_video_file = max(
-        SEED_VIDEOS_DIR.glob(f"sample_videos_{RUN_TAG}*.csv"), 
-        key=os.path.getctime
-    )
-    
-    print(f"Using Seed Fingerprints: {latest_fingerprint_file.name}")
-    print(f"Using Seed Video Data: {latest_seed_video_file.name}")
-
-except Exception as e:
-    print(f"❌ ERROR: Could not find Phase 1 output files for RUN_TAG='{RUN_TAG}'.")
-    print(f"Make sure 'FINGERPRINTS_ONESHOT/' and 'PHASE_1_OUTPUTS/' contain files for this tag.")
-    print(f"Error details: {e}")
-    sys.exit(1)
-
-
-# --- Output Files (for Phase 2) ---
-OUTPUT_CACHE_DIR = BASE_DIR / "PHASE_2_DISCOVERY_CACHE"
-OUTPUT_SEARCH_CACHE_DIR = BASE_DIR / "PHASE_2_SEARCH_CACHE" # <-- NEW: Search Cache
-OUTPUT_CACHE_DIR.mkdir(exist_ok=True) 
-OUTPUT_SEARCH_CACHE_DIR.mkdir(exist_ok=True) # <-- NEW: Create Dir
-
-# The cache file that this script WRITES TO
-CACHE_DATA_PATH = OUTPUT_CACHE_DIR / f"phase2_discovered_raw_data_{RUN_TAG}.csv"
-
-# The high-level log file this script UPDATES
-SEEN_CHANNELS_PATH = BASE_DIR / f"seen_channels_{RUN_TAG}.csv"
-
-
-# --- Define ALL columns for the new cache file ---
 CACHE_COLUMN_ORDER = [
     "Seed_Channel_Name", "Seed_Channel_ID",
     "Discovered_Channel_Name", "Discovered_Channel_ID", "Discovered_Channel_URL",
@@ -176,7 +126,9 @@ def process_seed_channel(
     seen_ids,
     cached_ids,     # Set of already cached IDs
     cache_file_path, # Path to save data
-    search_cache_path: Path # <-- NEW: Path for the search cache
+    search_cache_path: Path, # <-- NEW: Path for the search cache,
+    run_tag: str,
+    SEEN_CHANNELS_PATH: Path
 ):
     """
     Process a single seed channel.
@@ -229,7 +181,9 @@ def process_seed_channel(
             candidate_ids = search_videos_multi_focused(
                 seed_keywords_list,
                 max_results_per_search=30,
-                max_keywords=len(seed_keywords_list)
+                max_keywords=len(seed_keywords_list),
+                run_tag=run_tag,
+                seed_name=seed_channel
             )
             # --- SAVE TO CACHE ---
             try:
@@ -255,7 +209,7 @@ def process_seed_channel(
 
     # --- STEP 2: Get Metadata ---
     print(f"\n📊 STEP 2: Fetching channel metadata...")
-    metadata = get_channel_metadata_batch(list(candidate_ids))
+    metadata = get_channel_metadata_batch(list(candidate_ids), run_tag=run_tag, seed_name=seed_channel)
     for meta in metadata:
         if meta["id"] not in seen_ids:
             seen_channels_data.append({
@@ -317,7 +271,7 @@ def process_seed_channel(
             # --- 5a. Fetch recent videos and channel description ---
             print(f"     Fetching {VIDEOS_PER_CANDIDATE} videos...")
             videos, cand_desc = fetch_recent_videos(
-                candidate["id"], max_results=VIDEOS_PER_CANDIDATE, filter_shorts=True, min_videos_in_first_batch=5, max_items_to_scan=500
+                candidate["id"], max_results=VIDEOS_PER_CANDIDATE, filter_shorts=True, min_videos_in_first_batch=5, max_items_to_scan=500, run_tag=run_tag, seed_name=seed_channel
             )
             
             if len(videos) < 3:
@@ -374,23 +328,58 @@ def process_seed_channel(
 
 
 # === MAIN FUNCTION (UPDATED WITH CACHE) ===
-def main():
+def main(run_tag: str):
     start_time = time.time()
+
+    MONGO_COLLECTION_PREFIX = f"{run_tag.upper()}_phase2"
+    try:
+        FINGERPRINTS_DIR = BASE_DIR / "FINGERPRINTS_ONESHOT"
+        SEED_VIDEOS_DIR = BASE_DIR / "PHASE_1_OUTPUTS"
+        
+        # Find the most recent fingerprint file for our run_tag
+        latest_fingerprint_file = max(
+            FINGERPRINTS_DIR.glob(f"fingerprints_oneshot_{run_tag}*.json"), 
+            key=os.path.getctime
+        )
+        # Find the most recent video file for our run_tag
+        latest_seed_video_file = max(
+            SEED_VIDEOS_DIR.glob(f"sample_videos_{run_tag}*.csv"), 
+            key=os.path.getctime
+        )
+        
+        print(f"Using Seed Fingerprints: {latest_fingerprint_file.name}")
+        print(f"Using Seed Video Data: {latest_seed_video_file.name}")
+
+    except Exception as e:
+        print(f"❌ ERROR: Could not find Phase 1 output files for run_tag='{run_tag}'.")
+        print(f"Make sure 'FINGERPRINTS_ONESHOT/' and 'PHASE_1_OUTPUTS/' contain files for this tag.")
+        print(f"Error details: {e}")
+        sys.exit(1)
+
+
+    # --- Output Files (for Phase 2) ---
+    OUTPUT_CACHE_DIR = BASE_DIR / "PHASE_2_DISCOVERY_CACHE"
+    OUTPUT_SEARCH_CACHE_DIR = BASE_DIR / "PHASE_2_SEARCH_CACHE"
+    OUTPUT_CACHE_DIR.mkdir(exist_ok=True) 
+    OUTPUT_SEARCH_CACHE_DIR.mkdir(exist_ok=True) 
+    CACHE_DATA_PATH = OUTPUT_CACHE_DIR / f"phase2_discovered_raw_data_{run_tag}.csv"
+    SEEN_CHANNELS_PATH = BASE_DIR / f"seen_channels_{run_tag}.csv"
+
     print("=" * 70)
     print(f"CHANNEL DISCOVERY PIPELINE (PHASE 2)")
-    print(f"Run Tag: {RUN_TAG}")
+    print(f"Run Tag: {run_tag}")
     print(f"Seeds: {', '.join(SEED_CHANNELS)}")
     print(f"Output Cache: {CACHE_DATA_PATH.name}")
     print("=" * 70)
 
     # --- 1. Load Seed Keywords (from Phase 1 JSON) ---
-    print(f"\n📖 Loading seed keywords for '{RUN_TAG}' from MongoDB...")
+    print(f"\n📖 Loading seed keywords for '{run_tag}' from MongoDB...")
     seed_keywords_map = {}
     try:
-        # Phase-1 fingerprints are stored in <RUN_TAG>_phase1_fingerprints
-        df_fp = load_collection_as_df(f"{RUN_TAG.upper()}_phase1_fingerprints", {"metadata.run_tag": RUN_TAG})
+        # Phase-1 fingerprints are stored in <run_tag>_phase1_fingerprints
+        df_fp = load_collection_as_df(f"{run_tag.upper()}_phase1_fingerprints", {"metadata.run_tag": run_tag})
         if df_fp.empty:
-            raise ValueError(f"No fingerprints in Mongo for run_tag={RUN_TAG}")
+            raise ValueError(f"No fingerprints in Mongo for run_tag={run_tag}")
 
         # The run-level blob is one document; reconstruct dict like the file structure you used before
         fp_blob = df_fp.iloc[0].to_dict()
@@ -416,10 +405,10 @@ def main():
 
 
     # --- 2. Load Seed Channel ID Mapping (from Phase 1 CSV) ---
-    print(f"\n🗺️  Loading channel IDs for '{RUN_TAG}' from MongoDB...")
+    print(f"\n🗺️  Loading channel IDs for '{run_tag}' from MongoDB...")
     try:
-        # Phase-1 videos live in <RUN_TAG>_phase1 (one doc per video)
-        df_videos = load_collection_as_df(f"{RUN_TAG.upper()}_phase1")
+        # Phase-1 videos live in <run_tag>_phase1 (one doc per video)
+        df_videos = load_collection_as_df(f"{run_tag.upper()}_phase1")
         if df_videos.empty:
             raise ValueError("Phase-1 videos collection is empty in Mongo")
 
@@ -485,7 +474,9 @@ def main():
                 seen_ids,
                 cached_channel_ids,  # <-- PASS THE SET
                 CACHE_DATA_PATH,     # <-- PASS THE PATH
-                search_cache_path    # <-- NEW: PASS THE SEARCH CACHE PATH
+                search_cache_path,   # <-- NEW: PASS THE SEARCH CACHE PATH
+                run_tag,
+                SEEN_CHANNELS_PATH
             )
             
             total_new_channels_cached += new_channels_this_seed
@@ -519,15 +510,15 @@ def main():
                     + df_cache_all["Discovered_Channel_ID"].astype(str)
                 )
                 # optional audit columns
-                df_cache_all["run_tag"] = RUN_TAG
+                df_cache_all["run_tag"] = run_tag
                 df_cache_all["mirrored_at"] = datetime.now().isoformat()
 
                 save_dataframe_to_mongo(
                     df_cache_all,
-                    collection_name=f"{RUN_TAG.upper()}_phase2",
+                    collection_name=f"{run_tag.upper()}_phase2",
                     unique_key_column="SeedDiscoveredKey"
                 )
-                print(f"✅ Mongo: Upserted {len(df_cache_all)} discovered rows into '{RUN_TAG.upper()}_phase2'.")
+                print(f"✅ Mongo: Upserted {len(df_cache_all)} discovered rows into '{run_tag.upper()}_phase2'.")
             else:
                 print("⚠️ Cache CSV exists but is empty; nothing to push to Mongo.")
         else:
@@ -548,4 +539,5 @@ def main():
     print("=" * 70)
 
 if __name__ == "__main__":
-    main()
+    tag = sys.argv[1] if len(sys.argv) > 1 else "DEFAULT"
+    main(tag)

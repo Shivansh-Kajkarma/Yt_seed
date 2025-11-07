@@ -235,4 +235,5 @@ if __name__ == "__main__":
         import tabulate
     except ImportError:
         print("⚠️ Install 'tabulate' for prettier logs.")
-    main("moon")
+    tag = sys.argv[1] if len(sys.argv) > 1 else "DEFAULT"
+    main(tag)
