@@ -12,16 +12,16 @@ try:
     print("✅ Successfully imported GPT + Mongo utils.")
 except Exception as e:
     print(f"❌ Import error: {e}")
-    sys.exit(1)
-
-if not gpt_client:
-    print("❌ CRITICAL: GPT client not initialized.")
-    sys.exit(1)
+    raise e
 
 
 def main(run_tag: str):
     print(f"\n🚀 Starting Phase 3 (GPT Tier Scoring) for '{run_tag}'")
     # ---------------- CONFIG ----------------
+    if not gpt_client:
+        print("❌ CRITICAL: GPT client not initialized. Cannot run Phase 3.")
+        # This will fail the task, but not kill the worker
+        raise ValueError("CRITICAL: GPT client not initialized.")
 
     MONGO_COLLECTION_PHASE1_FP = f"{run_tag.upper()}_phase1_fingerprints"
     MONGO_COLLECTION_PHASE2_5 = f"{run_tag.upper()}_phase2_5"
