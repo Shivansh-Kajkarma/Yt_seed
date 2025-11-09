@@ -1,9 +1,20 @@
-import sys, subprocess, os
+import sys
 from datetime import datetime
-from utils.mongo_utils import save_json_blob, check_quota_and_pause
+from pathlib import Path
+from utils.mongo_utils import save_json_blob
+from SCRIPTS.phase1_get_videos_and_keywords import main as phase1_main
+from SCRIPTS.phase2_get_discovered_channels import main as phase2_main
+from SCRIPTS.phase2_5_embeddings_filter import main as phase2_5_main
+from SCRIPTS.phase3_tier_scoring import main as phase3_main
+from utils.youtube_utils import _load_from_google_sheet  # same one used in phase1
+from dotenv import load_dotenv
+load_dotenv()
+
+def normalize_run_tag(seed_channel_name: str) -> str:
+    """Convert seed name to safe run_tag."""
+    return seed_channel_name.lower().replace(" ", "_")
 
 def record_run_status(run_tag: str, status: str, extra: dict | None = None):
-    # ... (this function is unchanged) ...
     payload = {
         "run_tag": run_tag,
         "status": status,
@@ -12,57 +23,54 @@ def record_run_status(run_tag: str, status: str, extra: dict | None = None):
     if extra:
         payload.update(extra)
     save_json_blob(payload, "run_progress", "run_tag", run_tag)
-
-def run_all_phases_for_seed(seed_channel_name: str):
+def full_pipeline_from_sheet(sheet_url: str):
     """
-    Hybrid Orchestrator for full pipeline.
-     Passes the simple 'run_tag' (e.g., 'moon') to all scripts.
-     CORRECTLY handles Quota Pauses.
+    Master pipeline that reads seed channels from Google Sheet
+    and runs all phases for each one sequentially.
     """
-    run_tag = seed_channel_name.lower().replace(" ", "_")
+    print(f"📄 Loading seeds from Google Sheet: {sheet_url}")
+    df_seeds = _load_from_google_sheet(sheet_url)
+    if df_seeds is None or df_seeds.empty:
+        print("❌ No seed channels found in sheet!")
+        return
 
-    record_run_status(run_tag, "started", {"seed_name": seed_channel_name})
+    # --- CHANGED: Iterate over rows, not unique names ---
+    for index, row in df_seeds.iterrows():
+        seed_channel_name = row["Channel_Name"]
+        seed_channel_url = row["Channel_URL"]
+        
+        if not seed_channel_name or not seed_channel_url:
+            print(f"⚠️ Skipping row {index}: missing data")
+            continue
+            
+        run_tag = normalize_run_tag(seed_channel_name)
+        
+        print(f"\n🚀 Starting pipeline for seed: {seed_channel_name} (tag: {run_tag})")
+        record_run_status(run_tag, "started", {
+            "seed_name": seed_channel_name, 
+            "seed_url": seed_channel_url
+        })
 
-    scripts = [
-        ("phase1", "SCRIPTS/phase1_get_videos_and_keywords.py"),
-        ("phase2", "SCRIPTS/phase2_get_discovered_channels.py"),
-        ("phase2_5", "SCRIPTS/phase2_5_embeddings_filter.py"),
-        ("phase3", "SCRIPTS/phase3_tier_scoring.py"),
-    ]
+        try:
+            # --- CHANGED: Pass all three args to phase1_main ---
+            phase1_main(run_tag, seed_channel_name, seed_channel_url)
+            record_run_status(run_tag, "phase1_done")
 
-    try:
-        for label, script in scripts:
-            print(f"\n🚀 Running {label.upper()} for {run_tag}...")
-            # --- THIS IS THE KEY ---
-            # We add capture_output=True to read the error message
-            subprocess.run(
-                [sys.executable, script, run_tag], 
-                check=True, 
-                capture_output=True, # <-- SOTA FIX 1
-                text=True
-            )
-            record_run_status(run_tag, f"{label}_done")
+            phase2_main(run_tag)
+            record_run_status(run_tag, "phase2_done")
 
-        record_run_status(run_tag, "completed")
-        return {"ok": True, "run_tag": run_tag, "status": "completed"}
+            phase2_5_main(run_tag)
+            record_run_status(run_tag, "phase2_5_done")
 
-    except subprocess.CalledProcessError as e:
-        # --- SOTA FIX 2 ---
-        # The script failed. NOW we check if it was our quota error.
-        # The "SystemExit" message gets printed to stderr.
-        if "YouTube quota exceeded" in e.stderr:
-            print(f"🛑 PAUSE DETECTED: Quota limit hit during {label}.")
-            # The check_quota_and_pause() function already logged to Mongo.
-            # We just return the "paused" status to Celery.
-            record_run_status(run_tag, "paused_due_to_quota", {"reason": "quotaExceeded"})
-            return {"ok": False, "paused": True, "message": "YouTube quota exceeded."}
-        else:
-            # It was a *different* crash (a real Python error)
-            print(f"❌ SCRIPT FAILED: A non-quota error occurred in {label}.")
-            record_run_status(run_tag, "failed", {"error": str(e.stderr)})
-            return {"ok": False, "error": str(e.stderr)}
-    
-    except Exception as e:
-        # Catch any other weird errors
-        record_run_status(run_tag, "failed", {"error": str(e)})
-        raise
+            phase3_main(run_tag)
+            record_run_status(run_tag, "phase3_done")
+
+            record_run_status(run_tag, "completed")
+        except SystemExit as e:
+            print(f"🛑 PAUSE DETECTED for {run_tag}: {e}")
+            record_run_status(run_tag, "paused_due_to_quota", {"reason": str(e)})
+        except Exception as e:
+            print(f"❌ PIPELINE FAILED for {run_tag}: {e}")
+            record_run_status(run_tag, "failed", {"error": str(e)[:300]})
+
+    print("\n✅ All seeds from Google Sheet have been processed.")
