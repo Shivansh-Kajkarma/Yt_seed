@@ -250,16 +250,23 @@ def fetch_recent_videos(
             snippet = item.get("snippet", {})
             desc = snippet.get("description", "") or ""
             title = html.unescape(snippet.get("title", ""))
+            
+            # --- THIS IS THE FIX ---
+            published_at_iso = snippet.get("publishedAt", "") # <-- FIX: GET THE DATE
+            # --- END OF FIX ---
+            
             duration = item.get("contentDetails", {}).get("duration", None)
             duration_seconds = parse_iso8601_duration(duration) if duration else 0
             if filter_shorts and is_short_video(title, duration_seconds):
                 continue
+            
             results.append({
                 "video_id": vid_id,
                 "title": title,
                 "description": desc.replace("\n", " ").strip(),
                 "duration_seconds": duration_seconds,
-                "is_short": is_short_video(title, duration_seconds)
+                "is_short": is_short_video(title, duration_seconds),
+                "published_at": published_at_iso # <-- FIX: ADD THE DATE
             })
 
         if is_first_batch:
@@ -274,9 +281,8 @@ def fetch_recent_videos(
     print(f"✅ Finished fetching for {channel_id}. Found {len(results)} valid videos.")
     return results[:max_results], channel_description
 
-
 def fetch_for_seed_channels(
-    seed_df, limit_per_channel: int = 30, filter_shorts: bool = True
+    seed_df, limit_per_channel: int = 30, filter_shorts: bool = True, run_tag: str ="default"
 ) -> "pd.DataFrame":
     """ Fetches videos and channel descriptions for seed channels """
     import pandas as pd # Import here as it's only used here
@@ -295,7 +301,7 @@ def fetch_for_seed_channels(
             continue
 
         videos, channel_desc = fetch_recent_videos(
-            channel_id, max_results=limit_per_channel, filter_shorts=filter_shorts
+            channel_id, max_results=limit_per_channel, filter_shorts=filter_shorts, run_tag=run_tag
         )
 
         if videos: # Only add if videos were found
