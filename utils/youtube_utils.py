@@ -741,3 +741,4 @@ def _load_from_google_sheet(sheet_url: str) -> Optional[pd.DataFrame]:
         print(f"Error loading Google Sheet from '{sheet_url}': {e}")
         print("Please ensure the URL is correct and the sheet is 'Published to the web' as a CSV.")
         return None
+

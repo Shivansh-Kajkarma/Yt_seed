@@ -5,6 +5,7 @@ from pymongo.errors import ConnectionFailure, BulkWriteError
 from dotenv import load_dotenv
 from typing import List, Dict, Any
 from datetime import datetime
+from typing import Tuple
 
 # --- 1. Load Config ---
 load_dotenv()
@@ -176,3 +177,108 @@ def check_quota_and_pause(e, run_tag: str, seed_name: str | None = None):
             
         # This raises a SystemExit, which will stop the subprocess
         raise SystemExit("YouTube quota exceeded. Safe exit for now.")
+    
+# ==================================================
+# 2. HELPER FUNCTIONS (REFACTORED FOR MONGO)
+# ==================================================
+
+def load_seen_channels_from_mongo(run_tag: str, MONGO_SEEN_CHANNELS_LOG: str) -> Tuple[dict, set]:
+    """Loads the high-level 'seen' log from Mongo for this run_tag."""
+    print(f"  📂 Loading previously seen channels for '{run_tag}' from Mongo...")
+    seen_data_dict = {}
+    seen_ids = set()
+    try:
+        df = load_collection_as_df(
+            MONGO_SEEN_CHANNELS_LOG, 
+            {"run_tag": run_tag}
+        )
+        if not df.empty:
+            seen_ids = set(df["Channel_ID"].astype(str).tolist())
+            # Convert to dict for fast lookups/updates
+            seen_data_dict = df.set_index("Channel_ID").to_dict('index')
+            print(f"  ✅ Loaded {len(seen_ids)} previously seen channels.")
+        else:
+            print("  📂 No existing seen channels log found. Starting fresh.")
+    except Exception as e:
+        print(f"  ⚠️  Could not read seen channels log: {e}. Starting fresh.")
+    
+    # Return dict for fast in-memory updates, set for fast lookups
+    return seen_data_dict, seen_ids
+
+def save_seen_channels_to_mongo(seen_data_dict: dict, MONGO_SEEN_CHANNELS_LOG: str):
+    """Saves the 'seen' log back to Mongo using upsert."""
+    if not seen_data_dict:
+        return
+    try:
+        # Convert dict values back to a list of records
+        records_list = list(seen_data_dict.values())
+        df_to_save = pd.DataFrame(records_list)
+        
+        # Ensure key columns exist
+        if "Channel_ID" not in df_to_save.columns or "run_tag" not in df_to_save.columns:
+            print("  ❌ ERROR: Seen channels data is missing Channel_ID or run_tag.")
+            return
+
+        # Create a composite key for upserting
+        df_to_save["_seen_key"] = df_to_save["run_tag"] + "::" + df_to_save["Channel_ID"]
+        
+        save_dataframe_to_mongo(
+            df_to_save,
+            MONGO_SEEN_CHANNELS_LOG,
+            unique_key_column="_seen_key"
+        )
+        # print(f"  ...seen log updated in Mongo.") # Too noisy
+    except Exception as e:
+        print(f"  ❌ Error saving seen channels log to Mongo: {e}")
+
+def load_cached_ids_from_mongo(collection_name: str) -> set:
+    """Loads ONLY the IDs from the main Phase 2 data collection."""
+    print(f"  🔄 Loading already cached channel IDs from '{collection_name}'...")
+    try:
+        df = load_collection_as_df(collection_name)
+        if not df.empty and "Discovered_Channel_ID" in df.columns:
+            cached_ids = set(df["Discovered_Channel_ID"].astype(str).tolist())
+            print(f"  ✅ Found {len(cached_ids)} channels in cache to skip.")
+            return cached_ids
+    except Exception as e:
+        print(f"  ⚠️  Could not read cached channels: {e}")
+    
+    print("  📂 No previously cached channels found.")
+    return set()
+
+def load_search_cache_from_mongo(cache_key: str, MONGO_SEARCH_CACHE: str) -> (set | None):
+    """Tries to load a cached search result from Mongo."""
+    try:
+        db = load_collection_as_df(MONGO_SEARCH_CACHE, {"_cache_key": cache_key})
+        if not db.empty:
+            # Load the list of IDs from the 'result_ids' field
+            candidate_ids = set(db.iloc[0].get("result_ids", []))
+            if candidate_ids:
+                print(f"  ✅ Found existing search cache in Mongo: {cache_key}")
+                print(f"  Loaded {len(candidate_ids)} candidates from cache. (0 quota units used)")
+                return candidate_ids
+    except Exception as e:
+        print(f"  ⚠️ Error loading Mongo search cache: {e}")
+    
+    print(f"  ℹ️ No search cache found in Mongo for key: {cache_key}")
+    return None
+
+def save_search_cache_to_mongo(cache_key: str, candidate_ids: set, run_tag: str, MONGO_SEARCH_CACHE: str):
+    """Saves a search result to the Mongo cache."""
+    try:
+        payload = {
+            "_cache_key": cache_key,
+            "result_ids": list(candidate_ids), # Convert set to list for JSON
+            "run_tag": run_tag,
+            "created_at": datetime.now().isoformat()
+        }
+        # Use save_json_blob to upsert this single document
+        save_json_blob(
+            payload,
+            MONGO_SEARCH_CACHE,
+            unique_key="_cache_key",
+            key_value=cache_key
+        )
+        print(f"  ✅ Saved {len(candidate_ids)} found candidates to Mongo cache.")
+    except Exception as e:
+        print(f"  ⚠️ Error saving to Mongo search cache: {e}")
