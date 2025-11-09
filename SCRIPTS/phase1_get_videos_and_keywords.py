@@ -7,7 +7,6 @@ from datetime import datetime
 import re
 from typing import Optional
 
-# --- Make sure utils are importable ---
 BASE_DIR = Path(__file__).resolve().parent.parent
 sys.path.append(str(BASE_DIR))
 
@@ -17,22 +16,12 @@ try:
         get_channel_fingerprint_oneshot
     )
     from utils.mongo_utils import save_dataframe_to_mongo, save_json_blob
-except ImportError as e: # <-- CHANGED
+except ImportError as e: 
     print("Error: Could not import from 'utils' directory.")
     print(f"Ensure 'utils' is at this path: {BASE_DIR / 'utils'}")
-    raise e # <-- CHANGED: Raise the error, don't exit
+    raise e 
 
-# ==================================================
-# 1. CONFIGURATION (REMOVED)
-# ==================================================
-# <-- REMOVED all local CSV/Sheet loading config. This is now handled by the wrapper.
-
-# ==================================================
-# --- Input/Output Directories (REMOVED) ---
-# <-- REMOVED local output paths. We only save to Mongo.
-
-
-def main(run_tag: str, seed_channel_name: str, seed_channel_url: str): # <-- CHANGED
+def main(run_tag: str, seed_channel_name: str, seed_channel_url: str): 
     """
     Main pipeline script:
     1. Fetches video data for ONE seed channel from YouTube API.
@@ -42,34 +31,27 @@ def main(run_tag: str, seed_channel_name: str, seed_channel_url: str): # <-- CHA
     """
     MONGO_COLLECTION_PREFIX = f"{run_tag.upper()}_phase1"
     RUN_ID = f"{run_tag}_{datetime.now().strftime('%Y%m%d_%H%M%S')}"
-    # <-- REMOVED local file paths
+
 
     print(f"--- 🚀 Starting New Pipeline Run ---")
     print(f"Run ID: {RUN_ID}")
     print(f"Run Tag: {run_tag}")
     print(f"Seed Channel: {seed_channel_name}")
 
-    # --- 0. Create Output Directories (REMOVED) ---
-    # <-- REMOVED: No local directories needed.
-
-    # --- 1. Load Seed Channels (REFACTORED) ---
     print(f"\n--- [PHASE 1/3] Preparing Seed Channel ---")
-    
-    # --- CHANGED: Create a 1-row DataFrame for the single seed channel ---
+ 
     seed_df = pd.DataFrame([
         {"Channel_Name": seed_channel_name, "Channel_URL": seed_channel_url}
     ])
         
     print(f"✅ Loaded 1 seed channel for processing: {seed_channel_name}")
-    # --- END OF REFACTORED LOGIC ---
-
 
     # --- 2. Fetch Video Data (from youtube_utils) ---
     print(f"\n--- [PHASE 2/3] Fetching Videos from YouTube API ---")
     try:
         df_videos = fetch_for_seed_channels(
             seed_df, 
-            limit_per_channel=10,  # You can adjust this
+            limit_per_channel=10,  # can adjust this
             filter_shorts=True,
             run_tag=run_tag # <-- ADDED: Pass run_tag for quota handling
         )
@@ -77,9 +59,6 @@ def main(run_tag: str, seed_channel_name: str, seed_channel_url: str): # <-- CHA
         if df_videos is None or df_videos.empty:
             print("❌ No videos fetched. Check API key and channel URLs.")
             return # Stop this seed's run
-
-        # --- Save Video CSV (REMOVED) ---
-        # <-- REMOVED: df_videos.to_csv(...)
         
         try:
             print(f"\n📦 Pushing Phase 1 videos for '{run_tag}' to MongoDB...")
@@ -95,13 +74,12 @@ def main(run_tag: str, seed_channel_name: str, seed_channel_url: str): # <-- CHA
             print(f"✅ Mongo: {len(df_videos)} videos upserted to '{MONGO_COLLECTION_PREFIX}'.")
         except Exception as e:
             print(f"❌ Mongo push failed for phase1 videos: {e}")
-            # We can continue to fingerprinting even if this fails, but log it
             pass
 
 
     except Exception as e:
         print(f"❌ ERROR during video fetching or saving: {e}")
-        raise e # <-- CHANGED: Re-raise the exception to stop the pipeline for this seed
+        raise e
 
     # --- 3. Generate One-Shot Fingerprints (from fingerprint_llm_utils) ---
     print(f"\n--- [PHASE 3/3] Generating One-Shot Fingerprints ---")
@@ -109,10 +87,10 @@ def main(run_tag: str, seed_channel_name: str, seed_channel_url: str): # <-- CHA
     all_fingerprints = {
         "metadata": {
             "run_id": RUN_ID,
-            "run_tag": run_tag, # <-- CHANGED: Use the passed run_tag
+            "run_tag": run_tag,
             "created_at": datetime.now().isoformat(),
             "model_provider": "gpt-4o",
-            "video_data_source": f"mongo_collection:{MONGO_COLLECTION_PREFIX}" # <-- CHANGED
+            "video_data_source": f"mongo_collection:{MONGO_COLLECTION_PREFIX}" 
         },
         "channels": {}
     }
