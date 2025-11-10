@@ -1,4 +1,3 @@
-# main.py
 from fastapi import FastAPI
 from celery_worker import run_phase_pipeline, celery_app
 from celery.result import AsyncResult
@@ -13,12 +12,10 @@ async def startup_event():
 @app.post("/start_pipeline")
 def start_pipeline(sheet_url: str):
     
-    # --- UPDATED ---
-    # We call the task in "Loader" mode.
+    #  call the task in "Loader" mode.
     # Arg 1: sheet_url = The URL from the user
     # Arg 2: seed_dict = None
     task = run_phase_pipeline.delay(sheet_url, None) 
-    # --- END UPDATE ---
     
     return {"task_id": task.id, "message": "Pipeline 'Loader' task started."}
 
