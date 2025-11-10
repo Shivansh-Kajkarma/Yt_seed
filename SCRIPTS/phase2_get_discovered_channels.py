@@ -313,8 +313,17 @@ def main(run_tag: str):
         if df_fp_all.empty:
             raise ValueError(f"No fingerprints in Mongo for run_tag={run_tag}")
         
-        # Sort by creation date to get the latest one
-        df_fp_all = df_fp_all.sort_values("metadata.created_at", ascending=False)
+
+        meta_df = pd.json_normalize(df_fp_all['metadata'])
+        
+        # --- FIX FOR MISSING metadata.created_at ---
+        df_fp_all = pd.concat([
+            df_fp_all.drop(columns=['metadata']), 
+            meta_df
+        ], axis=1)
+        
+        # 3. NOW we can sort by 'created_at' (it's no longer 'metadata.created_at')
+        df_fp_all = df_fp_all.sort_values("created_at", ascending=False)
         fp_blob = df_fp_all.iloc[0].to_dict()
         
         channels_dict = fp_blob.get("channels", {})
