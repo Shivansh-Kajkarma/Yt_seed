@@ -26,13 +26,13 @@ def main(run_tag: str):
     MONGO_COLLECTION_PHASE1_FP = f"{run_tag.upper()}_phase1_fingerprints"
     MONGO_COLLECTION_PHASE2_5 = f"{run_tag.upper()}_phase2_5"
     MONGO_COLLECTION_PHASE3 = f"{run_tag.upper()}_phase3"
-    FINAL_REPORT_DIR = BASE_DIR / "PHASE_3_REPORTS"
-    FINAL_REPORT_DIR.mkdir(exist_ok=True)
+    # FINAL_REPORT_DIR = BASE_DIR / "PHASE_3_REPORTS"
+    # FINAL_REPORT_DIR.mkdir(exist_ok=True)
     # ----------------------------------------
 
-    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    JSON_OUTPUT_FILE = FINAL_REPORT_DIR / f"client_tier_analysis_{run_tag}_{timestamp}.json"
-    INTERNAL_CSV_FILE = FINAL_REPORT_DIR / f"phase3_INTERNAL_report_{run_tag}_{timestamp}.csv"
+    # timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    # JSON_OUTPUT_FILE = FINAL_REPORT_DIR / f"client_tier_analysis_{run_tag}_{timestamp}.json"
+    # INTERNAL_CSV_FILE = FINAL_REPORT_DIR / f"phase3_INTERNAL_report_{run_tag}_{timestamp}.csv"
 
     # ======================================================
     # STEP 1. Load Seed Profile + Keywords from Mongo
@@ -137,13 +137,13 @@ def main(run_tag: str):
 
     df_tiers = pd.DataFrame(new_data_list)
     df_tiers = df_tiers.sort_values(by="tier", ascending=True)
-    df_tiers.to_csv(INTERNAL_CSV_FILE, index=False, encoding="utf-8-sig")
-    with open(JSON_OUTPUT_FILE, "w", encoding="utf-8") as f:
-        json.dump(json_results, f, indent=2, ensure_ascii=False)
+    # df_tiers.to_csv(INTERNAL_CSV_FILE, index=False, encoding="utf-8-sig")
+    # with open(JSON_OUTPUT_FILE, "w", encoding="utf-8") as f:
+    #     json.dump(json_results, f, indent=2, ensure_ascii=False)
 
-    print(f"✅ CSV saved: {INTERNAL_CSV_FILE.name}")
-    print(f"✅ JSON saved: {JSON_OUTPUT_FILE.name}")
-    print(f"✅ Mongo: {len(df_tiers)} documents mirrored into '{MONGO_COLLECTION_PHASE3}'")
+    # print(f" CSV saved: {INTERNAL_CSV_FILE.name}")
+    # print(f" JSON saved: {JSON_OUTPUT_FILE.name}")
+    print(f" Mongo: {len(df_tiers)} documents mirrored into '{MONGO_COLLECTION_PHASE3}'")
 
     print("\n🎯 Phase 3 complete! Ready for FINAL_OUTPUT merging stage.")
 
