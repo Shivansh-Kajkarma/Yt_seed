@@ -1,0 +1,29 @@
+{
+  "ImanTrading": {
+    "tier": 1,
+    "reason": "Niche & Intent Match. Seed's niche is 'Investigative journalism focused on scams and fraud', and Candidate's inferred niche is 'Scam exposure and critique'. Both channels aim to 'educate and protect viewers by exposing scams', making them direct competitors.",
+    "Discovered_Channel_ID": "UCLHnYvhBeW4vv7lhnbcKilg",
+    "Discovered_Channel_Name": "ImanTrading",
+    "Discovered_Channel_URL": "https://www.youtube.com/@imantrading",
+    "run_tag": "coffeezilla",
+    "mirrored_at": "2025-11-10T13:50:40.884398"
+  },
+  "Internet Anarchist": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Investigative journalism focused on scams and fraud in finance and internet culture'. Candidate's titles suggest a focus on celebrity culture and personal downfalls, which does not align with the intent to expose scams or unethical practices.",
+    "Discovered_Channel_ID": "UC_iUeUzozCHEReJ-shKcCYA",
+    "Discovered_Channel_Name": "Internet Anarchist",
+    "Discovered_Channel_URL": "https://www.youtube.com/@internetanarchist",
+    "run_tag": "coffeezilla",
+    "mirrored_at": "2025-11-10T13:50:44.023300"
+  },
+  "Abundance Wisdom": {
+    "tier": 4,
+    "reason": "Niche Mismatch. Seed's niche is 'Investigative journalism focused on scams and fraud', while Candidate's inferred niche from the title suggests a focus on 'Celebrity Critique'. The intent appears to be to critique individual behavior rather than expose scams or unethical practices, making it irrelevant.",
+    "Discovered_Channel_ID": "UCbLhNRQjyvNTqluyjKiJ8jw",
+    "Discovered_Channel_Name": "Abundance Wisdom",
+    "Discovered_Channel_URL": "https://www.youtube.com/@abundancewisdom",
+    "run_tag": "coffeezilla",
+    "mirrored_at": "2025-11-10T13:50:49.776434"
+  }
+}
