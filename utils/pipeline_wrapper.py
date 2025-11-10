@@ -1,11 +1,11 @@
-import sys, os  # <-- ADDED OS
+import sys, os 
 from datetime import datetime
 from pathlib import Path
 import pandas as pd
 from celery import Task
-import redis  # <-- ADDED REDIS
+import redis  
 
-# --- We need to import the task itself to re-queue it ---
+
 from celery_worker import run_phase_pipeline 
 
 # --- Make sure utils are importable ---
@@ -202,7 +202,7 @@ def full_pipeline_from_sheet(celery_task: Task, sheet_url: str, seed_dict: dict 
             print(f"⚠️ WARNING: Could not check Redis quota flag: {redis_e}")
             # We'll proceed, but this is a risk.
         
-        # --- 2. EXISTING: Smart Retry "Skip" Logic ---
+      
         print(f"\n🚀🚀🚀 Starting pipeline for ONE seed: {seed_channel_name} (tag: {run_tag}) 🚀🚀🚀")
         try:
             progress = load_collection_as_df(RUN_PROGRESS_COLLECTION, {"run_tag": run_tag})
@@ -219,7 +219,7 @@ def full_pipeline_from_sheet(celery_task: Task, sheet_url: str, seed_dict: dict 
         })
 
         try:
-            # --- This is your existing pipeline flow ---
+           
             phase1_main(run_tag, seed_channel_name, seed_channel_url)
             record_run_status(run_tag, "phase1_done")
 

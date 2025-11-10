@@ -10,7 +10,7 @@ from typing import Tuple
 # --- 1. Load Config ---
 load_dotenv()
 MONGO_URI = os.getenv("MONGO_URI")
-DB_NAME = "youtube_competitor_db" 
+DB_NAME = os.getenv("MONGO_DB_NAME", "kajkarma_db")
 
 # --- 2. Connection Cache ---
 _client = None
@@ -23,11 +23,10 @@ def get_mongo_db():
     """
     global _client, _db
     
-    # --- THIS IS THE FIX ---
-    # We MUST check with 'is not None', not 'if _db:'
+   
     if _db is not None:
         return _db
-    # --- END OF FIX ---
+
         
     if not MONGO_URI:
         print("❌ ERROR: MONGO_URI not found in .env file.")
@@ -46,7 +45,7 @@ def get_mongo_db():
     except ConnectionFailure as e:
         print(f"❌ CRITICAL: MongoDB connection failed: {e}")
         _client = None 
-        raise # <-- ADDED THIS: Re-raise the connection error
+        raise 
 
 # --- 3. Save/Load Functions (Now with 'raise' on error) ---
 
@@ -80,10 +79,10 @@ def save_dataframe_to_mongo(df: pd.DataFrame, collection_name: str, unique_key_c
         
     except BulkWriteError as bwe:
         print(f"  ❌ ERROR during bulk save to '{collection_name}': {bwe.details}")
-        raise # <-- ADDED
+        raise 
     except Exception as e:
         print(f"  ❌ UNEXPECTED ERROR saving to '{collection_name}': {e}")
-        raise # <-- ADDED
+        raise 
 
 
 def save_record_to_mongo(record: Dict[str, Any], collection_name: str, unique_key_column: str):
@@ -98,7 +97,7 @@ def save_record_to_mongo(record: Dict[str, Any], collection_name: str, unique_ke
         key = {unique_key_column: record[unique_key_column]}
         
         collection.update_one(key, {"$set": record}, upsert=True)
-        # print(f"  ✅ Saved record for {record[unique_key_column]} to '{collection_name}'")
+
 
     except Exception as e:
         print(f"  ❌ UNEXPECTED ERROR saving record to '{collection_name}': {e}")
@@ -227,7 +226,7 @@ def save_seen_channels_to_mongo(seen_data_dict: dict, MONGO_SEEN_CHANNELS_LOG: s
             MONGO_SEEN_CHANNELS_LOG,
             unique_key_column="_seen_key"
         )
-        # print(f"  ...seen log updated in Mongo.") # Too noisy
+
     except Exception as e:
         print(f"  ❌ Error saving seen channels log to Mongo: {e}")
 
