@@ -42,8 +42,8 @@ MONGO_COLLECTION_PREFIX = f"{run_tag.upper()}_phase2_5"
 def main(run_tag: str):
     print(f"\n🚀 Starting Phase 2.5: Embedding Triage for '{run_tag}'")
 
-    TRIAGE_REPORT_DIR = BASE_DIR / "PHASE_2_5_TRIAGE_REPORTS"
-    os.makedirs(TRIAGE_REPORT_DIR, exist_ok=True)
+    # TRIAGE_REPORT_DIR = BASE_DIR / "PHASE_2_5_TRIAGE_REPORTS"
+    # os.makedirs(TRIAGE_REPORT_DIR, exist_ok=True)
 
     print(f"\n[STEP 1/4] Loading Seed Fingerprint & Video Data from Mongo...")
 
@@ -199,9 +199,9 @@ def main(run_tag: str):
     df_report = pd.DataFrame(results).sort_values(by="Score_Emb_Combined_AvgVec", ascending=False)
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
 
-    FINAL_TRIAGE_FILE = TRIAGE_REPORT_DIR / f"phase2_5_triage_report_{run_tag}_{timestamp}.csv"
-    df_report.to_csv(FINAL_TRIAGE_FILE, index=False, encoding="utf-8-sig")
-    print(f"✅ Full Triage Report saved: {FINAL_TRIAGE_FILE.name}")
+    # FINAL_TRIAGE_FILE = TRIAGE_REPORT_DIR / f"phase2_5_triage_report_{run_tag}_{timestamp}.csv"
+    # df_report.to_csv(FINAL_TRIAGE_FILE, index=False, encoding="utf-8-sig")
+    # print(f"✅ Full Triage Report saved: {FINAL_TRIAGE_FILE.name}")
 
     # Save to MongoDB
     try:
@@ -217,10 +217,10 @@ def main(run_tag: str):
         print(f"❌ Mongo push failed for Phase 2.5: {e}")
 
     # Save filtered report
-    df_filtered = df_report[df_report["Score_Emb_Combined_AvgVec"] >= 0.45].copy()
-    FILTERED_FILE = TRIAGE_REPORT_DIR / f"phase2_5_triage_filtered_{run_tag}_{timestamp}.csv"
-    df_filtered.to_csv(FILTERED_FILE, index=False, encoding="utf-8-sig")
-    print(f"✅ Filtered report saved: {FILTERED_FILE.name} ({len(df_filtered)} channels)")
+    # df_filtered = df_report[df_report["Score_Emb_Combined_AvgVec"] >= 0.45].copy()
+    # FILTERED_FILE = TRIAGE_REPORT_DIR / f"phase2_5_triage_filtered_{run_tag}_{timestamp}.csv"
+    # df_filtered.to_csv(FILTERED_FILE, index=False, encoding="utf-8-sig")
+    # print(f"✅ Filtered report saved: {FILTERED_FILE.name} ({len(df_filtered)} channels)")
 
     # Optional top 10 printout
     try:
@@ -233,9 +233,5 @@ def main(run_tag: str):
 
 # --- Entrypoint ---
 if __name__ == "__main__":
-    try:
-        import tabulate
-    except ImportError:
-        print("⚠️ Install 'tabulate' for prettier logs.")
     tag = sys.argv[1] if len(sys.argv) > 1 else "DEFAULT"
     main(tag)
