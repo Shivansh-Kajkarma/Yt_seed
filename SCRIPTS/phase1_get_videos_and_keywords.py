@@ -53,7 +53,7 @@ def main(run_tag: str, seed_channel_name: str, seed_channel_url: str):
             seed_df, 
             limit_per_channel=10,  # can adjust this
             filter_shorts=True,
-            run_tag=run_tag # <-- ADDED: Pass run_tag for quota handling
+            run_tag=run_tag 
         )
 
         if df_videos is None or df_videos.empty:
@@ -62,7 +62,6 @@ def main(run_tag: str, seed_channel_name: str, seed_channel_url: str):
         
         try:
             print(f"\n📦 Pushing Phase 1 videos for '{run_tag}' to MongoDB...")
-            # --- ADDED: Add run_tag and run_id for better data tracking ---
             df_videos["run_tag"] = run_tag
             df_videos["run_id"] = RUN_ID
             
