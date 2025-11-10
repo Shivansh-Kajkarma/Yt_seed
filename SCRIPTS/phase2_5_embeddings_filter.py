@@ -26,11 +26,13 @@ try:
     print("✅ Successfully imported local embedding model and Mongo utils.")
 except ImportError as e:
     print(f"❌ CRITICAL ERROR: Could not import from utils: {e}")
-    sys.exit(1)
+    # sys.exit(1)
+    raise e
 
 if not embedding_model:
     print("❌ CRITICAL ERROR: 'embedding_model' is None.")
-    sys.exit(1)
+    # sys.exit(1)
+    pass
 
 # --- Config ---
 run_tag = "moon"  # your seed tag
@@ -55,14 +57,14 @@ def main(run_tag: str):
         if df_fp.empty:
             raise ValueError(f"No fingerprints found for '{run_tag}' in Mongo.")
 
-        # --- Handle missing metadata.created_at safely ---
-        if "metadata.created_at" in df_fp.columns:
-            df_fp = df_fp.sort_values("metadata.created_at", ascending=False)
-        elif "mirrored_at" in df_fp.columns:
-            df_fp = df_fp.sort_values("mirrored_at", ascending=False)
-        else:
-            # fallback to insertion order if no timestamp field
-            df_fp = df_fp.sort_index(ascending=False)
+        if 'metadata' in df_fp.columns:
+            meta_df = pd.json_normalize(df_fp['metadata'])
+            # 2. Add the new flattened columns
+            df_fp = pd.concat([df_fp.drop(columns=['metadata']), meta_df], axis=1)
+
+        # 3. Sort by the new 'created_at' column
+        if "created_at" in df_fp.columns:
+            df_fp = df_fp.sort_values("created_at", ascending=False)
 
         seed_data = df_fp.iloc[0].to_dict()
 
