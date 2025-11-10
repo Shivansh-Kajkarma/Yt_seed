@@ -1,11 +1,10 @@
-# celery_worker.py
 import os
 import sys
 from pathlib import Path
 from celery import Celery
 from celery.signals import worker_process_init
 from dotenv import load_dotenv
-import pandas as pd  # <-- ADDED
+import pandas as pd 
 
 # ------------------------------------------------------
 # STEP 1: Force Python to see project root as importable
@@ -25,12 +24,12 @@ def setup_python_path():
 setup_python_path()
 
 
-# ✅ CRITICAL FIX: Also call it when each worker subprocess starts
+# also call it when each worker subprocess starts
 @worker_process_init.connect
 def configure_worker_process(**kwargs):
     """Called when each Celery worker subprocess is initialized"""
     setup_python_path()
-    print(f"🔧 Worker subprocess initialized with sys.path: {sys.path[:3]}")
+    print(f"Worker subprocess initialized with sys.path: {sys.path[:3]}")
 
 
 # ------------------------------------------------------
@@ -38,13 +37,13 @@ def configure_worker_process(**kwargs):
 # ------------------------------------------------------
 env_path = BASE_DIR / ".env"
 load_dotenv(env_path)
-print(f"🧩 Loaded .env from: {env_path}")
+print(f"Loaded .env from: {env_path}")
 
 REDIS_URL = os.getenv("REDIS_URL")
 if not REDIS_URL:
-    print("❌ CRITICAL: REDIS_URL not found in environment!")
+    print("CRITICAL: REDIS_URL not found in environment!")
 else:
-    print(f"✅ REDIS_URL = {REDIS_URL}")
+    print(f"REDIS_URL = {REDIS_URL}")
 
 # ------------------------------------------------------
 # STEP 3: Initialize Celery
@@ -60,27 +59,26 @@ celery_app = Celery(
 # STEP 4: Celery task entry point (UPDATED)
 # ------------------------------------------------------
 @celery_app.task(bind=True)
-def run_phase_pipeline(self, sheet_url: str, seed_dict: dict = None): # <-- UPDATED
+def run_phase_pipeline(self, sheet_url: str, seed_dict: dict = None):
     """
     Celery background task.
     - If sheet_url is provided, it's a "Loader" task that queues individual seeds.
     - If seed_dict is provided, it's a "Processor" task for a single seed.
     """
     try:
-        # ✅ Force import after sys.path fix
+        # force import after sys.path fix
         from utils.pipeline_wrapper import full_pipeline_from_sheet
         
         # --- This task is now just a router ---
-        result = full_pipeline_from_sheet(self, sheet_url, seed_dict) # <-- UPDATED
+        result = full_pipeline_from_sheet(self, sheet_url, seed_dict)
         
         return {"status": "success", "details": result}
         
     except SystemExit as e:
-        # --- ADDED: Catch SystemExit from the retry() call ---
         # This is not an "error," it's a planned pause.
         print(f"Task {self.request.id} is being paused and retried.")
         return {"status": "paused", "details": "Task paused due to quota, will retry."}
         
     except Exception as e:
-        print(f"❌ Pipeline error: {e}")
+        print(f"Pipeline error: {e}")
         return {"status": "failed", "error": str(e)[:500]}
