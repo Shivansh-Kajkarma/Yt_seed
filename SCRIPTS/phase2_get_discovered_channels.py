@@ -27,7 +27,7 @@ try:
     )
 
     print("✅ Successfully imported YouTube & Mongo utils.")
-except ImportError as e: # <-- CHANGED
+except ImportError as e: 
     print("Error: Could not import from 'utils' directory.")
     print(f"Ensure 'utils' is at this path: {BASE_DIR / 'utils'}")
     raise e # <-- CHANGED: Raise error, don't exit
@@ -46,10 +46,10 @@ MONGO_SEARCH_CACHE = "cache_youtube_searches"
 AUTO_KEEP_COUNTRIES = [
     'US', 'GB', 'CA', 'AU', 'NZ', 'NG', 'Unknown'
 ]
-MIN_SUBSCRIBERS = 10000
+MIN_SUBSCRIBERS = 50000
 MIN_VIDEOS = 6
 MAX_VIDEOS = 2500 # Your filter for news orgs
-VIDEOS_PER_CANDIDATE = 2 # How many videos to fetch for LLM analysis
+VIDEOS_PER_CANDIDATE = 20 # How many videos to fetch for LLM analysis
 
 # --- Rate Limiting (Unchanged) ---
 DELAY_BETWEEN_CANDIDATES = 2 # Shorter delay, no LLM call
@@ -107,11 +107,11 @@ def process_seed_channel(
 
     if candidate_ids is None:
         # This is the "run the search" block
-        print(f"   Searching YouTube with {len(seed_keywords_list[:3])} keywords...")
+        print(f"   Searching YouTube with {len(seed_keywords_list)} keywords...")
         try:
             candidate_ids = search_videos_multi_focused(
-                seed_keywords_list[:3],
-                max_results_per_search=3,
+                seed_keywords_list,
+                max_results_per_search=30,
                 max_keywords=len(seed_keywords_list),
                 run_tag=run_tag,
                 seed_name=seed_channel
@@ -208,13 +208,13 @@ def process_seed_channel(
                 candidate["id"], 
                 max_results=VIDEOS_PER_CANDIDATE, 
                 filter_shorts=True, 
-                min_videos_in_first_batch=1, # <-- Lowered for testing
+                min_videos_in_first_batch=3, 
                 max_items_to_scan=500, 
                 run_tag=run_tag, 
                 seed_name=seed_channel
             )
             
-            if len(videos) < 1: # <-- Lowered for testing
+            if len(videos) < 3: 
                 print(f"     ⚠️  Only {len(videos)} videos found, logging and skipping")
                 if candidate["id"] in seen_channels_dict:
                     seen_channels_dict[candidate["id"]]["Processing_Status"] = "skipped_few_videos"

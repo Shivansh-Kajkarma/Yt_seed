@@ -51,7 +51,7 @@ def main(run_tag: str, seed_channel_name: str, seed_channel_url: str):
     try:
         df_videos = fetch_for_seed_channels(
             seed_df, 
-            limit_per_channel=10,  # can adjust this
+            limit_per_channel=30,  # can adjust this
             filter_shorts=True,
             run_tag=run_tag 
         )

@@ -35,8 +35,8 @@ if not embedding_model:
     pass
 
 # --- Config ---
-run_tag = "moon"  # your seed tag
-MONGO_COLLECTION_PREFIX = f"{run_tag.upper()}_phase2_5"
+# run_tag = "moon"  # your seed tag
+# MONGO_COLLECTION_PREFIX = f"{run_tag.upper()}_phase2_5"
 
 # --- Main function ---
 def main(run_tag: str):
