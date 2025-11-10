@@ -241,21 +241,33 @@ def full_pipeline_from_sheet(celery_task: Task, sheet_url: str, seed_dict: dict 
 
         # --- 3. UPDATED: AUTO-RESUME (SETS the circuit breaker) ---
         except SystemExit as e:
-            print(f"🛑 PAUSE DETECTED for {run_tag}: {e}")
-            record_run_status(run_tag, "paused_due_to_quota", {"reason": str(e)})
+            # We check if the error message is *actually* our quota message
+            if "YouTube quota exceeded" in str(e):
+                # This is a REAL quota pause
+                print(f"🛑 QUOTA PAUSE DETECTED for {run_tag}: {e}")
+                record_run_status(run_tag, "paused_due_to_quota", {"reason": str(e)})
+                
+                # --- Set the global flag ---
+                try:
+                    if r:
+                        print(f"🚦 SETTING Global Quota Pause flag for 25 hours...")
+                        # Set the flag with a 25-hour expiration
+                        r.set(YOUTUBE_QUOTA_FLAG_KEY, "true", ex=RETRY_DELAY_ON_QUOTA_HIT)
+                    else:
+                        print("❌ Cannot set quota flag: Redis client not found.")
+                except Exception as redis_e:
+                    print(f"❌ FAILED to set Redis quota flag: {redis_e}")
+                
+                # --- Retry the task ---
+                print(f"...Telling Celery to retry THIS SEED in 25 hours...")
+                celery_task.retry(countdown=RETRY_DELAY_ON_QUOTA_HIT, exc=e)
+                
+            else:
+                # This is a DIFFERENT SystemExit (like Ctrl+C or a code bug)
+                # We should NOT pause. We should let it fail gracefully.
+                print(f"⚠️ A non-quota SystemExit was caught (e.g., Ctrl+C): {e}")
             
-            # --- NEW: SET THE GLOBAL FLAG ---
-            try:
-                print(f"🚦 SETTING Global Quota Pause flag for 25 hours...")
-                # Set the flag with a 25-hour expiration
-                r.set(YOUTUBE_QUOTA_FLAG_KEY, "true", ex=RETRY_DELAY_ON_QUOTA_HIT)
-            except Exception as redis_e:
-                print(f"❌ FAILED to set Redis quota flag: {redis_e}")
-            # --- END NEW ---
-            
-            print(f"...Telling Celery to retry THIS SEED in 25 hours...")
-            # This task (the one that failed) sleeps for 25 hours
-            celery_task.retry(countdown=RETRY_DELAY_ON_QUOTA_HIT, exc=e) 
+            # mUST raise the exception again to stop the wrapper
             raise e 
             
         except Exception as e:
