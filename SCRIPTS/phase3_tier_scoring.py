@@ -112,6 +112,7 @@ def main(run_tag: str):
 
             tier_data["Discovered_Channel_ID"] = channel_id
             tier_data["Discovered_Channel_Name"] = channel_name
+            tier_data["Discovered_Channel_URL"] = row.get("Discovered_Channel_URL")
             tier_data["run_tag"] = run_tag
             tier_data["mirrored_at"] = datetime.now().isoformat()
 
