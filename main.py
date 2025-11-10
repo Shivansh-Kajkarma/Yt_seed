@@ -12,8 +12,15 @@ async def startup_event():
 
 @app.post("/start_pipeline")
 def start_pipeline(sheet_url: str):
-    task = run_phase_pipeline.delay(sheet_url)
-    return {"task_id": task.id, "message": "Pipeline started."}
+    
+    # --- UPDATED ---
+    # We call the task in "Loader" mode.
+    # Arg 1: sheet_url = The URL from the user
+    # Arg 2: seed_dict = None
+    task = run_phase_pipeline.delay(sheet_url, None) 
+    # --- END UPDATE ---
+    
+    return {"task_id": task.id, "message": "Pipeline 'Loader' task started."}
 
 @app.get("/status/{task_id}")
 def get_task_status(task_id: str):
