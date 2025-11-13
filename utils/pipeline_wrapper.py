@@ -220,7 +220,13 @@ def full_pipeline_from_sheet(celery_task: Task, sheet_url: str, seed_dict: dict 
 
         try:
            
-            phase1_main(run_tag, seed_channel_name, seed_channel_url)
+            phase1_success = phase1_main(run_tag, seed_channel_name, seed_channel_url)
+
+            if not phase1_success:
+                print(f"⚠️ Seed {run_tag} returned no videos. Skipping all other phases.")
+                record_run_status(run_tag, "skipped", {"reason": "No videos found in Phase 1"})
+                return {"status": "skipped", "message": "Seed had no videos."}
+
             record_run_status(run_tag, "phase1_done")
 
             phase2_main(run_tag)
