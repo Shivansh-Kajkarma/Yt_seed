@@ -58,7 +58,7 @@ def main(run_tag: str, seed_channel_name: str, seed_channel_url: str):
 
         if df_videos is None or df_videos.empty:
             print("❌ No videos fetched. Check API key and channel URLs.")
-            return # Stop this seed's run
+            return False # Stop this seed's run
         
         try:
             print(f"\n📦 Pushing Phase 1 videos for '{run_tag}' to MongoDB...")
@@ -160,6 +160,7 @@ def main(run_tag: str, seed_channel_name: str, seed_channel_url: str):
         raise e # This is a critical failure, stop the run
 
     print(f"\n✅ Phase 1 complete for {run_tag}.")
+    return True
 
 
 if __name__ == "__main__":
