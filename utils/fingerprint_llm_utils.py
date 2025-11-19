@@ -961,180 +961,447 @@ def calculate_keyword_score_openai(
         return 0.0
 
 
+# def get_channel_fingerprint_oneshot(
+#     channel_name: str,
+#     channel_description: str,
+#     video_df: pd.DataFrame,  # Pass in the DataFrame of 20 videos
+#     model_provider: str = "gpt-4o-mini",
+#     client_format: str = "General",  # <--- NEW INPUT
+#     client_intent: str = "General",
+#     max_chars: int = 40000,
+#     retries: int = 3,
+# ) -> dict:
+#     """
+#     Performs a single, "one-shot" LLM call to extract BOTH the
+#     detailed channel profile and the focused SEO keywords.
+#     (Version 2: Includes fix for nan/float values and ad detection)
+#     """
+
+#     # --- 1. Combine all text for context ---
+
+#     # --- FIX for nan/float in channel_description ---
+#     safe_channel_desc = (
+#         str(channel_description)
+#         if pd.notna(channel_description)
+#         else "N/A - No description provided"
+#     )
+
+#     combined_text = f"CHANNEL NAME: {channel_name}\n"
+#     combined_text += f"CHANNEL DESCRIPTION:\n{safe_channel_desc}\n\n"
+
+#     # --- FIX for nan/float in video_titles ---
+#     video_titles = video_df["title"].tolist()
+#     safe_titles = [
+#         str(t) for t in video_titles if pd.notna(t)
+#     ]  # Convert all valid titles to string
+#     combined_text += "--- RECENT VIDEO TITLES (Sample) ---\n"
+#     combined_text += "\n".join(safe_titles) + "\n\n"
+
+#     # --- FIX for nan/float in video_descs + Ad Detection ---
+#     video_descs = video_df["description"].tolist()
+#     safe_descs = [str(d) for d in video_descs if pd.notna(d) and isinstance(d, str)]
+
+#     # Heuristic: If > 70% of descriptions start with "http" or "Go to", they are ads.
+#     ad_count = 0
+#     for d in safe_descs:
+#         d_low = d.lower()
+#         if (
+#             d_low.startswith("http")
+#             or d_low.startswith("go to")
+#             or "tryfum.com" in d_low
+#             or "buyraycon.com" in d_low
+#         ):
+#             ad_count += 1
+
+#     if safe_descs and (ad_count / len(safe_descs)) > 0.7:
+#         print(
+#             "  ⚠️  CONTEXT DETECTED: Video descriptions are sponsor ads. Telling LLM to IGNORE them."
+#         )
+#         combined_text += "--- RECENT VIDEO DESCRIPTIONS (Sample) ---\n"
+#         combined_text += (
+#             "[Video descriptions are all sponsor ads and have been ignored]\n"
+#         )
+#         # We will also add this instruction to the main prompt
+#     else:
+#         # If they are not ads, add them.
+#         combined_text += "--- RECENT VIDEO DESCRIPTIONS (Sample) ---\n"
+#         for i, desc in enumerate(video_descs):
+#             # This is the simple fix: convert to string first, THEN slice.
+#             safe_desc_str = str(desc)
+#             if safe_desc_str.lower() == "nan":
+#                 safe_desc_str = "[No Description]"
+#             combined_text += f"Video {i + 1} Desc: {safe_desc_str[:300]}...\n"
+
+#     truncated_content = combined_text
+#     # truncated_content = combined_text[:max_chars]
+#     print(
+#         f"📤 Sending {len(truncated_content)} chars to {model_provider.upper()} for one-shot analysis..."
+#     )
+
+#     # --- 2. The New "Master" Prompt (Now with Title-Focus) ---
+#     prompt = f"""You are an expert YouTube channel analyst.
+#     Analyze the provided raw data (channel name, description, video titles, video descriptions) 
+#     and extract a complete channel profile and its content themes.
+
+#     RAW DATA TO ANALYZE:
+#     \"\"\"
+#     {truncated_content}
+#     \"\"\"
+
+#     TASK: Return a single, valid JSON object with two top-level keys: "profile" and "keywords".
+
+#     ---
+#     PART 1: "profile"
+#     ---
+#     Analyze the provided data and produce a detailed, *holistic channel profile* in this format:
+
+#     {{
+#     "channel_name": "...",
+#     "description": "...",
+#     "likely_niche": "...",
+#     "target_audience": "...",
+#     "video_style": "...",
+#     "intent": "..."
+#     }}
+
+#     Guidelines:
+#     - Be objective and descriptive (avoid emotion or bias).
+#     - Reflect the channel's *core identity* and *niche specialization*.
+#     - The "intent" must express **why** this channel creates content, not what it posts.
+#     - Keep tone like a professional media analyst, not a YouTuber or marketer.
+#     - Use complete sentences and 2-3 lines per field.
+
+#     ---
+#     PART 2: "keywords"
+#     ---
+#     Generate 2-4 most dominant content **THEMES** (categories).
+#     Under each theme, list 7-10 **analytical keywords and search queries** that describe this topic.
+
+#     **CRITICAL (THE GOAL):**
+#     Your goal is to *CATEGORIZE* the content, not to copy its emotional language.
+#     The keywords should be the *academic topic* or *niche* of the videos.
+#     We are looking for the *literal search queries* a person would use to find *other channels in this same niche*.
+
+#     **CRITICAL (THE RULES):**
+#     1.  **Reflect the Profile:** The themes MUST be analytical summaries of the 'niche' and 'intent' from PART 1.
+#     2.  **Be Analytical, Not Sensational:** The keywords should describe the *topic*, not the *clickbait*.
+#     3.  **IGNORE SPONSORS:** Your code already filters out video descriptions if they are ads. This is just a reminder to focus on the high-signal titles.
+
+#     **Examples of GOOD keywords (Analytical & Topical):**
+#     ✅ "political commentary"
+#     ✅ "celebrity scandal analysis"
+#     ✅ "tech industry critique"
+#     ✅ "internet culture drama"
+#     ✅ "corporate controversy explained"
+#     ✅ "video essay [topic]"
+#     ✅ "the problem with [company]"
+
+#     **Examples of BAD keywords (Too Sensational/Vague):**
+#     ❌ "society destroyed" (Too sensational, bad search results)
+#     ❌ "celebrity exposed" (Too generic, will return tabloids)
+#     ❌ "government conspiracy" (Too broad)
+#     ❌ "cultural critique" (Too academic, not a search query)
+#     ❌ "company destroyed" (Too emotional)
+
+#     ---
+#     EXAMPLE OUTPUT (This is the style you must follow):
+#     {{
+#     "profile": {{ ... }},
+#     "keywords": {{
+#         "Political Commentary & Analysis": [
+#             "political commentary",
+#             "political news analysis",
+#             "political scandal explained",
+#             "controversial political figures",
+#             "government failures explained"
+#         ],
+#         "Celebrity & Entertainment Critique": [
+#             "celebrity scandal analysis",
+#             "entertainment industry critique",
+#             "celebrity controversy explained",
+#             "hollywood industry analysis",
+#             "celebrity downfall analysis"
+#         ],
+#         "Internet Culture & Creator Commentary": [
+#             "youtube creator drama",
+#             "influencer controversy analysis",
+#             "internet personality critique",
+#             "social media culture critique",
+#             "creator community drama"
+#         ]
+#     }}
+#     }}
+#     --- (End of Example) ---
+
+#     OUTPUT:
+#     Return ONLY the valid JSON for the channel in the "RAW DATA" section.
+#     """
+
+#     for attempt in range(retries):
+#         try:
+#             if not gpt_client:
+#                 print("❌ GPT client not initialized.")
+#                 return {}
+
+#             response = gpt_client.chat.completions.create(
+#                 model=model_provider,
+#                 response_format={"type": "json_object"},
+#                 messages=[
+#                     {
+#                         "role": "system",
+#                         "content": "You are a YouTube channel analyst outputting JSON.",
+#                     },
+#                     {"role": "user", "content": prompt},
+#                 ],
+#                 temperature=0.1,
+#                 max_tokens=4000,
+#             )
+#             result_text = response.choices[0].message.content.strip()
+
+#             # ========== Parse JSON Output ==========
+#             try:
+#                 parsed_json = json.loads(result_text)
+                
+#                 if "profile" in parsed_json and "keywords" in parsed_json:
+#                     print(f"✅ One-shot analysis successful for {channel_name}.")
+#                     return parsed_json
+#                 else:
+#                     print(f"⚠️ LLM returned invalid JSON structure: {result_text[:100]}... (Attempt {attempt+1})")
+
+#             except json.JSONDecodeError:
+#                 print(f"⚠️ LLM output was not valid JSON: {result_text[:100]}... (Attempt {attempt+1})")
+                
+#         except Exception as e:
+#             print(f"❌ LLM One-Shot Error (Attempt {attempt+1}/{retries}): {str(e)[:100]}")
+#             time.sleep(5 * (attempt + 1))
+            
+#     print(f"❌ All retries failed for {channel_name}.")
+#     return {}
+
+
 def get_channel_fingerprint_oneshot(
     channel_name: str,
     channel_description: str,
-    video_df: pd.DataFrame,  # Pass in the DataFrame of 20 videos
-    model_provider: str = "gpt-4o-mini",
-    max_chars: int = 40000,
+    video_df: pd.DataFrame,
+    client_format: str = "General",  # <--- NEW: User constraint (e.g. "Podcast")
+    client_intent: str = "General",  # <--- NEW: User constraint (e.g. "Interviews")
+    model_provider: str = "gpt-4o",  # <--- Default to high-intellect model
+    max_chars: int = 50000,          # Increased for Transcripts
     retries: int = 3,
 ) -> dict:
     """
-    Performs a single, "one-shot" LLM call to extract BOTH the
-    detailed channel profile and the focused SEO keywords.
-    (Version 2: Includes fix for nan/float values and ad detection)
+    Performs a one-shot analysis using the 'Meta-Block' data (Transcripts + Tags).
+    Steered by Client Constraints to generate SOTA search keywords.
     """
 
-    # --- 1. Combine all text for context ---
+    # --- 1. PREPARE THE "DOSSIER" (Input Construction) ---
+    # We assume video_df['description'] already contains the "Meta-Block" 
+    # (Title + Category + Tags + Transcript Slice) prepared by the Phase 1 script.
+    
+    safe_channel_desc = str(channel_description) if pd.notna(channel_description) else "N/A"
+    
+    # Header
+    dossier = "=== TARGET CHANNEL DOSSIER ===\n"
+    dossier += f"NAME: {channel_name}\n"
+    dossier += f"BIO: {safe_channel_desc[:2000]}\n" # Limit bio length
+    
+    # Append the Pre-Formatted Video Blocks (The "Meta-Blocks")
+    # We simply join them because the Phase 1 script did the heavy formatting work.
+    content_blocks = video_df['description'].astype(str).tolist()
+    
+    # Safety: Ensure we don't blow the context window (though GPT-4o is 128k)
+    # We prioritized the "Meta-Block" structure in Phase 1, so we trust it.
+    full_content_str = "\n".join(content_blocks)
+    
+    # Truncate if absolutely massive (safety net)
+    truncated_content = full_content_str[:max_chars]
+    
+    dossier += f"\n--- CONTENT ANALYSIS DATA ---\n{truncated_content}\n"
 
-    # --- FIX for nan/float in channel_description ---
-    safe_channel_desc = (
-        str(channel_description)
-        if pd.notna(channel_description)
-        else "N/A - No description provided"
-    )
+    print(f"📤 Sending {len(dossier)} chars to {model_provider} for SOTA profiling...")
+    # prompt = f"""You are a YouTube Search Algorithm Expert.
+    
+    # GOAL: The user wants to find *direct competitors* to the channel defined in the DOSSIER below. So analyze the content and extract the *best possible* SOTA (State-Of-The-Art) search keywords that a user would type to find videos in the SAME FORMAT and INTENT as specified.
+    
+    # --- CLIENT CONSTRAINTS ---
+    # 1. TARGET FORMAT: "{client_format}" (Strict Enforce)
+    # 2. TARGET INTENT: "{client_intent}"
+    
+    # --- INSTRUCTIONS ---
+    # 1. Scan the DOSSIER video by video.
+    # 2. For EACH video that matches the "{client_format}", extract 2-3 specific search queries that a user would type to find *that specific video*.
+    # 3. Combine these into a master list of SOTA keywords.
+    # 4. Filter out any keywords that don't imply the format "{client_format}".
+    
+    # --- DOSSIER ---
+    # \"\"\"
+    # {dossier}
+    # \"\"\"
 
-    combined_text = f"CHANNEL NAME: {channel_name}\n"
-    combined_text += f"CHANNEL DESCRIPTION:\n{safe_channel_desc}\n\n"
+    # **RULES FOR SOTA KEYWORDS:**
+    # 1.  **Hybrid Construction:** Combine [Specific Niche Topic] + [Format Identifier].
+    #     * *Bad:* "marketing" (Too broad)
+    #     * *Bad:* "podcast" (Too broad)
+    #     * *SOTA:* "b2b marketing podcast for founders" (Perfect)
+        
 
-    # --- FIX for nan/float in video_titles ---
-    video_titles = video_df["title"].tolist()
-    safe_titles = [
-        str(t) for t in video_titles if pd.notna(t)
-    ]  # Convert all valid titles to string
-    combined_text += "--- RECENT VIDEO TITLES (Sample) ---\n"
-    combined_text += "\n".join(safe_titles) + "\n\n"
+    # 2.  **Format Enforcement:**
+    #     * If Client Format = "**Podcast**": Every keyword MUST imply audio/dialogue ("interview", "show", "talk", "podcast").
+    #     * If Client Format = "**Documentary**": Keywords must imply narrative ("story of", "history of", "documentary", "explained").
+    #     * If Client Format = "**Tutorial**": Keywords must imply utility ("how to", "course", "guide").
 
-    # --- FIX for nan/float in video_descs + Ad Detection ---
-    video_descs = video_df["description"].tolist()
-    safe_descs = [str(d) for d in video_descs if pd.notna(d) and isinstance(d, str)]
+    # --- OUTPUT ---
+    # Return a single JSON object with a "search_keywords" list.
+    
+    # EXAMPLE LOGIC:
+    # - Video 1 is about "AI Robots" -> Keyword: "humanoid robot ai documentary" (If format is Documentary)
+    # - Video 2 is about "Nvidia Stock" -> Keyword: "nvidia stock analysis documentary"
+    
+    # JSON FORMAT:
+    # {{
+    #   "search_keywords": [
+    #     "keyword 1",
+    #     "keyword 2",
+    #     "..."
+    #   ]
+    # }}
+    # """
+    # prompt = f"""You are a YouTube Search Algorithm Expert.
+    
+    # GOAL: The user wants to find *direct competitors* to the channel defined in the DOSSIER below. So analyze the content and extract the *best possible* SOTA (State-Of-The-Art) search keywords that a user would type to find videos in the SAME FORMAT and INTENT as specified.
+    
+    # --- CLIENT CONSTRAINTS ---
+    # 1. TARGET FORMAT: "{client_format}" (Strict Enforce)
+    # 2. TARGET INTENT: "{client_intent}"
+    
+    # --- INSTRUCTIONS ---
+    # 1. Scan the DOSSIER video by video and **Analyze the TRANSCRIPTS**: Do not just read titles. Read the `TRANSCRIPT SLICE` to understand the depth, tone, and conversation style.
+    # 2. For EACH video that matches the "{client_format}", extract 2-3 specific search queries that a user would type to find *that specific video*.
+    # 3. Combine these into a master list of SOTA keywords.
+    # 4. Filter out any keywords that don't imply the format "{client_format}".
+    # 5. Analyze the DOSSIER to find the **Root Niche** (e.g., "Tech", "Business", "True Crime").
+    # 6. **DO NOT** be too specific to one video title. Broaden the topic to the whole channel identity.
+    
+    # --- KEYWORD STRATEGY (Use this logic) ---
+    
+    # ❌ **Too Specific (Don't do this):**
+    # - "product growth podcast with founders" (Too long, low search volume)
+    # - "enterprise sales strategy for startups" (Too narrow)
+    # - "ai impact on jobs discussion" (Video topic, not channel topic)
+    
+    # ✅ **Perfect (Do this):**
+    # - "tech founder podcast" (Broad Niche + Strict Format)
+    # - "b2b sales interview" (Industry Term + Strict Format)
+    # - "ai startup podcast" (Core Topic + Strict Format)
+    # - "long form interview podcast" (Pure Format)
 
-    # Heuristic: If > 70% of descriptions start with "http" or "Go to", they are ads.
-    ad_count = 0
-    for d in safe_descs:
-        d_low = d.lower()
-        if (
-            d_low.startswith("http")
-            or d_low.startswith("go to")
-            or "tryfum.com" in d_low
-            or "buyraycon.com" in d_low
-        ):
-            ad_count += 1
+    # --- DOSSIER ---
+    # \"\"\"
+    # {dossier}
+    # \"\"\"
 
-    if safe_descs and (ad_count / len(safe_descs)) > 0.7:
-        print(
-            "  ⚠️  CONTEXT DETECTED: Video descriptions are sponsor ads. Telling LLM to IGNORE them."
-        )
-        combined_text += "--- RECENT VIDEO DESCRIPTIONS (Sample) ---\n"
-        combined_text += (
-            "[Video descriptions are all sponsor ads and have been ignored]\n"
-        )
-        # We will also add this instruction to the main prompt
-    else:
-        # If they are not ads, add them.
-        combined_text += "--- RECENT VIDEO DESCRIPTIONS (Sample) ---\n"
-        for i, desc in enumerate(video_descs):
-            # This is the simple fix: convert to string first, THEN slice.
-            safe_desc_str = str(desc)
-            if safe_desc_str.lower() == "nan":
-                safe_desc_str = "[No Description]"
-            combined_text += f"Video {i + 1} Desc: {safe_desc_str[:300]}...\n"
+    # --- OUTPUT ---
+    # Return a single JSON object with a "search_keywords" list.
+    
+    # JSON FORMAT:
+    # {{
+    #   "search_keywords": [
+    #     "keyword 1",
+    #     "keyword 2",
+    #     "..."
+    #   ]
+    # }}
+    # """
+    
+    prompt = f"""You are a YouTube Search Algorithm Expert specializing in competitor discovery.
 
-    truncated_content = combined_text
-    # truncated_content = combined_text[:max_chars]
-    print(
-        f"📤 Sending {len(truncated_content)} chars to {model_provider.upper()} for one-shot analysis..."
-    )
+GOAL: Generate SOTA search keywords that maximize FORMAT precision while maintaining 60-70% niche overlap.
 
-    # --- 2. The New "Master" Prompt (Now with Title-Focus) ---
-    prompt = f"""You are an expert YouTube channel analyst.
-    Analyze the provided raw data (channel name, description, video titles, video descriptions) 
-    and extract a complete channel profile and its content themes.
+--- CLIENT CONSTRAINTS ---
+TARGET FORMAT: "{client_format}" (PRIORITY #1 - Must appear in 100% of keywords)
+TARGET INTENT: "{client_intent}" (PRIORITY #2 - Can be implicit)
 
-    RAW DATA TO ANALYZE:
-    \"\"\"
-    {truncated_content}
-    \"\"\"
+--- KEYWORD CONSTRUCTION RULES ---
 
-    TASK: Return a single, valid JSON object with two top-level keys: "profile" and "keywords".
+1. **OPTIMAL LENGTH: 2-3 words maximum**
+   - GOOD: "founder interview podcast" (3 words)
+   - GOOD: "tech leader interviews" (3 words)  
+   - BAD: "b2b marketing podcast for founders" (5 words - TOO LONG)
+   - BAD: "ai revolution podcast interview" (4 words - TOO SPECIFIC)
 
-    ---
-    PART 1: "profile"
-    ---
-    Analyze the provided data and produce a detailed, *holistic channel profile* in this format:
+2. **FORMAT-FIRST ARCHITECTURE:**
+   Structure: [Broad Niche] + [Format Identifier]
+   
+   Examples for Podcast format:
+   ✓ "startup founder podcast"
+   ✓ "tech leader interviews"
+   ✓ "business growth podcast"
+   ✓ "AI innovation interviews"
+   
+   Examples for Documentary format:
+   ✓ "tech startup documentary"
+   ✓ "founder story documentary"
+   ✓ "business innovation explained"
 
-    {{
-    "channel_name": "...",
-    "description": "...",
-    "likely_niche": "...",
-    "target_audience": "...",
-    "video_style": "...",
-    "intent": "..."
-    }}
+3. **FORMAT ENFORCEMENT (Non-Negotiable):**
+   - Podcast → MUST include: "podcast", "interview", "interviews", "conversation", "talk"
+   - Documentary → MUST include: "documentary", "explained", "story of", "history of"
+   - Tutorial → MUST include: "how to", "tutorial", "guide", "course"
+   - Talking Head → MUST include: "explained", "breakdown", "analysis"
 
-    Guidelines:
-    - Be objective and descriptive (avoid emotion or bias).
-    - Reflect the channel's *core identity* and *niche specialization*.
-    - The "intent" must express **why** this channel creates content, not what it posts.
-    - Keep tone like a professional media analyst, not a YouTuber or marketer.
-    - Use complete sentences and 2-3 lines per field.
+4. **NICHE FLEXIBILITY:**
+   - Use BROAD niche terms, not hyper-specific ones
+   - GOOD: "AI podcast", "tech interviews", "startup podcast"
+   - BAD: "humanoid robot ethics podcast", "saas b2b growth podcast"
 
-    ---
-    PART 2: "keywords"
-    ---
-    Generate 2-4 most dominant content **THEMES** (categories).
-    Under each theme, list 7-10 **analytical keywords and search queries** that describe this topic.
+5. **NATURAL SEARCH QUERIES:**
+   Keywords must match what real users type in YouTube search
+   - GOOD: "founder interview podcast" (natural)
+   - BAD: "human-centered ai podcast discussion" (robotic)
 
-    **CRITICAL (THE GOAL):**
-    Your goal is to *CATEGORIZE* the content, not to copy its emotional language.
-    The keywords should be the *academic topic* or *niche* of the videos.
-    We are looking for the *literal search queries* a person would use to find *other channels in this same niche*.
+--- DOSSIER ---
+\"\"\"
+{dossier}
+\"\"\"
 
-    **CRITICAL (THE RULES):**
-    1.  **Reflect the Profile:** The themes MUST be analytical summaries of the 'niche' and 'intent' from PART 1.
-    2.  **Be Analytical, Not Sensational:** The keywords should describe the *topic*, not the *clickbait*.
-    3.  **IGNORE SPONSORS:** Your code already filters out video descriptions if they are ads. This is just a reminder to focus on the high-signal titles.
+--- ANALYSIS PROCESS ---
+1. Scan each video in the DOSSIER
+2. For EACH video that matches "{client_format}":
+   - Extract the CORE NICHE (1-2 words): e.g., "AI", "startup", "sales", "product"
+   - Generate 2-3 search keywords combining [Core Niche] + [Format Identifier]
+   - Ensure each keyword is 2-3 words total
+   - Verify format identifier is present in every keyword
+3. Combine with FORMAT identifier from client constraints
+4. Ensure keyword is 2-3 words total
+5. Verify format identifier is present
+6. Remove duplicates and overly similar keywords
 
-    **Examples of GOOD keywords (Analytical & Topical):**
-    ✅ "political commentary"
-    ✅ "celebrity scandal analysis"
-    ✅ "tech industry critique"
-    ✅ "internet culture drama"
-    ✅ "corporate controversy explained"
-    ✅ "video essay [topic]"
-    ✅ "the problem with [company]"
+--- OUTPUT FORMAT ---
+Generate 2-3 unique keywords PER VIDEO analyzed. Return a single JSON object with a "search_keywords" list.
 
-    **Examples of BAD keywords (Too Sensational/Vague):**
-    ❌ "society destroyed" (Too sensational, bad search results)
-    ❌ "celebrity exposed" (Too generic, will return tabloids)
-    ❌ "government conspiracy" (Too broad)
-    ❌ "cultural critique" (Too academic, not a search query)
-    ❌ "company destroyed" (Too emotional)
+{{
+  "search_keywords": [
+    "keyword 1",
+    "keyword 2",
+    ...
+  ]
+}}
 
-    ---
-    EXAMPLE OUTPUT (This is the style you must follow):
-    {{
-    "profile": {{ ... }},
-    "keywords": {{
-        "Political Commentary & Analysis": [
-            "political commentary",
-            "political news analysis",
-            "political scandal explained",
-            "controversial political figures",
-            "government failures explained"
-        ],
-        "Celebrity & Entertainment Critique": [
-            "celebrity scandal analysis",
-            "entertainment industry critique",
-            "celebrity controversy explained",
-            "hollywood industry analysis",
-            "celebrity downfall analysis"
-        ],
-        "Internet Culture & Creator Commentary": [
-            "youtube creator drama",
-            "influencer controversy analysis",
-            "internet personality critique",
-            "social media culture critique",
-            "creator community drama"
-        ]
-    }}
-    }}
-    --- (End of Example) ---
+--- EXAMPLES (for Podcast format) ---
+Video: "Dr. Fei-Fei Li on AI and robotics"
+→ Keywords: "AI leader podcast", "tech founder interviews podcast", "robotics podcast"
 
-    OUTPUT:
-    Return ONLY the valid JSON for the channel in the "RAW DATA" section.
-    """
+Video: "Grant Lee on building Gamma to $100M"  
+→ Keywords: "startup founder podcast", "business growth interviews podcast", "tech entrepreneur podcast"
 
+Video: "Enterprise sales playbook with CEO"
+→ Keywords: "sales strategy podcast", "B2B sales interviews podcast", "enterprise podcast"
+
+REMEMBER: Prioritize FORMAT matching. Niche matching can be 60-70%. Keep it SHORT and NATURAL.
+"""
+
+    
+    
     for attempt in range(retries):
         try:
             if not gpt_client:
@@ -1145,38 +1412,42 @@ def get_channel_fingerprint_oneshot(
                 model=model_provider,
                 response_format={"type": "json_object"},
                 messages=[
-                    {
-                        "role": "system",
-                        "content": "You are a YouTube channel analyst outputting JSON.",
-                    },
+                    {"role": "system", "content": "You are a YouTube Search Algorithm."},
                     {"role": "user", "content": prompt},
                 ],
-                temperature=0.1,
-                max_tokens=4000,
+                temperature=0.2, 
             )
+            
             result_text = response.choices[0].message.content.strip()
-
-            # ========== Parse JSON Output ==========
+            
+            # --- FIXED PARSING LOGIC ---
             try:
-                parsed_json = json.loads(result_text)
+                data = json.loads(result_text)
                 
-                if "profile" in parsed_json and "keywords" in parsed_json:
-                    print(f"✅ One-shot analysis successful for {channel_name}.")
-                    return parsed_json
+                # CHECK 1: Look for the new key "search_keywords"
+                if "search_keywords" in data and isinstance(data["search_keywords"], list):
+                    print(f"✅ SOTA Analysis successful for {channel_name}")
+                    # Return exactly what Phase 2 expects
+                    return data 
+                
+                # Fallback: Sometimes GPT uses "keywords" instead
+                elif "keywords" in data and isinstance(data["keywords"], list):
+                    print(f"✅ SOTA Analysis (fallback key) successful for {channel_name}")
+                    return {"search_keywords": data["keywords"]}
+
                 else:
-                    print(f"⚠️ LLM returned invalid JSON structure: {result_text[:100]}... (Attempt {attempt+1})")
+                    print(f"⚠️ LLM returned valid JSON but missing 'search_keywords' key: {data.keys()}")
 
             except json.JSONDecodeError:
-                print(f"⚠️ LLM output was not valid JSON: {result_text[:100]}... (Attempt {attempt+1})")
+                print(f"⚠️ LLM output was not valid JSON.")
+                pass
                 
         except Exception as e:
-            print(f"❌ LLM One-Shot Error (Attempt {attempt+1}/{retries}): {str(e)[:100]}")
-            time.sleep(5 * (attempt + 1))
+            print(f"  ⚠️ LLM Error (Attempt {attempt+1}): {e}")
+            time.sleep(2)
             
-    print(f"❌ All retries failed for {channel_name}.")
+    print(f"❌ All retries failed for {channel_name}")
     return {}
-
-
 
 def calculate_profile_score_llm_holistic(
     seed_profile: dict,
@@ -1612,3 +1883,44 @@ def get_channel_tier_gpt(
             
     # Fallback if loop finishes
     return {"tier": -1, "reason": "ERROR: All retries failed."}
+
+
+
+def get_openai_embedding(text_list: list, model="text-embedding-3-small"):
+    """
+    Generates embeddings using OpenAI's model (High Token Limit: ~8k).
+    Returns a single AVERAGED vector for the input list.
+    """
+    if not gpt_client or not text_list:
+        return None
+
+    # 1. Clean and Validate Inputs
+    valid_texts = [str(t).replace("\n", " ") for t in text_list if t and len(str(t)) > 10]
+    
+    if not valid_texts:
+        return None
+
+    try:
+        # 2. API Call (Batched)
+        # OpenAI can handle multiple inputs in one request
+        response = gpt_client.embeddings.create(
+            input=valid_texts,
+            model=model
+        )
+        
+        # 3. Extract Vectors
+        vectors = [item.embedding for item in response.data]
+        
+        # 4. Average them to get the "Channel Vector"
+        # This ensures we represent ALL 3 videos equally
+        avg_vector = np.mean(vectors, axis=0)
+        
+        return avg_vector
+
+    except Exception as e:
+        print(f"  ❌ OpenAI Embedding Error: {e}")
+        return None
+    
+
+
+    
