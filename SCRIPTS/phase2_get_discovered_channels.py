@@ -3,16 +3,14 @@ import json
 from pathlib import Path
 import time
 from datetime import datetime
-import csv
 import sys
-import os
 from typing import Tuple
 
-from utils.mongo_utils import load_seen_channels_from_mongo, save_seen_channels_to_mongo, load_cached_ids_from_mongo, save_search_cache_to_mongo, load_search_cache_from_mongo
 # --- Make sure utils are importable ---
 BASE_DIR = Path(__file__).resolve().parent.parent
 sys.path.append(str(BASE_DIR))
 
+from utils.mongo_utils import load_seen_channels_from_mongo, save_seen_channels_to_mongo, load_cached_ids_from_mongo, save_search_cache_to_mongo, load_search_cache_from_mongo
 try:
     # --- Import YouTube & Mongo Utils ---
     from utils.youtube_utils import (
@@ -22,8 +20,7 @@ try:
     )
     from utils.mongo_utils import (
         load_collection_as_df, 
-        save_dataframe_to_mongo,
-        save_json_blob # <-- We need this for the search cache
+        save_dataframe_to_mongo
     )
 
     print("✅ Successfully imported YouTube & Mongo utils.")
@@ -46,10 +43,10 @@ MONGO_SEARCH_CACHE = "cache_youtube_searches"
 AUTO_KEEP_COUNTRIES = [
     'US', 'GB', 'CA', 'AU', 'NZ', 'NG', 'Unknown'
 ]
-MIN_SUBSCRIBERS = 50000
+MIN_SUBSCRIBERS = 10000
 MIN_VIDEOS = 6
-MAX_VIDEOS = 2500 # Your filter for news orgs
-VIDEOS_PER_CANDIDATE = 20 # How many videos to fetch for LLM analysis #changed from 20 to 3
+MAX_VIDEOS = 5000 # Your filter for news orgs
+VIDEOS_PER_CANDIDATE = 10 # How many videos to fetch for LLM analysis #changed from 20 to 3
 # --- Rate Limiting (Unchanged) ---
 DELAY_BETWEEN_CANDIDATES = 2 # Shorter delay, no LLM call
 DELAY_BETWEEN_SEEDS = 10
@@ -84,19 +81,29 @@ def process_seed_channel(
 
     # --- Flatten seed keywords (Unchanged) ---
     seed_keywords_list = []
-    if isinstance(seed_keywords, dict):
+    
+    # Case A: New Format (List)
+    if isinstance(seed_keywords, list):
+        seed_keywords_list = seed_keywords
+        
+    # Case B: Old Format (Dict) - Backward Compatibility
+    elif isinstance(seed_keywords, dict):
         for k, v in seed_keywords.items():
             if isinstance(v, list): seed_keywords_list.extend(v)
+            
     else:
-        print(f"❌ Seed keywords for {seed_channel} are not a dict. Skipping seed.")
+        print(f"❌ Seed keywords for {seed_channel} are invalid format. Skipping.")
         return 0
     
+    # Deduplicate and Limit
+    seed_keywords_list = list(set(seed_keywords_list))
+    
     if not seed_keywords_list:
-        print(f"❌ No seed keywords found for {seed_channel}. Skipping seed.")
+        print(f"❌ No seed keywords found for {seed_channel}. Skipping.")
         return 0
 
     # --- STEP 1: Multi-Focused Search (REFACTORED FOR MONGO) ---
-    print(f"\n🔍 STEP 1: Finding candidate channels...")
+    print("\n🔍 STEP 1: Finding candidate channels...")
 
     # Create a unique cache key based on the seed ID and top 3 keywords
     search_cache_key = f"{seed_channel_id}::{'|'.join(sorted(seed_keywords_list[:3]))}"
@@ -110,7 +117,7 @@ def process_seed_channel(
         try:
             candidate_ids = search_videos_multi_focused(
                 seed_keywords_list,  #changes from complete->3
-                max_results_per_search=40,  #changes from 30->3  
+                max_results_per_search=20,  #changes from 30->3  
                 max_keywords=len(seed_keywords_list),
                 run_tag=run_tag,
                 seed_name=seed_channel
@@ -129,7 +136,7 @@ def process_seed_channel(
     print(f"  ✅ {len(candidate_ids)} new candidates to evaluate")
 
     # --- STEP 2: Get Metadata (REFACTORED FOR MONGO) ---
-    print(f"\n📊 STEP 2: Fetching channel metadata...")
+    print("\n📊 STEP 2: Fetching channel metadata...")
     metadata = get_channel_metadata_batch(list(candidate_ids), run_tag=run_tag, seed_name=seed_channel)
     
     # Update the seen log in memory
@@ -153,7 +160,7 @@ def process_seed_channel(
         print("  ...no new channels found in this batch.")
 
     # --- STEP 3: Pre-Filter (REFACTORED FOR MONGO) ---
-    print(f"\n🔍 STEP 3: Pre-filtering by subscribers and videos...")
+    print("\n🔍 STEP 3: Pre-filtering by subscribers and videos...")
     qualified = []
     log_updated = False
     for meta in metadata:
@@ -207,13 +214,13 @@ def process_seed_channel(
                 candidate["id"], 
                 max_results=VIDEOS_PER_CANDIDATE, 
                 filter_shorts=True, 
-                min_videos_in_first_batch=3,  #changed 3->1 
+                min_videos_in_first_batch=1,  #changed 3->1 
                 max_items_to_scan=500, 
                 run_tag=run_tag, 
                 seed_name=seed_channel
             )
             
-            if len(videos) < 3: #changed 1->3 
+            if len(videos) < 1: #changed 1->3 
                 print(f"     ⚠️  Only {len(videos)} videos found, logging and skipping")
                 if candidate["id"] in seen_channels_dict:
                     seen_channels_dict[candidate["id"]]["Processing_Status"] = "skipped_few_videos"
@@ -297,7 +304,7 @@ def main(run_tag: str):
     MONGO_PHASE2_COLLECTION = f"{run_tag.upper()}_phase2" # This is our main output
 
     print("=" * 70)
-    print(f"CHANNEL DISCOVERY PIPELINE (PHASE 2)")
+    print("CHANNEL DISCOVERY PIPELINE (PHASE 2)")
     print(f"Run Tag: {run_tag}")
     print(f"Output Collection: {MONGO_PHASE2_COLLECTION}")
     print("=" * 70)
@@ -312,7 +319,7 @@ def main(run_tag: str):
         if df_fp_all.empty:
             raise ValueError(f"No fingerprints in Mongo for run_tag={run_tag}")
         
-
+        print(df_fp_all.head())
         meta_df = pd.json_normalize(df_fp_all['metadata'])
         
         # --- FIX FOR MISSING metadata.created_at ---
@@ -335,17 +342,27 @@ def main(run_tag: str):
             channel_name = details.get("channel_name")
             if not channel_name:
                 continue
+            
+            fp = details.get("fingerprint", {})
+            
+            # PRIORITY 1: Check for new "search_keywords" list
+            kws = fp.get("search_keywords")
+            
+            # PRIORITY 2: Fallback to old "keywords" dict
+            if not kws:
+                kws = fp.get("keywords")
                 
-            kws = details.get("fingerprint", {}).get("keywords", {})
             if kws:
                 seed_keywords_map[channel_name] = kws
                 seed_channel_names.append(channel_name)
-                print(f"  📌 Found keywords for seed: {channel_name}")
+                # Check list length or dict size for logging
+                count = len(kws) if isinstance(kws, list) else sum(len(v) for v in kws.values())
+                print(f"  📌 Found {count} keywords for seed: {channel_name}")
             else:
                 print(f"  ⚠️  No keywords in fingerprint for {channel_name}, skipping.")
 
         if not seed_keywords_map:
-            raise ValueError(f"Could not find valid keywords for any seeds.")
+            raise ValueError("Could not find valid keywords for any seeds.")
             
     except Exception as e:
         print(f"❌ ERROR loading fingerprints from Mongo: {e}")
@@ -438,7 +455,7 @@ def main(run_tag: str):
         print(f"   Cached {new_channels_this_seed} new channels this run.")
 
         if seed_idx < len(seed_channel_names):
-            print(f"\n⏸️  Waiting {DELAY_BETWEEN_SEEDS}s before next seed...")
+            print(f"\n⏸  Waiting {DELAY_BETWEEN_SEEDS}s before next seed...")
             time.sleep(DELAY_BETWEEN_SEEDS)
 
     # --- 6. FINAL SUMMARY ---
@@ -454,7 +471,7 @@ def main(run_tag: str):
     print(f"Total new channels cached this run: {total_new_channels_cached}")
     print(f"Total channels in cache: {len(final_cached_ids)}")
     print(f"⏱️  Total runtime: {elapsed / 60:.1f} minutes")
-    print(f"\n✅ Next step: Run 'phase2_5_embedding_triage.py'")
+    print("\n✅ Next step: Run 'phase2_5_embedding_triage.py'")
     print("=" * 70)
 
 if __name__ == "__main__":
