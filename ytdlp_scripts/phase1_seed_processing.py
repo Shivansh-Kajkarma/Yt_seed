@@ -8,7 +8,6 @@ from datetime import datetime
 from pathlib import Path
 
 # --- 1. SETUP PATHS ---
-# Add project root to sys.path to allow importing from 'utils'
 BASE_DIR = Path(__file__).resolve().parent.parent
 sys.path.append(str(BASE_DIR))
 
@@ -19,22 +18,17 @@ try:
     from utils.mongo_utils import save_dataframe_to_mongo, save_json_blob
     from utils.fingerprint_llm_utils import get_channel_fingerprint_oneshot
 except ImportError as e:
-    print("❌ Error: Could not import from 'utils'. Run this script from the project root.")
-    print("   Example: python ytdlp_scripts/phase1_seed_processing.py <args>")
+    print("❌ Error: Could not import from 'utils'.")
     raise e
 
 # Config
 OUTPUT_DIR = os.path.join(BASE_DIR, "ytdlp_scripts", "output", "phase1")
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
-def process_single_seed(run_tag, channel_name, channel_url, max_videos=10):
-    """
-    1. Fetch basic list via API (Fast, filter shorts).
-    2. Enrich details via yt-dlp (Stealth, Transcripts).
-    3. Save to Disk & Mongo.
-    4. Generate Fingerprint.
-    """
-    print(f"\nStarted processing seed: {channel_name}...")
+# --- CHANGED: Default lowered to 3 for testing ---
+def process_single_seed(run_tag, channel_name, channel_url, client_format, client_intent, max_videos=3):
+    print(f"\nStarted processing seed: {channel_name}")
+    print(f"   🎯 Target Format: {client_format} | Intent: {client_intent}")
 
     # --- STEP 1: Resolve ID & Basic API Fetch ---
     channel_id = extract_channel_id(channel_url)
@@ -44,12 +38,10 @@ def process_single_seed(run_tag, channel_name, channel_url, max_videos=10):
 
     print(f"   ID: {channel_id} | Fetching recent {max_videos} videos via API...")
     
-    # We use the API to get the list quickly and filter out Shorts immediately
-    # This saves us from running yt-dlp on irrelevant content.
     api_videos, channel_desc = fetch_recent_videos(
         channel_id, 
         max_results=max_videos, 
-        filter_shorts=True, # Important: Filter shorts here
+        filter_shorts=True, 
         run_tag=run_tag,
         seed_name=channel_name
     )
@@ -58,36 +50,31 @@ def process_single_seed(run_tag, channel_name, channel_url, max_videos=10):
         print("❌ No long-form videos found via API.")
         return False
 
-    print(f"   ✅ API found {len(api_videos)} long-form videos. Starting Deep Scan...")
-
     # --- STEP 2: Deep Enrich with yt-dlp ---
+    print(f"   ✅ API found {len(api_videos)} videos. Starting Deep Scan...")
     enriched_videos = []
     
     for i, vid in enumerate(api_videos):
         vid_id = vid['video_id']
-        print(f"      [{i+1}/{len(api_videos)}] Deep scanning: {vid['title'][:30]}...")
+        print(f"      [{i+1}/{len(api_videos)}] Deep scanning: {vid['title'][:40]}...")
 
-        # CALL YOUR NEW UTILITY
         deep_data = fetch_video_data_ytdlp(vid_id)
 
         if deep_data:
-            # Merge API data (reliable published_at) with Deep Data (Transcripts/Chapters)
-            # deep_data keys overwrite api_videos keys if duplicates exist
             merged_data = {**vid, **deep_data}
-            
-            # Ensure we have the Channel info in every row
+            # Add metadata for context
             merged_data['Channel_Name'] = channel_name
             merged_data['Channel_ID'] = channel_id
             merged_data['channel_description'] = channel_desc
             merged_data['run_tag'] = run_tag
             
             enriched_videos.append(merged_data)
-            print(f"         -> Success. Transcript len: {len(deep_data.get('caption_tracks', '') or '')}")
+            has_trans = len(deep_data.get('caption_tracks', '') or '') > 0
+            print(f"         -> Success. Transcript: {'Yes' if has_trans else 'No'} | Tags: {len(deep_data.get('tags', []))}")
         else:
             print("         -> Failed to fetch deep data. Skipping.")
 
-        # RATE LIMITING (Crucial for Stealth)
-        time.sleep(random.uniform(2.0, 5.0))
+        time.sleep(random.uniform(2.0, 4.0)) # Stealth delay
 
     if not enriched_videos:
         print("❌ All deep scans failed.")
@@ -96,17 +83,6 @@ def process_single_seed(run_tag, channel_name, channel_url, max_videos=10):
     # --- STEP 3: Save Output ---
     df_enriched = pd.DataFrame(enriched_videos)
     
-    # 3a. Save Local JSON
-    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    safe_name = channel_name.replace(" ", "_").lower()
-    filename = f"{run_tag}_{safe_name}_deep_data.json"
-    local_path = os.path.join(OUTPUT_DIR, filename)
-    
-    with open(local_path, 'w', encoding='utf-8') as f:
-        json.dump(enriched_videos, f, indent=2, default=str)
-    print(f"\n   💾 Saved local backup: {local_path}")
-
-    # 3b. Save to MongoDB (Phase 1 Collection)
     try:
         save_dataframe_to_mongo(
             df_enriched, 
@@ -117,44 +93,99 @@ def process_single_seed(run_tag, channel_name, channel_url, max_videos=10):
     except Exception as e:
         print(f"   ⚠️ Mongo Save Error: {e}")
 
-    # --- STEP 4: Generate Fingerprint (With Transcripts!) ---
-    print("\n   🧠 Generating Content Fingerprint (using Transcripts)...")
+    # --- STEP 4: Generate Fingerprint (The "Super Context" Update) ---
+    print("\n   🧠 Generating Targeted Fingerprint...")
     
-    # Create a "Virtual DataFrame" for the LLM that prioritizes the transcript
-    # The LLM utils look for 'description', so we append transcript to description 
-    # to give it full context without rewriting the LLM function.
     df_for_llm = df_enriched.copy()
     
-    def combine_text(row):
-        desc = row.get('description', '')
+    def combine_text_strict(row):
+        """
+        Creates a Meta-Block only using data that ACTUALLY exists.
+        """
+        # 1. Header Info
+        title = row.get('title', 'Unknown Title')
+        
+        # 2. Conditional Metadata (The Fix)
+        meta_lines = []
+        
+        # Category
+        cat = row.get('category')
+        if cat and cat != "Unknown" and cat != "None":
+            meta_lines.append(f"CATEGORY: {cat}")
+            
+        # Tags (Clean & Filter)
+        tags = row.get('tags')
+        if tags and isinstance(tags, list) and len(tags) > 0:
+            # Filter out generic/empty tags, take top 15
+            clean_tags = [str(t).lower() for t in tags[:15] if t]
+            if clean_tags:
+                meta_lines.append(f"TAGS: {', '.join(clean_tags)}")
+        
+        # Chapters
+        chapters = row.get('chapters')
+        if chapters and isinstance(chapters, list) and len(chapters) > 0:
+            # Just take the titles to save tokens
+            chap_titles = [c.get('title', '') for c in chapters if c.get('title')]
+            if chap_titles:
+                meta_lines.append(f"CHAPTERS: {', '.join(chap_titles)}")
+
+        # Join metadata lines
+        meta_block = "\n".join(meta_lines)
+
+        # 3. Transcript Slicing
         transcript = row.get('caption_tracks', '')
-        chapters = row.get('chapters', [])
+        if not isinstance(transcript, str): transcript = ""
         
-        chapter_text = "\n".join([c.get('title', '') for c in chapters]) if chapters else ""
+        if len(transcript) > 50: # Only add if substantial text exists
+            t_len = len(transcript)
+            if t_len > 8000:
+                head = transcript[:3000]
+                mid_start = t_len // 2
+                mid = transcript[mid_start:mid_start+2000]
+                tail = transcript[-2000:]
+                transcript_block = f"TRANSCRIPT SLICE:\n{head}\n...\n{mid}\n...\n{tail}"
+            else:
+                transcript_block = f"TRANSCRIPT:\n{transcript}"
+        else:
+            transcript_block = "[NO TRANSCRIPT AVAILABLE]"
+
+        # 4. Final Assembly
         
-        # Feed the LLM the "Super Context"
-        return f"DESCRIPTION:\n{desc}\n\nCHAPTERS:\n{chapter_text}\n\nTRANSCRIPT SAMPLE:\n{transcript[:8000]}" # Limit to avoid token overflow
+        return f"""
+        === VIDEO START ===
+        TITLE: {title}
+        {meta_block}
+        {transcript_block}
+        === VIDEO END ===
+        """
+    
+    df_for_llm['formatted_content'] = df_for_llm.apply(combine_text_strict, axis=1)
+    df_for_llm['description'] = df_for_llm['formatted_content']
 
-    df_for_llm['description'] = df_for_llm.apply(combine_text, axis=1)
-
+    # Generate Fingerprint
     fingerprint = get_channel_fingerprint_oneshot(
         channel_name=channel_name,
         channel_description=channel_desc,
-        video_df=df_for_llm, # Passing the transcript-enriched DF
+        video_df=df_for_llm,
+        client_format=client_format, 
+        client_intent=client_intent, 
         model_provider="gpt-4o"
     )
 
-    # Save Fingerprint to Mongo
+    # Save Fingerprint
     fp_wrapper = {
         "metadata": {
             "run_tag": run_tag,
             "created_at": datetime.now().isoformat(),
-            "data_source": "ytdlp_stealth"
+            "client_constraints": {
+                "format": client_format,
+                "intent": client_intent
+            }
         },
         "channels": {
             channel_id: {
                 "channel_name": channel_name,
-                "fingerprint": "fingerprint"
+                "fingerprint": fingerprint
             }
         }
     }
@@ -163,36 +194,40 @@ def process_single_seed(run_tag, channel_name, channel_url, max_videos=10):
     print("   ✅ Fingerprint generated and saved.")
     return True
 
+
 def main():
-    if len(sys.argv) < 3:
-        print("Usage: python ytdlp_scripts/phase1_seed_processing.py <run_tag> <sheet_url_or_csv>")
+    # --- CHANGED: Arg parsing ---
+    if len(sys.argv) < 5:
+        print("Usage: python ytdlp_scripts/phase1_seed_processing.py <run_tag> <sheet_url> <format> <intent>")
+        print('Example: python ... moon "http://..." "Podcast" "Interviews with founders"')
         sys.exit(1)
 
     run_tag = sys.argv[1]
     input_source = sys.argv[2]
+    client_format = sys.argv[3]
+    client_intent = sys.argv[4]
 
-    print(f"🚀 STARTING PHASE 1 (Stealth Mode) | Tag: {run_tag}")
+    print(f"🚀 STARTING PHASE 1 | Tag: {run_tag}")
+    print(f"📋 Constraints: {client_format} ({client_intent})")
     
-    # Load Inputs
     df_seeds = _load_from_google_sheet(input_source)
     if df_seeds is None or df_seeds.empty:
-        print("❌ No seeds found in input.")
+        print("❌ No seeds found.")
         return
 
-    # Process Seeds
     for _, row in df_seeds.iterrows():
-        name = row['Channel_Name']
-        url = row['Channel_URL']
-        
         try:
-            process_single_seed(run_tag, name, url)
+            process_single_seed(
+                run_tag, 
+                row['Channel_Name'], 
+                row['Channel_URL'],
+                client_format,
+                client_intent
+            )
         except Exception as e:
-            print(f"❌ Critical Error processing {name}: {e}")
-            continue
+            print(f"❌ Error: {e}")
 
     print("\n🏁 Phase 1 Complete.")
 
 if __name__ == "__main__":
     main()
-
-
