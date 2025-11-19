@@ -1,7 +1,8 @@
 import subprocess
 import json
 from concurrent.futures import ThreadPoolExecutor, as_completed
-
+import requests
+import re
 # video_ids = ["dDd9vJwz2-I",
 # "-2AIelIFV5w",
 # "xAA3F3FoX24",
@@ -18,6 +19,59 @@ video_ids = ["dDd9vJwz2-I",
 "-2AIelIFV5w",
 "xAA3F3FoX24"
 ] 
+
+def parse_srt_to_readable(caption_text):
+    """
+    Parses a raw SRT string and returns a clean, human-readable transcript.
+    
+    Args:
+        caption_text (str): The raw content of the .srt file.
+        
+    Returns:
+        str: A clean, continuous string of text.
+    """
+    if not caption_text:
+        return ""
+
+    # Split the text into lines
+    lines = caption_text.splitlines()
+    
+    transcript_parts = []
+    
+    for line in lines:
+        line = line.strip()
+        
+        # 1. Skip empty lines
+        if not line:
+            continue
+            
+        # 2. Skip numeric indices (SRT blocks start with a number like 1, 100, etc.)
+        if line.isdigit():
+            continue
+            
+        # 3. Skip timestamps (Lines containing '-->')
+        if '-->' in line:
+            continue
+            
+        # 4. Clean up the actual text line
+        # Remove speaker change indicators often found in captions (>>)
+        line = line.replace('>>', '')
+        
+        # Remove standard sound effects brackets like [music] or [laughter]
+        # (Optional: remove this line if you want to keep sound tags)
+        line = re.sub(r'\[.*?\]', '', line)
+        
+        # Add to list
+        if line:
+            transcript_parts.append(line)
+
+    # Join all parts with a space to create a continuous flow
+    full_text = " ".join(transcript_parts)
+    
+    # Clean up any accidental double spaces created during the join
+    clean_text = re.sub(r'\s+', ' ', full_text).strip()
+    
+    return clean_text
 
 def fetch_video_data(video_id):
     url = f"https://www.youtube.com/watch?v={video_id}"
@@ -66,28 +120,32 @@ def fetch_video_data(video_id):
         
         has_captions = len(auto_caps) > 0 or len(subs) > 0
         
-        # caption_tracks: [ (.automatic_captions.en // []), (.subtitles.en // []) | .[].url ] | unique | select(. != null)
-        # caption_urls = []
-        # for track in auto_caps:
-        #     if track and isinstance(track, dict) and track.get('url'):
-        #         caption_urls.append(track['url'])
-        # for track in subs:
-        #     if track and isinstance(track, dict) and track.get('url'):
-        #         caption_urls.append(track['url'])
-        # caption_tracks = list(set(filter(None, caption_urls)))  # unique and filter nulls
-
+        # caption_tracks: fetch actual SRT content instead of URLs
         caption_urls = []
         for track in auto_caps:
             if track and isinstance(track, dict) and track.get('url'):
                 url = track['url']
-                if 'fmt=srt' in url:  # ← Add this filter
+                if 'fmt=srt' in url:
                     caption_urls.append(url)
+                    break  # ← Take only first SRT URL, no need for multiple formats
+
         for track in subs:
             if track and isinstance(track, dict) and track.get('url'):
                 url = track['url']
-                if 'fmt=srt' in url:  # ← Add this filter
+                if 'fmt=srt' in url:
                     caption_urls.append(url)
-        caption_tracks = list(set(filter(None, caption_urls)))
+                    break
+
+        # Fetch the actual caption content
+        caption_text = None
+        if caption_urls:
+            try:
+                response = requests.get(caption_urls[0], timeout=10)
+                if response.status_code == 200:
+                    caption_text = parse_srt_to_readable(response.text)  # ← Raw SRT text as one big string
+            except Exception as e:
+                print(f"Error fetching captions for {video_id}: {e}")
+
         
         return {
             'video_id': video_id,
@@ -100,7 +158,8 @@ def fetch_video_data(video_id):
             'has_chapters': has_chapters,
             'chapters': chapters,
             'has_captions': has_captions,
-            'caption_tracks': caption_tracks
+            'caption_tracks': caption_text,
+            'length_of_captions': len(caption_text) if caption_text else 0,
         }
         
     except json.JSONDecodeError as e:
