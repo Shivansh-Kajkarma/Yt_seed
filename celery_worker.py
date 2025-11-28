@@ -4,7 +4,7 @@ from pathlib import Path
 from celery import Celery
 from celery.signals import worker_process_init
 from dotenv import load_dotenv
-import pandas as pd 
+import pandas as pd
 
 # ------------------------------------------------------
 # STEP 1: Force Python to see project root as importable
@@ -59,26 +59,35 @@ celery_app = Celery(
 # STEP 4: Celery task entry point (UPDATED)
 # ------------------------------------------------------
 @celery_app.task(bind=True)
-def run_phase_pipeline(self, sheet_url: str, seed_dict: dict = None):
+def run_phase_pipeline(
+    self,
+    sheet_url: str,
+    seed_dict: dict = None,
+    input_format: str = "General",
+    clients_intent: str = "General",
+):
     """
     Celery background task.
     - If sheet_url is provided, it's a "Loader" task that queues individual seeds.
     - If seed_dict is provided, it's a "Processor" task for a single seed.
+    - NEW: input_format and clients_intent are passed to configure the pipeline
     """
     try:
         # force import after sys.path fix
         from utils.pipeline_wrapper import full_pipeline_from_sheet
-        
+
         # --- This task is now just a router ---
-        result = full_pipeline_from_sheet(self, sheet_url, seed_dict)
-        
+        result = full_pipeline_from_sheet(
+            self, sheet_url, seed_dict, input_format, clients_intent
+        )
+
         return {"status": "success", "details": result}
-        
+
     except SystemExit as e:
         # This is not an "error," it's a planned pause.
         print(f"Task {self.request.id} is being paused and retried.")
         return {"status": "paused", "details": "Task paused due to quota, will retry."}
-        
+
     except Exception as e:
         print(f"Pipeline error: {e}")
         return {"status": "failed", "error": str(e)[:500]}

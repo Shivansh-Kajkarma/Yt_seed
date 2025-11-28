@@ -17,8 +17,8 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
     allow_credentials=True,
-    allow_methods=["*"], 
-    allow_headers=["*"], 
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 
@@ -27,12 +27,22 @@ async def startup_event():
     print(f"🚀 Celery Broker: {celery_app.conf.broker_url}")
     print(f"🚀 Celery Backend: {celery_app.conf.result_backend}")
 
+
 @app.post("/start_pipeline")
-def start_pipeline(sheet_url: str):
+def start_pipeline(
+    sheet_url: str,
+    input_format: str = "Podcast",
+    clients_intent: str = "Podcast Growth",
+):
     # This is correct as a POST.
     # We pass None for seed_dict to trigger "Loader" mode.
-    task = run_phase_pipeline.delay(sheet_url, None) 
-    return {"task_id": task.id, "message": "Pipeline 'Loader' task started."}
+    # NEW: Added input_format and clients_intent parameters
+    task = run_phase_pipeline.delay(sheet_url, None, input_format, clients_intent)
+    return {
+        "task_id": task.id,
+        "message": f"Pipeline started with format='{input_format}', intent='{clients_intent}'",
+    }
+
 
 @app.get("/status/{task_id}")
 def get_task_status(task_id: str):
@@ -42,6 +52,7 @@ def get_task_status(task_id: str):
         "status": res.status,
         "result": res.result if res.status == "SUCCESS" else None,
     }
+
 
 @app.get("/progress")
 def get_pipeline_progress():
@@ -79,14 +90,10 @@ def get_pipeline_progress():
             status_map[status].append(tag)
 
         # 4. Return everything
-        return {
-            "status": "success",
-            "data": status_map
-        }
+        return {"status": "success", "data": status_map}
 
     except Exception as e:
-        return {"status": 'error', "message": str(e)}
-
+        return {"status": "error", "message": str(e)}
 
 
 # --- 2. NEW ENDPOINT: DOWNLOAD ---
@@ -103,21 +110,22 @@ def download_all_tier1_and_2_channels():
         df_progress = load_collection_as_df("run_progress", {"status": "completed"})
         if df_progress.empty:
             return {"status": "empty", "message": "No runs have completed yet."}
-            
+
         completed_tags = df_progress["run_tag"].unique()
-        
+
         all_results_dfs = []
-        
+
         # 2. Loop through each completed run and get its T1/T2 results
         for tag in completed_tags:
-            collection_name = f"{tag.upper()}_phase3"
-            
+            # NEW: Load from phase4 final_ranked collection
+            collection_name = f"{tag.upper()}_final_ranked"
+
             # This is your "smart query" idea
             df_tier1_2 = load_collection_as_df(
                 collection_name,
-                {"tier": {"$in": [1, 2]}} # Only get Tiers 1 and 2
+                {"Final_Tier": {"$in": [1, 2]}},  # Only get Tiers 1 and 2 from phase4
             )
-            
+
             if not df_tier1_2.empty:
                 all_results_dfs.append(df_tier1_2)
 
@@ -126,32 +134,41 @@ def download_all_tier1_and_2_channels():
 
         # 3. Combine, de-duplicate, and return
         df_master_list = pd.concat(all_results_dfs, ignore_index=True)
-        
+
         # This is for previous outputs to go as well if clicked again!
-        df_master_list = df_master_list.sort_values(by="tier", ascending=True)
-        df_master_list = df_master_list.drop_duplicates(subset=["Discovered_Channel_ID"])
-        
+        df_master_list = df_master_list.sort_values(by="Final_Tier", ascending=True)
+        df_master_list = df_master_list.drop_duplicates(
+            subset=["Discovered_Channel_ID"]
+        )
+
         # Only return the columns the client cares about
         final_columns = [
-            "tier", 
-            "Discovered_Channel_Name", 
-            "Discovered_Channel_URL", 
-            "reason", 
-            "Discovered_From_Run" # This column comes from the feedback loop
+            "Final_Tier",
+            "Discovered_Channel_Name",
+            "Discovered_Channel_URL",
+            "Final_Status",
+            "score_similarity",
+            "score_format_match",
+            "Discovered_From_Run",  # This column comes from the feedback loop
         ]
-        
+
         # Add 'run_tag' as a fallback if 'Discovered_From_Run' isn't there
-        if "Discovered_From_Run" not in df_master_list.columns and "run_tag" in df_master_list.columns:
+        if (
+            "Discovered_From_Run" not in df_master_list.columns
+            and "run_tag" in df_master_list.columns
+        ):
             final_columns.append("run_tag")
-            
+
         # Filter to only columns that actually exist
-        final_columns_exists = [col for col in final_columns if col in df_master_list.columns]
-        
+        final_columns_exists = [
+            col for col in final_columns if col in df_master_list.columns
+        ]
+
         return {
             "status": "success",
             "total_channels": len(df_master_list),
-            "channels": df_master_list[final_columns_exists].to_dict('records')
+            "channels": df_master_list[final_columns_exists].to_dict("records"),
         }
-        
+
     except Exception as e:
         return {"status": "error", "message": str(e)}

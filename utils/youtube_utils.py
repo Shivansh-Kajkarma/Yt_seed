@@ -703,6 +703,7 @@ def _load_from_google_sheet(sheet_url: str) -> Optional[pd.DataFrame]:
     Returns:
         A DataFrame with 'Channel_Name' and 'Channel_URL', or None if loading fails.
     """
+    print(f"Loading Google Sheet from URL: {sheet_url}")
     try:
         # Check if it's a direct CSV export link (from "publish" or "export")
         if 'output=csv' in sheet_url or 'export?format=csv' in sheet_url:

@@ -1,25 +1,30 @@
-import sys, os 
+import sys, os
 from datetime import datetime
 from pathlib import Path
 import pandas as pd
 from celery import Task
-import redis  
+import redis
 
 
-from celery_worker import run_phase_pipeline 
+from celery_worker import run_phase_pipeline
 
 # --- Make sure utils are importable ---
 BASE_DIR = Path(__file__).resolve().parent.parent
 sys.path.append(str(BASE_DIR))
 
 # --- Import your utils ---
-from utils.mongo_utils import save_json_blob, load_collection_as_df, save_dataframe_to_mongo
+from utils.mongo_utils import (
+    save_json_blob,
+    load_collection_as_df,
+    save_dataframe_to_mongo,
+)
 from SCRIPTS.phase1_get_videos_and_keywords import main as phase1_main
 from SCRIPTS.phase2_get_discovered_channels import main as phase2_main
 from SCRIPTS.phase2_5_embeddings_filter import main as phase2_5_main
 from SCRIPTS.phase3_tier_scoring import main as phase3_main
 from utils.youtube_utils import _load_from_google_sheet
 from dotenv import load_dotenv
+
 load_dotenv()
 
 # ==================================================
@@ -35,17 +40,17 @@ try:
     REDIS_URL = os.getenv("REDIS_URL")
     if not REDIS_URL:
         raise ValueError("REDIS_URL not found in .env")
-    
+
     # This is our global "pause button"
     r = redis.from_url(REDIS_URL)
     YOUTUBE_QUOTA_FLAG_KEY = "youtube_quota_circuit_breaker"
-    
+
     # How long to pause a *single task* when the flag is ON
     RETRY_DELAY_WHEN_PAUSED = 3600  # 1 hour
-    
+
     # How long to pause the *failing task* AND the *global flag*
-    RETRY_DELAY_ON_QUOTA_HIT = 90000 # 25 hours
-    
+    RETRY_DELAY_ON_QUOTA_HIT = 90000  # 25 hours
+
     print("✅ Redis client initialized for circuit breaker.")
 except Exception as e:
     print(f"❌ CRITICAL: Could not connect to Redis: {e}")
@@ -54,6 +59,7 @@ except Exception as e:
 # ==================================================
 # 2. HELPER FUNCTIONS (Your existing, correct logic)
 # ==================================================
+
 
 def normalize_run_tag(seed_channel_name: str) -> str:
     """Convert seed name to safe run_tag."""
@@ -69,46 +75,58 @@ def record_run_status(run_tag: str, status: str, extra: dict | None = None):
     save_json_blob(payload, RUN_PROGRESS_COLLECTION, "run_tag", run_tag)
 
 
-def run_feedback_loop_for_seed(run_tag: str):
+def run_feedback_loop_for_seed(
+    run_tag: str, input_format: str = "General", clients_intent: str = "General"
+):
     """
     Finds T1/T2 channels from a *single* run and adds
     them to the master queue as *new, individual Celery tasks*.
+    NEW: Passes format and intent to child seeds
     """
     print(f"\n--- 🔄 Running Feedback Loop for {run_tag} ---")
-    
+
     all_processed_seed_ids = set()
     try:
         df_all_progress = load_collection_as_df(RUN_PROGRESS_COLLECTION)
         if not df_all_progress.empty:
             all_processed_seed_ids = set(df_all_progress["run_tag"].unique())
     except Exception:
-        pass 
-        
-    try:
-        df_phase3 = load_collection_as_df(f"{run_tag.upper()}_phase3")
-        if df_phase3.empty:
-            print(f"...No Phase 3 results found for {run_tag}. Skipping feedback.")
-            return 0 
+        pass
 
-        df_new_seeds = df_phase3[df_phase3["tier"].isin([1, 2])].copy()
+    try:
+        # NEW: Load from phase4 (final_ranked) instead of phase3
+        df_phase4 = load_collection_as_df(f"{run_tag.upper()}_final_ranked")
+        if df_phase4.empty:
+            print(f"...No Phase 4 results found for {run_tag}. Skipping feedback.")
+            return 0
+
+        df_new_seeds = df_phase4[df_phase4["Final_Tier"].isin([1, 2])].copy()
         if df_new_seeds.empty:
             print(f"...No T1/T2 channels found for {run_tag}. Skipping feedback.")
-            return 0 
+            return 0
 
-        df_new_seeds["new_run_tag"] = df_new_seeds["Discovered_Channel_Name"].apply(normalize_run_tag)
+        df_new_seeds["new_run_tag"] = df_new_seeds["Discovered_Channel_Name"].apply(
+            normalize_run_tag
+        )
         new_seed_run_tags = set(df_new_seeds["new_run_tag"].unique())
-        
+
         final_new_run_tags = new_seed_run_tags - all_processed_seed_ids
-        
+
         if not final_new_run_tags:
-            print(f"...Found {len(new_seed_run_tags)} T1/T2 channels, but all are already processed/in queue.")
-            return 0 
+            print(
+                f"...Found {len(new_seed_run_tags)} T1/T2 channels, but all are already processed/in queue."
+            )
+            return 0
 
         print(f"...Found {len(final_new_run_tags)} brand new T1/T2 channels to queue.")
-        
-        final_df_to_queue = df_new_seeds[df_new_seeds["new_run_tag"].isin(final_new_run_tags)]
-        final_df_to_queue = final_df_to_queue.drop_duplicates(subset=["Discovered_Channel_ID"])
-        
+
+        final_df_to_queue = df_new_seeds[
+            df_new_seeds["new_run_tag"].isin(final_new_run_tags)
+        ]
+        final_df_to_queue = final_df_to_queue.drop_duplicates(
+            subset=["Discovered_Channel_ID"]
+        )
+
         for index, row in final_df_to_queue.iterrows():
             new_seed_name = row["Discovered_Channel_Name"]
             new_seed_url = row["Discovered_Channel_URL"]
@@ -120,74 +138,106 @@ def run_feedback_loop_for_seed(run_tag: str):
                 "Channel_ID": new_seed_id,
                 "Discovered_From_Run": run_tag,
                 "Queued_At": datetime.now().isoformat(),
-                "Status": "queued"
+                "Status": "queued",
             }
-            
+
             save_dataframe_to_mongo(
                 pd.DataFrame([new_seed_dict]),
                 collection_name=QUEUE_COLLECTION,
-                unique_key_column="Channel_ID" 
+                unique_key_column="Channel_ID",
             )
-            
+
             print(f"...Queueing new task for: {new_seed_name}")
             run_phase_pipeline.apply_async(
-                args=[None, new_seed_dict], 
-                countdown=10 
+                args=[
+                    None,
+                    new_seed_dict,
+                    input_format,
+                    clients_intent,
+                ],  # Pass format & intent
+                countdown=10,
             )
-            
+
         return len(final_df_to_queue)
 
     except Exception as e:
         print(f"❌ Feedback Loop FAILED for {run_tag}: {e}")
-        return 0 
+        return 0
+
 
 # ==================================================
 # 3. MAIN PIPELINE WRAPPER (Updated with Circuit Breaker)
 # ==================================================
 
-def full_pipeline_from_sheet(celery_task: Task, sheet_url: str, seed_dict: dict = None):
+
+def full_pipeline_from_sheet(
+    celery_task: Task,
+    sheet_url: str,
+    seed_dict: dict = None,
+    input_format: str = "General",
+    clients_intent: str = "General",
+):
     """
     Master pipeline controller.
     - If sheet_url is provided: Acts as a "Loader" and queues individual seed tasks.
     - If seed_dict is provided: Acts as a "Processor" for that one seed.
+    - NEW: input_format and clients_intent configure the pipeline behavior
     """
-    
+
     # --- Check for Redis connection ---
     if not r:
         print("❌ CRITICAL: No Redis client. Cannot run pipeline.")
         raise ConnectionError("Failed to connect to Redis for circuit breaker.")
-    
+
     # --- MODE 1: "Loader" Task ---
     if sheet_url:
         print(f"📄 Loading seeds from Google Sheet: {sheet_url}")
+        print(
+            f"🎯 Pipeline Configuration: Format='{input_format}' | Intent='{clients_intent}'"
+        )
         df_seeds_to_process = _load_from_google_sheet(sheet_url)
-        
+
         if df_seeds_to_process is None or df_seeds_to_process.empty:
             print("❌ No seed channels to process in this batch!")
             return {"status": "failed", "reason": "No seeds found in sheet."}
-        
+
         print(f"Found {len(df_seeds_to_process)} seeds. Queueing individual tasks...")
-        
+
         for index, row in df_seeds_to_process.iterrows():
             seed_row_dict = row.to_dict()
             print(f"...Queueing task for {seed_row_dict.get('Channel_Name')}")
-            
+
+            # Pass format and intent to child tasks
             run_phase_pipeline.apply_async(
-                args=[None, seed_row_dict], # sheet_url is None
-                countdown=index * 5 
+                args=[
+                    None,
+                    seed_row_dict,
+                    input_format,
+                    clients_intent,
+                ],  # sheet_url is None
+                countdown=index * 5,
             )
-        
-        return {"status": "success", "message": f"Queued {len(df_seeds_to_process)} individual seed tasks."}
+
+        return {
+            "status": "success",
+            "message": f"Queued {len(df_seeds_to_process)} individual seed tasks with format='{input_format}'.",
+        }
 
     # --- MODE 2: "Processor" Task ---
     elif seed_dict:
         seed_channel_name = seed_dict.get("Channel_Name")
         seed_channel_url = seed_dict.get("Channel_URL")
+        seed_channel_id = seed_dict.get("Channel_ID", "")
         run_tag = normalize_run_tag(seed_channel_name)
-        
+
         if not seed_channel_name or not seed_channel_url:
             print(f"❌ Skipping: seed dict is missing Name or URL.")
             return {"status": "failed", "reason": "Missing Name or URL"}
+
+        print(
+            f"\n🚀🚀🚀 Starting NEW PIPELINE for: {seed_channel_name} (tag: {run_tag}) 🚀🚀🚀"
+        )
+        print(f"🎯 Configuration: Format='{input_format}' | Intent='{clients_intent}'")
 
         # --- 1. NEW: CHECK THE CIRCUIT BREAKER ---
         # This is the "pause wall" fix.
@@ -201,49 +251,192 @@ def full_pipeline_from_sheet(celery_task: Task, sheet_url: str, seed_dict: dict 
         except Exception as redis_e:
             print(f"⚠️ WARNING: Could not check Redis quota flag: {redis_e}")
             # We'll proceed, but this is a risk.
-        
-      
-        print(f"\n🚀🚀🚀 Starting pipeline for ONE seed: {seed_channel_name} (tag: {run_tag}) 🚀🚀🚀")
+
+        print(
+            f"\n🚀🚀🚀 Starting pipeline for ONE seed: {seed_channel_name} (tag: {run_tag}) 🚀🚀🚀"
+        )
         try:
-            progress = load_collection_as_df(RUN_PROGRESS_COLLECTION, {"run_tag": run_tag})
+            progress = load_collection_as_df(
+                RUN_PROGRESS_COLLECTION, {"run_tag": run_tag}
+            )
             if not progress.empty and progress.iloc[0]["status"] == "completed":
-                print(f"✅ Seed '{seed_channel_name}' is already marked 'completed'. Skipping.")
+                print(
+                    f"✅ Seed '{seed_channel_name}' is already marked 'completed'. Skipping."
+                )
                 return {"status": "skipped", "reason": "Already completed."}
         except Exception as e:
             print(f"⚠️ Could not check run_progress: {e}")
 
-        
-        record_run_status(run_tag, "started", {
-            "seed_name": seed_channel_name, 
-            "seed_url": seed_channel_url
-        })
+        record_run_status(
+            run_tag,
+            "started",
+            {"seed_name": seed_channel_name, "seed_url": seed_channel_url},
+        )
 
         try:
-           
-            phase1_success = phase1_main(run_tag, seed_channel_name, seed_channel_url)
+            # ==================================================
+            # PHASE 1: ytdlp_scripts/phase1_seed_processing.py
+            # NEW: Uses yt-dlp for deep scanning + format-aware fingerprints
+            # ==================================================
+            print(f"\n--- [PHASE 1] Deep Seed Analysis (yt-dlp) ---")
+            import subprocess
 
-            if not phase1_success:
-                print(f"⚠️ Seed {run_tag} returned no videos. Skipping all other phases.")
-                record_run_status(run_tag, "skipped", {"reason": "No videos found in Phase 1"})
+            phase1_result = subprocess.run(
+                [
+                    "python3",
+                    os.path.join(
+                        BASE_DIR, "ytdlp_scripts", "phase1_seed_processing.py"
+                    ),
+                    run_tag,
+                    seed_channel_name,  # Pass channel name
+                    seed_channel_url,  # Pass channel URL
+                    input_format,
+                    clients_intent,
+                ],
+                capture_output=True,
+                text=True,
+            )
+
+            if phase1_result.returncode != 0:
+                print(f"⚠️ Phase 1 failed:")
+                print(f"   stderr: {phase1_result.stderr}")
+                print(f"   stdout: {phase1_result.stdout}")
+                record_run_status(
+                    run_tag, "skipped", {"reason": "Phase 1 failed - no videos found"}
+                )
                 return {"status": "skipped", "message": "Seed had no videos."}
 
+            print(phase1_result.stdout)
             record_run_status(run_tag, "phase1_done")
 
+            # ==================================================
+            # PHASE 2: SCRIPTS/phase2_get_discovered_channels.py
+            # Same as before - keyword-based channel discovery
+            # ==================================================
+            print(f"\n--- [PHASE 2] Channel Discovery ---")
             phase2_main(run_tag)
             record_run_status(run_tag, "phase2_done")
 
-            phase2_5_main(run_tag)
-            record_run_status(run_tag, "phase2_5_done")
+            # ==================================================
+            # PHASE 3: Multi-Step Filtering & Scoring
+            # ==================================================
 
-            phase3_main(run_tag)
-            record_run_status(run_tag, "phase3_done")
+            # STEP 1: API-based filter (quick LLM pass)
+            print(f"\n--- [PHASE 3.1] API Metadata Filter ---")
+            phase3_step1_result = subprocess.run(
+                [
+                    "python3",
+                    os.path.join(
+                        BASE_DIR, "ytdlp_scripts", "phase3_step1_api_filter.py"
+                    ),
+                    run_tag,
+                ],
+                capture_output=True,
+                text=True,
+            )
+
+            if phase3_step1_result.returncode != 0:
+                print(f"⚠️ Phase 3 Step 1 failed: {phase3_step1_result.stderr}")
+            else:
+                print(phase3_step1_result.stdout)
+
+            record_run_status(run_tag, "phase3_step1_done")
+
+            # STEP 2: Deep scan with yt-dlp
+            print(f"\n--- [PHASE 3.2] Deep Scan (yt-dlp) ---")
+            phase3_step2_result = subprocess.run(
+                [
+                    "python3",
+                    os.path.join(
+                        BASE_DIR, "ytdlp_scripts", "phase3_step2_deep_scan.py"
+                    ),
+                    run_tag,
+                ],
+                capture_output=True,
+                text=True,
+            )
+
+            if phase3_step2_result.returncode != 0:
+                print(f"⚠️ Phase 3 Step 2 failed: {phase3_step2_result.stderr}")
+            else:
+                print(phase3_step2_result.stdout)
+
+            record_run_status(run_tag, "phase3_step2_done")
+
+            # STEP 3A: LLM format verification
+            print(f"\n--- [PHASE 3.3A] LLM Format Verification ---")
+            phase3_step3a_result = subprocess.run(
+                [
+                    "python3",
+                    os.path.join(
+                        BASE_DIR, "ytdlp_scripts", "phase3_step3a_scoring_llm.py"
+                    ),
+                    run_tag,
+                ],
+                capture_output=True,
+                text=True,
+            )
+
+            if phase3_step3a_result.returncode != 0:
+                print(f"⚠️ Phase 3 Step 3A failed: {phase3_step3a_result.stderr}")
+            else:
+                print(phase3_step3a_result.stdout)
+
+            record_run_status(run_tag, "phase3_step3a_done")
+
+            # STEP 3B: Embedding similarity
+            print(f"\n--- [PHASE 3.3B] Embedding Similarity ---")
+            phase3_step3b_result = subprocess.run(
+                [
+                    "python3",
+                    os.path.join(
+                        BASE_DIR, "ytdlp_scripts", "phase3_step3b_scoring_emb.py"
+                    ),
+                    run_tag,
+                ],
+                capture_output=True,
+                text=True,
+            )
+
+            if phase3_step3b_result.returncode != 0:
+                print(f"⚠️ Phase 3 Step 3B failed: {phase3_step3b_result.stderr}")
+            else:
+                print(phase3_step3b_result.stdout)
+
+            record_run_status(run_tag, "phase3_step3b_done")
+
+            # ==================================================
+            # PHASE 4: Final Ranking & Tiering
+            # ==================================================
+            print(f"\n--- [PHASE 4] Final Ranking ---")
+            phase4_result = subprocess.run(
+                [
+                    "python3",
+                    os.path.join(BASE_DIR, "ytdlp_scripts", "phase4_final_ranking.py"),
+                    run_tag,
+                ],
+                capture_output=True,
+                text=True,
+            )
+
+            if phase4_result.returncode != 0:
+                print(f"⚠️ Phase 4 failed: {phase4_result.stderr}")
+            else:
+                print(phase4_result.stdout)
+
+            record_run_status(run_tag, "phase4_done")
 
             record_run_status(run_tag, "completed")
-            
+
             # --- Feedback Loop ---
-            new_seeds = run_feedback_loop_for_seed(run_tag)
-            
-            return {"status": "success", "message": f"Seed {run_tag} processed. Queued {new_seeds} new seeds."}
+            new_seeds = run_feedback_loop_for_seed(
+                run_tag, input_format, clients_intent
+            )
+
+            return {
+                "status": "success",
+                "message": f"Seed {run_tag} processed. Queued {new_seeds} new seeds.",
+            }
 
         # --- 3. UPDATED: AUTO-RESUME (SETS the circuit breaker) ---
         except SystemExit as e:
@@ -252,35 +445,39 @@ def full_pipeline_from_sheet(celery_task: Task, sheet_url: str, seed_dict: dict 
                 # This is a REAL quota pause
                 print(f"🛑 QUOTA PAUSE DETECTED for {run_tag}: {e}")
                 record_run_status(run_tag, "paused_due_to_quota", {"reason": str(e)})
-                
+
                 # --- Set the global flag ---
                 try:
                     if r:
                         print(f"🚦 SETTING Global Quota Pause flag for 25 hours...")
                         # Set the flag with a 25-hour expiration
-                        r.set(YOUTUBE_QUOTA_FLAG_KEY, "true", ex=RETRY_DELAY_ON_QUOTA_HIT)
+                        r.set(
+                            YOUTUBE_QUOTA_FLAG_KEY, "true", ex=RETRY_DELAY_ON_QUOTA_HIT
+                        )
                     else:
                         print("❌ Cannot set quota flag: Redis client not found.")
                 except Exception as redis_e:
                     print(f"❌ FAILED to set Redis quota flag: {redis_e}")
-                
+
                 # --- Retry the task ---
                 print(f"...Telling Celery to retry THIS SEED in 25 hours...")
                 celery_task.retry(countdown=RETRY_DELAY_ON_QUOTA_HIT, exc=e)
-                
+
             else:
                 # This is a DIFFERENT SystemExit (like Ctrl+C or a code bug)
                 # We should NOT pause. We should let it fail gracefully.
                 print(f"⚠️ A non-quota SystemExit was caught (e.g., Ctrl+C): {e}")
-            
+
             # mUST raise the exception again to stop the wrapper
-            raise e 
-            
+            raise e
+
         except Exception as e:
             print(f"❌ PIPELINE FAILED for {run_tag}: {e}")
             record_run_status(run_tag, "failed", {"error": str(e)[:300]})
             return {"status": "failed", "error": str(e)[:300]}
-            
+
     else:
-        print("❌ ERROR: Task called with no sheet_url and no seed_dict. Nothing to do.")
+        print(
+            "❌ ERROR: Task called with no sheet_url and no seed_dict. Nothing to do."
+        )
         return {"status": "failed", "reason": "No input provided."}
