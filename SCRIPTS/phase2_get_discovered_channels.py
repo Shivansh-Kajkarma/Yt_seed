@@ -117,7 +117,7 @@ def process_seed_channel(
         try:
             candidate_ids = search_videos_multi_focused(
                 seed_keywords_list,  #changes from complete->3
-                max_results_per_search=20,  #changes from 30->3  
+                max_results_per_search=30,  #changes from 30->3  
                 max_keywords=len(seed_keywords_list),
                 run_tag=run_tag,
                 seed_name=seed_channel
