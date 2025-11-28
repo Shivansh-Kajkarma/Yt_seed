@@ -26,7 +26,7 @@ OUTPUT_DIR = os.path.join(BASE_DIR, "ytdlp_scripts", "output", "phase1")
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 # --- CHANGED: Default lowered to 3 for testing ---
-def process_single_seed(run_tag, channel_name, channel_url, client_format, client_intent, max_videos=3):
+def process_single_seed(run_tag, channel_name, channel_url, client_format, client_intent, max_videos=10):
     print(f"\nStarted processing seed: {channel_name}")
     print(f"   🎯 Target Format: {client_format} | Intent: {client_intent}")
 

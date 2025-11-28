@@ -20,7 +20,7 @@ except ImportError as e:
     raise e
 
 # CONFIG
-VIDEOS_TO_SCAN = 3  # We scan 3 to get a representative sample
+VIDEOS_TO_SCAN = 5  # We scan 3 to get a representative sample
 # REMOVED: MIN_PODCAST_DURATION = 600 (Client says duration doesn't matter)
 
 def main():
@@ -80,7 +80,7 @@ def main():
                 print(f"    ❌ Failed to fetch: {vid_id}")
             
             # Sleep to stay safe
-            time.sleep(random.uniform(2.0, 4.0))
+            time.sleep(random.uniform(4.0, 6.0))
 
         if not deep_data_list:
             print(f"    ⚠️ All scans failed for {channel_name}. Skipping.")
