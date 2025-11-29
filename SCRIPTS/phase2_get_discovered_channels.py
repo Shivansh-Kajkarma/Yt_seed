@@ -46,7 +46,7 @@ AUTO_KEEP_COUNTRIES = [
 MIN_SUBSCRIBERS = 10000
 MIN_VIDEOS = 6
 MAX_VIDEOS = 5000 # Your filter for news orgs
-VIDEOS_PER_CANDIDATE = 10 # How many videos to fetch for LLM analysis #changed from 10 to 3
+VIDEOS_PER_CANDIDATE = 2 # How many videos to fetch for LLM analysis #changed from 10 to 3
 # --- Rate Limiting (Unchanged) ---
 DELAY_BETWEEN_CANDIDATES = 2 # Shorter delay, no LLM call
 DELAY_BETWEEN_SEEDS = 10
@@ -117,7 +117,7 @@ def process_seed_channel(
         try:
             candidate_ids = search_videos_multi_focused(
                 seed_keywords_list,  #changes from complete->3
-                max_results_per_search=40,  #changes from 30->3  
+                max_results_per_search=20,  #changes from 20->2
                 max_keywords=len(seed_keywords_list),
                 run_tag=run_tag,
                 seed_name=seed_channel
@@ -214,13 +214,13 @@ def process_seed_channel(
                 candidate["id"], 
                 max_results=VIDEOS_PER_CANDIDATE, 
                 filter_shorts=True, 
-                min_videos_in_first_batch=3,  #changed 3->1 
+                min_videos_in_first_batch=1,  #changed 3->1 
                 max_items_to_scan=500, 
                 run_tag=run_tag, 
                 seed_name=seed_channel
             )
             
-            if len(videos) < 3: #changed 3->1 
+            if len(videos) < 1: #changed 3->1 
                 print(f"     ⚠️  Only {len(videos)} videos found, logging and skipping")
                 if candidate["id"] in seen_channels_dict:
                     seen_channels_dict[candidate["id"]]["Processing_Status"] = "skipped_few_videos"

@@ -169,20 +169,39 @@ def process_single_seed(
         === VIDEO END ===
         """
 
-    df_for_llm["formatted_content"] = df_for_llm.apply(combine_text_strict, axis=1)
-    df_for_llm["description"] = df_for_llm["formatted_content"]
 
-    # Generate Fingerprint
+    df_for_llm["formatted_content"] = df_for_llm.apply(combine_text_strict, axis=1)
+
+    # IMPORTANT: We use formatted_content for the LLM, regardless of transcript presence
+    # because it cleans up the tags/categories better than raw description.
+
+    safe_channel_desc = str(channel_desc) if pd.notna(channel_desc) else "N/A"
+    
+    # Use formatted_content if available (Phase 1 logic), else raw text
+    if 'formatted_content' in df_for_llm.columns:
+        content_blocks = df_for_llm['formatted_content'].astype(str).tolist()
+    else:
+        content_blocks = (df_for_llm['title'] + "\n" + df_for_llm['description']).astype(str).tolist()
+
+    full_content_str = "\n".join(content_blocks)
+    truncated_content = full_content_str[:50000]
+
+    dossier = f"=== TARGET CHANNEL DOSSIER ===\nNAME: {channel_name}\nBIO: {safe_channel_desc[:2000]}\n\n--- CONTENT DATA ---\n{truncated_content}\n"
+    
+    dossier += f"\n--- CONTENT ANALYSIS DATA ---\n{truncated_content}\n"
     fingerprint = get_channel_fingerprint_oneshot(
         channel_name=channel_name,
-        channel_description=channel_desc,
-        video_df=df_for_llm,
+        dossier=dossier,
         client_format=client_format,
         client_intent=client_intent,
         model_provider="gpt-4o",
     )
 
-    # Save Fingerprint
+    if not fingerprint:
+        print("❌ Failed to generate fingerprint.")
+        return False
+
+    # Save Fingerprint to Local File
     fp_wrapper = {
         "metadata": {
             "run_tag": run_tag,
@@ -230,7 +249,7 @@ def main():
             channel_url,
             client_format,
             client_intent,
-            max_videos=10,  # Can adjust this
+            max_videos=3,  # Can adjust this
         )
 
         if success:
