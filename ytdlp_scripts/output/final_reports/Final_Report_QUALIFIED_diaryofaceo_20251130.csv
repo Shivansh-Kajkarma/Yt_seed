@@ -1,3 +1,2 @@
-Discovered_Channel_ID,Discovered_Channel_Name,Discovered_Channel_URL,Final_Tier,Final_Status,score_similarity,sub_score_niche,sub_score_intent,sub_score_keywords,sub_score_content,score_format_match,Tie_Breaker_Reason
-UCk2U-Oqn7RXf-ydPqfSxG5g,Mel Robbins,https://www.youtube.com/@melrobbins,3,Tier 3 (Format Match / Low Sim),0.6483844809288094,0.6909977329562211,0.49652938841691624,0.7696339896281197,0.7593447399801618,True,
-UCIaH-gZIVC432YRjNVvnyCA,Chris Williamson,https://www.youtube.com/@chriswillx,3,Tier 3 (Format Match / Low Sim),0.41657588221115427,0.3110175828756738,0.4270997026290032,0.664685899923082,0.7591119611779525,True,
+Discovered_Channel_ID,Discovered_Channel_Name,Discovered_Channel_URL,Final_Tier,Final_Status,score_similarity,sub_score_niche,sub_score_intent,sub_score_keywords,sub_score_content,score_format_match
+UCk2U-Oqn7RXf-ydPqfSxG5g,Mel Robbins,https://www.youtube.com/@melrobbins,3,Tier 3 (Format Match / Low Sim),0.6351420000262187,0.6810107063145048,0.6038098430013437,0.5674684698428164,0.7592433830892746,True

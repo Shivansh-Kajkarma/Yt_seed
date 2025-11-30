@@ -116,8 +116,8 @@ def process_seed_channel(
         print(f"   Searching YouTube with {len(seed_keywords_list)} keywords...")
         try:
             candidate_ids = search_videos_multi_focused(
-                seed_keywords_list,  #changes from complete->3
-                max_results_per_search=20,  #changes from 20->2
+                seed_keywords_list[:3],  #changes from complete->3
+                max_results_per_search=2,  #changes from 20->2
                 max_keywords=len(seed_keywords_list),
                 run_tag=run_tag,
                 seed_name=seed_channel
