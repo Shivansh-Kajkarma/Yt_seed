@@ -4,7 +4,8 @@ import time
 from openai import OpenAI
 import pandas as pd
 from typing import Dict, List
-from sentence_transformers import SentenceTransformer
+
+# from sentence_transformers import SentenceTransformer  # DEPRECATED: Now using OpenAI embeddings
 from sklearn.metrics.pairwise import cosine_similarity
 from dotenv import load_dotenv
 import json
@@ -21,66 +22,75 @@ FORMAT_CONFIG = {
     "Podcast": {
         "keywords": ["podcast", "interview", "show", "talk", "conversation"],
         "rules": "Keywords MUST imply audio/dialogue. Focus on 'Who is speaking' and 'Topic'.",
-        "examples": "✓ 'startup founder podcast'\n   ✓ 'tech leader interviews'"
+        "examples": "✓ 'startup founder podcast'\n   ✓ 'tech leader interviews'",
     },
     "Documentary": {
-        "keywords": ["documentary", "doc", "story of", "history of", "explained", "breakdown"],
+        "keywords": [
+            "documentary",
+            "doc",
+            "story of",
+            "history of",
+            "explained",
+            "breakdown",
+        ],
         "rules": "Keywords MUST imply narrative/storytelling. Focus on 'Subject' + 'Documentary'.",
-        "examples": "✓ 'tech startup documentary'\n   ✓ 'business failure explained'"
+        "examples": "✓ 'tech startup documentary'\n   ✓ 'business failure explained'",
     },
     "Tutorial": {
         "keywords": ["tutorial", "guide", "how to", "course", "learn", "walkthrough"],
         "rules": "Keywords MUST imply utility/education. Focus on 'Skill' + 'Guide'.",
-        "examples": "✓ 'python programming tutorial'\n   ✓ 'seo guide for beginners'"
+        "examples": "✓ 'python programming tutorial'\n   ✓ 'seo guide for beginners'",
     },
     "Talking Head": {
         "keywords": ["analysis", "review", "opinion", "commentary", "video essay"],
         "rules": "Keywords MUST imply analysis/opinion. Focus on 'Topic' + 'Analysis'.",
-        "examples": "✓ 'apple vision pro review'\n   ✓ 'market crash analysis'"
+        "examples": "✓ 'apple vision pro review'\n   ✓ 'market crash analysis'",
     },
     # Fallback for unknown formats
     "General": {
         "keywords": [],
         "rules": "Focus on the core topic and content style.",
-        "examples": "✓ 'tech news'\n   ✓ 'funny cat videos'"
-    }
+        "examples": "✓ 'tech news'\n   ✓ 'funny cat videos'",
+    },
 }
 
 FORMAT_VALIDATION_CONFIG = {
     "Podcast": {
         "positive_signals": "Look for 'Question & Answer' dynamics. Extensive back-and-forth dialogue between 2+ people. 'Welcome to the show/podcast'. Long-form conversation.",
         "negative_constraints": "REJECT if: It is any other format (Tutorial, Documentary, Talking Head). REJECT if there is NO dialogue or multiple speakers.",
-        "structural_cue": "Structure must be: Host Intro -> Interview/Discussion -> Outro."
+        "structural_cue": "Structure must be: Host Intro -> Interview/Discussion -> Outro.",
     },
     "Documentary": {
         "positive_signals": "Look for scripted voiceover narration (often 3rd person). Past tense storytelling ('He started the company in...'). High production value descriptions.",
         "negative_constraints": "REJECT if: It is a 'Reaction Video' (watching someone else). REJECT if it is 'Commentary' (just a guy talking at a desk without narrative b-roll).",
-        "structural_cue": "Structure must be: Narrative Hook -> Chronological Story -> Conclusion."
+        "structural_cue": "Structure must be: Narrative Hook -> Chronological Story -> Conclusion.",
     },
     "Tutorial": {
         "positive_signals": "Look for imperative verbs ('Click here', 'Do this', 'Type that'). Sequential steps ('Step 1', 'Next'). Instructional tone.",
         "negative_constraints": "REJECT if: It is a 'Review' (giving opinion vs teaching how). REJECT if it is a 'Speedbuild' (music only, no instruction).",
-        "structural_cue": "Structure must be: Problem Statement -> Step-by-Step Solution -> Result."
+        "structural_cue": "Structure must be: Problem Statement -> Step-by-Step Solution -> Result.",
     },
     "Talking Head": {
         "positive_signals": "Look for direct eye contact (implied text). Opinions, Analysis, or Commentary on a specific topic. Single dominant speaker.",
         "negative_constraints": "REJECT if: It is an Interview (Podcast). REJECT if it is a Skit/Comedy Sketch.",
-        "structural_cue": "Structure must be: Thesis Statement -> Arguments/Analysis -> Conclusion."
+        "structural_cue": "Structure must be: Thesis Statement -> Arguments/Analysis -> Conclusion.",
     },
     "General": {
         "positive_signals": "Check if content matches the general theme.",
         "negative_constraints": "None.",
-        "structural_cue": "Any."
-    }
+        "structural_cue": "Any.",
+    },
 }
 
-try:
-    # Using a reliable, efficient model
-    embedding_model = SentenceTransformer("all-MiniLM-L6-v2")
-    print("✅ Sentence Transformer model loaded ('all-MiniLM-L6-v2').")
-except Exception as e:
-    print(f"❌ ERROR loading Sentence Transformer model: {e}")
-    embedding_model = None
+# DEPRECATED: Sentence Transformers model (replaced by OpenAI embeddings in Phase 3 Step 3B)
+# try:
+#     # Using a reliable, efficient model
+#     embedding_model = SentenceTransformer("all-MiniLM-L6-v2")
+#     print("✅ Sentence Transformer model loaded ('all-MiniLM-L6-v2').")
+# except Exception as e:
+#     print(f"❌ ERROR loading Sentence Transformer model: {e}")
+#     embedding_model = None
+embedding_model = None  # Not used in current pipeline
 
 
 # ============================================
@@ -111,40 +121,41 @@ def preprocess_text_for_llm(text: str) -> str:
     return text.strip()
 
 
+# DEPRECATED: This function used local Sentence Transformers (now using OpenAI embeddings)
 def calculate_embedding_similarity_hybrid(
     keywords1: List[str], keywords2: List[str]
 ) -> float:
     """
     Hybrid approach: Combines average similarity + max similarity.
     Most robust method.
+    DEPRECATED: Replaced by OpenAI embeddings in Phase 3 Step 3B
     """
-    if not embedding_model or not keywords1 or not keywords2:
-        return 0.0
-
-    try:
-        embeddings1 = embedding_model.encode(keywords1)
-        embeddings2 = embedding_model.encode(keywords2)
-
-        # 1. Average embedding similarity (overall niche)
-        avg_emb1 = embeddings1.mean(axis=0)
-        avg_emb2 = embeddings2.mean(axis=0)
-        avg_similarity = cosine_similarity(
-            avg_emb1.reshape(1, -1), avg_emb2.reshape(1, -1)
-        )[0][0]
-
-        # 2. Maximum pairwise similarity (best keyword matches)
-        similarity_matrix = cosine_similarity(embeddings1, embeddings2)
-        max_similarity = similarity_matrix.max()
-
-        # 3. Weighted combination (70% average, 30% max)
-        final_score = 0.7 * avg_similarity + 0.3 * max_similarity
-
-        return round(float(final_score), 3)
-
-    except Exception as e:
-        print(f"  ❌ Embedding error: {e}")
-        return 0.0
-
+    # if not embedding_model or not keywords1 or not keywords2:
+    #     return 0.0
+    #
+    # try:
+    #     embeddings1 = embedding_model.encode(keywords1)
+    #     embeddings2 = embedding_model.encode(keywords2)
+    #
+    #     # 1. Average embedding similarity (overall niche)
+    #     avg_emb1 = embeddings1.mean(axis=0)
+    #     avg_emb2 = embeddings2.mean(axis=0)
+    #     avg_similarity = cosine_similarity(
+    #         avg_emb1.reshape(1, -1), avg_emb2.reshape(1, -1)
+    #     )[0][0]
+    #
+    #     # 2. Maximum pairwise similarity (best keyword matches)
+    #     similarity_matrix = cosine_similarity(embeddings1, embeddings2)
+    #     max_similarity = similarity_matrix.max()
+    #
+    #     # 3. Weighted combination (70% average, 30% max)
+    #     final_score = 0.7 * avg_similarity + 0.3 * max_similarity
+    #
+    #     return round(float(final_score), 3)
+    #
+    # except Exception as e:
+    #     print(f"  ❌ Embedding error: {e}")
+    return 0.0  # Not implemented for current pipeline
 
 
 def _get_keyword_sample(
@@ -354,7 +365,6 @@ def calculate_llm_similarity(
             temperature=0,
         )
         result_text = response.choices[0].message.content.strip()
-
 
         match = re.search(r"0?\.\d+|1\.0|0|1", result_text)
 
@@ -1017,23 +1027,23 @@ def calculate_keyword_score_openai(
         return 0.0
 
 
-
 def get_format_rules(client_format):
     """Retrieves specific prompt rules based on the checkbox input."""
     # Default to General if format not found
     config = FORMAT_CONFIG.get(client_format, FORMAT_CONFIG["General"])
-    
+
     # Format the required keywords into a string
     req_kws = ", ".join([f'"{k}"' for k in config["keywords"]])
-    
+
     return f"""
     3. **FORMAT ENFORCEMENT ({client_format}):**
-       - {config['rules']}
+       - {config["rules"]}
        - Every keyword MUST include one of these identifiers (or synonyms): {req_kws}
        
     EXAMPLES for {client_format}:
-    {config['examples']}
+    {config["examples"]}
     """
+
 
 def get_channel_fingerprint_oneshot(
     channel_name: str,
@@ -1049,10 +1059,8 @@ def get_channel_fingerprint_oneshot(
     """
 
     # --- 1. PREPARE THE "DOSSIER" (Input Construction) ---
-    # We assume video_df['description'] already contains the "Meta-Block" 
+    # We assume video_df['description'] already contains the "Meta-Block"
     # (Title + Category + Tags + Transcript Slice) prepared by the Phase 1 script.
-    
-
 
     dynamic_format_rules = get_format_rules(client_format)
 
@@ -1090,8 +1098,7 @@ def get_channel_fingerprint_oneshot(
       "search_keywords": ["...", "..."]
     }}
     """
-    
-    
+
     for attempt in range(retries):
         try:
             if not gpt_client:
@@ -1102,27 +1109,31 @@ def get_channel_fingerprint_oneshot(
                 model=model_provider,
                 response_format={"type": "json_object"},
                 messages=[
-                    {"role": "system", "content": "You are a YouTube Search Algorithm."},
+                    {
+                        "role": "system",
+                        "content": "You are a YouTube Search Algorithm.",
+                    },
                     {"role": "user", "content": prompt},
                 ],
-                temperature=0.2, 
+                temperature=0.2,
             )
-            
+
             result_text = response.choices[0].message.content.strip()
             data = json.loads(result_text)
-            
+
             if "search_keywords" in data and "generated_niche" in data:
                 print(f"✅ SOTA Analysis successful for {channel_name}")
                 return data
-            
+
             print(f"⚠️ Invalid JSON structure. Retrying...")
 
         except Exception as e:
-            print(f"  ⚠️ LLM Error (Attempt {attempt+1}): {e}")
+            print(f"  ⚠️ LLM Error (Attempt {attempt + 1}): {e}")
             time.sleep(2)
-            
+
     print(f"❌ All retries failed for {channel_name}")
     return {}
+
 
 def calculate_profile_score_llm_holistic(
     seed_profile: dict,
@@ -1356,6 +1367,7 @@ def calculate_profile_score_llm_with_keywords(
         print(f"  ❌ Profile score error: {str(e)[:100]}")
         return error_output
 
+
 def get_vector_from_texts(texts: list[str]) -> np.ndarray | None:
     """
     Takes a list of text strings, cleans them, gets embeddings,
@@ -1374,6 +1386,7 @@ def get_vector_from_texts(texts: list[str]) -> np.ndarray | None:
         print(f"  ⚠️ Error encoding texts: {e}")
         return None
 
+
 def calculate_cosine_similarity(vec_a, vec_b) -> float:
     """Calculates cosine similarity between two averaged vectors."""
     if vec_a is None or vec_b is None:
@@ -1384,54 +1397,58 @@ def calculate_cosine_similarity(vec_a, vec_b) -> float:
         print(f"  ⚠️ Error in cosine similarity: {e}")
         return 0.0
 
-def calculate_matrix_average_similarity(texts_a: list[str], texts_b: list[str]) -> float:
+
+# DEPRECATED: This function used local Sentence Transformers (now using OpenAI embeddings)
+def calculate_matrix_average_similarity(
+    texts_a: list[str], texts_b: list[str]
+) -> float:
     """
     Computes the full pairwise matrix and returns the average of all scores.
+    DEPRECATED: Replaced by OpenAI embeddings in Phase 3 Step 3B
     """
     if not embedding_model or not texts_a or not texts_b:
         return 0.0
-    
+
     # Clean texts
     texts_a = [preprocess_text_for_llm(t) for t in texts_a if t]
     texts_b = [preprocess_text_for_llm(t) for t in texts_b if t]
     if not texts_a or not texts_b:
         return 0.0
-        
-    try:
-        embed_a = embedding_model.encode(texts_a)
-        embed_b = embedding_model.encode(texts_b)
-        
-        # This creates the (e.g.) 30x20 matrix
-        similarity_matrix = cosine_similarity(embed_a, embed_b)
-        
-        # Take the mean of the entire matrix
-        avg_score = np.mean(similarity_matrix)
-        return float(avg_score)
-    except Exception as e:
-        print(f"  ⚠️ Error in matrix avg: {e}")
-        return 0.0
 
+    # try:
+    #     embed_a = embedding_model.encode(texts_a)
+    #     embed_b = embedding_model.encode(texts_b)
+    #
+    #     # This creates the (e.g.) 30x20 matrix
+    #     similarity_matrix = cosine_similarity(embed_a, embed_b)
+    #
+    #     # Take the mean of the entire matrix
+    #     avg_score = np.mean(similarity_matrix)
+    #     return float(avg_score)
+    # except Exception as e:
+    #     print(f"  ⚠️ Error in matrix avg: {e}")
+    return 0.0  # Not implemented for current pipeline
 
 
 def get_channel_tier_gpt(
-    seed_name:str,
-    candidate_name: str, 
-    candidate_titles: list, 
-    seed_profile_str: str, 
+    seed_name: str,
+    candidate_name: str,
+    candidate_titles: list,
+    seed_profile_str: str,
     seed_categories_str: str,
     seed_keywords_str: str,
-    retries: int = 3
+    retries: int = 3,
 ) -> dict:
     """
     Calls Gemini to perform the "Client's Gut Check" and assign a tier.
     """
-    
+
     # Create the text blob of candidate titles
     titles_blob = "\n- ".join(candidate_titles)
-    
+
     # --- This is the new SOTA prompt ---
     # --- PROMPT START ---
-    
+
     prompt = f"""You are an expert YouTube analyst and content strategist.
     Your goal is to help me find *exact* competitors for my seed channel by analyzing a candidate.
 
@@ -1530,17 +1547,17 @@ def get_channel_tier_gpt(
             # --- Call GPT ---
             response = gpt_client.chat.completions.create(
                 model="gpt-4o-mini",
-                response_format={"type": "json_object"}, # Force JSON output
+                response_format={"type": "json_object"},  # Force JSON output
                 messages=[{"role": "user", "content": prompt}],
                 temperature=0.1,
-                max_tokens=500 # 500 tokens is plenty for the reason
+                max_tokens=500,  # 500 tokens is plenty for the reason
             )
-            
+
             result_text = response.choices[0].message.content.strip()
             parsed_json = json.loads(result_text)
-            
+
             if "tier" in parsed_json and "reason" in parsed_json:
-                return parsed_json # Success!
+                return parsed_json  # Success!
             else:
                 print(f"  ⚠️  JSON missing 'tier' or 'reason' keys.")
                 return {"tier": -1, "reason": "ERROR: Malformed JSON."}
@@ -1549,16 +1566,17 @@ def get_channel_tier_gpt(
             error_str = str(e)
             print(f"  ❌ LLM Error: {error_str[:150]}")
             if "rate_limit_exceeded" in error_str:
-                print(f"  ...RATE LIMIT HIT. Sleeping for 20 seconds (Attempt {attempt+1}/{retries})...")
+                print(
+                    f"  ...RATE LIMIT HIT. Sleeping for 20 seconds (Attempt {attempt + 1}/{retries})..."
+                )
                 time.sleep(20)
-                continue # Try again
-            
+                continue  # Try again
+
             # For other errors, fail
             return {"tier": -1, "reason": f"ERROR: {error_str[:100]}"}
-            
+
     # Fallback if loop finishes
     return {"tier": -1, "reason": "ERROR: All retries failed."}
-
 
 
 def get_openai_embedding(text_list: list, model="text-embedding-3-small"):
@@ -1570,33 +1588,30 @@ def get_openai_embedding(text_list: list, model="text-embedding-3-small"):
         return None
 
     # 1. Clean and Validate Inputs
-    valid_texts = [str(t).replace("\n", " ") for t in text_list if t and len(str(t)) > 10]
-    
+    valid_texts = [
+        str(t).replace("\n", " ") for t in text_list if t and len(str(t)) > 10
+    ]
+
     if not valid_texts:
         return None
 
     try:
         # 2. API Call (Batched)
         # OpenAI can handle multiple inputs in one request
-        response = gpt_client.embeddings.create(
-            input=valid_texts,
-            model=model
-        )
-        
+        response = gpt_client.embeddings.create(input=valid_texts, model=model)
+
         # 3. Extract Vectors
         vectors = [item.embedding for item in response.data]
-        
+
         # 4. Average them to get the "Channel Vector"
         # This ensures we represent ALL 3 videos equally
         avg_vector = np.mean(vectors, axis=0)
-        
+
         return avg_vector
 
     except Exception as e:
         print(f"  ❌ OpenAI Embedding Error: {e}")
         return None
-    
-
 
 
 # --- NEW: SMART SLICER (Phase 1 Logic) ---
@@ -1604,21 +1619,24 @@ def get_smart_slice(text, chunk_size=1500):
     """
     Takes Start, Middle, and End to give the LLM a full picture of the format.
     """
-    if not text: return "[NO TRANSCRIPT]"
-    if len(text) < chunk_size * 3: return text # Short video? Return all.
-    
+    if not text:
+        return "[NO TRANSCRIPT]"
+    if len(text) < chunk_size * 3:
+        return text  # Short video? Return all.
+
     head = text[:4500]
-    
+
     return head
+
 
 def verify_format_llm(candidate_data, client_format):
     """
     Strictly checks if the content matches the Client Format using Deep Data.
     Feeds 3 Videos x (Smart Slice).
     """
-    name = candidate_data.get('Discovered_Channel_Name')
-    deep_json = candidate_data.get('Deep_Scan_Data', '[]')
-    
+    name = candidate_data.get("Discovered_Channel_Name")
+    deep_json = candidate_data.get("Deep_Scan_Data", "[]")
+
     try:
         deep_data = json.loads(deep_json)
     except:
@@ -1630,16 +1648,16 @@ def verify_format_llm(candidate_data, client_format):
     # 1. Build Dossier
     dossier = ""
     for i, vid in enumerate(deep_data):
-        title = vid.get('title', 'Unknown')
-        duration = vid.get('duration', 0)
-        
+        title = vid.get("title", "Unknown")
+        duration = vid.get("duration", 0)
+
         # Use existing smart slice function
-        raw_transcript = vid.get('caption_tracks', '')
+        raw_transcript = vid.get("caption_tracks", "")
         # Ensure get_smart_slice is available
         transcript_sample = get_smart_slice(raw_transcript)
-        
+
         dossier += f"""
-        === VIDEO {i+1} ===
+        === VIDEO {i + 1} ===
         TITLE: {title}
         DURATION: {duration}s
         TRANSCRIPT SAMPLE:
@@ -1648,8 +1666,10 @@ def verify_format_llm(candidate_data, client_format):
         """
 
     # 2. Get Validation Rules (Using the NEW Config)
-    config = FORMAT_VALIDATION_CONFIG.get(client_format, FORMAT_VALIDATION_CONFIG["General"])
-    
+    config = FORMAT_VALIDATION_CONFIG.get(
+        client_format, FORMAT_VALIDATION_CONFIG["General"]
+    )
+
     pos_signals = config["positive_signals"]
     neg_constraints = config["negative_constraints"]
     structure = config["structural_cue"]
@@ -1683,30 +1703,32 @@ def verify_format_llm(candidate_data, client_format):
         "reason": "Brief explanation citing specific video evidence and structure."
     }}
     """
-    
+
     try:
         response = gpt_client.chat.completions.create(
             model="gpt-4o-mini",
             response_format={"type": "json_object"},
             messages=[{"role": "user", "content": prompt}],
-            temperature=0.0
+            temperature=0.0,
         )
         return json.loads(response.choices[0].message.content)
     except Exception as e:
-        return {"is_format_match": False, "reason": f"LLM Error: {e}", "confidence": 0.0}
-    
+        return {
+            "is_format_match": False,
+            "reason": f"LLM Error: {e}",
+            "confidence": 0.0,
+        }
+
 
 def get_candidate_fingerprint_independent(
-    dossier: str,
-    model_provider: str = "gpt-4o-mini",
-    retries: int = 3
+    dossier: str, model_provider: str = "gpt-4o-mini", retries: int = 3
 ) -> dict:
     """
     PHASE 3 SPECIAL: Independent Candidate Analysis.
     Generates Niche, Intent, and Keywords based *ONLY* on the dossier.
     NO client constraints are passed, ensuring an honest classification.
     """
-    
+
     print("   🧠 Generating Independent/Honest Fingerprint...")
 
     prompt = f"""You are a YouTube Search Algorithm Expert.
@@ -1749,18 +1771,16 @@ def get_candidate_fingerprint_independent(
                     {"role": "system", "content": "You are an honest content analyst."},
                     {"role": "user", "content": prompt},
                 ],
-                temperature=0.2, 
+                temperature=0.2,
             )
-            
+
             data = json.loads(response.choices[0].message.content.strip())
-            
+
             if "search_keywords" in data and "generated_niche" in data:
                 return data
-                
+
         except Exception as e:
-            print(f"  ⚠️ LLM Error (Attempt {attempt+1}): {e}")
+            print(f"  ⚠️ LLM Error (Attempt {attempt + 1}): {e}")
             time.sleep(1)
-            
+
     return {}
-
-

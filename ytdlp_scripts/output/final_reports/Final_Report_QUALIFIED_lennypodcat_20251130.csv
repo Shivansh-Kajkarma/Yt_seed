@@ -1,1 +1,10 @@
 Discovered_Channel_ID,Discovered_Channel_Name,Discovered_Channel_URL,Final_Tier,Final_Status,score_similarity,sub_score_niche,sub_score_intent,sub_score_keywords,sub_score_content,score_format_match
+UCa4HLorpafz21UwJem_OnGg,How Leaders Lead with David Novak,https://www.youtube.com/@howleaderslead,3,Tier 3 (Format Match / Low Sim),0.5764649928223445,0.5484559674697753,0.541958845392919,0.6982467773479056,0.7953216896560436,True
+UCIIdiIO-Y20hRW9niR0CA8A,Craig Groeschel,https://www.youtube.com/@craiggroeschel,3,Tier 3 (Format Match / Low Sim),0.5091787601291654,0.5047222085786094,0.44870449707328663,0.6110315335893733,0.7292468437579798,True
+UCcefcZRL2oaA_uBNeo5UOWg,Y Combinator,https://www.youtube.com/@ycombinator,3,Tier 3 (Format Match / Low Sim),0.46119272377317744,0.4172906190298592,0.4558050672049284,0.5790294704838467,0.8541752671191188,True
+UCye1YedIypHffYb8k6Gp9wg,Alex Kantrowitz,https://www.youtube.com/@alex.kantrowitz,3,Tier 3 (Format Match / Low Sim),0.43818706833397436,0.3806855613675966,0.40215912776402574,0.6359827466048418,0.8240698558959805,True
+UCuNc0j9dER2_AOORpCcFS-g,Dr Sheen Gurrib,https://www.youtube.com/@sheengurrib,3,Tier 3 (Format Match / Low Sim),0.4162950290649877,0.38628676038510334,0.3746910707084047,0.5537216382995733,0.6858838154709126,True
+UCSHZKyawb77ixDdsGog4iWA,Lex Fridman,https://www.youtube.com/@lexfridman,3,Tier 3 (Format Match / Low Sim),0.37608022905512456,0.24019490092068468,0.4817851964290345,0.5572360983303595,0.8488850341766946,True
+UCQXHTFnQYFTqN0MqmNh9EIA,BBC World Service,https://www.youtube.com/@bbcworldservice,3,Tier 3 (Format Match / Low Sim),0.3262104828994471,0.2489849315478581,0.3607829100580841,0.467415720540464,0.7462342600956167,True
+UCQlJ7XpBtiMLKNSd4RAJmRQ,The Weekly Show with Jon Stewart,https://www.youtube.com/@weeklyshowpodcast,3,Tier 3 (Format Match / Low Sim),0.3088659371017406,0.22164419036840588,0.40115146404614793,0.3884920135184664,0.7263083769242609,True
+UCzQUP1qoWDoEbmsQxvdjxgQ,PowerfulJRE,https://www.youtube.com/@joerogan,3,Tier 3 (Format Match / Low Sim),0.20679689769097526,0.0,0.3755245326297695,0.47069768951022206,0.7836684085919614,True
