@@ -21,7 +21,7 @@ except ImportError as e:
     raise e
 
 # CONFIG
-VIDEOS_TO_SCAN = 4  # changed 5->1 # We scan 5 to get a representative sample
+VIDEOS_TO_SCAN = 5  # changed 5->1 # We scan 5 to get a representative sample
 # REMOVED: MIN_PODCAST_DURATION = 600 (Client says duration doesn't matter)
 
 

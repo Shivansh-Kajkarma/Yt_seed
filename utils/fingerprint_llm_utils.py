@@ -56,10 +56,25 @@ FORMAT_CONFIG = {
 
 FORMAT_VALIDATION_CONFIG = {
     "Podcast": {
-        "positive_signals": "Look for 'Question & Answer' dynamics. Extensive back-and-forth dialogue between 2+ people. 'Welcome to the show/podcast'. Long-form conversation.",
-        "negative_constraints": "REJECT if: It is any other format (Tutorial, Documentary, Talking Head). REJECT if there is NO dialogue or multiple speakers.",
-        "structural_cue": "Structure must be: Host Intro -> Interview/Discussion -> Outro.",
-    },
+    "positive_signals": 
+        """A podcast transcript typically has: 
+        • Conversational dialogue between two or more speakers, OR a single host delivering long-form commentary. 
+        • Turn-taking or naturally flowing responses, questions, and follow-ups. 
+        • Host-driven framing ('Today we're talking about...', 'My guest is...', 'Let's dive in'). 
+        • Long uninterrupted segments where the speaker explores one topic deeply (not action-based instructions). 
+        • No strict procedural steps; instead: opinions, stories, insights, experiences, interviews. 
+        • Language patterns consistent with spoken conversation: fillers, pauses, rhetorical questions, personal references, anecdotes.""",
+
+    "structural_cue": 
+        """Expected structure markers: 
+        • Opening context-setting by host. 
+        • Guest introduction or topic framing. 
+        • Multi-minute segments exploring one theme before shifting. 
+        • Smooth transitions between ideas ('Now let’s shift to...', 'Moving on...'). 
+        • Ending with summary, takeaway, or sign-off. 
+        The content should clearly resemble spoken audio intended for listening rather than watching."""
+},
+
     "Documentary": {
         "positive_signals": "Look for scripted voiceover narration (often 3rd person). Past tense storytelling ('He started the company in...'). High production value descriptions.",
         "negative_constraints": "REJECT if: It is a 'Reaction Video' (watching someone else). REJECT if it is 'Commentary' (just a guy talking at a desk without narrative b-roll).",
@@ -1616,17 +1631,17 @@ def get_openai_embedding(text_list: list, model="text-embedding-3-small"):
 
 # --- NEW: SMART SLICER (Phase 1 Logic) ---
 def get_smart_slice(text, chunk_size=1500):
-    """
-    Takes Start, Middle, and End to give the LLM a full picture of the format.
-    """
-    if not text:
-        return "[NO TRANSCRIPT]"
-    if len(text) < chunk_size * 3:
-        return text  # Short video? Return all.
-
     head = text[:4500]
-
-    return head
+    
+    # Middle section
+    t_len = len(text)
+    mid_start = t_len // 2
+    mid = text[mid_start : mid_start + 2000]
+    
+    # Tail section
+    tail = text[-2000:]
+    
+    return f"{head}\n...\n{mid}\n...\n{tail}"
 
 
 def verify_format_llm(candidate_data, client_format):
@@ -1671,45 +1686,38 @@ def verify_format_llm(candidate_data, client_format):
     )
 
     pos_signals = config["positive_signals"]
-    neg_constraints = config["negative_constraints"]
+    # neg_constraints = config["negative_constraints"]
     structure = config["structural_cue"]
 
     # 3. Modular Prompt with False Positive Protection
     prompt = f"""You are a Strict Format Validator.
-    
-    CLIENT REQUIREMENT: "{client_format}"
-    
-    TASK: Analyze the video samples below. Does this channel STRICTLY produce "{client_format}" content?
-    
-    --- VALIDATION RULES ---
-    1. POSITIVE SIGNALS (Must have): {pos_signals}
-    2. STRUCTURAL CUE (Look for this flow): {structure}
-    
-    --- NEGATIVE CONSTRAINTS (CRITICAL) ---
-    {neg_constraints}
-    
-    **BEWARE OF FALSE POSITIVES:**
-    - A Vlogger saying "Welcome back" is NOT a Podcast.
-    - A Gamer saying "Today we will build" is NOT a Tutorial.
-    - You must look at the *density* of the interaction, not just keywords.
-    
-    DOSSIER:
-    {dossier}
-    
-    OUTPUT JSON:
-    {{
-        "is_format_match": true/false,
-        "confidence": 0.0 to 1.0,
-        "reason": "Brief explanation citing specific video evidence and structure."
-    }}
-    """
+
+CLIENT REQUIREMENT: "{client_format}"
+
+TASK: Analyze the video samples below. Does this channel STRICTLY produce "{client_format}" content?
+
+--- VALIDATION RULES ---
+1. POSITIVE SIGNALS (Must have): {pos_signals}
+2. STRUCTURAL CUE (Look for this flow): {structure}
+
+
+DOSSIER:
+{dossier}
+
+OUTPUT JSON:
+{{
+    "is_format_match": true/false,
+    "confidence": 0.0 to 1.0,
+    "reason": "Brief explanation citing specific video evidence and structure."
+}}
+"""
 
     try:
         response = gpt_client.chat.completions.create(
             model="gpt-4o-mini",
             response_format={"type": "json_object"},
             messages=[{"role": "user", "content": prompt}],
-            temperature=0.0,
+            temperature=0.1,
         )
         return json.loads(response.choices[0].message.content)
     except Exception as e:
