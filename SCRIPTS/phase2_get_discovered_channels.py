@@ -46,7 +46,7 @@ AUTO_KEEP_COUNTRIES = [
 MIN_SUBSCRIBERS = 10000
 MIN_VIDEOS = 6
 MAX_VIDEOS = 5000 # Your filter for news orgs
-VIDEOS_PER_CANDIDATE = 2 # How many videos to fetch for LLM analysis #changed from 10 to 3
+VIDEOS_PER_CANDIDATE = 3 # How many videos to fetch for LLM analysis #changed from 10 to 3
 # --- Rate Limiting (Unchanged) ---
 DELAY_BETWEEN_CANDIDATES = 2 # Shorter delay, no LLM call
 DELAY_BETWEEN_SEEDS = 10
@@ -116,8 +116,8 @@ def process_seed_channel(
         print(f"   Searching YouTube with {len(seed_keywords_list)} keywords...")
         try:
             candidate_ids = search_videos_multi_focused(
-                seed_keywords_list[:3],  #changes from complete->3
-                max_results_per_search=2,  #changes from 20->2
+                seed_keywords_list,  #changes from complete->3
+                max_results_per_search=3,  #changes from 20->2
                 max_keywords=len(seed_keywords_list),
                 run_tag=run_tag,
                 seed_name=seed_channel
