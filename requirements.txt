@@ -70,10 +70,10 @@ sniffio==1.3.1
 starlette==0.49.3
 sympy==1.14.0
 threadpoolctl==3.6.0
-tokenizers==0.22.1
-torch==2.9.0+cpu
+# tokenizers==0.22.1  # DEPRECATED: Used by sentence-transformers (removed)
+# torch==2.9.0+cpu  # DEPRECATED: Used by sentence-transformers (removed)
 tqdm==4.67.1
-transformers==4.57.1
+# transformers==4.57.1  # DEPRECATED: Used by sentence-transformers (removed)
 typing-inspection==0.4.2
 typing_extensions==4.15.0
 tzdata==2025.2
