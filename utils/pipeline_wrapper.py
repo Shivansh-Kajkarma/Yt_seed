@@ -34,7 +34,7 @@ BATCH_SIZE = 3  # Process 3 channels...
 # BATCH_COOLDOWN = 25 * 3600   # ...then wait 25 hours (in seconds)
 # STAGGER_DELAY = 120          # Wait 2 mins between channels in the same batch
 # Testing
-BATCH_COOLDOWN = 1200  # ...then wait 25 hours (in seconds)
+BATCH_COOLDOWN = 90000  # ...then wait 25 hours (in seconds)
 STAGGER_DELAY = 10  # Wait 2 mins between channels in the same batch
 
 # --- REDIS SETUP (For Global Schedule Tracking) ---
