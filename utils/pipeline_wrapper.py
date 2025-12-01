@@ -235,7 +235,11 @@ def full_pipeline_from_sheet(
         record_run_status(
             run_tag,
             "started",
-            {"seed_name": seed_channel_name, "seed_url": seed_channel_url},
+            {
+                "seed_name": seed_channel_name,
+                "seed_url": seed_channel_url,
+                "current_phase": "initializing",
+            },
         )
 
         try:
@@ -271,14 +275,14 @@ def full_pipeline_from_sheet(
                 return {"status": "skipped", "message": "Seed had no videos."}
 
             print(phase1_result.stdout)
-            record_run_status(run_tag, "phase1_done")
+            record_run_status(run_tag, "in_progress", {"current_phase": "phase1_done"})
 
             # ==================================================
             # PHASE 2: Channel Discovery
             # ==================================================
             print(f"\n--- [PHASE 2] Channel Discovery ---")
             phase2_main(run_tag)
-            record_run_status(run_tag, "phase2_done")
+            record_run_status(run_tag, "in_progress", {"current_phase": "phase2_done"})
 
             # ==================================================
             # PHASE 3: Multi-Step Filtering & Scoring
@@ -303,7 +307,9 @@ def full_pipeline_from_sheet(
             else:
                 print(phase3_step1_result.stdout)
 
-            record_run_status(run_tag, "phase3_step1_done")
+            record_run_status(
+                run_tag, "in_progress", {"current_phase": "phase3_step1_done"}
+            )
 
             # STEP 2: Deep scan with yt-dlp
             print(f"\n--- [PHASE 3.2] Deep Scan (yt-dlp) ---")
@@ -324,7 +330,9 @@ def full_pipeline_from_sheet(
             else:
                 print(phase3_step2_result.stdout)
 
-            record_run_status(run_tag, "phase3_step2_done")
+            record_run_status(
+                run_tag, "in_progress", {"current_phase": "phase3_step2_done"}
+            )
 
             # STEP 3A: LLM format verification
             print(f"\n--- [PHASE 3.3A] LLM Format Verification ---")
@@ -345,7 +353,9 @@ def full_pipeline_from_sheet(
             else:
                 print(phase3_step3a_result.stdout)
 
-            record_run_status(run_tag, "phase3_step3a_done")
+            record_run_status(
+                run_tag, "in_progress", {"current_phase": "phase3_step3a_done"}
+            )
 
             # STEP 3B: Embedding similarity
             print(f"\n--- [PHASE 3.3B] Embedding Similarity ---")
@@ -366,7 +376,9 @@ def full_pipeline_from_sheet(
             else:
                 print(phase3_step3b_result.stdout)
 
-            record_run_status(run_tag, "phase3_step3b_done")
+            record_run_status(
+                run_tag, "in_progress", {"current_phase": "phase3_step3b_done"}
+            )
 
             # ==================================================
             # PHASE 4: Final Ranking & Tiering
@@ -387,9 +399,11 @@ def full_pipeline_from_sheet(
             else:
                 print(phase4_result.stdout)
 
-            record_run_status(run_tag, "phase4_done")
+            record_run_status(run_tag, "in_progress", {"current_phase": "phase4_done"})
 
-            record_run_status(run_tag, "completed")
+            record_run_status(
+                run_tag, "completed", {"current_phase": "all_phases_complete"}
+            )
 
             # --- Feedback Loop (This will add NEW items to the END of the schedule) ---
             new_seeds_count = run_feedback_loop_for_seed(
