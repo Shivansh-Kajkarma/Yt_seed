@@ -1,5 +1,3 @@
-
-
 import sys, os
 from datetime import datetime
 from pathlib import Path
@@ -36,8 +34,8 @@ BATCH_SIZE = 3  # Process 3 channels...
 # BATCH_COOLDOWN = 25 * 3600   # ...then wait 25 hours (in seconds)
 # STAGGER_DELAY = 120          # Wait 2 mins between channels in the same batch
 # Testing
-BATCH_COOLDOWN = 90000  # ...then wait 25 hours (in seconds)
-STAGGER_DELAY = 10  # Wait 2 mins between channels in the same batch
+BATCH_COOLDOWN = 1200  # ...then wait 20 minutes (in seconds)
+STAGGER_DELAY = 10  # Wait 10 seconds between channels in the same batch
 
 # --- REDIS SETUP (For Global Schedule Tracking) ---
 REDIS_URL = os.getenv("REDIS_URL", "redis://localhost:6379/0")
@@ -244,6 +242,7 @@ def full_pipeline_from_sheet(
                 "seed_name": seed_channel_name,
                 "seed_url": seed_channel_url,
                 "current_phase": "initializing",
+                "progress_percentage": 0,
             },
         )
 
@@ -280,14 +279,22 @@ def full_pipeline_from_sheet(
                 return {"status": "skipped", "message": "Seed had no videos."}
 
             print(phase1_result.stdout)
-            record_run_status(run_tag, "in_progress", {"current_phase": "phase1_done"})
+            record_run_status(
+                run_tag,
+                "in_progress",
+                {"current_phase": "phase1_done", "progress_percentage": 10},
+            )
 
             # ==================================================
             # PHASE 2: Channel Discovery
             # ==================================================
             print(f"\n--- [PHASE 2] Channel Discovery ---")
             phase2_main(run_tag)
-            record_run_status(run_tag, "in_progress", {"current_phase": "phase2_done"})
+            record_run_status(
+                run_tag,
+                "in_progress",
+                {"current_phase": "phase2_done", "progress_percentage": 25},
+            )
 
             # ==================================================
             # PHASE 3: Multi-Step Filtering & Scoring
@@ -313,7 +320,9 @@ def full_pipeline_from_sheet(
                 print(phase3_step1_result.stdout)
 
             record_run_status(
-                run_tag, "in_progress", {"current_phase": "phase3_step1_done"}
+                run_tag,
+                "in_progress",
+                {"current_phase": "phase3_step1_done", "progress_percentage": 40},
             )
 
             # STEP 2: Deep scan with yt-dlp
@@ -336,7 +345,9 @@ def full_pipeline_from_sheet(
                 print(phase3_step2_result.stdout)
 
             record_run_status(
-                run_tag, "in_progress", {"current_phase": "phase3_step2_done"}
+                run_tag,
+                "in_progress",
+                {"current_phase": "phase3_step2_done", "progress_percentage": 55},
             )
 
             # STEP 3A: LLM format verification
@@ -359,7 +370,9 @@ def full_pipeline_from_sheet(
                 print(phase3_step3a_result.stdout)
 
             record_run_status(
-                run_tag, "in_progress", {"current_phase": "phase3_step3a_done"}
+                run_tag,
+                "in_progress",
+                {"current_phase": "phase3_step3a_done", "progress_percentage": 70},
             )
 
             # STEP 3B: Embedding similarity
@@ -382,7 +395,9 @@ def full_pipeline_from_sheet(
                 print(phase3_step3b_result.stdout)
 
             record_run_status(
-                run_tag, "in_progress", {"current_phase": "phase3_step3b_done"}
+                run_tag,
+                "in_progress",
+                {"current_phase": "phase3_step3b_done", "progress_percentage": 85},
             )
 
             # ==================================================
@@ -404,10 +419,16 @@ def full_pipeline_from_sheet(
             else:
                 print(phase4_result.stdout)
 
-            record_run_status(run_tag, "in_progress", {"current_phase": "phase4_done"})
+            record_run_status(
+                run_tag,
+                "in_progress",
+                {"current_phase": "phase4_done", "progress_percentage": 95},
+            )
 
             record_run_status(
-                run_tag, "completed", {"current_phase": "all_phases_complete"}
+                run_tag,
+                "completed",
+                {"current_phase": "all_phases_complete", "progress_percentage": 100},
             )
 
             # --- Feedback Loop (This will add NEW items to the END of the schedule) ---
