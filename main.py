@@ -32,7 +32,7 @@ async def startup_event():
 def start_pipeline(
     sheet_url: str,
     input_format: str = "Podcast",
-    clients_intent: str = "Podcast Growth",
+    clients_intent: str = "Podcast",
 ):
     # This is correct as a POST.
     # We pass None for seed_dict to trigger "Loader" mode.
