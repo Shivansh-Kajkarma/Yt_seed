@@ -1,0 +1,93 @@
+Discovered_Channel_Name,Final_Tier,Final_Status,LLM_Recheck_Reason
+Think Media Podcast,1,Tier 1 (Format Match),
+Awf The Record ,1,Tier 1 (Format Match),
+The Interview,1,Tier 1 (Format Match),
+Social Media Examiner,1,Tier 1 (Format Match),
+Imp And Skizz Podcast,1,Tier 1 (Format Match),
+Jasmin Siri,1,Tier 1 (Format Match),
+Armchair Expert with Dax Shepard,1,Tier 1 (Format Match),
+This Week in Photo (TWiP),1,Tier 1 (Format Match),
+Growth Manifesto Podcast,1,Tier 1 (Format Match),
+Jay Shetty Podcast,1,Tier 1 (Format Match),
+Your Rich BFF,1,Tier 1 (Format Match),
+Deep Dive with Ali Abdaal ,1,Tier 1 (Format Match),
+Tech Sales With Higher Levels,1,Tier 1 (Format Match),
+Andrew Huberman,1,Tier 1 (Format Match),
+Lila Rose,1,Tier 1 (Format Match),
+Ayn Rand Institute,1,Tier 1 (Format Match),
+Emma L Kinsey,1,Tier 1 (Format Match),
+Chase Jarvis,1,Tier 1 (Format Match),
+The Bible Show,1,Tier 1 (Format Match),
+Jon Youshaei,2,Tier 2 (High Content Score),
+Omar Eltakrori,2,Tier 2 (High Content Score),
+The Calum Johnson Show,2,Tier 2 (High Content Score),
+THE 505 PODCAST ,2,Tier 2 (High Content Score),
+Sweat Equity,2,Tier 2 (High Content Score),
+Neel Dhingra,2,Tier 2 (High Content Score),
+Joe Polish,2,Tier 2 (High Content Score),
+Jay Clouse,2,Tier 2 (High Content Score),
+Rich Roll,2,Tier 2 (High Content Score),
+The Diary Of A CEO,2,Tier 2 (High Content Score),
+Instagram,2,Tier 2 (High Content Score),
+Erin On Demand,2,Tier 2 (High Content Score),
+Harvard Business Review,2,Tier 2 (High Content Score),
+Ben Kaluza,2,Tier 2 (High Content Score),
+Rob Balasabas,2,Tier 2 (High Content Score),
+Chronically Online,2,Tier 2 (High Content Score),
+Shawn Ryan Show,2,Tier 2 (High Content Score),
+Nicky Saunders,2,Tier 2 (High Content Score),
+Pat Flynn,2,Tier 2 (High Content Score),
+Alex Hormozi,2,Tier 2 (High Content Score),
+Tess Barclay | Busy Blooming,2,Tier 2 (High Content Score),
+DwyaneWade,2,Tier 2 (High Content Score),
+WSJ. Style,2,Tier 2 (High Content Score),
+Mel Robbins,2,Tier 2 (LLM Saved),"The transcripts exhibit a clear conversational flow, with Mel Robbins engaging directly with the audience and featuring dialogue with guests. The structure aligns with a podcast format, including personal anecdotes, introductions, and discussions on relevant topics, which are characteristic of podcast episodes."
+Tom Bilyeu,2,Tier 2 (LLM Saved),"The transcripts exhibit a conversational flow typical of a podcast format, featuring dialogue between the host and a guest, as well as informal commentary and interaction with the audience. The structure includes introductions, personal anecdotes, and a discussion of current events, which aligns with the characteristics of a podcast."
+This Week in Startups,2,Tier 2 (LLM Saved),"The transcripts exhibit a conversational flow typical of podcasts, featuring dialogue and interviews. The discussions involve personal anecdotes, insights, and interactions between hosts and guests, aligning with the podcast format."
+Vinh Giang,2,Tier 2 (LLM Saved),"The transcripts exhibit a conversational flow typical of a podcast format, featuring dialogue and a Q&A style that engages the audience. The speaker addresses the audience directly, shares personal insights, and provides a structured approach to communication improvement, which aligns with the characteristics of a podcast."
+Acquisitioncom,2,Tier 2 (LLM Saved),"Both transcripts exhibit a conversational flow typical of podcasts, featuring dialogue between hosts and a back-and-forth exchange of ideas. The structure includes personal anecdotes, reflections, and discussions that align with the podcast format, focusing on engaging the audience through informal conversation rather than instructional content."
+The Glow Up Secrets Podcast ,2,Tier 2 (LLM Saved),"The transcripts exhibit a clear podcast format with conversational dialogue, personal anecdotes, and a casual flow typical of podcast episodes. The host engages the audience directly, shares life updates, and discusses themes relevant to self-improvement, which aligns with the podcast structure."
+The Mindset Mentor Podcast,2,Tier 2 (LLM Saved),"The transcripts exhibit a conversational flow typical of a podcast format, with the speaker addressing the audience directly, sharing personal insights, and discussing concepts in an engaging manner. There is a clear structure with an introduction to the topic, followed by elaboration and encouragement for the audience to reflect on their own lives, which aligns with the characteristics of a podcast."
+Ben Amos - Engage Video Marketing,2,Tier 2 (LLM Saved),"The transcripts clearly exhibit the characteristics of a podcast format, including a conversational tone, direct engagement with the audience, and the presence of interviews with guests. The structure includes introductions, discussions on relevant topics, and a flow that encourages listener interaction, all of which align with typical podcast elements."
+
+
+The Futur,4,Tier 4 (LLM Rejected),"The transcripts primarily consist of instructional language and step-by-step guidance rather than a conversational flow typical of a podcast format. While there are elements of dialogue, they lack the dynamic interaction and back-and-forth discussion characteristic of podcasts, leaning more towards a tutorial style."
+Dan Koe,4,Tier 4 (LLM Rejected),"The transcripts do not exhibit the characteristics of a podcast format, such as dialogue or conversational flow. Instead, they read more like monologues or personal reflections without interactive discussion or interviews typical of podcasts."
+Your Average Tech Bro,4,Tier 4 (LLM Rejected),"The transcripts primarily consist of a monologue with no dialogue or conversational flow typical of a podcast format. They resemble vlogs or tutorial-style content, focusing on personal experiences and technical explanations rather than engaging discussions or interviews."
+Kallaway,4,Tier 4 (LLM Rejected),"The transcripts exhibit a monologue style typical of tutorial or instructional content rather than a conversational format characteristic of podcasts. There is no dialogue or interaction between multiple speakers, which is essential for a podcast format."
+Anik Singal,4,Tier 4 (LLM Rejected),"The transcripts provided do not exhibit the characteristics of a podcast format. They lack dialogue, interviews, or conversational flow typical of podcasts. Instead, they present a monologue style that resembles a tutorial or motivational speech, focusing on delivering information rather than engaging in a back-and-forth discussion."
+Tony Robbins,4,Tier 4 (LLM Rejected),"The transcripts do not exhibit the characteristics of a podcast format, as they lack a conversational flow, dialogue, or interviews. Instead, they present a monologue style typical of motivational speeches or lectures, which does not align with the interactive nature of podcasts."
+Full Time Filmmaker,4,Tier 4 (LLM Rejected),"The transcripts primarily consist of instructional and informative content rather than a conversational or interview format typical of podcasts. The first video is structured as a comparison and review, while the second video is a personal update and explanation, lacking the dialogue and conversational flow characteristic of podcasts."
+Digital Spaghetti,4,Tier 4 (LLM Rejected),"The transcripts primarily consist of instructional content focused on filming techniques and object handling, lacking the conversational flow, dialogue, or interview style characteristic of a podcast format. They resemble tutorial content more than a podcast."
+JoinBrands for Creators,4,Tier 4 (LLM Rejected),"The transcripts indicate a format more aligned with live webinars or masterclasses rather than a podcast. While there is some conversational flow, the structure is heavily focused on audience interaction and instructional elements typical of a tutorial format, lacking the depth of dialogue or interviews characteristic of podcasts."
+Neighborhood Art Supply,4,Tier 4 (LLM Rejected),"The transcripts primarily consist of instructional language and step-by-step guidance, characteristic of a tutorial format, rather than the dialogue and conversational flow typical of a podcast. While there are elements of storytelling and personal experience, the overall structure lacks the interactive and conversational nature expected in a podcast."
+Business Motiversity,4,Tier 4 (LLM Rejected),"The transcripts provided do not exhibit the characteristics of a podcast format. They lack a conversational flow, dialogue, or interviews typical of podcasts. Instead, they read more like monologues or motivational speeches, which do not align with the interactive and engaging nature of a podcast."
+Dave Jeltema,4,Tier 4 (LLM Rejected),"The transcripts exhibit a monologue style rather than a conversational format typical of podcasts. They lack dialogue, interviews, or a back-and-forth exchange, focusing instead on instructional content and personal experiences, which aligns more with tutorial-style videos."
+Gohar Khan,4,Tier 4 (LLM Rejected),"The transcripts do not exhibit the characteristics of a podcast format. The first video presents a structured list of unwritten rules in a monologue style, lacking dialogue or conversational flow typical of podcasts. The second video, while more interactive, is a live stream focused on gameplay and Q&A, which does not align with the traditional podcast format that emphasizes discussions or interviews. Overall, neither transcript demonstrates the necessary conversational dynamics or interview structure expected in a podcast."
+Tim Runia,4,Tier 4 (LLM Rejected),"The transcripts provided focus on instructional content and editing tips rather than a conversational or interview format typical of podcasts. There is no dialogue or interaction present, which is essential for a podcast structure."
+WIRED,4,Tier 4 (LLM Rejected),"The transcripts do not exhibit the conversational flow and dialogue typical of a podcast format. The first video is more of an informative presentation with a narrative style, lacking interactive dialogue. The second video, while featuring multiple speakers, resembles a Q&A format rather than a conversational podcast, as it is structured around answering specific questions rather than a free-flowing discussion."
+TT LIVE With Harry,4,Tier 4 (LLM Rejected),"The transcripts primarily consist of instructional content and step-by-step guidance on using TikTok Live Studio features, which aligns more with a tutorial format rather than a podcast. While there is some conversational flow in the second video, the overall structure lacks the dialogue and interview style typical of podcasts."
+Fiverr,4,Tier 4 (LLM Rejected),"The transcripts do not exhibit the conversational flow or dialogue characteristic of a podcast format. Instead, they resemble instructional or informational presentations, lacking the interactive elements typical of podcasts."
+Dan Martell,4,Tier 4 (LLM Rejected),"The transcripts provided are instructional in nature, focusing on delivering specific strategies and tactics rather than featuring a conversational or interview format typical of podcasts. The language is more aligned with tutorial content, lacking the dialogue and conversational flow characteristic of a podcast."
+The Taboo Room With Aaron S,4,Tier 4 (LLM Rejected),"The transcripts lack a clear conversational flow, dialogue, or interview structure typical of podcasts. They read more like monologues or documentary-style narratives without interactive discussion."
+YouTube Creators,4,Tier 4 (Low Content Score),
+Teachable,4,Tier 4 (Low Content Score),
+King Charles Tv,4,Tier 4 (Low Content Score),
+Colleen Edits,4,Tier 4 (Low Content Score),
+Motivation Ark,4,Tier 4 (Low Content Score),
+Ditto Music,4,Tier 4 (Low Content Score),
+Think Media,4,Tier 4 (Low Content Score),
+Professor Nez,4,Tier 4 (Low Content Score),
+Audiobook Advisor,4,Tier 4 (Low Content Score),
+Jim Rohn Motivation™,4,Tier 4 (Low Content Score),
+Study Hall ,4,Tier 4 (Low Content Score),
+Discovery Science,4,Tier 4 (Low Content Score),
+John Marty,4,Tier 4 (Low Content Score),
+Publish X,4,Tier 4 (Low Content Score),
+Howfinity,4,Tier 4 (Low Content Score),
+Dr. Rich Schuttler,4,Tier 4 (Low Content Score),
+InterviewGuide,4,Tier 4 (Low Content Score),
+The AI Bible,4,Tier 4 (Low Content Score),
+Bible Stories for Kids,4,Tier 4 (Low Content Score),
+KSSE Structural Engineers,4,Tier 4 (Low Content Score),
+SHEGER INFO,4,Tier 4 (Low Content Score),

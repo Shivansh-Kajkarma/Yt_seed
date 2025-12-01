@@ -4,110 +4,242 @@ import json
 import pandas as pd
 from pathlib import Path
 from datetime import datetime
+from concurrent.futures import ThreadPoolExecutor, as_completed
 
-# --- Setup Paths ---
+# --- SETUP PATHS ---
 BASE_DIR = Path(__file__).resolve().parent.parent
 sys.path.append(str(BASE_DIR))
 
-from utils.mongo_utils import load_collection_as_df
+try:
+    from utils.mongo_utils import load_collection_as_df, save_dataframe_to_mongo
+    from utils.fingerprint_llm_utils import gpt_client
+except ImportError as e:
+    print("❌ Error importing utils.")
+    raise e
 
 # --- Config ---
-RUN_TAG = "colinandsammer"
+RUN_TAG = "lennypodcat"
 OUTPUT_DIR = Path(__file__).resolve().parent / "output"
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
+# --- CALIBRATED THRESHOLDS ---
+THRES_TIER_2_AUTO = 0.82  # Auto Tier 2 if format failed but content score high
+THRES_LLM_CHECK = 0.70  # Min score to qualify for LLM re-check
+
+
+def get_client_constraints(run_tag):
+    """Fetch Format AND Intent (Niche) from Phase 1."""
+    try:
+        df = load_collection_as_df(
+            f"{run_tag.upper()}_phase1_fingerprints", {"metadata.run_tag": run_tag}
+        )
+        if df.empty:
+            return "General", "General"
+        meta = df.iloc[0].get("metadata", {})
+        constraints = meta.get("client_constraints", {})
+        return constraints.get("format", "General"), constraints.get(
+            "intent", "General"
+        )
+    except:
+        return "General", "General"
+
+
+# --- LLM FORMAT RE-CHECK (For borderline cases) ---
+def run_format_recheck_llm(row_dict, client_format):
+    """Re-checks format for channels with False format_match but good content score."""
+    name = row_dict.get("Discovered_Channel_Name")
+    deep_json = row_dict.get("Deep_Scan_Data", "[]")
+    try:
+        deep_data = json.loads(deep_json)
+    except:
+        return False, "No data"
+
+    dossier = ""
+    for i, vid in enumerate(deep_data[:2]):
+        raw_trans = vid.get("caption_tracks")
+        transcript = (raw_trans or "")[:1500]
+        dossier += f"VIDEO {i + 1}: {vid.get('title')}\nTRANSCRIPT: {transcript}\n---\n"
+
+    prompt = f"""You are a Format Verification Expert.
+    
+    CONTEXT:
+    Channel "{name}" failed initial format check but has VERY HIGH content similarity (score > 0.7).
+    We need a second opinion.
+    
+    TARGET FORMAT: "{client_format}"
+    
+    YOUR TASK:
+    Review the transcripts below. Does this channel ACTUALLY match the format?
+    
+    CRITICAL RULES:
+    1. Focus on FORMAT structure, not just topic relevance.
+    2. For "Podcast": Look for dialogue, interviews, conversational flow.
+    3. For "Tutorial": Look for instructional language, step-by-step guidance.
+    4. Be strict but fair - high content similarity suggests they cover similar topics.
+    
+    DOSSIER:
+    {dossier}
+    
+    DECISION:
+    Return JSON: {{ "is_match": true/false, "reason": "Brief explanation of format assessment." }}
+    """
+    try:
+        response = gpt_client.chat.completions.create(
+            model="gpt-4o-mini",
+            response_format={"type": "json_object"},
+            messages=[{"role": "user", "content": prompt}],
+            temperature=0.0,
+        )
+        res = json.loads(response.choices[0].message.content)
+        return res.get("is_match", False), res.get("reason", "Format recheck")
+    except:
+        return False, "LLM Error"
+
 
 def main():
-    print(f"🔍 Loading Final Ranked data for run_tag: {RUN_TAG}")
+    run_tag = RUN_TAG
+    print(f"🚀 PHASE 4: Final Ranking & Report | Tag: {run_tag}")
 
-    # Load from MongoDB
-    collection_name = f"{RUN_TAG.upper()}_final_ranked"
+    client_format, client_intent = get_client_constraints(run_tag)
+    print(f"📋 Constraints: Format='{client_format}', Niche='{client_intent}'")
+    print(f"📊 Thresholds: Auto T2>={THRES_TIER_2_AUTO} | LLM Check>={THRES_LLM_CHECK}")
 
+    # 1. Load Data
     try:
-        df = load_collection_as_df(collection_name)
-
-        if df.empty:
-            print(f"❌ No data found in collection: {collection_name}")
+        df_llm = load_collection_as_df(f"{run_tag.upper()}_phase3_step3a")
+        df_emb = load_collection_as_df(f"{run_tag.upper()}_phase3_step3b")
+        if df_llm.empty or df_emb.empty:
             return
-
-        print(f"✅ Loaded {len(df)} records from MongoDB")
-
-        # Display basic info
-        print(f"\nColumns: {list(df.columns)}")
-        print(f"\nFirst record:")
-        print(df.iloc[0].to_dict())
-
-        # Filter to specific columns
-        desired_columns = [
-            "Discovered_Channel_Name",
-            "Discovered_Subs",
-            "Final_Status",
-            "Final_Tier",
-            "score_format_confidence",
-            "score_format_match",
-            "score_similarity",
-            "sub_score_content",
-            "sub_score_intent",
-            "sub_score_keywords",
-            "sub_score_niche",
-            "Discovered_Channel_URL",
-        ]
-
-        # Keep only columns that exist in the dataframe
-        columns_to_save = [col for col in desired_columns if col in df.columns]
-        df_filtered = df[columns_to_save]
-
-        print(f"\n📋 Saving {len(columns_to_save)} columns: {columns_to_save}")
-
-        # Save to CSV
-        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-        csv_path = OUTPUT_DIR / f"{RUN_TAG}_final_ranked_{timestamp}.csv"
-        df_filtered.to_csv(csv_path, index=False)
-        print(f"\n💾 Saved to: {csv_path}")
-
-        # Save to JSON (for detailed analysis)
-        json_path = OUTPUT_DIR / f"{RUN_TAG}_final_ranked_{timestamp}.json"
-        df.to_json(json_path, orient="records", indent=2)
-        print(f"💾 Saved to: {json_path}")
-
-        # Basic stats
-        print(f"\n📊 Statistics:")
-        print(f"   Total Channels: {len(df)}")
-
-        if "Final_Tier" in df.columns:
-            print(f"\n   Tier Distribution:")
-            print(df["Final_Tier"].value_counts().sort_index())
-
-        if "Format_Match" in df.columns:
-            print(f"\n   Format Match: {df['Format_Match'].sum()} / {len(df)}")
-
-        if "Weighted_Score" in df.columns:
-            print(f"\n   Score Stats:")
-            print(f"      Mean: {df['Weighted_Score'].mean():.3f}")
-            print(f"      Max: {df['Weighted_Score'].max():.3f}")
-            print(f"      Min: {df['Weighted_Score'].min():.3f}")
-
-        print(f"\n   Top Seed Channels:")
-        print(df["Seed_Channel_Name"].value_counts().head())
-
-        # Show top channels by score
-        if "Weighted_Score" in df.columns:
-            print(f"\n   🏆 Top 10 Channels by Weighted Score:")
-            top_10 = df.nlargest(10, "Weighted_Score")[
-                [
-                    "Discovered_Channel_Name",
-                    "Weighted_Score",
-                    "Final_Tier",
-                    "Format_Match",
-                ]
-            ]
-            print(top_10.to_string(index=False))
-
     except Exception as e:
         print(f"❌ Error: {e}")
-        import traceback
+        return
 
-        traceback.print_exc()
+    # 2. Merge (Include all sub-scores from Phase 3b)
+    df_merged = pd.merge(
+        df_llm,  # Keep all columns from phase3_step3a
+        df_emb[
+            [
+                "Discovered_Channel_ID",
+                "score_similarity",
+                "sub_score_niche",
+                "sub_score_intent",
+                "sub_score_keywords",
+                "sub_score_content",
+            ]
+        ],
+        on="Discovered_Channel_ID",
+        how="inner",
+    )
+
+    print(f"🔗 Merged {len(df_merged)} candidates. Starting New Ranking Logic...")
+
+    final_results = []
+    llm_check_queue = []
+
+    # 3. NEW SIMPLIFIED LOGIC
+    for index, row in df_merged.iterrows():
+        fmt_match = row["score_format_match"]
+        content_score = row["sub_score_content"]
+        row_dict = row.to_dict()
+
+        # RULE 1: Format Match = True → Tier 1 (sorted by content score)
+        if fmt_match:
+            row_dict["Final_Tier"] = 1
+            row_dict["Final_Status"] = "Tier 1 (Format Match)"
+            final_results.append(row_dict)
+            print(
+                f"  ✅ Tier 1: {row_dict['Discovered_Channel_Name']} (content: {content_score:.3f})"
+            )
+
+        # RULE 2: Format Match = False BUT content >= 0.82 → Auto Tier 2
+        elif not fmt_match and content_score >= THRES_TIER_2_AUTO:
+            row_dict["Final_Tier"] = 2
+            row_dict["Final_Status"] = "Tier 2 (High Content Score)"
+            final_results.append(row_dict)
+            print(
+                f"  ⚡ Tier 2 (Auto): {row_dict['Discovered_Channel_Name']} (content: {content_score:.3f})"
+            )
+
+        # RULE 3: Format Match = False BUT content >= 0.70 → LLM Check
+        elif not fmt_match and content_score >= THRES_LLM_CHECK:
+            llm_check_queue.append(row_dict)
+
+        # RULE 4: Below 0.70 → Tier 4 (Rejected)
+        else:
+            row_dict["Final_Tier"] = 4
+            row_dict["Final_Status"] = "Tier 4 (Low Content Score)"
+            final_results.append(row_dict)
+
+    # 4. Process LLM Check Queue (0.70 - 0.82 range)
+    print(
+        f"\n🧠 LLM Format Re-check for {len(llm_check_queue)} borderline candidates..."
+    )
+    with ThreadPoolExecutor(max_workers=5) as executor:
+        future_to_row = {
+            executor.submit(run_format_recheck_llm, row_dict, client_format): row_dict
+            for row_dict in llm_check_queue
+        }
+
+        for future in as_completed(future_to_row):
+            row_dict = future_to_row[future]
+            name = row_dict["Discovered_Channel_Name"]
+            content_score = row_dict["sub_score_content"]
+
+            is_match, reason = future.result()
+            row_dict["LLM_Recheck_Reason"] = reason
+
+            if is_match:
+                row_dict["Final_Tier"] = 2
+                row_dict["Final_Status"] = "Tier 2 (LLM Saved)"
+                print(f"  🎯 LLM Saved → Tier 2: {name} (content: {content_score:.3f})")
+            else:
+                row_dict["Final_Tier"] = 4
+                row_dict["Final_Status"] = "Tier 4 (LLM Rejected)"
+                print(f"  ❌ LLM Rejected: {name}")
+
+            final_results.append(row_dict)
+
+    # 5. Sort & Save
+    df_final = pd.DataFrame(final_results)
+
+    # Sort: Tier 1 by content score DESC, then Tier 2 by content score DESC
+    df_final = df_final.sort_values(
+        by=["Final_Tier", "sub_score_content"], ascending=[True, False]
+    )
+
+    # Keep all columns except Deep_Scan_Data (too large for CSV)
+    df_csv = df_final.drop(columns=["Deep_Scan_Data"], errors="ignore")
+
+    # Save to MongoDB (COMMENTED OUT - Saving locally instead)
+    # collection_out = f"{run_tag.upper()}_final_ranked"
+    # save_dataframe_to_mongo(df_final, collection_out, "Discovered_Channel_ID")
+
+    # Save to local files
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    
+    # Save full results (all tiers)
+    csv_full = OUTPUT_DIR / f"{run_tag}_final_ranked_FULL_{timestamp}.csv"
+    df_csv.to_csv(csv_full, index=False)
+    print(f"\n💾 Full Results Saved: {csv_full}")
+    
+    # Save JSON with complete data (including Deep_Scan_Data)
+    json_full = OUTPUT_DIR / f"{run_tag}_final_ranked_FULL_{timestamp}.json"
+    df_final.to_json(json_full, orient="records", indent=2)
+    print(f"💾 Full JSON Saved: {json_full}")
+    
+    # Save qualified only (Tier 1-2)
+    csv_qual = OUTPUT_DIR / f"{run_tag}_final_ranked_QUALIFIED_{timestamp}.csv"
+    df_qual = df_csv[df_csv["Final_Tier"].isin([1, 2])]
+    df_qual.to_csv(csv_qual, index=False)
+    print(f"💾 Qualified (Tier 1-2) Saved: {csv_qual}")
+
+    # Statistics
+    print(f"\n📊 Final Statistics:")
+    print(f"   Total Channels: {len(df_final)}")
+    print(f"   Tier 1 (Format Match): {len(df_final[df_final['Final_Tier'] == 1])}")
+    print(f"   Tier 2 (High Content/LLM Saved): {len(df_final[df_final['Final_Tier'] == 2])}")
+    print(f"   Tier 4 (Rejected): {len(df_final[df_final['Final_Tier'] == 4])}")
+    print(f"\n🏆 DONE! Tier 1-2 Count: {len(df_qual)}")
 
 
 if __name__ == "__main__":
