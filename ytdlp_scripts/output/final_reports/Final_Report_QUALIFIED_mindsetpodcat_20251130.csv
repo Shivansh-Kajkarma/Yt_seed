@@ -1,5 +1,0 @@
-Discovered_Channel_ID,Discovered_Channel_Name,Discovered_Channel_URL,Final_Tier,Final_Status,score_similarity,sub_score_niche,sub_score_intent,sub_score_keywords,sub_score_content,score_format_match
-UCk2U-Oqn7RXf-ydPqfSxG5g,Mel Robbins,https://www.youtube.com/@melrobbins,3,Tier 3 (Format Match / Low Sim),0.6458718930974355,0.6893555626924422,0.6023058012576681,0.6025118568695695,0.7815520002480205,True
-UCpjlh0e319ksmoOD7bQFSiw,Rich Roll,https://www.youtube.com/@richroll,3,Tier 3 (Format Match / Low Sim),0.6165955411663869,0.5020863697765368,0.7429922492876844,0.7132734074590661,0.7309814058513782,True
-UCIaH-gZIVC432YRjNVvnyCA,Chris Williamson,https://www.youtube.com/@chriswillx,3,Tier 3 (Format Match / Low Sim),0.5737534974715862,0.6273419112908167,0.5104380148287517,0.5347556868877616,0.7115484891375722,True
-UC2D2CMWXMOVWx7giW1n3LIg,Andrew Huberman,https://www.youtube.com/@hubermanlab,3,Tier 3 (Format Match / Low Sim),0.36480580126874756,0.2098367228244454,0.47656171224958865,0.5845946309082414,0.5830007917503901,True
