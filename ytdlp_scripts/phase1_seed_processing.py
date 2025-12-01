@@ -249,7 +249,7 @@ def main():
             channel_url,
             client_format,
             client_intent,
-            max_videos=10,  # Can adjust this
+            max_videos=3,  # Can adjust this
         )
 
         if success:
