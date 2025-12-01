@@ -63,6 +63,9 @@ def record_run_status(run_tag: str, status: str, extra: dict | None = None):
         "status": status,
         "updated_at": datetime.now().isoformat(),
     }
+    # Merge extra fields into payload
+    if extra:
+        payload.update(extra)
     save_json_blob(payload, RUN_PROGRESS_COLLECTION, "run_tag", run_tag)
 
 
