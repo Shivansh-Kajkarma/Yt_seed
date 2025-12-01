@@ -157,10 +157,19 @@ def download_all_tier1_and_2_channels():
             col for col in final_columns if col in df_master_list.columns
         ]
 
+        # CRITICAL FIX: Clean NaN/Inf values before JSON serialization
+        df_output = df_master_list[final_columns_exists].copy()
+
+        # Replace NaN with None (null in JSON)
+        df_output = df_output.fillna("")
+
+        # Replace inf/-inf with None
+        df_output = df_output.replace([float("inf"), float("-inf")], "")
+
         return {
             "status": "success",
-            "total_channels": len(df_master_list),
-            "channels": df_master_list[final_columns_exists].to_dict("records"),
+            "total_channels": len(df_output),
+            "channels": df_output.to_dict("records"),
         }
 
     except Exception as e:
