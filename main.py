@@ -32,7 +32,7 @@ async def startup_event():
 def start_pipeline(
     sheet_url: str,
     input_format: str = "Podcast",
-    clients_intent: str = "Podcast Growth",
+    clients_intent: str = "Podcast",
 ):
     # This is correct as a POST.
     # We pass None for seed_dict to trigger "Loader" mode.
@@ -77,18 +77,25 @@ def get_pipeline_progress():
         # 2. Get only the LATEST record per run_tag
         latest = df.drop_duplicates(subset=["run_tag"])
 
-        # 3. Build a dict: status -> list of {run_tag, current_phase}
+        # 3. Build a dict: status -> list of {run_tag, current_phase, progress_percentage}
         status_map = {}
 
         for _, row in latest.iterrows():
             status = row["status"]
             tag = row["run_tag"].upper()
             current_phase = row.get("current_phase", None)
+            progress_percentage = row.get("progress_percentage", 0)
 
             if status not in status_map:
                 status_map[status] = []
 
-            status_map[status].append({"run_tag": tag, "current_phase": current_phase})
+            status_map[status].append(
+                {
+                    "run_tag": tag,
+                    "current_phase": current_phase,
+                    "progress_percentage": progress_percentage,
+                }
+            )
 
         # 4. Return everything
         return {"status": "success", "data": status_map}
