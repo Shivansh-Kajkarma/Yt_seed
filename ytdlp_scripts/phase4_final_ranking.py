@@ -217,16 +217,16 @@ def main():
     collection_out = f"{run_tag.upper()}_final_ranked"
     save_dataframe_to_mongo(df_final, collection_out, "Discovered_Channel_ID")
 
-    timestamp = datetime.now().strftime("%Y%m%d")
-    csv_qual = os.path.join(
-        OUTPUT_CSV_DIR, f"Final_Report_QUALIFIED_{run_tag}_{timestamp}.csv"
-    )
+    # timestamp = datetime.now().strftime("%Y%m%d")
+    # csv_qual = os.path.join(
+    #     OUTPUT_CSV_DIR, f"Final_Report_QUALIFIED_{run_tag}_{timestamp}.csv"
+    # )
 
-    df_qual = df_csv[df_csv["Final_Tier"].isin([1, 2, 3])]
-    df_qual.to_csv(csv_qual, index=False)
+    # df_qual = df_csv[df_csv["Final_Tier"].isin([1, 2, 3])]
+    # df_qual.to_csv(csv_qual, index=False)
 
-    print(f"\n🏆 DONE! Tier 1-3 Count: {len(df_qual)}")
-    print(f"   📄 CSV: {csv_qual}")
+    # print(f"\n🏆 DONE! Tier 1-3 Count: {len(df_qual)}")
+    # print(f"   📄 CSV: {csv_qual}")
 
 
 if __name__ == "__main__":
