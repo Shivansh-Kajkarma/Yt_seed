@@ -57,12 +57,12 @@ def get_task_status(task_id: str):
 @app.get("/progress")
 def get_pipeline_progress():
     """
-    Returns ALL run_tags grouped by their latest status.
+    Returns ALL run_tags grouped by their latest status with phase details.
     Example:
     {
-        "completed": ["COFFEEZILLA", "MAGNETASMEDIA"],
-        "skipped": ["MIKE_SWATRZ"],
-        "started": ["SCAMMER_PAYBACK"],
+        "completed": [{"run_tag": "COFFEEZILLA", "current_phase": "all_phases_complete"}],
+        "in_progress": [{"run_tag": "SCAMMER_PAYBACK", "current_phase": "phase3_step2_done"}],
+        "skipped": [{"run_tag": "MIKE_SWATRZ", "current_phase": null}],
         "failed": []
     }
     """
@@ -77,17 +77,18 @@ def get_pipeline_progress():
         # 2. Get only the LATEST record per run_tag
         latest = df.drop_duplicates(subset=["run_tag"])
 
-        # 3. Build a dict: status -> list of run_tags (UPPERCASE)
+        # 3. Build a dict: status -> list of {run_tag, current_phase}
         status_map = {}
 
         for _, row in latest.iterrows():
             status = row["status"]
             tag = row["run_tag"].upper()
+            current_phase = row.get("current_phase", None)
 
             if status not in status_map:
                 status_map[status] = []
 
-            status_map[status].append(tag)
+            status_map[status].append({"run_tag": tag, "current_phase": current_phase})
 
         # 4. Return everything
         return {"status": "success", "data": status_map}
@@ -103,7 +104,6 @@ def download_all_tier1_and_2_channels():
     Fetches ALL Tier 1 and Tier 2 channels from ALL
     completed seeds, combines them, de-duplicates,
     and returns the final master list.
-    (This is your manager's "40 + 60" logic)
     """
     try:
         # 1. Get all *completed* run_tags
@@ -143,31 +143,33 @@ def download_all_tier1_and_2_channels():
 
         # Only return the columns the client cares about
         final_columns = [
-            "Final_Tier",
+            "Discovered_Channel_ID",
             "Discovered_Channel_Name",
             "Discovered_Channel_URL",
+            "Final_Tier",
             "Final_Status",
-            "score_similarity",
-            "score_format_match",
-            "Discovered_From_Run",  # This column comes from the feedback loop
+            "LLM_Recheck_Reason",
+            "run_tag",
         ]
-
-        # Add 'run_tag' as a fallback if 'Discovered_From_Run' isn't there
-        if (
-            "Discovered_From_Run" not in df_master_list.columns
-            and "run_tag" in df_master_list.columns
-        ):
-            final_columns.append("run_tag")
 
         # Filter to only columns that actually exist
         final_columns_exists = [
             col for col in final_columns if col in df_master_list.columns
         ]
 
+        # CRITICAL FIX: Clean NaN/Inf values before JSON serialization
+        df_output = df_master_list[final_columns_exists].copy()
+
+        # Replace NaN with None (null in JSON)
+        df_output = df_output.fillna("")
+
+        # Replace inf/-inf with None
+        df_output = df_output.replace([float("inf"), float("-inf")], "")
+
         return {
             "status": "success",
-            "total_channels": len(df_master_list),
-            "channels": df_master_list[final_columns_exists].to_dict("records"),
+            "total_channels": len(df_output),
+            "channels": df_output.to_dict("records"),
         }
 
     except Exception as e:
