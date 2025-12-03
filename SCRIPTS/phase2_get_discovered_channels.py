@@ -64,7 +64,8 @@ def process_seed_channel(
     seen_ids: set,
     cached_ids: set,      # Set of already cached IDs
     run_tag: str,
-    mongo_phase2_collection: str # <-- CHANGED: Pass in collection name
+    mongo_phase2_collection: str, # <-- CHANGED: Pass in collection name
+    api_key: str = None
 ):
     """
     Process a single seed channel.
@@ -117,6 +118,7 @@ def process_seed_channel(
         try:
             candidate_ids = search_videos_multi_focused(
                 seed_keywords_list[:3],  #changes from complete->3
+                api_key=api_key,
                 max_results_per_search=3,  #changes from 20->2
                 max_keywords=len(seed_keywords_list),
                 run_tag=run_tag,
@@ -137,7 +139,7 @@ def process_seed_channel(
 
     # --- STEP 2: Get Metadata (REFACTORED FOR MONGO) ---
     print("\n📊 STEP 2: Fetching channel metadata...")
-    metadata = get_channel_metadata_batch(list(candidate_ids), run_tag=run_tag, seed_name=seed_channel)
+    metadata = get_channel_metadata_batch(list(candidate_ids),api_key=api_key, run_tag=run_tag, seed_name=seed_channel)
     
     # Update the seen log in memory
     new_seen_count = 0
@@ -211,7 +213,8 @@ def process_seed_channel(
             # --- 5a. Fetch recent videos (Unchanged) ---
             print(f"     Fetching {VIDEOS_PER_CANDIDATE} videos...")
             videos, cand_desc = fetch_recent_videos(
-                candidate["id"], 
+                candidate["id"],
+                api_key=api_key,
                 max_results=VIDEOS_PER_CANDIDATE, 
                 filter_shorts=True, 
                 min_videos_in_first_batch=1,  #changed 3->1 
@@ -295,7 +298,7 @@ def process_seed_channel(
 # ==================================================
 # 4. MAIN FUNCTION (REFACTORED FOR MONGO)
 # ==================================================
-def main(run_tag: str):
+def main(run_tag: str, api_key: str = None):
     start_time = time.time()
 
     # --- Define Mongo Collection Names ---
@@ -435,7 +438,8 @@ def main(run_tag: str):
                 seen_ids,
                 cached_channel_ids,
                 run_tag,
-                MONGO_PHASE2_COLLECTION # Pass output collection name
+                MONGO_PHASE2_COLLECTION, # Pass output collection name,
+                api_key=api_key
             )
             
             total_new_channels_cached += new_channels_this_seed

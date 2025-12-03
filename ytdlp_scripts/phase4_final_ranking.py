@@ -101,7 +101,9 @@ def main():
         sys.exit(1)
 
     run_tag = sys.argv[1]
-    print(f"🚀 PHASE 4: Final Ranking & Report | Tag: {run_tag}")
+    pipeline_execution_id = sys.argv[2] if len(sys.argv) > 2 else "Unknown"
+    
+    print(f"🚀 PHASE 4 ... | Tag: {run_tag} | Pipeline ID: {pipeline_execution_id}")
 
     client_format, client_intent = get_client_constraints(run_tag)
     print(f"📋 Constraints: Format='{client_format}', Niche='{client_intent}'")
@@ -144,6 +146,7 @@ def main():
         fmt_match = row["score_format_match"]
         content_score = row["sub_score_content"]
         row_dict = row.to_dict()
+        row_dict["pipeline_execution_id"] = pipeline_execution_id
 
         # RULE 1: Format Match = True → Tier 1 (sorted by content score)
         if fmt_match:

@@ -32,13 +32,15 @@ os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 # --- CHANGED: Default lowered to 3 for testing ---
 def process_single_seed(
-    run_tag, channel_name, channel_url, client_format, client_intent, max_videos=10
+    run_tag, channel_name, channel_url, client_format, client_intent, max_videos=10, api_key=None
 ):
     print(f"\nStarted processing seed: {channel_name}")
+    print("API Key Present:", bool(api_key))
+    print("\nAPI Key: ", api_key)
     print(f"   🎯 Target Format: {client_format} | Intent: {client_intent}")
 
     # --- STEP 1: Resolve ID & Basic API Fetch ---
-    channel_id = extract_channel_id(channel_url)
+    channel_id = extract_channel_id(channel_url, api_key=api_key)
     if not channel_id:
         print(f"❌ Could not resolve Channel ID for {channel_url}")
         return False
@@ -51,6 +53,7 @@ def process_single_seed(
         filter_shorts=True,
         run_tag=run_tag,
         seed_name=channel_name,
+        api_key=api_key
     )
 
     if not api_videos:
@@ -236,8 +239,11 @@ def main():
     channel_url = sys.argv[3]
     client_format = sys.argv[4]
     client_intent = sys.argv[5]
+    api_key = os.environ.get("YOUTUBE_API_KEY_DYNAMIC")
+    if not api_key:
+        print("⚠️ No Dynamic API Key found. Falling back to default env loading.")
 
-    print(f"🚀 STARTING PHASE 1 | Tag: {run_tag}")
+    print(f"🚀 STARTING PHASE 1 | Tag: {run_tag} | API Key: {'[REDACTED]' if api_key else 'None'} | Key Present: {bool(api_key)}")
     print(f"📋 Seed: {channel_name}")
     print(f"📋 Constraints: {client_format} ({client_intent})")
 
@@ -250,6 +256,7 @@ def main():
             client_format,
             client_intent,
             max_videos=3,  # Can adjust this
+            api_key=api_key
         )
 
         if success:

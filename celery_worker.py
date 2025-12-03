@@ -4,13 +4,8 @@ from pathlib import Path
 from celery import Celery
 from celery.signals import worker_process_init
 from dotenv import load_dotenv
-import pandas as pd
 
-# ------------------------------------------------------
-# STEP 1: Force Python to see project root as importable
-# ------------------------------------------------------
 BASE_DIR = Path(__file__).resolve().parent
-
 
 def setup_python_path():
     """Add BASE_DIR to sys.path for imports"""
@@ -19,45 +14,30 @@ def setup_python_path():
     if str(BASE_DIR.parent) not in sys.path:
         sys.path.insert(0, str(BASE_DIR.parent))
 
-
-# Call it immediately for the main process
 setup_python_path()
 
-
-# also call it when each worker subprocess starts
 @worker_process_init.connect
 def configure_worker_process(**kwargs):
-    """Called when each Celery worker subprocess is initialized"""
     setup_python_path()
     print(f"Worker subprocess initialized with sys.path: {sys.path[:3]}")
 
-
-# ------------------------------------------------------
-# STEP 2: Load environment variables
-# ------------------------------------------------------
 env_path = BASE_DIR / ".env"
 load_dotenv(env_path)
-print(f"Loaded .env from: {env_path}")
 
 REDIS_URL = os.getenv("REDIS_URL")
-if not REDIS_URL:
-    print("CRITICAL: REDIS_URL not found in environment!")
-else:
-    print(f"REDIS_URL = {REDIS_URL}")
 
-# ------------------------------------------------------
-# STEP 3: Initialize Celery
-# ------------------------------------------------------
 celery_app = Celery(
     "kajkarma_tasks",
     broker=REDIS_URL or "redis://localhost:6379/0",
     backend=REDIS_URL or "redis://localhost:6379/0",
 )
 
+# Optional: Configure routes here if you want defaults, 
+# but we are handling it dynamically in main.py
+celery_app.conf.task_routes = {
+    'celery_worker.run_phase_pipeline': {'queue': 'default'} 
+}
 
-# ------------------------------------------------------
-# STEP 4: Celery task entry point (UPDATED)
-# ------------------------------------------------------
 @celery_app.task(bind=True)
 def run_phase_pipeline(
     self,
@@ -65,28 +45,45 @@ def run_phase_pipeline(
     seed_dict: dict = None,
     input_format: str = "General",
     clients_intent: str = "General",
+    pipeline_execution_id: str = None, # <--- NEW ARGUMENT
 ):
     """
     Celery background task.
-    - If sheet_url is provided, it's a "Loader" task that queues individual seeds.
-    - If seed_dict is provided, it's a "Processor" task for a single seed.
-    - NEW: input_format and clients_intent are passed to configure the pipeline
+    Now accepts pipeline_execution_id to track the lineage of the run.
     """
     try:
-        # force import after sys.path fix
         from utils.pipeline_wrapper import full_pipeline_from_sheet
 
-        # --- This task is now just a router ---
+        # We need to decide which API Key to use based on the Queue we are running in.
+        # However, getting the Queue name inside the task is tricky.
+        # BETTER STRATEGY: We read the API Key from the Environment Variable 
+        # that we set in the tmux session (e.g. export YOUTUBE_API_KEY=...)
+        
+        # We pass this Env Var key to the wrapper
+        api_key = os.getenv("YOUTUBE_API_KEY") 
+        
+        if not api_key:
+            # Fallback for local testing or if env var is missing
+            print("⚠️ No YOUTUBE_API_KEY found in env (Task specific). Checking .env fallback...")
+            api_key = os.getenv("YOUTUBE_API_KEY_PODCAST") # Default or fail
+            if not api_key:
+                 return {"status": "failed", "error": "CRITICAL: No API Key available for this worker."}
+
         result = full_pipeline_from_sheet(
-            self, sheet_url, seed_dict, input_format, clients_intent
+            self, 
+            sheet_url, 
+            seed_dict, 
+            input_format, 
+            clients_intent,
+            pipeline_execution_id, # <--- PASS IT DOWN
+            api_key # <--- PASS THE KEY
         )
 
         return {"status": "success", "details": result}
 
     except SystemExit as e:
-        # This is not an "error," it's a planned pause.
         print(f"Task {self.request.id} is being paused and retried.")
-        return {"status": "paused", "details": "Task paused due to quota, will retry."}
+        return {"status": "paused", "details": "Task paused due to quota."}
 
     except Exception as e:
         print(f"Pipeline error: {e}")

@@ -34,7 +34,7 @@ BATCH_SIZE = 3  # Process 3 channels...
 # BATCH_COOLDOWN = 25 * 3600   # ...then wait 25 hours (in seconds)
 # STAGGER_DELAY = 120          # Wait 2 mins between channels in the same batch
 # Testing
-BATCH_COOLDOWN = 1200  # ...then wait 20 minutes (in seconds)
+BATCH_COOLDOWN = 1 * 60  # ...then wait 1 minute (in seconds)
 STAGGER_DELAY = 10  # Wait 10 seconds between channels in the same batch
 
 # --- REDIS SETUP (For Global Schedule Tracking) ---
@@ -55,44 +55,79 @@ def normalize_run_tag(seed_channel_name: str) -> str:
     return seed_channel_name.lower().replace(" ", "_")
 
 
-def record_run_status(run_tag: str, status: str, extra: dict | None = None):
+def record_run_status(
+    run_tag: str,
+    status: str,
+    extra: dict | None = None,
+    pipeline_execution_id: str = None,
+):
     payload = {
         "run_tag": run_tag,
         "status": status,
         "updated_at": datetime.now().isoformat(),
     }
+    # Always include pipeline_execution_id if provided
+    if pipeline_execution_id:
+        payload["pipeline_execution_id"] = pipeline_execution_id
     # Merge extra fields into payload
     if extra:
         payload.update(extra)
     save_json_blob(payload, RUN_PROGRESS_COLLECTION, "run_tag", run_tag)
 
 
-def get_next_schedule_delay():
-    """
-    ATOMICALLY increments the global counter and calculates
-    the delay for the next task.
-    This guarantees NO overlaps, even if multiple processes run at once.
-    """
-    # 1. Get a ticket number (Atomic Increment)
-    ticket_number = r_client.incr(GLOBAL_COUNTER_KEY) - 1  # 0-indexed
+def get_queue_name(input_format: str) -> str:
+    """Helper to ensure child tasks stay in the correct lane."""
+    fmt = input_format.lower()
+    if "podcast" in fmt:
+        return "podcast_queue"
+    if "doc" in fmt:
+        return "doc_queue"
+    if "talking" in fmt:
+        return "talking_head_queue"
+    return "default"
 
-    # 2. Which batch is this ticket in?
+
+def get_next_schedule_delay(input_format: str):  # <--- Accepts format
+    """
+    Calculates delay based on the LANE'S specific counter.
+    Podcasts wait for Podcasts. Docs wait for Docs.
+    """
+    # Normalize format to key suffix
+    fmt = input_format.lower()
+    if "podcast" in fmt:
+        suffix = "podcast"
+    elif "doc" in fmt:
+        suffix = "doc"
+    elif "talking" in fmt:
+        suffix = "talking"
+    else:
+        suffix = "default"
+
+    # Specific Key for this Lane
+    lane_key = f"kajkarma_schedule_counter_{suffix}"
+
+    # 1. Get ticket for THIS lane
+    ticket_number = r_client.incr(lane_key) - 1
+
+    # 2. Batch Logic (Same as before)
     batch_number = ticket_number // BATCH_SIZE
 
     # 3. Calculate Delay
     batch_delay = batch_number * BATCH_COOLDOWN
     intra_stagger = (ticket_number % BATCH_SIZE) * STAGGER_DELAY
-
     total_delay = batch_delay + intra_stagger
 
     print(
-        f"🎫 Issued Ticket #{ticket_number} | Batch {batch_number} | Delay: {total_delay / 3600:.2f} hrs"
+        f"🎫 Issued Ticket #{ticket_number} for LANE: {suffix.upper()} | Delay: {total_delay / 3600:.2f}h"
     )
     return total_delay
 
 
 def run_feedback_loop_for_seed(
-    run_tag: str, input_format: str = "General", clients_intent: str = "General"
+    run_tag: str,
+    input_format: str = "General",
+    clients_intent: str = "General",
+    pipeline_execution_id: str = None,
 ):
     """
     THE INFINITE LOOP:
@@ -150,12 +185,20 @@ def run_feedback_loop_for_seed(
 
             # --- CRITICAL: GET GLOBAL SCHEDULE TICKET ---
             # This puts the new seed at the END of the 25h line
-            delay_seconds = get_next_schedule_delay()
+            delay_seconds = get_next_schedule_delay(input_format=input_format)
 
             # Fire Task
             run_phase_pipeline.apply_async(
-                args=[None, new_seed_dict, input_format, clients_intent],
+                # ADD pipeline_execution_id HERE ⬇️
+                args=[
+                    None,
+                    new_seed_dict,
+                    input_format,
+                    clients_intent,
+                    pipeline_execution_id,
+                ],
                 countdown=delay_seconds,
+                queue=get_queue_name(input_format),
             )
             count += 1
             print(
@@ -180,6 +223,8 @@ def full_pipeline_from_sheet(
     seed_dict: dict = None,
     input_format: str = "General",
     clients_intent: str = "General",
+    pipeline_execution_id: str = None,  # <--- NEW: For Download grouping
+    api_key: str = None,
 ):
     # --- MODE 1: Loader (Initial Sheet) ---
     if sheet_url:
@@ -193,15 +238,23 @@ def full_pipeline_from_sheet(
         if df is None or df.empty:
             return {"status": "failed"}
 
+        target_queue = get_queue_name(input_format)
         print(f"🗓️ Scheduling {len(df)} seeds into the Global Timeline...")
 
         for index, row in df.iterrows():
             # Get Ticket
-            delay = get_next_schedule_delay()
+            delay = get_next_schedule_delay(input_format=input_format)
 
             run_phase_pipeline.apply_async(
-                args=[None, row.to_dict(), input_format, clients_intent],
+                args=[
+                    None,
+                    row.to_dict(),
+                    input_format,
+                    clients_intent,
+                    pipeline_execution_id,
+                ],
                 countdown=delay,
+                queue=target_queue,
             )
 
         return {"status": "success", "message": f"Scheduled {len(df)} seeds."}
@@ -235,15 +288,20 @@ def full_pipeline_from_sheet(
         except Exception as e:
             print(f"⚠️ Could not check run_progress: {e}")
 
+        status_payload = {
+            "seed_name": seed_channel_name,
+            "seed_url": seed_channel_url,
+            "current_phase": "initializing",
+            "progress_percentage": 0,
+        }
+        if pipeline_execution_id:
+            status_payload["pipeline_execution_id"] = pipeline_execution_id
+
         record_run_status(
             run_tag,
             "started",
-            {
-                "seed_name": seed_channel_name,
-                "seed_url": seed_channel_url,
-                "current_phase": "initializing",
-                "progress_percentage": 0,
-            },
+            status_payload,
+            pipeline_execution_id=pipeline_execution_id,
         )
 
         try:
@@ -253,6 +311,11 @@ def full_pipeline_from_sheet(
             print(f"\n--- [PHASE 1] Deep Seed Analysis (yt-dlp) ---")
             import subprocess
 
+            env_vars = os.environ.copy()
+            if api_key:
+                env_vars["YOUTUBE_API_KEY_DYNAMIC"] = (
+                    api_key  # We will read this in the script
+                )
             phase1_result = subprocess.run(
                 [
                     "python3",
@@ -265,6 +328,7 @@ def full_pipeline_from_sheet(
                     input_format,
                     clients_intent,
                 ],
+                env=env_vars,
                 capture_output=True,
                 text=True,
             )
@@ -274,7 +338,10 @@ def full_pipeline_from_sheet(
                 print(f"   stderr: {phase1_result.stderr}")
                 print(f"   stdout: {phase1_result.stdout}")
                 record_run_status(
-                    run_tag, "skipped", {"reason": "Phase 1 failed - no videos found"}
+                    run_tag,
+                    "skipped",
+                    {"reason": "Phase 1 failed - no videos found"},
+                    pipeline_execution_id=pipeline_execution_id,
                 )
                 return {"status": "skipped", "message": "Seed had no videos."}
 
@@ -283,17 +350,19 @@ def full_pipeline_from_sheet(
                 run_tag,
                 "in_progress",
                 {"current_phase": "phase1_done", "progress_percentage": 10},
+                pipeline_execution_id=pipeline_execution_id,
             )
 
             # ==================================================
             # PHASE 2: Channel Discovery
             # ==================================================
             print(f"\n--- [PHASE 2] Channel Discovery ---")
-            phase2_main(run_tag)
+            phase2_main(run_tag, api_key=api_key)
             record_run_status(
                 run_tag,
                 "in_progress",
                 {"current_phase": "phase2_done", "progress_percentage": 25},
+                pipeline_execution_id=pipeline_execution_id,
             )
 
             # ==================================================
@@ -323,6 +392,7 @@ def full_pipeline_from_sheet(
                 run_tag,
                 "in_progress",
                 {"current_phase": "phase3_step1_done", "progress_percentage": 40},
+                pipeline_execution_id=pipeline_execution_id,
             )
 
             # STEP 2: Deep scan with yt-dlp
@@ -348,6 +418,7 @@ def full_pipeline_from_sheet(
                 run_tag,
                 "in_progress",
                 {"current_phase": "phase3_step2_done", "progress_percentage": 55},
+                pipeline_execution_id=pipeline_execution_id,
             )
 
             # STEP 3A: LLM format verification
@@ -373,6 +444,7 @@ def full_pipeline_from_sheet(
                 run_tag,
                 "in_progress",
                 {"current_phase": "phase3_step3a_done", "progress_percentage": 70},
+                pipeline_execution_id=pipeline_execution_id,
             )
 
             # STEP 3B: Embedding similarity
@@ -398,18 +470,23 @@ def full_pipeline_from_sheet(
                 run_tag,
                 "in_progress",
                 {"current_phase": "phase3_step3b_done", "progress_percentage": 85},
+                pipeline_execution_id=pipeline_execution_id,
             )
 
             # ==================================================
             # PHASE 4: Final Ranking & Tiering
             # ==================================================
             print(f"\n--- [PHASE 4] Final Ranking ---")
+            cmd_args = [
+                "python3",
+                os.path.join(BASE_DIR, "ytdlp_scripts", "phase4_final_ranking.py"),
+                run_tag,
+            ]
+
+            if pipeline_execution_id:
+                cmd_args.append(pipeline_execution_id)
             phase4_result = subprocess.run(
-                [
-                    "python3",
-                    os.path.join(BASE_DIR, "ytdlp_scripts", "phase4_final_ranking.py"),
-                    run_tag,
-                ],
+                cmd_args,
                 capture_output=True,
                 text=True,
             )
@@ -423,17 +500,19 @@ def full_pipeline_from_sheet(
                 run_tag,
                 "in_progress",
                 {"current_phase": "phase4_done", "progress_percentage": 95},
+                pipeline_execution_id=pipeline_execution_id,
             )
 
             record_run_status(
                 run_tag,
                 "completed",
                 {"current_phase": "all_phases_complete", "progress_percentage": 100},
+                pipeline_execution_id=pipeline_execution_id,
             )
 
             # --- Feedback Loop (This will add NEW items to the END of the schedule) ---
             new_seeds_count = run_feedback_loop_for_seed(
-                run_tag, input_format, clients_intent
+                run_tag, input_format, clients_intent, pipeline_execution_id
             )
 
             return {
@@ -443,7 +522,12 @@ def full_pipeline_from_sheet(
 
         except Exception as e:
             print(f"❌ PIPELINE FAILED for {run_tag}: {e}")
-            record_run_status(run_tag, "failed", {"error": str(e)[:300]})
+            record_run_status(
+                run_tag,
+                "failed",
+                {"error": str(e)[:300]},
+                pipeline_execution_id=pipeline_execution_id,
+            )
             return {"status": "failed", "error": str(e)[:300]}
 
     else:
