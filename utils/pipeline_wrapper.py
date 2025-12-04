@@ -34,7 +34,7 @@ BATCH_SIZE = 3  # Process 3 channels...
 # BATCH_COOLDOWN = 25 * 3600   # ...then wait 25 hours (in seconds)
 # STAGGER_DELAY = 120          # Wait 2 mins between channels in the same batch
 # Testing
-BATCH_COOLDOWN = 1 * 60  # ...then wait 1 minute (in seconds)
+BATCH_COOLDOWN = 20 * 60  # ...then wait 20 minutes (in seconds)
 STAGGER_DELAY = 10  # Wait 10 seconds between channels in the same batch
 
 # --- REDIS SETUP (For Global Schedule Tracking) ---
@@ -60,19 +60,42 @@ def record_run_status(
     status: str,
     extra: dict | None = None,
     pipeline_execution_id: str = None,
+    input_format: str = None,  # <--- NEW: For dashboard lane tracking
 ):
+    """
+    Records run status to MongoDB using $set to preserve existing fields.
+    """
     payload = {
         "run_tag": run_tag,
         "status": status,
         "updated_at": datetime.now().isoformat(),
     }
-    # Always include pipeline_execution_id if provided
+
+    # 1. Capture Start Time (Critical for 25h Timer)
+    if status == "started":
+        payload["started_at"] = datetime.now().isoformat()
+
+    # 2. Always include pipeline_execution_id if provided
     if pipeline_execution_id:
         payload["pipeline_execution_id"] = pipeline_execution_id
-    # Merge extra fields into payload
+
+    # 3. Save input_format (Critical for Dashboard lanes)
+    if input_format:
+        payload["input_format"] = input_format
+
+    # 4. Merge extra fields into payload
     if extra:
         payload.update(extra)
-    save_json_blob(payload, RUN_PROGRESS_COLLECTION, "run_tag", run_tag)
+
+    # 5. Use $set to merge updates (preserves started_at, input_format from earlier calls)
+    from utils.mongo_utils import get_mongo_db
+
+    try:
+        db = get_mongo_db()
+        collection = db[RUN_PROGRESS_COLLECTION]
+        collection.update_one({"run_tag": run_tag}, {"$set": payload}, upsert=True)
+    except Exception as e:
+        print(f"⚠️ Failed to update run status: {e}")
 
 
 def get_queue_name(input_format: str) -> str:
@@ -302,6 +325,7 @@ def full_pipeline_from_sheet(
             "started",
             status_payload,
             pipeline_execution_id=pipeline_execution_id,
+            input_format=input_format,  # <--- Pass input_format for dashboard
         )
 
         try:
