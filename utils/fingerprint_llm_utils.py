@@ -26,25 +26,41 @@ FORMAT_CONFIG = {
     },
     "Documentary": {
         "keywords": [
-            "documentary",
-            "doc",
-            "story of",
-            "history of",
-            "explained",
-            "breakdown",
+            "rise and fall", "downfall", "exposed", "disaster", 
+            "horrible reality", "dark side", "scam" "investigation", "collapse", "bankrupt", "untold story", "case study", "fraud", "history of", "secret",
+            "deep dive", "documentary", "analysis", "explained", 
+            "mystery", "paradox", "problem with", "truth about"
         ],
-        "rules": "Keywords MUST imply narrative/storytelling. Focus on 'Subject' + 'Documentary'.",
-        "examples": "✓ 'tech startup documentary'\n   ✓ 'business failure explained'",
-    },
-    "Tutorial": {
-        "keywords": ["tutorial", "guide", "how to", "course", "learn", "walkthrough"],
-        "rules": "Keywords MUST imply utility/education. Focus on 'Skill' + 'Guide'.",
-        "examples": "✓ 'python programming tutorial'\n   ✓ 'seo guide for beginners'",
+        "rules": (
+        "Keywords MUST imply a narration-driven, real-world documentary format. "
+        "The content MUST be based on real events, people, issues, scandals, crimes, "
+        "historical developments, financial schemes, geopolitical events, or social dynamics. "
+        "The video format MUST focus on storytelling, timelines, evidence, investigations, "
+        "reports, and real-world sequences — NOT opinions, self-help, tutorials, or commentary. "
+
+        "Every keyword MUST include one of these identifiers or synonyms: "
+        "'documentary', 'narrative report', 'event timeline', 'investigative story', "
+        "'issue breakdown', 'story analysis'. "
+
+        "Reject keywords suggesting: podcast, talking head, interviews, commentary, opinions, "
+        "news reporting, fictional storytelling, motivational content, or personal branding. "
+        "Reject hybrid formats where a host is heavily present on camera. "
+
+        "Keyword structure: [Real-World Topic] + [Documentary Identifier]. "
+    ),
+        "examples": (
+        "✓ 'internet drama documentary'\n"
+        "✓ 'business scam investigative story'\n"
+        "✓ 'crime case event timeline'\n"
+        "✓ 'social issue documentary'\n"
+        "✓ 'finance fraud story analysis'\n"
+        "✓ 'the downfall of mrbeast'\n   ✓ 'how ftx collapsed'\n   ✓ 'dark history of the internet'\n   ✓ 'man who scammed the world'",
+    )
     },
     "Talking Head": {
-        "keywords": ["analysis", "review", "opinion", "commentary", "video essay"],
-        "rules": "Keywords MUST imply analysis/opinion. Focus on 'Topic' + 'Analysis'.",
-        "examples": "✓ 'apple vision pro review'\n   ✓ 'market crash analysis'",
+    "keywords": ["guide", "roadmap", "mistakes", "strategy", "blueprint", "method", "truth", "explained", "system", "advice", "tutorial"],
+    "rules": "Keywords MUST imply a direct-to-camera educational monologue or advice session. Focus on 'Problem/Solution' or 'How-To' phrasing. Avoid generic terms like 'video' or 'vlog'.",
+    "examples": "✓ 'productivity system for beginners'\n   ✓ 'coding roadmap 2025'\n   ✓ 'business mistakes to avoid'\n   ✓ 'ai productivity tools guide'",
     },
     # Fallback for unknown formats
     "General": {
@@ -75,20 +91,58 @@ FORMAT_VALIDATION_CONFIG = {
         The content should clearly resemble spoken audio intended for listening rather than watching."""
 },
     "Documentary": {
-        "positive_signals": "Look for scripted voiceover narration (often 3rd person). Past tense storytelling ('He started the company in...'). High production value descriptions.",
-        "negative_constraints": "REJECT if: It is a 'Reaction Video' (watching someone else). REJECT if it is 'Commentary' (just a guy talking at a desk without narrative b-roll).",
-        "structural_cue": "Structure must be: Narrative Hook -> Chronological Story -> Conclusion.",
-    },
-    "Tutorial": {
-        "positive_signals": "Look for imperative verbs ('Click here', 'Do this', 'Type that'). Sequential steps ('Step 1', 'Next'). Instructional tone.",
-        "negative_constraints": "REJECT if: It is a 'Review' (giving opinion vs teaching how). REJECT if it is a 'Speedbuild' (music only, no instruction).",
-        "structural_cue": "Structure must be: Problem Statement -> Step-by-Step Solution -> Result.",
-    },
-    "Talking Head": {
-        "positive_signals": "Look for direct eye contact (implied text). Opinions, Analysis, or Commentary on a specific topic. Single dominant speaker.",
-        "negative_constraints": "REJECT if: It is an Interview (Podcast). REJECT if it is a Skit/Comedy Sketch.",
-        "structural_cue": "Structure must be: Thesis Statement -> Arguments/Analysis -> Conclusion.",
-    },
+    "positive_signals": 
+        """A documentary transcript typically has:
+        • Third-person narration describing real events, issues, crimes, scandals, or historical sequences.
+        • Heavy use of factual, report-style language:
+            'according to…', 'reports suggest…', 'investigators found…', 
+            'historical data shows…', 'witnesses claimed…'.
+        • A structured storytelling arc:
+            Context → Event → Investigation/Details → Consequences → Conclusion.
+        • Multi-scene description suggesting B-roll, archival footage, evidence, clips, timelines.
+        • No host-centric framing; narrator rarely refers to themselves.
+        • Very low or ZERO first-person opinion ("I think", "I believe", "my advice").
+        • Timeline markers and chronological progression ('Before this...', 'Then...', 'Eventually...', 'By the end...').
+        • Clear emphasis on real-world analysis, not self-help or personal perspective.
+        """,
+
+    "structural_cue": 
+        """Expected structure markers:
+        • Opening scene-setting or timeline introduction ('In 2018, a chain of events began…').
+        • Evidence presentation, sourced facts, references to investigations or historical context.
+        • Sequential progression through real events, not advice or personal frameworks.
+        • Narrative storytelling structure with clear story arc: setup, conflict/investigation, resolution/outcome.
+        • Climax or turning point (the scandal breaks, the downfall happens, the truth emerges).
+        • NO direct instruction to viewer ('here's how to...'), NO personal advice ('I recommend...').
+        • NO conversational dialogue or guest interactions - just continuous narration.
+        
+        The transcript MUST clearly resemble a polished, narration-driven documentary 
+        about real-world subjects — NOT commentary, news reading, personal analysis, 
+        fictional narratives, or on-camera host-driven explainer content."""
+},
+    "TalkingHead": {
+    "positive_signals": 
+        """A talking-head video transcript typically has:
+        • Single speaker monologue (NO guest dialogue, NO interviewer questions, NO back-and-forth conversation).
+        • Heavy first-person usage ("I", "my", "let me show you", "here’s what I learned").
+        • Direct address to the viewer using second-person pronouns ('you', 'your', 'you can').
+        • HIGH INFORMATION DENSITY: Scripts are focused on delivering value, tips, steps, or frameworks (e.g., '3 ways to...', 'The method I use...').
+        • Minimal or NO guest dialogue — no interviewer/guest back-and-forth.
+        • DISTINCTION FROM VLOGS: It is structured and topic-centric, NOT a wandering 'day in the life' or event coverage.,
+        """,
+
+    "structural_cue": 
+        """Expected structure markers:
+        • Opening hook or thesis statement (“Today we’re talking about…”, “Here’s the truth…”).
+        • Sequential point-by-point teaching, steps, insights, or frameworks.
+        • Occasional personal anecdotes supporting the teaching.
+        • Direct addressing of the viewer (“you”, “your”, “here’s how you can…”).
+        • No long uninterrupted narration describing external events (documentary) 
+          and no alternating multi-voice conversational flow (podcast).
+        • Conclusion with summary, key takeaway, or call-to-action.
+        The transcript should clearly resemble a visually-present host explaining or teaching on camera.
+        """
+},
     "General": {
         "positive_signals": "Check if content matches the general theme.",
         "negative_constraints": "None.",
@@ -1762,8 +1816,8 @@ def get_candidate_fingerprint_independent(
     2. **Keywords**: Generate 15-20 search keywords that a user would type to find *this specific channel*.
     
     CRITICAL RULES:
-    - **BE HONEST:** If the content is a Vlog, use keywords like "vlog", "daily life".
-    - **BE HONEST:** If the content is News, use keywords like "news clips", "updates".
+    - **BE HONEST:** If the content is a Documentary, use keywords like "documentary", "issues".
+    - **BE HONEST:** If the content is Talking head, use keywords like "guide", "roadmap".
     - **BE HONEST:** If the content is a Podcast, use keywords like "podcast", "interview".
     - Do NOT force any specific format. Describe exactly what you see.
 

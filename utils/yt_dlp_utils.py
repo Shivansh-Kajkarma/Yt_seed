@@ -71,7 +71,7 @@ def fetch_video_data_ytdlp(video_id: str):
     
     # 1. Configure Stealth Options
     selected_user_agent = random.choice(USER_AGENTS)
-    # time.sleep(random.uniform(1.0, 5.0))
+    time.sleep(random.uniform(1.0, 5.0))
     ydl_opts = {
         # --- STEALTH ---
         'cookiefile': COOKIES_PATH if os.path.exists(COOKIES_PATH) else None,
