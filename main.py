@@ -283,11 +283,15 @@ def get_queue_status_dashboard():
 
             # --- LOGIC: RUNNING vs COOLDOWN vs IDLE ---
 
+            # Get pipeline_execution_id for frontend
+            exec_id = str(latest_run.get("pipeline_execution_id", "N/A"))
+
             # A. RUNNING
             if status in ["started", "in_progress"]:
                 dashboard[lane] = {
                     "status": "running",
                     "run_tag": run_tag,
+                    "pipeline_execution_id": exec_id,
                     "current_phase": str(current_phase),
                     "progress_percentage": progress_pct,
                     "message": f"Processing {run_tag}...",
@@ -306,7 +310,9 @@ def get_queue_status_dashboard():
                     base_time = started_at
 
                 # 25 Hour Rule (or use BATCH_COOLDOWN from config)
-                target_resume_time = base_time + timedelta(minutes=20)  # Testing: 20 minutes
+                target_resume_time = base_time + timedelta(
+                    minutes=20
+                )  # Testing: 20 minutes
                 now = datetime.now()
                 remaining = target_resume_time - now
 
@@ -322,6 +328,7 @@ def get_queue_status_dashboard():
                     dashboard[lane] = {
                         "status": "cooldown",
                         "run_tag": run_tag,
+                        "pipeline_execution_id": exec_id,
                         "message": "Batch Cooldown Active",
                         "timer_seconds": timer_secs,
                         "timer_display": display,
@@ -331,6 +338,7 @@ def get_queue_status_dashboard():
                     # Timer expired - ready for next batch
                     dashboard[lane] = {
                         "status": "idle",
+                        "pipeline_execution_id": exec_id,
                         "message": "Cooldown complete. Ready.",
                         "timer_seconds": 0,
                     }
